@@ -44,6 +44,7 @@ Power BI regularly queries the data from AWS and updates the visualizations. Use
 - Append the name of the area code to master data
 - Production breakdow visualisation
 - Refreshing AWS the data from my client machine
+- Visualization in the notebooks
 
 Example view of the visualization (Under the Power BI menu):
 
