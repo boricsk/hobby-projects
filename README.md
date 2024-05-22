@@ -1,8 +1,7 @@
 ## Borics Krisztián
 ### Data Engineering hobby projects
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)<br>
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
+<img src=https://devnullsec.hu/logo_small.svg>
 
 Dear Visitor!<br>
 Thank you for visiting my page. You can find here the descriptions of my Data Engineering hobby projects.
