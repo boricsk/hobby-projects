@@ -12,7 +12,7 @@ Thank you for visiting my page. You can find here the short descriptions of my D
 > This project has been created by based on the taxi trips in Chicago. The data source is the Chicago data center free API.
 
 - Electric energy consumption
-> This project has been created by based on the Electricity free API data.
+> This project has been created by based on the Electricity free API data to extract the daily power consumption and production.
 
 - Air crash data visualization based on the NTSB database (Planned).
 > Create a visualization dashboards and notebooks from the NTSB database.
