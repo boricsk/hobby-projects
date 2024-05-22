@@ -1,10 +1,10 @@
 ## Borics Krisztián
 ### Data Engineering hobby projects
 
-<img src=https://devnullsec.hu/logo_small.svg>
+<img src=https://devnullsec.hu/logo_small.svg height="64" width="64">
 
 Dear Visitor!<br>
-Thank you for visiting my page. You can find here the descriptions of my Data Engineering hobby projects.
+Thank you for visiting my page. You can find here the short descriptions of my Data Engineering hobby projects.
 
 #### Projects
 
