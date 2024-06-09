@@ -16,3 +16,6 @@ Thank you for visiting my page. You can find here the short descriptions of my D
 
 - Air crash data visualization based on the NTSB database (Planned).
 > Create a visualization dashboards and notebooks from the NTSB database.
+
+- SQL developer practice task (taxi-trips-sql-dev).
+> SQL developer practice task based on taxi_trips data.
