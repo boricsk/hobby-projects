@@ -59,7 +59,7 @@ Python adatexportja UTF-16 legyen, UTF8-al nem jó.
 */
 
 bulk insert stag_taxi_trips
-from 'D:\doc\learn\Database\Data Engineer\hobby-projects\taxi-trips-sql-dev\taxi_trips2024-04-09.csv'
+from 'D:\doc\learn\Database\Data Engineer\hobby-projects\taxi-trips-sql-dev\taxi_trips 2024-04-09.csv'
 with (
 	firstrow = 2,
 	fieldterminator = ';',
@@ -172,7 +172,7 @@ insert into taxi_comm_area(area_id, area_name)
 select * from #comm_area
 
 /*
-Készítsünk két mapping táblát a cégeknek és a fizetési módnak 
+Készítsünk két mapping táblát a cégeknek és a fizetési módnak.
 map_companies
 map_payments
 
@@ -214,6 +214,65 @@ select
 from stag_taxi_trips
 
 
+/*
+Készítsünk egy táblát az idõjárási adatoknak main_weather néven
+date_time datetime not null PK
+temperature decimal 3,2
+wind decimal 3,2
+precipitation decimal 3,2
+rain decimal 3,2
+
+Töltsük fel az adatokat a csv-bõl. ajánlott a tizedes értékeket ellenõrizni a forrásban, és
+ennek alapján meghatározni a tábla decimal értékeit
+*/
+
+create table stag_weather(
+	date_time datetime not null constraint PK_stag_weather primary key (date_time),
+	temperature decimal(10,4),
+	wind decimal(10,4),
+	precipitation decimal(10,4),
+	rain decimal(10,4)
+)
+
+create table main_weather(
+	date_time datetime not null constraint PK_main_weather primary key (date_time),
+	temperature decimal(10,4),
+	wind decimal(10,4),
+	precipitation decimal(10,4),
+	rain decimal(10,4)
+)
+
+--staging adatfeltöltés
+bulk insert dbo.stag_weather
+from 'D:\doc\learn\Database\Data Engineer\hobby-projects\taxi-trips-sql-dev\weather 2024-04-09.csv'
+with (
+	firstrow = 2,
+	fieldterminator = ';',
+	ROWTERMINATOR = '\n',
+	datafiletype = 'widechar',
+	batchsize = 10000
+)
+
+--main weather adatfeltöltés
+merge into main_weather as trg
+using(
+	select 
+		[date_time], [temperature], [wind], [precipitation], [rain]
+	from stag_weather
+	) as src on src.date_time = trg.date_time
+when matched then
+update set
+	date_time = src.date_time,
+	temperature = src.temperature,
+	wind = src.wind,
+	precipitation = src.precipitation,
+	rain = src.rain
+when not matched by target then
+	insert([date_time], [temperature], [wind], [precipitation], [rain])
+	values(src.[date_time], src.[temperature], src.[wind], src.[precipitation], src.[rain]);
+
+truncate table stag_weather
+
 --a fõ tábla létrehozása
 drop table if exists  main_taxi_trips
 create table main_taxi_trips(
@@ -235,10 +294,12 @@ create table main_taxi_trips(
 	pickup_centroid_longitude nvarchar(100) null,
 	dropoff_community_area int null,
 	dropoff_centroid_latitude nvarchar(100) null,
-	dropoff_centroid_longitude nvarchar(100) null
+	dropoff_centroid_longitude nvarchar(100) null,
+	key_for_weather datetime not null
 )
 
 --idegen kulcsok definiálása a mappingekhez
+--ha üres a referencia tábla hibára fut.
 alter table main_taxi_trips
 	add constraint FK_taxi_comm_area_main_taxi_trips_pickup foreign key (pickup_community_area) references taxi_comm_area(area_id)
 
@@ -250,6 +311,10 @@ alter table main_taxi_trips
 
 alter table main_taxi_trips
 	add constraint FK_map_payment_main_taxi_trips foreign key (payment_type) references map_payment(payment_id)
+
+alter table main_taxi_trips
+	add constraint FK_weather_main_taxi_trips foreign key (key_for_weather) references main_weather(date_time)
+
 
 --fõtábla feltöltése
 --A payment_type és a company kód a mapping táblákból jöjjönek át a név alapján
@@ -300,9 +365,10 @@ update set
 		pickup_centroid_longitude = src.pickup_centroid_longitude,
 		dropoff_community_area = src.dropoff_community_area,
 		dropoff_centroid_latitude = src.dropoff_centroid_latitude,
-		dropoff_centroid_longitude = src.dropoff_centroid_longitude
+		dropoff_centroid_longitude = src.dropoff_centroid_longitude,
+		key_for_weather = DATEADD(Hour, DATEDIFF(HOUR,0,src.trip_start_timestamp),0)
 when not matched by target then
-	insert([trip_id], [taxi_id], [trip_start_timestamp], [trip_end_timestamp], [trip_seconds], [trip_miles], [pickup_community_area], [fare], [tips], [tolls], [extras], [trip_total], [payment_type], [company], [pickup_centroid_latitude], [pickup_centroid_longitude], [dropoff_community_area], [dropoff_centroid_latitude], [dropoff_centroid_longitude])
+	insert([trip_id], [taxi_id], [trip_start_timestamp], [trip_end_timestamp], [trip_seconds], [trip_miles], [pickup_community_area], [fare], [tips], [tolls], [extras], [trip_total], [payment_type], [company], [pickup_centroid_latitude], [pickup_centroid_longitude], [dropoff_community_area], [dropoff_centroid_latitude], [dropoff_centroid_longitude], [key_for_weather])
 	values(
 		src.trip_id,
 		src.taxi_id,
@@ -322,7 +388,8 @@ when not matched by target then
 		src.pickup_centroid_longitude,
 		src.dropoff_community_area,
 		src.dropoff_centroid_latitude,
-		src.dropoff_centroid_longitude
+		src.dropoff_centroid_longitude,
+		DATEADD(Hour, DATEDIFF(HOUR,0,trip_start_timestamp),0)
 	);
 
 truncate table stag_taxi_trips
@@ -333,7 +400,15 @@ Készítsük el az adatbázis firssítésére vonatkozó scriptet is. Ennek fell kell tö
 Ellenõrizze hogy van-e új cég és fizetési típus, ha van akkor frissítse a mapping táblákat is.
 */
 
-
+bulk insert dbo.stag_weather
+from 'D:\doc\learn\Database\Data Engineer\hobby-projects\taxi-trips-sql-dev\weather 2024-04-09.csv'
+with (
+	firstrow = 2,
+	fieldterminator = ';',
+	ROWTERMINATOR = '\n',
+	datafiletype = 'widechar',
+	batchsize = 10000
+)
 
 bulk insert dbo.stag_taxi_trips
 from 'D:\doc\learn\Database\Data Engineer\hobby-projects\taxi-trips-sql-dev\taxi_trips 2024-04-09.csv'
@@ -366,6 +441,25 @@ using(
 when not matched by target then
 	insert([payment_name])
 	values(src.payment_type);
+
+--weather frissítése
+merge into main_weather as trg
+using(
+	select 
+		[date_time], [temperature], [wind], [precipitation], [rain]
+	from stag_weather
+	) as src on src.date_time = trg.date_time
+when matched then
+update set
+	date_time = src.date_time,
+	temperature = src.temperature,
+	wind = src.wind,
+	precipitation = src.precipitation,
+	rain = src.rain
+when not matched by target then
+	insert([date_time], [temperature], [wind], [precipitation], [rain])
+	values(src.[date_time], src.[temperature], src.[wind], src.[precipitation], src.[rain]);
+
 
 --main feltöltése
 merge into main_taxi_trips as trg
@@ -414,9 +508,10 @@ update set
 		pickup_centroid_longitude = src.pickup_centroid_longitude,
 		dropoff_community_area = src.dropoff_community_area,
 		dropoff_centroid_latitude = src.dropoff_centroid_latitude,
-		dropoff_centroid_longitude = src.dropoff_centroid_longitude
+		dropoff_centroid_longitude = src.dropoff_centroid_longitude,
+		key_for_weather = DATEADD(Hour, DATEDIFF(HOUR,0,src.trip_start_timestamp),0)
 when not matched by target then
-	insert([trip_id], [taxi_id], [trip_start_timestamp], [trip_end_timestamp], [trip_seconds], [trip_miles], [pickup_community_area], [fare], [tips], [tolls], [extras], [trip_total], [payment_type], [company], [pickup_centroid_latitude], [pickup_centroid_longitude], [dropoff_community_area], [dropoff_centroid_latitude], [dropoff_centroid_longitude])
+	insert([trip_id], [taxi_id], [trip_start_timestamp], [trip_end_timestamp], [trip_seconds], [trip_miles], [pickup_community_area], [fare], [tips], [tolls], [extras], [trip_total], [payment_type], [company], [pickup_centroid_latitude], [pickup_centroid_longitude], [dropoff_community_area], [dropoff_centroid_latitude], [dropoff_centroid_longitude], [key_for_weather])
 	values(
 		src.trip_id,
 		src.taxi_id,
@@ -436,10 +531,12 @@ when not matched by target then
 		src.pickup_centroid_longitude,
 		src.dropoff_community_area,
 		src.dropoff_centroid_latitude,
-		src.dropoff_centroid_longitude
+		src.dropoff_centroid_longitude,
+		DATEADD(Hour, DATEDIFF(HOUR,0,src.trip_start_timestamp),0)
 	);
 
 truncate table stag_taxi_trips
+truncate table stag_weather
 
 
 SELECT [trip_id]
@@ -461,8 +558,14 @@ SELECT [trip_id]
       ,cad.area_name as dropoff_com_area
       ,[dropoff_centroid_latitude]
       ,[dropoff_centroid_longitude]
+	  ,w.precipitation
+	  ,w.rain
+	  ,w.temperature
+	  ,w.wind
   FROM [taxi_trips].[dbo].[main_taxi_trips] as tt
   left join map_companies as c on c.company_id = tt.company
   left join map_payment as p on p.payment_id = tt.payment_type
   left join taxi_comm_area as cad on cad.area_id = tt.dropoff_community_area
   left join taxi_comm_area as cap on cap.area_id = tt.pickup_community_area
+  left join main_weather as w on w.date_time = tt.key_for_weather
+
