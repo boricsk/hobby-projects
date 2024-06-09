@@ -1,5 +1,5 @@
 ## Borics Krisztián
-### Data Engineering hobby projects
+### Data Engineering and SQL developer hobby projects
 
 <img src=https://devnullsec.hu/logo_small.svg height="128" width="128">
 
