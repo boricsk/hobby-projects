@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Hackerrank\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BDD143A6-4CF7-4E9D-A066-696BD71EA19F}|..\\Diagonal Difference\\Diagonal Difference.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\diagonal difference\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8AECD3BC-7A03-4A46-9978-F211079CDBA5}|..\\Compare the Triplets\\Compare the Triplets.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\compare the triplets\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FED64EB-A105-4F10-9C0C-B34A568F5C94}|..\\Very big sum\\Very big sum.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\very big sum\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8791961E-5A7E-40D1-99E2-065B1CD71AE3}|ArraySum.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\hackerrank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8791961E-5A7E-40D1-99E2-065B1CD71AE3}|ArraySum.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Diagonal Difference\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Diagonal Difference\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Diagonal Difference\\Program.cs",
+              "RelativeToolTip": "..\\Diagonal Difference\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T17:27:05.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Very big sum\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Very big sum\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Very big sum\\Program.cs",
+              "RelativeToolTip": "..\\Very big sum\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T16:57:12.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Compare the Triplets\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Compare the Triplets\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Compare the Triplets\\Program.cs",
+              "RelativeToolTip": "..\\Compare the Triplets\\Program.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAADkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T15:49:41.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Hackerrank\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Hackerrank\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-28T15:27:02.37Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

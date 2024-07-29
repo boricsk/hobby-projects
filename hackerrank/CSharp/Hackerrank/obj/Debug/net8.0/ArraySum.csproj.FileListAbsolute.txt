@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\bin\Debug\net8.0\ArraySum.exe
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\bin\Debug\net8.0\ArraySum.deps.json
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\bin\Debug\net8.0\ArraySum.runtimeconfig.json
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\bin\Debug\net8.0\ArraySum.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\bin\Debug\net8.0\ArraySum.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.AssemblyInfo.cs
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.sourcelink.json
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\refint\ArraySum.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ArraySum.genruntimeconfig.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Hackerrank\obj\Debug\net8.0\ref\ArraySum.dll

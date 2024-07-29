@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\bin\Debug\net8.0\Diagonal Difference.exe
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\bin\Debug\net8.0\Diagonal Difference.deps.json
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\bin\Debug\net8.0\Diagonal Difference.runtimeconfig.json
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\bin\Debug\net8.0\Diagonal Difference.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\bin\Debug\net8.0\Diagonal Difference.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.AssemblyInfo.cs
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.sourcelink.json
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\refint\Diagonal Difference.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\Diagonal Difference.genruntimeconfig.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Diagonal Difference\obj\Debug\net8.0\ref\Diagonal Difference.dll
