@@ -2,4 +2,5 @@
 *.csv
 *.exe
 *.dll
+*.pdb
 bin\*.*
