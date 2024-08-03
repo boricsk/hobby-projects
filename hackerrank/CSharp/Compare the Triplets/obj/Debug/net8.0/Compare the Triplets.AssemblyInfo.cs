@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Compare the Triplets")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c5293a45e92d21da7c3c36fb8006c49d7297578")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42477ae913e5bf8454c46bba22761de1b13b9507")]
 [assembly: System.Reflection.AssemblyProductAttribute("Compare the Triplets")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Compare the Triplets")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
