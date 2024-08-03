@@ -17,7 +17,7 @@ ha E=6 és D=28 és A>10, akkor H=49.
 Pünkösd minden évben húsvét után hét héttel következik.
 
 */
-create or alter function fn_IsHoliday(@date date, @weekday_check bit)
+create or alter function fn_IsHoliday(@date date, @weekend_check bit)
 returns bit
 as
 begin
@@ -57,7 +57,7 @@ begin
 	--állandó ünnepek, a hét első napja a hétfő
 	if @@datefirst = 1
 	begin
-		if @weekday_check = 1
+		if @weekend_check = 1
 		begin
 			if(@day_of_week in (6, 7)) or (
 					(@month = 1 and @day = 1) or 
@@ -90,7 +90,7 @@ begin
 	--állandó ünnepek a hét elsőnapja a vasárnap.
 	if @@datefirst = 7
 	begin
-		if @weekday_check = 1
+		if @weekend_check = 1
 		begin
 			if(@day_of_week in (1, 7)) or (
 					(@month = 1 and @day = 1) or 
