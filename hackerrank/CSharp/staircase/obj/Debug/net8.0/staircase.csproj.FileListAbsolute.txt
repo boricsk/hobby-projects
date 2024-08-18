@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\bin\Debug\net8.0\staircase.exe
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\bin\Debug\net8.0\staircase.deps.json
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\bin\Debug\net8.0\staircase.runtimeconfig.json
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\bin\Debug\net8.0\staircase.dll
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\bin\Debug\net8.0\staircase.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.AssemblyInfo.cs
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.sourcelink.json
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.dll
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\refint\staircase.dll
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\staircase.genruntimeconfig.cache
+D:\dev\hobby-projects\hackerrank\CSharp\staircase\obj\Debug\net8.0\ref\staircase.dll
