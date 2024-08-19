@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Diagonal Difference")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e5daa5a7aeb86275efe8e068f46273e42afa597")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2af78f29e8f2640f131839f6d73339a9b4b053d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Diagonal Difference")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Diagonal Difference")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

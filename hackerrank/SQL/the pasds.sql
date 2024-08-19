@@ -22,12 +22,12 @@ VALUES
 
 select 
     concat(Name,'(',LEFT(Occupation,1),')')
-from occupations
+from #occupations
 order by Name
 
 select 
     --Occupation,
     concat('There are a total of ', count(Occupation),' ' ,lower(Occupation),'s.')
-from occupations
+from #occupations
 GROUP by Occupation
 ORDER by count(Occupation) asc, Occupation asc
