@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Time conversion", "..\Time 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gridland", "..\Gridland\Gridland.csproj", "{CC3A3D28-B53C-45D5-B264-77D892627DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "grading students", "..\grading students\grading students.csproj", "{A7F4ECCE-1193-482D-A267-E77201A4F3BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "grading students", "..\grading students\grading students.csproj", "{A7F4ECCE-1193-482D-A267-E77201A4F3BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apple and orange", "..\apple and orange\apple and orange.csproj", "{BDF1548A-914D-411F-9E60-D633A24FF6CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apple and orange", "..\apple and orange\apple and orange.csproj", "{BDF1548A-914D-411F-9E60-D633A24FF6CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "number line jumps", "..\number line jumps\number line jumps.csproj", "{4A24A823-B56D-4CDA-BEDE-1EB96025B49C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{BDF1548A-914D-411F-9E60-D633A24FF6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDF1548A-914D-411F-9E60-D633A24FF6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDF1548A-914D-411F-9E60-D633A24FF6CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A24A823-B56D-4CDA-BEDE-1EB96025B49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A24A823-B56D-4CDA-BEDE-1EB96025B49C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A24A823-B56D-4CDA-BEDE-1EB96025B49C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A24A823-B56D-4CDA-BEDE-1EB96025B49C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,16 +3,10 @@
   "WorkspaceRootPath": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Hackerrank\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4A24A823-B56D-4CDA-BEDE-1EB96025B49C}|..\\number line jumps\\number line jumps.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\number line jumps\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BDF1548A-914D-411F-9E60-D633A24FF6CE}|..\\apple and orange\\apple and orange.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\apple and orange\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC3A3D28-B53C-45D5-B264-77D892627DBB}|..\\Gridland\\Gridland.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\gridland\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDF1548A-914D-411F-9E60-D633A24FF6CE}|..\\apple and orange\\apple and orange.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\apple and orange\\appleandorange2.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7F4ECCE-1193-482D-A267-E77201A4F3BC}|..\\grading students\\grading students.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\grading students\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,57 +16,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Appleandorange2.png",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Appleandorange2.png",
-              "RelativeDocumentMoniker": "..\\apple and orange\\Appleandorange2.png",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Appleandorange2.png",
-              "RelativeToolTip": "..\\apple and orange\\Appleandorange2.png",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2024-08-19T15:54:13.731Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Program.cs",
-              "RelativeDocumentMoniker": "..\\apple and orange\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Program.cs*",
-              "RelativeToolTip": "..\\apple and orange\\Program.cs*",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEQAAAAaAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\number line jumps\\Program.cs",
+              "RelativeDocumentMoniker": "..\\number line jumps\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\number line jumps\\Program.cs",
+              "RelativeToolTip": "..\\number line jumps\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T15:50:03.759Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\grading students\\Program.cs",
-              "RelativeDocumentMoniker": "..\\grading students\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\grading students\\Program.cs",
-              "RelativeToolTip": "..\\grading students\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T13:52:07.194Z",
+              "WhenOpened": "2024-08-19T17:14:57.487Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Gridland\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Gridland\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Gridland\\Program.cs",
-              "RelativeToolTip": "..\\Gridland\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Program.cs",
+              "RelativeDocumentMoniker": "..\\apple and orange\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Program.cs",
+              "RelativeToolTip": "..\\apple and orange\\Program.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAQwEgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T11:24:32.952Z",
+              "WhenOpened": "2024-08-19T15:50:03.759Z",
               "EditorCaption": ""
             }
           ]

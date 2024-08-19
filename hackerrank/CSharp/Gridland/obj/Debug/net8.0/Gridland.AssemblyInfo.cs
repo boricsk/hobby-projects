@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Gridland")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ca6f44b0e0aadee13eb1d13274cc584c85154ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+334f2ea7fbf2050d188adfffda7dc564e6151d43")]
 [assembly: System.Reflection.AssemblyProductAttribute("Gridland")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Gridland")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
