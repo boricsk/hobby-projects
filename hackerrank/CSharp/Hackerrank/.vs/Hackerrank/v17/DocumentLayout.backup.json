@@ -3,29 +3,16 @@
   "WorkspaceRootPath": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Hackerrank\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8CE9F0B9-4C57-4884-81A5-E5CB9E9B53DD}|..\\Birthday Cake Candles\\Birthday Cake Candles.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\birthday cake candles\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDF1548A-914D-411F-9E60-D633A24FF6CE}|..\\apple and orange\\apple and orange.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\apple and orange\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A0124E41-B81B-4244-A5D4-07C7F230AE6A}|..\\miniMaxSum\\miniMaxSum.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\minimaxsum\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC3A3D28-B53C-45D5-B264-77D892627DBB}|..\\Gridland\\Gridland.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\gridland\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8791961E-5A7E-40D1-99E2-065B1CD71AE3}|ArraySum.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\hackerrank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8791961E-5A7E-40D1-99E2-065B1CD71AE3}|ArraySum.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDF1548A-914D-411F-9E60-D633A24FF6CE}|..\\apple and orange\\apple and orange.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\apple and orange\\appleandorange2.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EE0289B0-35C6-4E39-8756-D87C64156B7F}|..\\staircase\\staircase.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\staircase\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D03F7E1-5762-4158-A639-2AD89234218E}|..\\PlusMinus\\PlusMinus.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\plusminus\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BDD143A6-4CF7-4E9D-A066-696BD71EA19F}|..\\Diagonal Difference\\Diagonal Difference.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\diagonal difference\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7FED64EB-A105-4F10-9C0C-B34A568F5C94}|..\\Very big sum\\Very big sum.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\very big sum\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AECD3BC-7A03-4A46-9978-F211079CDBA5}|..\\Compare the Triplets\\Compare the Triplets.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\compare the triplets\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7F4ECCE-1193-482D-A267-E77201A4F3BC}|..\\grading students\\grading students.csproj|d:\\dev\\hobby-projects\\hackerrank\\csharp\\grading students\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,110 +22,57 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Birthday Cake Candles\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Birthday Cake Candles\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Birthday Cake Candles\\Program.cs",
-              "RelativeToolTip": "..\\Birthday Cake Candles\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T15:25:20.576Z",
+              "DocumentIndex": 2,
+              "Title": "Appleandorange2.png",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Appleandorange2.png",
+              "RelativeDocumentMoniker": "..\\apple and orange\\Appleandorange2.png",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Appleandorange2.png",
+              "RelativeToolTip": "..\\apple and orange\\Appleandorange2.png",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-08-19T15:54:13.731Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\miniMaxSum\\Program.cs",
-              "RelativeDocumentMoniker": "..\\miniMaxSum\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\miniMaxSum\\Program.cs",
-              "RelativeToolTip": "..\\miniMaxSum\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAlAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Program.cs",
+              "RelativeDocumentMoniker": "..\\apple and orange\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\apple and orange\\Program.cs*",
+              "RelativeToolTip": "..\\apple and orange\\Program.cs*",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEQAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T13:41:48.029Z",
+              "WhenOpened": "2024-08-19T15:50:03.759Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\staircase\\Program.cs",
-              "RelativeDocumentMoniker": "..\\staircase\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\staircase\\Program.cs",
-              "RelativeToolTip": "..\\staircase\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAANAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\grading students\\Program.cs",
+              "RelativeDocumentMoniker": "..\\grading students\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\grading students\\Program.cs",
+              "RelativeToolTip": "..\\grading students\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T13:09:27.283Z",
+              "WhenOpened": "2024-08-19T13:52:07.194Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\PlusMinus\\Program.cs",
-              "RelativeDocumentMoniker": "..\\PlusMinus\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\PlusMinus\\Program.cs",
-              "RelativeToolTip": "..\\PlusMinus\\Program.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwDsAAAA0AAAAAAAAAA==",
+              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Gridland\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Gridland\\Program.cs",
+              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Gridland\\Program.cs",
+              "RelativeToolTip": "..\\Gridland\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T12:30:16.705Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Diagonal Difference\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Diagonal Difference\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Diagonal Difference\\Program.cs",
-              "RelativeToolTip": "..\\Diagonal Difference\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T17:27:05.796Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Very big sum\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Very big sum\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Very big sum\\Program.cs",
-              "RelativeToolTip": "..\\Very big sum\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T16:57:12.639Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Compare the Triplets\\Program.cs",
-              "RelativeDocumentMoniker": "..\\Compare the Triplets\\Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Compare the Triplets\\Program.cs",
-              "RelativeToolTip": "..\\Compare the Triplets\\Program.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T15:49:41.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Hackerrank\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\dev\\hobby-projects\\hackerrank\\CSharp\\Hackerrank\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-28T15:27:02.37Z",
+              "WhenOpened": "2024-08-19T11:24:32.952Z",
               "EditorCaption": ""
             }
           ]

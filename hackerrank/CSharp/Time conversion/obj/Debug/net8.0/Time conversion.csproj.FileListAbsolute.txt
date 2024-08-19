@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\bin\Debug\net8.0\Time conversion.exe
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\bin\Debug\net8.0\Time conversion.deps.json
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\bin\Debug\net8.0\Time conversion.runtimeconfig.json
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\bin\Debug\net8.0\Time conversion.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\bin\Debug\net8.0\Time conversion.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.AssemblyInfo.cs
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.sourcelink.json
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\refint\Time conversion.dll
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\Time conversion.genruntimeconfig.cache
+D:\dev\hobby-projects\hackerrank\CSharp\Time conversion\obj\Debug\net8.0\ref\Time conversion.dll

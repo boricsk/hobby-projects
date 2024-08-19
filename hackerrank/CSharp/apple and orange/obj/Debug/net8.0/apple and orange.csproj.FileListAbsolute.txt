@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\bin\Debug\net8.0\apple and orange.exe
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\bin\Debug\net8.0\apple and orange.deps.json
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\bin\Debug\net8.0\apple and orange.runtimeconfig.json
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\bin\Debug\net8.0\apple and orange.dll
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\bin\Debug\net8.0\apple and orange.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.AssemblyInfo.cs
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.sourcelink.json
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.dll
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\refint\apple and orange.dll
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.pdb
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\apple and orange.genruntimeconfig.cache
+D:\dev\hobby-projects\hackerrank\CSharp\apple and orange\obj\Debug\net8.0\ref\apple and orange.dll

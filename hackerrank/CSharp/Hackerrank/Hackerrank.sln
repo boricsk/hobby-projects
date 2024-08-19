@@ -15,11 +15,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlusMinus", "..\PlusMinus\P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "staircase", "..\staircase\staircase.csproj", "{EE0289B0-35C6-4E39-8756-D87C64156B7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniMaxSum", "..\miniMaxSum\miniMaxSum.csproj", "{A0124E41-B81B-4244-A5D4-07C7F230AE6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "miniMaxSum", "..\miniMaxSum\miniMaxSum.csproj", "{A0124E41-B81B-4244-A5D4-07C7F230AE6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Birthday Cake Candles", "..\Birthday Cake Candles\Birthday Cake Candles.csproj", "{8CE9F0B9-4C57-4884-81A5-E5CB9E9B53DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Birthday Cake Candles", "..\Birthday Cake Candles\Birthday Cake Candles.csproj", "{8CE9F0B9-4C57-4884-81A5-E5CB9E9B53DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time conversion", "..\Time conversion\Time conversion.csproj", "{3DB55690-DEA1-4521-8069-D5A7514AD609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Time conversion", "..\Time conversion\Time conversion.csproj", "{3DB55690-DEA1-4521-8069-D5A7514AD609}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gridland", "..\Gridland\Gridland.csproj", "{CC3A3D28-B53C-45D5-B264-77D892627DBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "grading students", "..\grading students\grading students.csproj", "{A7F4ECCE-1193-482D-A267-E77201A4F3BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apple and orange", "..\apple and orange\apple and orange.csproj", "{BDF1548A-914D-411F-9E60-D633A24FF6CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{3DB55690-DEA1-4521-8069-D5A7514AD609}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DB55690-DEA1-4521-8069-D5A7514AD609}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DB55690-DEA1-4521-8069-D5A7514AD609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC3A3D28-B53C-45D5-B264-77D892627DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC3A3D28-B53C-45D5-B264-77D892627DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC3A3D28-B53C-45D5-B264-77D892627DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC3A3D28-B53C-45D5-B264-77D892627DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F4ECCE-1193-482D-A267-E77201A4F3BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F4ECCE-1193-482D-A267-E77201A4F3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F4ECCE-1193-482D-A267-E77201A4F3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F4ECCE-1193-482D-A267-E77201A4F3BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDF1548A-914D-411F-9E60-D633A24FF6CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDF1548A-914D-411F-9E60-D633A24FF6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDF1548A-914D-411F-9E60-D633A24FF6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDF1548A-914D-411F-9E60-D633A24FF6CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
