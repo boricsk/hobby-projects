@@ -1,0 +1,6 @@
+D:\dev\hobby-projects\T-SQL\C# Function\extractDomain\extractDomain\bin\Debug\extractDomain.dll
+D:\dev\hobby-projects\T-SQL\C# Function\extractDomain\extractDomain\bin\Debug\extractDomain.pdb
+D:\dev\hobby-projects\T-SQL\C# Function\extractDomain\extractDomain\obj\Debug\extractDomain.csproj.AssemblyReference.cache
+D:\dev\hobby-projects\T-SQL\C# Function\extractDomain\extractDomain\obj\Debug\extractDomain.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\T-SQL\C# Function\extractDomain\extractDomain\obj\Debug\extractDomain.dll
+D:\dev\hobby-projects\T-SQL\C# Function\extractDomain\extractDomain\obj\Debug\extractDomain.pdb
