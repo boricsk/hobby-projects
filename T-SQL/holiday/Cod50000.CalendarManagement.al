@@ -26,7 +26,7 @@ codeunit 50000 "Calendar Management"
         b := year mod 4;
         c := year mod 7;
         d := ((19 * a) + 24) mod 30;
-        e := (2 * b + 4 * c + 6 * d + 5) % 7
+        e := (2 * b + 4 * c + 6 * d + 5) mod 7
 
         if (e = 6) and (d = 29)
         then begin
