@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("extractEmailDomain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+146d0f3458a42f6e4e84b61076bdd38634b0b007")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45a496a586cb8c9615068e4a2573f8a5dda4448a")]
 [assembly: System.Reflection.AssemblyProductAttribute("extractEmailDomain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("extractEmailDomain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

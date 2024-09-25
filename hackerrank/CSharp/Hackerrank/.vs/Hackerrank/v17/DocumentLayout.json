@@ -22,12 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -51,8 +47,7 @@
               "RelativeToolTip": "..\\between two sets\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T08:13:03.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T08:13:03.205Z"
             },
             {
               "$type": "Document",
@@ -64,8 +59,7 @@
               "RelativeToolTip": "..\\number line jumps\\Program.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAADkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T17:14:57.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-19T17:14:57.487Z"
             },
             {
               "$type": "Document",
