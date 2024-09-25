@@ -8,6 +8,9 @@ Thank you for visiting my page. You can find here the short descriptions of my D
 
 #### Projects
 
+- BC-Translate-by-GPT
+> Python script to translate Business Central .xlf file.
+
 - Taxi trips
 > This project has been created by based on the taxi trips in Chicago. The data source is the Chicago data center free API.
 
