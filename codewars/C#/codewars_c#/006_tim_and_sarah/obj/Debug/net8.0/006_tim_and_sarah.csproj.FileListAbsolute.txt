@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\bin\Debug\net8.0\006_tim_and_sarah.exe
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\bin\Debug\net8.0\006_tim_and_sarah.deps.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\bin\Debug\net8.0\006_tim_and_sarah.runtimeconfig.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\bin\Debug\net8.0\006_tim_and_sarah.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\bin\Debug\net8.0\006_tim_and_sarah.pdb
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.AssemblyInfo.cs
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.sourcelink.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\refint\006_tim_and_sarah.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.pdb
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\006_tim_and_sarah.genruntimeconfig.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\006_tim_and_sarah\obj\Debug\net8.0\ref\006_tim_and_sarah.dll

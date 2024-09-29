@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\bin\Debug\net8.0\005_count_sheep.exe
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\bin\Debug\net8.0\005_count_sheep.deps.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\bin\Debug\net8.0\005_count_sheep.runtimeconfig.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\bin\Debug\net8.0\005_count_sheep.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\bin\Debug\net8.0\005_count_sheep.pdb
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.AssemblyInfo.cs
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.sourcelink.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\refint\005_count_sheep.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.pdb
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\005_count_sheep.genruntimeconfig.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\005_count_sheep\obj\Debug\net8.0\ref\005_count_sheep.dll

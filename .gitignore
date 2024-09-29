@@ -6,3 +6,4 @@
 *.vsidx
 *.cache
 bin\*.*
+obj\*.*
