@@ -1,6 +1,6 @@
 ## Borics Krisztián
 
-### Hackerrank challanges solution
+### Hackerrank challanges solutions
 <a href="https://www.hackerrank.com/">
 <img src=https://www.hackerrank.com/wp-content/uploads/2018/08/hackerrank_logo.png height="" width=""></a><br><br>
 
