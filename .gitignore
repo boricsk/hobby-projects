@@ -5,7 +5,7 @@
 *.pdb
 *.vsidx
 *.cache
-bin\*.*
-obj\*.*
-.vs\*.*
-.vs\
+*.bin
+bin/
+obj/
+.vs/
