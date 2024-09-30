@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("007_prime_streaming")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee14792f42b3f9e2b3542dc8a2a57a60d26dd0f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d9f18b8284ffc0b1c314bb094fe37d7fcd5e8b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("007_prime_streaming")]
 [assembly: System.Reflection.AssemblyTitleAttribute("007_prime_streaming")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

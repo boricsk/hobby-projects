@@ -1,0 +1,15 @@
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\bin\Debug\net8.0\012_twice as old.exe
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\bin\Debug\net8.0\012_twice as old.deps.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\bin\Debug\net8.0\012_twice as old.runtimeconfig.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\bin\Debug\net8.0\012_twice as old.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\bin\Debug\net8.0\012_twice as old.pdb
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.AssemblyInfoInputs.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.AssemblyInfo.cs
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.csproj.CoreCompileInputs.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.sourcelink.json
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\refint\012_twice as old.dll
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.pdb
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\012_twice as old.genruntimeconfig.cache
+D:\dev\hobby-projects\codewars\C#\codewars_c#\012_twice as old\obj\Debug\net8.0\ref\012_twice as old.dll
