@@ -15,19 +15,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "005_count_sheep", "005_coun
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "006_tim_and_sarah", "006_tim_and_sarah\006_tim_and_sarah.csproj", "{EB12196F-29EC-4117-838E-83A73BA51354}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "007_prime_streaming", "007_prime_streaming\007_prime_streaming.csproj", "{42737AD1-8ED4-44CF-91D3-4A78EF26D873}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "007_prime_streaming", "007_prime_streaming\007_prime_streaming.csproj", "{42737AD1-8ED4-44CF-91D3-4A78EF26D873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "008_Parse nice int from char problem", "008_Parse nice int from char problem\008_Parse nice int from char problem.csproj", "{F50E7AD8-6812-467B-B696-515F0E7D5BC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "008_Parse nice int from char problem", "008_Parse nice int from char problem\008_Parse nice int from char problem.csproj", "{F50E7AD8-6812-467B-B696-515F0E7D5BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "009_Rock Paper Scissors", "009_Rock Paper Scissors\009_Rock Paper Scissors.csproj", "{0ED2A820-0506-4DEC-9F24-49C16793ACCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "009_Rock Paper Scissors", "009_Rock Paper Scissors\009_Rock Paper Scissors.csproj", "{0ED2A820-0506-4DEC-9F24-49C16793ACCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "010_string repeat", "010_string repeat\010_string repeat.csproj", "{D7DEC0AD-69DA-441E-937A-2CD9F719F119}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "010_string repeat", "010_string repeat\010_string repeat.csproj", "{D7DEC0AD-69DA-441E-937A-2CD9F719F119}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "011_invert_value", "011_invert_value\011_invert_value.csproj", "{B6BED122-C253-446D-8829-F8ED26ABA25B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "011_invert_value", "011_invert_value\011_invert_value.csproj", "{B6BED122-C253-446D-8829-F8ED26ABA25B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "012_twice as old", "012_twice as old\012_twice as old.csproj", "{D004CB50-EB1B-4004-B36F-8B7FC1646F47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "012_twice as old", "012_twice as old\012_twice as old.csproj", "{D004CB50-EB1B-4004-B36F-8B7FC1646F47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "013_count_sheeps", "013_count_sheeps\013_count_sheeps.csproj", "{F30C9AA8-027D-43CC-BD32-E906CB8E51CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "013_count_sheeps", "013_count_sheeps\013_count_sheeps.csproj", "{F30C9AA8-027D-43CC-BD32-E906CB8E51CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "014_bouncing balls", "014_bouncing balls\014_bouncing balls.csproj", "{1CB0D90A-243D-45D3-AAE4-0CD1D43A2DFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{F30C9AA8-027D-43CC-BD32-E906CB8E51CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F30C9AA8-027D-43CC-BD32-E906CB8E51CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F30C9AA8-027D-43CC-BD32-E906CB8E51CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB0D90A-243D-45D3-AAE4-0CD1D43A2DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB0D90A-243D-45D3-AAE4-0CD1D43A2DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB0D90A-243D-45D3-AAE4-0CD1D43A2DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB0D90A-243D-45D3-AAE4-0CD1D43A2DFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
