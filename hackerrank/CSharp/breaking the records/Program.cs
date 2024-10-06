@@ -47,10 +47,34 @@ nem volt szigorúan magasabb, mint akkori legjobb rekordja.
 
  */
 
-static List<int> breakingRecords(List<int> scores)
+namespace breaking_the_records
 {
-    List<int> ret = new List<int> { 0, 0 };
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> test = new List<int> { 10, 5, 20, 20, 4, 5, 2, 25, 1};
+            breakingRecords(test);
+        }
 
-    return ret;
+        public static List<int> breakingRecords(List<int> scores)
+        {
+            List<int> ret = new List<int> { 0, 0 };
+            int min_tmp = scores[0];
+            int max_tmp = scores[0];
+            ret[0] = 0;
+            ret[1] = 0;
+
+            for (int i = 1; i < scores.Count; i++)
+            {
+                //Azért van fordítva, mert az 1. elemnek a + rekord döntéseket kell mutatni, a másodiknak a - rekord döntéseket
+                if (scores[i] > min_tmp) { ret[0]++; min_tmp = scores[i]; }
+                if (scores[i] < max_tmp) { ret[1]++; max_tmp = scores[i]; }
+            }
+            //Console.WriteLine(ret[0]);
+            //Console.WriteLine(ret[1]);
+            return ret;
+
+        }
+    }
 }
-
