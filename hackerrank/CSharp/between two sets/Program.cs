@@ -24,26 +24,17 @@ Másodikhoz
 
 Eredmény 2
 
+
+def getTotalX(a, b):
+    lcm, gcd = math.lcm(*a), math.gcd(*b)
+    return len([i for i in range(lcm, gcd+1m lcm) if not gcd % i])
+
+
 */
 
-static List<int> FindCommonDivisors(int x, int y)
-{
-    List<int> divisors = new List<int>();
-    int gcd = GreatestCommonDivisor(x, y);
-    Console.WriteLine($" GCD {gcd}");
-    for (int i = 1; i <= gcd; i++)
-    {
-        if (gcd % i == 0)
-        {
-            divisors.Add(i);
-            Console.WriteLine(i);
-        }
-    }
+using System.Data;
 
-    return divisors;
-}
-
-static int GreatestCommonDivisor(int x, int y)
+static int lnko(int x, int y) //GCD
 {
     while (y != 0)
     {
@@ -54,11 +45,52 @@ static int GreatestCommonDivisor(int x, int y)
     return x;
 }
 
+static int lkkt(int x, int y) //LCM
+{
+    return (x * y) / lnko(x, y);
+}
+
+static int get_lkkt(List<int> arr)
+{
+    int lkkt_value = arr[0];
+
+    for (int i = 1; i < arr.Count; i++)
+    {
+        lkkt_value = lkkt(lkkt_value, arr[i]);
+    }
+    return lkkt_value;
+}
+
+static int get_lnko(List<int> arr)
+{
+    int lnko_value = arr[0];
+
+    for (int i = 1; i < arr.Count; i++)
+    {
+        lnko_value = lnko(lnko_value, arr[i]);
+    }
+    return lnko_value;
+}
+
 static int getTotalX(List<int> a, List<int> b)
 {
     int result = 0;
+    int lkkt_a = get_lkkt(a); //lcm
+    int lnko_b = get_lnko(b); //gcd
+    List<int> temp = new List<int>();
+    //Console.WriteLine(lkkt_a);
+    //Console.WriteLine(lnko_b);
 
-    return result;
+    for (var i = lkkt_a; i < lnko_b + 1; i += lkkt_a)
+    {
+        if (lnko_b % i == 0) { temp.Add(i); }
+    }
+
+    foreach (int t in temp)
+    {
+        Console.WriteLine(t);
+    }
+    return temp.Count;
 }
 
 List<int> a = new List<int>();
@@ -69,4 +101,4 @@ a.Add(6);
 b.Add(24);
 b.Add(36);
 
-getTotalX(a, b);
+Console.WriteLine(getTotalX(a, b));

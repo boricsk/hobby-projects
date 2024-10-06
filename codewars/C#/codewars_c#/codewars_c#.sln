@@ -39,9 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "017_Printer errors", "017_P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "000_String operations", "000_String operations\000_String operations.csproj", "{E24C0D63-B700-42A9-92F4-EFF809C977BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "018_the supermarket queue", "018_the supermarket queue\018_the supermarket queue.csproj", "{ADA91EFB-D4AB-46FB-B1EC-863B23585918}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "018_the supermarket queue", "018_the supermarket queue\018_the supermarket queue.csproj", "{ADA91EFB-D4AB-46FB-B1EC-863B23585918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "019_count smiley", "019_count smiley\019_count smiley.csproj", "{7DCF44CA-815A-4494-B2EB-1C4621857A44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "019_count smiley", "019_count smiley\019_count smiley.csproj", "{7DCF44CA-815A-4494-B2EB-1C4621857A44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "020_find unique number", "020_find unique number\020_find unique number.csproj", "{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,10 @@ Global
 		{7DCF44CA-815A-4494-B2EB-1C4621857A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DCF44CA-815A-4494-B2EB-1C4621857A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DCF44CA-815A-4494-B2EB-1C4621857A44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
