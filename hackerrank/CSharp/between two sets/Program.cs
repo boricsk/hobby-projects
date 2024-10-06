@@ -23,13 +23,6 @@ Másodikhoz
 36%12 = 0
 
 Eredmény 2
-
-
-def getTotalX(a, b):
-    lcm, gcd = math.lcm(*a), math.gcd(*b)
-    return len([i for i in range(lcm, gcd+1m lcm) if not gcd % i])
-
-
 */
 
 using System.Data;
@@ -78,17 +71,10 @@ static int getTotalX(List<int> a, List<int> b)
     int lkkt_a = get_lkkt(a); //lcm
     int lnko_b = get_lnko(b); //gcd
     List<int> temp = new List<int>();
-    //Console.WriteLine(lkkt_a);
-    //Console.WriteLine(lnko_b);
 
     for (var i = lkkt_a; i < lnko_b + 1; i += lkkt_a)
     {
         if (lnko_b % i == 0) { temp.Add(i); }
-    }
-
-    foreach (int t in temp)
-    {
-        Console.WriteLine(t);
     }
     return temp.Count;
 }

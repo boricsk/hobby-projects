@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "number line jumps", "..\num
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "between two sets", "..\between two sets\between two sets.csproj", "{18E4BCDB-816E-46D1-90F7-7E4A19443DC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "extractEmailDomain", "..\extractEmailDomain\extractEmailDomain.csproj", "{164AFCA9-1DED-4385-AF6C-2E977610FC73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "extractEmailDomain", "..\extractEmailDomain\extractEmailDomain.csproj", "{164AFCA9-1DED-4385-AF6C-2E977610FC73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "breaking the records", "..\breaking the records\breaking the records.csproj", "{27220198-811A-4301-8B4C-91250F8F4D47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{164AFCA9-1DED-4385-AF6C-2E977610FC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{164AFCA9-1DED-4385-AF6C-2E977610FC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{164AFCA9-1DED-4385-AF6C-2E977610FC73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27220198-811A-4301-8B4C-91250F8F4D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27220198-811A-4301-8B4C-91250F8F4D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27220198-811A-4301-8B4C-91250F8F4D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27220198-811A-4301-8B4C-91250F8F4D47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
