@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "extractEmailDomain", "..\ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "breaking the records", "..\breaking the records\breaking the records.csproj", "{27220198-811A-4301-8B4C-91250F8F4D47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "subarray division", "..\subarray division\subarray division.csproj", "{3BE492BB-025C-48C8-B262-1ED51511C59C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "subarray division", "..\subarray division\subarray division.csproj", "{3BE492BB-025C-48C8-B262-1ED51511C59C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divisible Sum Pairs", "..\Divisible Sum Pairs\Divisible Sum Pairs.csproj", "{A1196D7E-D0E6-4A52-8498-FF72A2007C90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{3BE492BB-025C-48C8-B262-1ED51511C59C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BE492BB-025C-48C8-B262-1ED51511C59C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BE492BB-025C-48C8-B262-1ED51511C59C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1196D7E-D0E6-4A52-8498-FF72A2007C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1196D7E-D0E6-4A52-8498-FF72A2007C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1196D7E-D0E6-4A52-8498-FF72A2007C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1196D7E-D0E6-4A52-8498-FF72A2007C90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
