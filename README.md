@@ -1,5 +1,5 @@
 ## Borics Krisztián
-### Data Engineering and SQL Developing hobby projects
+### Data Engineering and SQL Developing hobby projects / C#, Python programming exercises
 
 <img src=https://devnullsec.hu/logo_small.svg height="128" width="128">
 
