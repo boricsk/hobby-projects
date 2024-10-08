@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "breaking the records", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "subarray division", "..\subarray division\subarray division.csproj", "{3BE492BB-025C-48C8-B262-1ED51511C59C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divisible Sum Pairs", "..\Divisible Sum Pairs\Divisible Sum Pairs.csproj", "{A1196D7E-D0E6-4A52-8498-FF72A2007C90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Divisible Sum Pairs", "..\Divisible Sum Pairs\Divisible Sum Pairs.csproj", "{A1196D7E-D0E6-4A52-8498-FF72A2007C90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "migratory birds", "..\migratory birds\migratory birds.csproj", "{B2B10A20-A17F-4305-9E84-682D74835B4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{A1196D7E-D0E6-4A52-8498-FF72A2007C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1196D7E-D0E6-4A52-8498-FF72A2007C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1196D7E-D0E6-4A52-8498-FF72A2007C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2B10A20-A17F-4305-9E84-682D74835B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B10A20-A17F-4305-9E84-682D74835B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B10A20-A17F-4305-9E84-682D74835B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B10A20-A17F-4305-9E84-682D74835B4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
