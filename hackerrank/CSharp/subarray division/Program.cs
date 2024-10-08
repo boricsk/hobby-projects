@@ -37,7 +37,6 @@ namespace subarray_division
             List<int> list3 = new List<int>() { 2, 5, 1, 3, 4, 4, 3, 5, 1, 1, 2, 1, 4, 1, 3, 3, 4, 2, 1 };
             //Console.WriteLine(birthday(list1, 4, 2));
             Console.WriteLine(birthday(list3, 18, 7));
-
         }
 
         public static int birthday(List<int> s, int d, int m)
