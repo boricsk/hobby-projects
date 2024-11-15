@@ -1,0 +1,7 @@
+## Elendil fénye
+
+<img src=elendils-light.jpg>
+
+Szarumán elfogott száz tündét és bezárta őket Vasudvardba. Minden tünde egy olyan zárkába került, amelyből lehetetlen kommunikálni a többiekkel. A trollok naponta egyet vagy többet közülük kivisznek friss levegőt szívni. Minden ilyen esemény alatt kizárólag egy tünde tartózkodik kint. A trollok tökéletesen véletlenszerűen választják ki, hogy éppen kit vigyenek levegőzni. Az udvaron található egy kis üveg, amelyben Elendil fénye ragyog. Ha egy tünde megérinti az üveget, a fény kialszik, vagy éppen újra elkezd ragyogni, attól függően, hogy éppen milyen állapotban volt ezt megelőzően. A tündék kizárólag ilyen úton képesek egymással kommunikálni. Szarumán – mivel éppen a saját születésnapján fogta el a tündéket – tesz egy engedményt: egy nappal korábban tájékoztatja őket az üveg működéséről, valamint a levegőzések rendszeréről. Ezen felül azt a javaslatot teszi, hogy ha valamelyik tünde egy levegőzés során százszázalékos biztonsággal ki tudja jelenteni, hogy már mindenki járt a szabadban a trollokkal, akkor szabadon enged mindenkit. Ha azonban helytelen az állítás, a rabság az idők végezetéig fog tartani.
+
+Ez a repo egy szimulációs programot tartalmaz a fenti problémára amely kiszámolja azt, hogy hány forduló után lehet 100%-os bizonyossággal megmondani, hogy már mindenki volt kint.
