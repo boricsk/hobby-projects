@@ -32,42 +32,13 @@ namespace EledilsLight
         /// <summary>
         /// A lámpa állapotát tároljuk. Ha az állapot változik akkor fut az OnLampStateChange esemény.
         /// </summary>
-        public bool stateOfLamp
-        {
-            get { return _stateOfLamp; }
-            set
-            {
-                if (_stateOfLamp != value)
-                {
-                    _stateOfLamp = value;
-                    OnLampStateChange(_stateOfLamp);
-                }
-            }
-        }
-
-        private bool _stateOfLamp { get; set; }
+        public bool stateOfLamp { get; set; }
 
         /// <summary>
         /// A foglyok sétáinak számát tároljuk.
         /// </summary>        
         public int[] NumberOfWalks { get; set; }
 
-        /// <summary>
-        /// Az esemény, amely akkor fut le, ha a lámpa állapota változik.
-        /// </summary>
-        public event EventHandler<bool> LampStateChanged;
-
-        /// <summary>
-        /// Az esemény futtatása, ha a lámpa állapota változik.
-        /// </summary>
-        /// <param name="newValue"></param>
-        protected virtual void OnLampStateChange(bool newValue)
-        {
-            if (LampStateChanged != null)
-            {
-                LampStateChanged?.Invoke(this, newValue);
-            }
-        }
 
         /// <summary>
         /// Konstruktor, amely beállítja a foglyok számát, a lámpa állapotát, a levegőzés számát.
@@ -90,12 +61,6 @@ namespace EledilsLight
             //Lámpa kezdeti értékének beállítása
             stateOfLamp = false;
             Count = 0;
-
-            //A lámpa állapotváltozásakor futó esemény
-            LampStateChanged += (sender, newValue) =>
-            {                
-                Count++;
-            };
         }
 
         /// <summary>
@@ -112,10 +77,12 @@ namespace EledilsLight
                 if (selectedPrisoner == BossIndex)
                 {
                     //A főnök csak felkapcsolhatja a lámpát, lekapcsolnia nem szabad.
-                    //Az állapotváltozások számát kell számolnia, ebben segít az esemény és a Count változó.
+                    //Az állapotváltozások számát kell számolnia, ebben segít a Count változó.
                     if (!stateOfLamp)
                     {
                         stateOfLamp = true;
+                        isTurn[BossIndex] = true;
+                        Count++;
                     }
                 }
                 else

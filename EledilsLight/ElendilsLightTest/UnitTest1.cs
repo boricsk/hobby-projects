@@ -40,31 +40,17 @@ namespace ElendilsLightTest
         [TestCase(10)]
         [TestCase(100)]
         [TestCase(1000)]
-        public void CounterIncrementTest(int iteration)
+        public void IntegrationTest(int numOfPrisoners)
         {
-            Tunde t = new Tunde(10);
-            
-            for (int i = 0; i < iteration; i++)
-            {
-                if (i % 2 == 0) { t.stateOfLamp = true; } else { t.stateOfLamp = false; }
-            }
-
-            Assert.That(iteration, Is.EqualTo(t.Count));
-        }
-        [TestCase(1)]
-        [TestCase(10)]
-        [TestCase(100)]
-        [TestCase(1000)]
-        public void CounterNoIncrementTest(int iteration)
-        {
-            Tunde t = new Tunde(10);
+            Tunde t = new Tunde(numOfPrisoners);
+            t.RunSimulation();
             int expected = 0;
-            for (int i = 0; i < iteration; i++)
+            for (int i = 0; i < t.isTurn.Length; i++)
             {
-                t.stateOfLamp = false;
+                if (t.isTurn[i]) { expected++; }
             }
 
-            Assert.That(expected, Is.EqualTo(t.Count));
+            Assert.That(expected, Is.EqualTo(numOfPrisoners));
         }
     }
 }
