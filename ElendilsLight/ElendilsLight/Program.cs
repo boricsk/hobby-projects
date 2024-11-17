@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Tunde t = new Tunde(10);
+            Tunde t = new Tunde(100);
             t.RunSimulation();
         }
     }

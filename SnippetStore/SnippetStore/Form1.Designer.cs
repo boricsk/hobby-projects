@@ -33,7 +33,9 @@
             TreeNode treeNode2 = new TreeNode("Node1");
             statusStrip1 = new StatusStrip();
             toolStrip1 = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
+            btnAddNewSnippet = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            btnSetup = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             richTextBox1 = new RichTextBox();
@@ -55,7 +57,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -63,14 +65,30 @@
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // btnAddNewSnippet
             // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(52, 52);
-            toolStripButton1.Text = "toolStripButton1";
+            btnAddNewSnippet.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAddNewSnippet.Image = (Image)resources.GetObject("btnAddNewSnippet.Image");
+            btnAddNewSnippet.ImageTransparentColor = Color.Magenta;
+            btnAddNewSnippet.Name = "btnAddNewSnippet";
+            btnAddNewSnippet.Size = new Size(52, 52);
+            btnAddNewSnippet.Text = "Add New Snippet";
+            btnAddNewSnippet.Click += btnAddNewClick;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 55);
+            // 
+            // btnSetup
+            // 
+            btnSetup.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSetup.Image = (Image)resources.GetObject("btnSetup.Image");
+            btnSetup.ImageTransparentColor = Color.Magenta;
+            btnSetup.Name = "btnSetup";
+            btnSetup.Size = new Size(52, 52);
+            btnSetup.Text = "Setup";
+            btnSetup.Click += btnSetup_Click;
             // 
             // splitContainer1
             // 
@@ -135,9 +153,11 @@
 
         private StatusStrip statusStrip1;
         private ToolStrip toolStrip1;
-        private ToolStripButton toolStripButton1;
         private SplitContainer splitContainer1;
         private TreeView treeView1;
         private RichTextBox richTextBox1;
+        private ToolStripButton btnAddNewSnippet;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton btnSetup;
     }
 }
