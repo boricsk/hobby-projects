@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            TreeNode treeNode1 = new TreeNode("Node0");
-            TreeNode treeNode2 = new TreeNode("Node1");
             statusStrip1 = new StatusStrip();
             toolStrip1 = new ToolStrip();
             btnAddNewSnippet = new ToolStripButton();
@@ -112,11 +110,6 @@
             treeView1.Dock = DockStyle.Fill;
             treeView1.Location = new Point(0, 0);
             treeView1.Name = "treeView1";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Node0";
-            treeNode2.Name = "Node1";
-            treeNode2.Text = "Node1";
-            treeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode2 });
             treeView1.Size = new Size(614, 668);
             treeView1.TabIndex = 0;
             // 

@@ -45,5 +45,11 @@ namespace SnippetStore
             var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
             snippets.InsertOne(snippet);
         }
+
+        public IMongoCollection<SnippetDatabase> GetSnipets()
+        {
+            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
+            return snippets;
+        }
     }
 }
