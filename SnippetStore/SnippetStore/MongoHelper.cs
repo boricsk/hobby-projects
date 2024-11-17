@@ -12,10 +12,11 @@ namespace SnippetStore
     {
         private IMongoDatabase _database;
         private string _MongoConString = "mongodb://localhost:27017";
-        public MongoHelper(string databaseName)
+        private string dbName = "SnippetStore";
+        public MongoHelper()
         {
             var client = new MongoClient(_MongoConString);
-            _database = client.GetDatabase(databaseName);
+            _database = client.GetDatabase(dbName);
         }
 
         public List<string> GetLanguages()

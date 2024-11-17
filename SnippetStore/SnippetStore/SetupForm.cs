@@ -30,7 +30,7 @@ namespace SnippetStore
             if (!string.IsNullOrEmpty(newLang) && !lbLanguages.Items.Contains(newLang))
             {
                 lbLanguages.Items.Add(newLang);
-                var mongoHelper = new MongoHelper("Languages");
+                var mongoHelper = new MongoHelper();
                 mongoHelper.AddLanguages(newLang);
                 tbNewLang.Clear();
             }
@@ -40,7 +40,7 @@ namespace SnippetStore
         {            
             if (lbLanguages.SelectedItem != null)
             {
-                MongoHelper mongoHelper = new MongoHelper("Languages");
+                MongoHelper mongoHelper = new MongoHelper();
                 string? selectedLang = lbLanguages.SelectedItem.ToString();
                 if (selectedLang != null)
                 {
@@ -52,7 +52,7 @@ namespace SnippetStore
 
         private void UpdateList()
         {
-            var mongoHelper = new MongoHelper("Languages");
+            var mongoHelper = new MongoHelper();
             lbLanguages.Items.Clear();
             _languages = mongoHelper.GetLanguages();
             if (_languages.Count != 0)
