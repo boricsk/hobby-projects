@@ -12,8 +12,11 @@ namespace SnippetStore
 {
     public partial class SetupForm : Form
     {
-        private List<string> _languages;
-        private List<string> _keywords;
+        private List<string?> _languages;
+        private List<string?> _keywords;
+        private List<string?> _reswords;
+        private List<string?> _blockseps;
+
 
         public SetupForm()
         {
@@ -54,25 +57,52 @@ namespace SnippetStore
         private void UpdateList()
         {
             var mongoHelper = new MongoHelper();
+            ClearListBoxes();
+
+            UpdateLists(_languages = mongoHelper.GetLanguages(), () =>
+                {
+                    foreach (var lang in _languages)
+                    {
+                        if (lang != null) { lbLanguages.Items.Add(lang); }
+                    }
+                });
+
+            UpdateLists(_keywords = mongoHelper.GetKeywords(), () =>
+                {
+                    foreach (var keyword in _keywords)
+                    {
+                        if (keyword != null) { lbKeywords.Items.Add(keyword); }
+                    }
+                });
+
+            UpdateLists(_reswords = mongoHelper.GetReswords(), () =>
+                {
+                    foreach (var resword in _reswords)
+                    {
+                        if (resword != null) { lbResWord.Items.Add(resword); }
+                    }
+                });
+
+            UpdateLists(_blockseps = mongoHelper.GetBlockSep(), () => 
+            {
+                foreach (var block in _blockseps) 
+                {
+                    if (block != null) { lbBlockSep.Items.Add(block); }
+                }
+            });
+        }
+        private void ClearListBoxes()
+        {
             lbLanguages.Items.Clear();
             lbKeywords.Items.Clear();
-            _keywords = mongoHelper.GetKeywords();
-            _languages = mongoHelper.GetLanguages();
-
-            if (_languages.Count != 0)
+            lbResWord.Items.Clear();
+            lbBlockSep.Items.Clear();
+        }
+        private void UpdateLists(List<string?> updateList, Action action)
+        {
+            if (updateList.Count != 0)
             {
-                foreach (var lang in _languages)
-                {
-                    lbLanguages.Items.Add(lang);
-                }
-            }
-
-            if (_keywords.Count != 0)
-            {
-                foreach (var keyword in _keywords)
-                {
-                    lbKeywords.Items.Add(keyword);
-                }
+                action();
             }
         }
 
@@ -97,6 +127,59 @@ namespace SnippetStore
                 if (selectedKeyw != null)
                 {
                     mongoHelper.DeleteKeyw(selectedKeyw);
+                    UpdateList();
+                }
+            }
+        }
+
+        private void btnAddReservedWord_Click(object sender, EventArgs e)
+        {
+            string newWord = tbReservedWords.Text;
+            if (!string.IsNullOrEmpty(newWord) && !lbResWord.Items.Contains(newWord))
+            {
+                lbResWord.Items.Add(newWord);
+                var mongoHelper = new MongoHelper();
+                mongoHelper.AddReservedWord(newWord);
+                tbReservedWords.Clear();
+            }
+
+        }
+
+        private void btnRemoveReservedWord_Click(object sender, EventArgs e)
+        {
+            if (lbResWord.SelectedItem != null)
+            {
+                MongoHelper mongoHelper = new MongoHelper();
+                string? selectedWord = lbResWord.SelectedItem.ToString();
+                if (selectedWord != null)
+                {
+                    mongoHelper.DeleteResw(selectedWord);
+                    UpdateList();
+                }
+            }
+        }
+
+        private void btnAddBlockSep_Click(object sender, EventArgs e)
+        {
+            string newBlockSep = tbBlockSep.Text;
+            if (!string.IsNullOrEmpty(newBlockSep) && !lbBlockSep.Items.Contains(newBlockSep))
+            {
+                lbBlockSep.Items.Add(newBlockSep);
+                var mongoHelper = new MongoHelper();
+                mongoHelper.AddBlockSep(newBlockSep);
+                tbBlockSep.Clear();
+            }
+        }
+
+        private void btnRemoveBlockSep_Click(object sender, EventArgs e)
+        {
+            if (lbBlockSep.SelectedItem != null)
+            {
+                MongoHelper mongoHelper = new MongoHelper();
+                string? selectedBlockSep = lbBlockSep.SelectedItem.ToString();
+                if (selectedBlockSep != null)
+                {
+                    mongoHelper.DeleteBlockSep(selectedBlockSep);
                     UpdateList();
                 }
             }

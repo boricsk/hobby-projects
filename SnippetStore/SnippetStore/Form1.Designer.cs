@@ -39,11 +39,14 @@
             Search = new ToolStripLabel();
             toolStripSeparator3 = new ToolStripSeparator();
             tbSearch = new ToolStripTextBox();
+            toolStripSeparator4 = new ToolStripSeparator();
+            btnDel = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
             timer = new System.Windows.Forms.Timer(components);
+            btnEdit = new ToolStripButton();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -65,7 +68,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, Search, toolStripSeparator3, tbSearch });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, Search, toolStripSeparator3, tbSearch, toolStripSeparator4, btnDel, btnEdit });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -122,6 +125,22 @@
             tbSearch.TextBoxTextAlign = HorizontalAlignment.Right;
             tbSearch.TextChanged += OnTypeSearch;
             // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 55);
+            // 
+            // btnDel
+            // 
+            btnDel.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnDel.Enabled = false;
+            btnDel.Image = (Image)resources.GetObject("btnDel.Image");
+            btnDel.ImageTransparentColor = Color.Magenta;
+            btnDel.Name = "btnDel";
+            btnDel.Size = new Size(52, 52);
+            btnDel.Text = "Drop data";
+            btnDel.Click += btnDel_Click;
+            // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
@@ -165,6 +184,7 @@
             // rtbMainCode
             // 
             rtbMainCode.AcceptsTab = true;
+            rtbMainCode.BackColor = SystemColors.Window;
             rtbMainCode.Dock = DockStyle.Fill;
             rtbMainCode.Font = new Font("Cascadia Code", 10F);
             rtbMainCode.Location = new Point(0, 0);
@@ -180,6 +200,16 @@
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
+            // 
+            // btnEdit
+            // 
+            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnEdit.Enabled = false;
+            btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
+            btnEdit.ImageTransparentColor = Color.Magenta;
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(52, 52);
+            btnEdit.Text = "toolStripButton1";
             // 
             // MainForm
             // 
@@ -221,5 +251,8 @@
         private SplitContainer splitContainer2;
         private RichTextBox rtbMainCode;
         private System.Windows.Forms.Timer timer;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton btnDel;
+        private ToolStripButton btnEdit;
     }
 }

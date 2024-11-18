@@ -37,6 +37,7 @@
             groupBox3 = new GroupBox();
             tbShortDesc = new TextBox();
             groupBox2 = new GroupBox();
+            lbAvailKeyw = new ListBox();
             btnRemoveKeyw = new Button();
             btnAddKeyw = new Button();
             lbKeywords = new ListBox();
@@ -52,7 +53,7 @@
             btnAddDatabase = new Button();
             fontDialog = new FontDialog();
             colorDialog = new ColorDialog();
-            lbAvailKeyw = new ListBox();
+            tbSearchKeyw = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(tbSearchKeyw);
             groupBox2.Controls.Add(lbAvailKeyw);
             groupBox2.Controls.Add(btnRemoveKeyw);
             groupBox2.Controls.Add(btnAddKeyw);
@@ -148,6 +150,15 @@
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Keywords";
+            // 
+            // lbAvailKeyw
+            // 
+            lbAvailKeyw.FormattingEnabled = true;
+            lbAvailKeyw.ItemHeight = 15;
+            lbAvailKeyw.Location = new Point(6, 48);
+            lbAvailKeyw.Name = "lbAvailKeyw";
+            lbAvailKeyw.Size = new Size(135, 319);
+            lbAvailKeyw.TabIndex = 5;
             // 
             // btnRemoveKeyw
             // 
@@ -278,14 +289,13 @@
             btnAddDatabase.UseVisualStyleBackColor = true;
             btnAddDatabase.Click += btnAddDatabase_Click;
             // 
-            // lbAvailKeyw
+            // tbSearchKeyw
             // 
-            lbAvailKeyw.FormattingEnabled = true;
-            lbAvailKeyw.ItemHeight = 15;
-            lbAvailKeyw.Location = new Point(6, 18);
-            lbAvailKeyw.Name = "lbAvailKeyw";
-            lbAvailKeyw.Size = new Size(135, 349);
-            lbAvailKeyw.TabIndex = 5;
+            tbSearchKeyw.Location = new Point(6, 22);
+            tbSearchKeyw.Name = "tbSearchKeyw";
+            tbSearchKeyw.Size = new Size(135, 23);
+            tbSearchKeyw.TabIndex = 6;
+            tbSearchKeyw.TextChanged += tbSearchKeyw_TextChanged;
             // 
             // AddNewSnippetForm
             // 
@@ -305,6 +315,7 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             gbSnippetName.ResumeLayout(false);
             gbSnippetName.PerformLayout();
             tabPage2.ResumeLayout(false);
@@ -341,5 +352,6 @@
         private ToolStripButton btnColor;
         private ColorDialog colorDialog;
         private ListBox lbAvailKeyw;
+        private TextBox tbSearchKeyw;
     }
 }

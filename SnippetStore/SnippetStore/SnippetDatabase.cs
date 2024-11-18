@@ -28,6 +28,28 @@ namespace SnippetStore
 
     }
 
+    public class ResWords
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        [BsonElement("Reserved word")]
+        public string? ResWord { get; set; }
+        public Color? ResWordColor { get; set; }
+
+    }
+
+    public class BlockSeparators
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        [BsonElement("Block separator")]
+        public string? BlockSep { get; set; }
+        public Color? BlockSepColor { get; set; }
+
+    }
+
     public class SnippetDatabase
     {
         [BsonId]

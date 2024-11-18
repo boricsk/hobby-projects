@@ -26,7 +26,7 @@ namespace SnippetStore
             cbLanguages.Items.Clear();
             foreach (var lang in languages)
             {
-                cbLanguages.Items.Add(lang);
+                if (lang != null) { cbLanguages.Items.Add(lang); }               
             }
         }
 
@@ -37,7 +37,7 @@ namespace SnippetStore
             lbAvailKeyw.Items.Clear();
             foreach (var keyw in keywords)
             {
-                lbAvailKeyw.Items.Add(keyw);
+                if (keyw != null) { lbAvailKeyw.Items.Add(keyw); }
             }
         }
 
@@ -158,6 +158,21 @@ namespace SnippetStore
                 {
                     tbCode.ForeColor = colorDialog.Color;
                 }
+            }
+        }
+
+        private void tbSearchKeyw_TextChanged(object sender, EventArgs e)
+        {
+            if (tbSearchKeyw.Text != "")
+            {
+                string filterText = tbSearchKeyw.Text.ToLower();
+                var filteredItems = lbAvailKeyw.Items.Cast<string>().Where(item => item.ToLower().Contains(filterText)).ToArray();
+
+                lbAvailKeyw.Items.Clear();
+                lbAvailKeyw.Items.AddRange(filteredItems);
+            } else
+            {
+                UpdateKeywords();
             }
         }
     }

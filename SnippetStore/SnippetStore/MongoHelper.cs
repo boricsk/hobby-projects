@@ -26,18 +26,17 @@ namespace SnippetStore
             return languages.Select(x => x.Language).ToList();
         }
 
-        public List<string?> GetKeywords()
-        {
-            var collection = _database.GetCollection<Keywords>("Keywords");
-            var keywords = collection.Find(new BsonDocument()).ToList();
-            return keywords.Select(x => x.Keyword).ToList();
-        }
-
         public void AddLanguages(string lang)
-        { 
+        {
             var languages = _database.GetCollection<Languages>("Languages");
             var language = new Languages { Language = lang };
             languages.InsertOne(language);
+        }
+        public void DeleteLanguage(string langName)
+        {
+            var languages = _database.GetCollection<Languages>("Languages");
+            var filter = Builders<Languages>.Filter.Eq(x => x.Language, langName);
+            languages.DeleteOne(filter);
         }
 
         public void AddKeyword(string keyw)
@@ -53,12 +52,51 @@ namespace SnippetStore
             var filter = Builders<Keywords>.Filter.Eq(x => x.Keyword, keyw);
             keywords.DeleteOne(filter);
         }
-
-        public void DeleteLanguage(string langName)
+        public List<string?> GetKeywords()
         {
-            var languages = _database.GetCollection<Languages>("Languages");
-            var filter = Builders<Languages>.Filter.Eq(x => x.Language, langName);
-            languages.DeleteOne(filter);
+            var collection = _database.GetCollection<Keywords>("Keywords");
+            var keywords = collection.Find(new BsonDocument()).ToList();
+            return keywords.Select(x => x.Keyword).ToList();
+        }
+        
+        public void AddReservedWord(string resw)
+        {
+            var reswords = _database.GetCollection<ResWords>("Reserved words");
+            var resword = new ResWords { ResWord = resw };
+            reswords.InsertOne(resword);
+        }
+
+        public void DeleteResw(string resw)
+        {
+            var reswords = _database.GetCollection<ResWords>("Reserved words");
+            var filter = Builders<ResWords>.Filter.Eq(x => x.ResWord, resw);
+            reswords.DeleteOne(filter);
+        }
+        public List<string?> GetReswords()
+        {
+            var collection = _database.GetCollection<ResWords>("Reserved words");
+            var reswords = collection.Find(new BsonDocument()).ToList();
+            return reswords.Select(x => x.ResWord).ToList();
+        }
+
+        public void AddBlockSep(string blocks)
+        {
+            var blockseps = _database.GetCollection<BlockSeparators>("Block separators");
+            var blocksep = new BlockSeparators { BlockSep = blocks };
+            blockseps.InsertOne(blocksep);
+        }
+
+        public void DeleteBlockSep(string blocks)
+        {
+            var blockseps = _database.GetCollection<BlockSeparators>("Block separators");
+            var filter = Builders<BlockSeparators>.Filter.Eq(x => x.BlockSep, blocks);
+            blockseps.DeleteOne(filter);
+        }
+        public List<string?> GetBlockSep()
+        {
+            var collection = _database.GetCollection<BlockSeparators>("Block separators");
+            var blockseps = collection.Find(new BsonDocument()).ToList();
+            return blockseps.Select(x => x.BlockSep).ToList();
         }
 
         public string? GetMongoIdFromSnipetName(string snipName)
@@ -87,6 +125,12 @@ namespace SnippetStore
             var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id);
             var result = snippets.Find(filter).FirstOrDefault();
             return result?.SnipCode;
+        }
+
+        public void DropDataById(string id)
+        {
+            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
+            snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id));
         }
     }
 }

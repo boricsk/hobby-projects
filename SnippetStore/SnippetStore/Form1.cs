@@ -6,6 +6,7 @@ namespace SnippetStore
     public partial class MainForm : Form
     {
         private ToolStripStatusLabel statusLabelDate;
+        private string? snippetId;
         public MainForm()
         {
             InitializeComponent();
@@ -56,8 +57,21 @@ namespace SnippetStore
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             MongoHelper mongoHelper = new MongoHelper();
+
             rtbMainCode.Clear();
-            rtbMainCode.Rtf = mongoHelper.GetCodeSnipetById(mongoHelper.GetMongoIdFromSnipetName(e.Node.Text));
+            snippetId = mongoHelper.GetMongoIdFromSnipetName(e.Node.Text);
+            if (snippetId != null) { rtbMainCode.Rtf = mongoHelper.GetCodeSnipetById(snippetId); }
+            if (rtbMainCode.Text == "")
+            {
+                btnDel.Enabled = false;
+                btnEdit.Enabled = false;
+            }
+            else
+            {
+                btnDel.Enabled = true;
+                btnEdit.Enabled = true;
+            }
+
             //Debug.WriteLine(mongoHelper.GedMongoIdFromSnipetName(e.Node.Text));            
         }
 
@@ -99,6 +113,23 @@ namespace SnippetStore
         private void timer_Tick(object sender, EventArgs e)
         {
             statusLabelDate.Text = DateTime.Now.ToString();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            MongoHelper mongoHelper = new MongoHelper();
+            if (snippetId != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this snippet?", "Delete snippet", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    mongoHelper.DropDataById(snippetId);
+                    UpdateTreeView();
+                    rtbMainCode.Clear();
+                    btnDel.Enabled = false;
+                }
+            }
+
         }
     }
 }
