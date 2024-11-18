@@ -33,7 +33,13 @@
             btnAddLang = new Button();
             lbLanguages = new ListBox();
             tbNewLang = new TextBox();
+            groupBox1 = new GroupBox();
+            btnRemoveKeyw = new Button();
+            btnAddKeyw = new Button();
+            lbKeywords = new ListBox();
+            tbAddKeyw = new TextBox();
             groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
@@ -88,17 +94,72 @@
             tbNewLang.Size = new Size(252, 23);
             tbNewLang.TabIndex = 0;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(btnRemoveKeyw);
+            groupBox1.Controls.Add(btnAddKeyw);
+            groupBox1.Controls.Add(lbKeywords);
+            groupBox1.Controls.Add(tbAddKeyw);
+            groupBox1.FlatStyle = FlatStyle.Popup;
+            groupBox1.Location = new Point(286, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(268, 378);
+            groupBox1.TabIndex = 5;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Add keywords";
+            // 
+            // btnRemoveKeyw
+            // 
+            btnRemoveKeyw.FlatStyle = FlatStyle.Flat;
+            btnRemoveKeyw.Location = new Point(158, 80);
+            btnRemoveKeyw.Name = "btnRemoveKeyw";
+            btnRemoveKeyw.Size = new Size(100, 23);
+            btnRemoveKeyw.TabIndex = 3;
+            btnRemoveKeyw.Text = "Remove";
+            btnRemoveKeyw.UseVisualStyleBackColor = true;
+            btnRemoveKeyw.Click += btnRemoveKeyw_Click;
+            // 
+            // btnAddKeyw
+            // 
+            btnAddKeyw.FlatStyle = FlatStyle.Flat;
+            btnAddKeyw.Location = new Point(158, 51);
+            btnAddKeyw.Name = "btnAddKeyw";
+            btnAddKeyw.Size = new Size(100, 23);
+            btnAddKeyw.TabIndex = 2;
+            btnAddKeyw.Text = "Add";
+            btnAddKeyw.UseVisualStyleBackColor = true;
+            btnAddKeyw.Click += btnAddKeyw_Click;
+            // 
+            // lbKeywords
+            // 
+            lbKeywords.FormattingEnabled = true;
+            lbKeywords.ItemHeight = 15;
+            lbKeywords.Location = new Point(6, 51);
+            lbKeywords.Name = "lbKeywords";
+            lbKeywords.Size = new Size(146, 319);
+            lbKeywords.TabIndex = 1;
+            // 
+            // tbAddKeyw
+            // 
+            tbAddKeyw.Location = new Point(6, 22);
+            tbAddKeyw.Name = "tbAddKeyw";
+            tbAddKeyw.Size = new Size(252, 23);
+            tbAddKeyw.TabIndex = 0;
+            // 
             // SetupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1146, 450);
+            Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Name = "SetupForm";
             Text = "Setup";
             Activated += SetupForm_Activated;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -109,5 +170,10 @@
         private Button btnAddLang;
         private ListBox lbLanguages;
         private TextBox tbNewLang;
+        private GroupBox groupBox1;
+        private Button btnRemoveKeyw;
+        private Button btnAddKeyw;
+        private ListBox lbKeywords;
+        private TextBox tbAddKeyw;
     }
 }

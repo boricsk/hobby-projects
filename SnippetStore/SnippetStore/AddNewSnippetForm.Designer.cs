@@ -40,19 +40,19 @@
             btnRemoveKeyw = new Button();
             btnAddKeyw = new Button();
             lbKeywords = new ListBox();
-            tbKeyword = new TextBox();
             gbSnippetName = new GroupBox();
             tbSnippetName = new TextBox();
             tabPage2 = new TabPage();
             groupBox4 = new GroupBox();
             toolStrip1 = new ToolStrip();
             btnFont = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            btnColor = new ToolStripButton();
             tbCode = new RichTextBox();
             btnAddDatabase = new Button();
             fontDialog = new FontDialog();
-            toolStripSeparator1 = new ToolStripSeparator();
-            btnColor = new ToolStripButton();
             colorDialog = new ColorDialog();
+            lbAvailKeyw = new ListBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -137,10 +137,10 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(lbAvailKeyw);
             groupBox2.Controls.Add(btnRemoveKeyw);
             groupBox2.Controls.Add(btnAddKeyw);
             groupBox2.Controls.Add(lbKeywords);
-            groupBox2.Controls.Add(tbKeyword);
             groupBox2.FlatStyle = FlatStyle.Popup;
             groupBox2.Location = new Point(6, 77);
             groupBox2.Name = "groupBox2";
@@ -152,22 +152,22 @@
             // btnRemoveKeyw
             // 
             btnRemoveKeyw.FlatStyle = FlatStyle.Flat;
-            btnRemoveKeyw.Location = new Point(234, 80);
+            btnRemoveKeyw.Location = new Point(147, 48);
             btnRemoveKeyw.Name = "btnRemoveKeyw";
-            btnRemoveKeyw.Size = new Size(100, 23);
+            btnRemoveKeyw.Size = new Size(46, 23);
             btnRemoveKeyw.TabIndex = 3;
-            btnRemoveKeyw.Text = "Remove";
+            btnRemoveKeyw.Text = "-";
             btnRemoveKeyw.UseVisualStyleBackColor = true;
             btnRemoveKeyw.Click += btnRemoveKeyw_Click;
             // 
             // btnAddKeyw
             // 
             btnAddKeyw.FlatStyle = FlatStyle.Flat;
-            btnAddKeyw.Location = new Point(234, 51);
+            btnAddKeyw.Location = new Point(147, 19);
             btnAddKeyw.Name = "btnAddKeyw";
-            btnAddKeyw.Size = new Size(100, 23);
+            btnAddKeyw.Size = new Size(46, 23);
             btnAddKeyw.TabIndex = 2;
-            btnAddKeyw.Text = "Add to list";
+            btnAddKeyw.Text = ">>";
             btnAddKeyw.UseVisualStyleBackColor = true;
             btnAddKeyw.Click += btnAddKeyw_Click;
             // 
@@ -175,17 +175,10 @@
             // 
             lbKeywords.FormattingEnabled = true;
             lbKeywords.ItemHeight = 15;
-            lbKeywords.Location = new Point(6, 51);
+            lbKeywords.Location = new Point(199, 18);
             lbKeywords.Name = "lbKeywords";
-            lbKeywords.Size = new Size(222, 319);
+            lbKeywords.Size = new Size(135, 349);
             lbKeywords.TabIndex = 1;
-            // 
-            // tbKeyword
-            // 
-            tbKeyword.Location = new Point(6, 22);
-            tbKeyword.Name = "tbKeyword";
-            tbKeyword.Size = new Size(328, 23);
-            tbKeyword.TabIndex = 0;
             // 
             // gbSnippetName
             // 
@@ -248,6 +241,21 @@
             btnFont.Text = "Font";
             btnFont.Click += btnFont_Click;
             // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 43);
+            // 
+            // btnColor
+            // 
+            btnColor.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnColor.Image = (Image)resources.GetObject("btnColor.Image");
+            btnColor.ImageTransparentColor = Color.Magenta;
+            btnColor.Name = "btnColor";
+            btnColor.Size = new Size(40, 40);
+            btnColor.Text = "Font Color";
+            btnColor.Click += btnColor_Click;
+            // 
             // tbCode
             // 
             tbCode.AcceptsTab = true;
@@ -270,20 +278,14 @@
             btnAddDatabase.UseVisualStyleBackColor = true;
             btnAddDatabase.Click += btnAddDatabase_Click;
             // 
-            // toolStripSeparator1
+            // lbAvailKeyw
             // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 43);
-            // 
-            // btnColor
-            // 
-            btnColor.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnColor.Image = (Image)resources.GetObject("btnColor.Image");
-            btnColor.ImageTransparentColor = Color.Magenta;
-            btnColor.Name = "btnColor";
-            btnColor.Size = new Size(40, 40);
-            btnColor.Text = "Font Color";
-            btnColor.Click += btnColor_Click;
+            lbAvailKeyw.FormattingEnabled = true;
+            lbAvailKeyw.ItemHeight = 15;
+            lbAvailKeyw.Location = new Point(6, 18);
+            lbAvailKeyw.Name = "lbAvailKeyw";
+            lbAvailKeyw.Size = new Size(135, 349);
+            lbAvailKeyw.TabIndex = 5;
             // 
             // AddNewSnippetForm
             // 
@@ -303,7 +305,6 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             gbSnippetName.ResumeLayout(false);
             gbSnippetName.PerformLayout();
             tabPage2.ResumeLayout(false);
@@ -326,7 +327,6 @@
         private Button btnRemoveKeyw;
         private Button btnAddKeyw;
         private ListBox lbKeywords;
-        private TextBox tbKeyword;
         private GroupBox groupBox4;
         private RichTextBox tbCode;
         private Button btnAddDatabase;
@@ -340,5 +340,6 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnColor;
         private ColorDialog colorDialog;
+        private ListBox lbAvailKeyw;
     }
 }

@@ -26,11 +26,32 @@ namespace SnippetStore
             return languages.Select(x => x.Language).ToList();
         }
 
+        public List<string?> GetKeywords()
+        {
+            var collection = _database.GetCollection<Keywords>("Keywords");
+            var keywords = collection.Find(new BsonDocument()).ToList();
+            return keywords.Select(x => x.Keyword).ToList();
+        }
+
         public void AddLanguages(string lang)
         { 
             var languages = _database.GetCollection<Languages>("Languages");
             var language = new Languages { Language = lang };
             languages.InsertOne(language);
+        }
+
+        public void AddKeyword(string keyw)
+        {
+            var keywords = _database.GetCollection<Keywords>("Keywords");
+            var keyword = new Keywords { Keyword = keyw };
+            keywords.InsertOne(keyword);
+        }
+
+        public void DeleteKeyw(string keyw)
+        {
+            var keywords = _database.GetCollection<Keywords>("Keywords");
+            var filter = Builders<Keywords>.Filter.Eq(x => x.Keyword, keyw);
+            keywords.DeleteOne(filter);
         }
 
         public void DeleteLanguage(string langName)
@@ -40,7 +61,7 @@ namespace SnippetStore
             languages.DeleteOne(filter);
         }
 
-        public string? GedMongoIdFromSnipetName(string snipName)
+        public string? GetMongoIdFromSnipetName(string snipName)
         {
             var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
             var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.SnipName, snipName);

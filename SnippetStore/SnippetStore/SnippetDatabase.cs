@@ -18,6 +18,16 @@ namespace SnippetStore
 
     }
 
+    public class Keywords
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        [BsonElement("Keyword")]
+        public string? Keyword { get; set; }
+
+    }
+
     public class SnippetDatabase
     {
         [BsonId]

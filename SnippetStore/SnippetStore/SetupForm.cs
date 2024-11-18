@@ -13,6 +13,7 @@ namespace SnippetStore
     public partial class SetupForm : Form
     {
         private List<string> _languages;
+        private List<string> _keywords;
 
         public SetupForm()
         {
@@ -37,7 +38,7 @@ namespace SnippetStore
         }
 
         private void btnRemoveLang_Click(object sender, EventArgs e)
-        {            
+        {
             if (lbLanguages.SelectedItem != null)
             {
                 MongoHelper mongoHelper = new MongoHelper();
@@ -54,12 +55,49 @@ namespace SnippetStore
         {
             var mongoHelper = new MongoHelper();
             lbLanguages.Items.Clear();
+            lbKeywords.Items.Clear();
+            _keywords = mongoHelper.GetKeywords();
             _languages = mongoHelper.GetLanguages();
+
             if (_languages.Count != 0)
             {
                 foreach (var lang in _languages)
                 {
                     lbLanguages.Items.Add(lang);
+                }
+            }
+
+            if (_keywords.Count != 0)
+            {
+                foreach (var keyword in _keywords)
+                {
+                    lbKeywords.Items.Add(keyword);
+                }
+            }
+        }
+
+        private void btnAddKeyw_Click(object sender, EventArgs e)
+        {
+            string newKeyw = tbAddKeyw.Text;
+            if (!string.IsNullOrEmpty(newKeyw) && !lbKeywords.Items.Contains(newKeyw))
+            {
+                lbKeywords.Items.Add(newKeyw);
+                var mongoHelper = new MongoHelper();
+                mongoHelper.AddKeyword(newKeyw);
+                tbAddKeyw.Clear();
+            }
+        }
+
+        private void btnRemoveKeyw_Click(object sender, EventArgs e)
+        {
+            if (lbKeywords.SelectedItem != null)
+            {
+                MongoHelper mongoHelper = new MongoHelper();
+                string? selectedKeyw = lbKeywords.SelectedItem.ToString();
+                if (selectedKeyw != null)
+                {
+                    mongoHelper.DeleteKeyw(selectedKeyw);
+                    UpdateList();
                 }
             }
         }

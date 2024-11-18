@@ -17,6 +17,7 @@ namespace SnippetStore
         {
             InitializeComponent();
             UpdateLanguages();
+            UpdateKeywords();
         }
         private void UpdateLanguages()
         {
@@ -29,12 +30,23 @@ namespace SnippetStore
             }
         }
 
+        private void UpdateKeywords()
+        {
+            MongoHelper mongoHelper = new MongoHelper();
+            var keywords = mongoHelper.GetKeywords();
+            lbAvailKeyw.Items.Clear();
+            foreach (var keyw in keywords)
+            {
+                lbAvailKeyw.Items.Add(keyw);
+            }
+        }
+
         private void btnAddKeyw_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbKeyword.Text) && !lbKeywords.Items.Contains(tbKeyword.Text))
+            if (!string.IsNullOrEmpty(lbAvailKeyw.Text) && !lbKeywords.Items.Contains(lbAvailKeyw.Text))
             {
-                lbKeywords.Items.Add(tbKeyword.Text);
-                tbKeyword.Clear();
+                lbKeywords.Items.Add(lbAvailKeyw.Text);
+                //tbKeyword.Selected = null;
             }
         }
 
