@@ -40,6 +40,14 @@ namespace SnippetStore
             languages.DeleteOne(filter);
         }
 
+        public string? GedMongoIdFromSnipetName(string snipName)
+        {
+            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
+            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.SnipName, snipName);
+            var result = snippets.Find(filter).FirstOrDefault();
+            return result?.Id;
+        }
+
         public void AddSnippet(SnippetDatabase snippet)
         {
             var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
@@ -50,6 +58,14 @@ namespace SnippetStore
         {
             var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
             return snippets;
+        }
+
+        public string? GetCodeSnipetById(string id)
+        {
+            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
+            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id);
+            var result = snippets.Find(filter).FirstOrDefault();
+            return result?.SnipCode;
         }
     }
 }

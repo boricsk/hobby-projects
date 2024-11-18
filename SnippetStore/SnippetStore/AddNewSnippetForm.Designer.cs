@@ -223,6 +223,7 @@
             // 
             tbCode.AcceptsTab = true;
             tbCode.Dock = DockStyle.Fill;
+            tbCode.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 238);
             tbCode.Location = new Point(3, 19);
             tbCode.Name = "tbCode";
             tbCode.Size = new Size(725, 433);

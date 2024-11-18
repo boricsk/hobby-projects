@@ -53,7 +53,7 @@ namespace SnippetStore
             MongoHelper mongoHelper = new MongoHelper();
             SnippetDatabase snippet = new SnippetDatabase();
             if (tbSnippetName.Text != "")
-            { 
+            {
                 snippet.SnipName = tbSnippetName.Text;
             }
             else
@@ -78,7 +78,8 @@ namespace SnippetStore
             if (tbShortDesc.Text != "")
             {
                 snippet.SnipShortDesc = tbShortDesc.Text;
-            } else
+            }
+            else
             {
                 MessageBox.Show("Short description is required");
                 return;
@@ -97,7 +98,8 @@ namespace SnippetStore
             if (tbCode.Text != "")
             {
                 snippet.SnipCode = tbCode.Rtf!;
-            }else
+            }
+            else
             {
                 MessageBox.Show("Code snippet is required");
                 return;

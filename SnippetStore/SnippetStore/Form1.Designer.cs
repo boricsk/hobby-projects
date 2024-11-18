@@ -34,9 +34,10 @@
             btnAddNewSnippet = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             btnSetup = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
-            richTextBox1 = new RichTextBox();
+            rtbMainCode = new RichTextBox();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -55,7 +56,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -88,6 +89,11 @@
             btnSetup.Text = "Setup";
             btnSetup.Click += btnSetup_Click;
             // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 55);
+            // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
@@ -100,7 +106,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(richTextBox1);
+            splitContainer1.Panel2.Controls.Add(rtbMainCode);
             splitContainer1.Size = new Size(1340, 668);
             splitContainer1.SplitterDistance = 614;
             splitContainer1.TabIndex = 2;
@@ -112,15 +118,20 @@
             treeView1.Name = "treeView1";
             treeView1.Size = new Size(614, 668);
             treeView1.TabIndex = 0;
+            treeView1.NodeMouseClick += treeView1_NodeMouseClick;
             // 
-            // richTextBox1
+            // rtbMainCode
             // 
-            richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(0, 0);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(722, 668);
-            richTextBox1.TabIndex = 0;
-            richTextBox1.Text = "";
+            rtbMainCode.AcceptsTab = true;
+            rtbMainCode.Dock = DockStyle.Fill;
+            rtbMainCode.Font = new Font("Cascadia Code", 10F);
+            rtbMainCode.Location = new Point(0, 0);
+            rtbMainCode.Name = "rtbMainCode";
+            rtbMainCode.ReadOnly = true;
+            rtbMainCode.Size = new Size(722, 668);
+            rtbMainCode.TabIndex = 0;
+            rtbMainCode.Text = "";
+            rtbMainCode.WordWrap = false;
             // 
             // MainForm
             // 
@@ -132,6 +143,7 @@
             Controls.Add(statusStrip1);
             Name = "MainForm";
             Text = "Snippet Store";
+            Activated += MainForm_Activated;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             splitContainer1.Panel1.ResumeLayout(false);
@@ -148,9 +160,10 @@
         private ToolStrip toolStrip1;
         private SplitContainer splitContainer1;
         private TreeView treeView1;
-        private RichTextBox richTextBox1;
+        private RichTextBox rtbMainCode;
         private ToolStripButton btnAddNewSnippet;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnSetup;
+        private ToolStripSeparator toolStripSeparator2;
     }
 }
