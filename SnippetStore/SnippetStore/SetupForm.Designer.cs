@@ -105,6 +105,7 @@
             btnRemoveLang.TabIndex = 3;
             btnRemoveLang.Text = "Remove";
             btnRemoveLang.UseVisualStyleBackColor = true;
+            btnRemoveLang.Click += btnRemoveLang_Click;
             // 
             // btnAddLang
             // 
@@ -115,6 +116,7 @@
             btnAddLang.TabIndex = 2;
             btnAddLang.Text = "Add";
             btnAddLang.UseVisualStyleBackColor = true;
+            btnAddLang.Click += btnAddLang_Click;
             // 
             // lbLanguages
             // 
@@ -155,6 +157,7 @@
             btnRemoveKeyw.TabIndex = 3;
             btnRemoveKeyw.Text = "Remove";
             btnRemoveKeyw.UseVisualStyleBackColor = true;
+            btnRemoveKeyw.Click += btnRemoveKeyw_Click;
             // 
             // btnAddKeyw
             // 
@@ -165,6 +168,7 @@
             btnAddKeyw.TabIndex = 2;
             btnAddKeyw.Text = "Add";
             btnAddKeyw.UseVisualStyleBackColor = true;
+            btnAddKeyw.Click += btnAddKeyw_Click;
             // 
             // lbKeywords
             // 

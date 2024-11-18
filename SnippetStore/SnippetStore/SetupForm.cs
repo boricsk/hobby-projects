@@ -12,12 +12,8 @@ namespace SnippetStore
 {
     public partial class SetupForm : Form
     {
-        private List<string?> _languages;
-        private List<string?> _keywords;
-        private List<string?> _reswords;
-        private List<string?> _blockseps;
-
-
+        private List<string?>? _parameters;
+        MongoHelper mongoHelper = new MongoHelper();
         public SetupForm()
         {
             InitializeComponent();
@@ -34,7 +30,6 @@ namespace SnippetStore
             if (!string.IsNullOrEmpty(newLang) && !lbLanguages.Items.Contains(newLang))
             {
                 lbLanguages.Items.Add(newLang);
-                var mongoHelper = new MongoHelper();
                 mongoHelper.AddLanguages(newLang);
                 tbNewLang.Clear();
             }
@@ -44,7 +39,6 @@ namespace SnippetStore
         {
             if (lbLanguages.SelectedItem != null)
             {
-                MongoHelper mongoHelper = new MongoHelper();
                 string? selectedLang = lbLanguages.SelectedItem.ToString();
                 if (selectedLang != null)
                 {
@@ -56,36 +50,35 @@ namespace SnippetStore
 
         private void UpdateList()
         {
-            var mongoHelper = new MongoHelper();
             ClearListBoxes();
 
-            UpdateLists(_languages = mongoHelper.GetLanguages(), () =>
+            UpdateLists(_parameters = mongoHelper.GetLanguages(), () =>
                 {
-                    foreach (var lang in _languages)
+                    foreach (var lang in _parameters)
                     {
                         if (lang != null) { lbLanguages.Items.Add(lang); }
                     }
                 });
 
-            UpdateLists(_keywords = mongoHelper.GetKeywords(), () =>
+            UpdateLists(_parameters = mongoHelper.GetKeywords(), () =>
                 {
-                    foreach (var keyword in _keywords)
+                    foreach (var keyword in _parameters)
                     {
                         if (keyword != null) { lbKeywords.Items.Add(keyword); }
                     }
                 });
 
-            UpdateLists(_reswords = mongoHelper.GetReswords(), () =>
+            UpdateLists(_parameters = mongoHelper.GetReswords(), () =>
                 {
-                    foreach (var resword in _reswords)
+                    foreach (var resword in _parameters)
                     {
                         if (resword != null) { lbResWord.Items.Add(resword); }
                     }
                 });
 
-            UpdateLists(_blockseps = mongoHelper.GetBlockSep(), () => 
+            UpdateLists(_parameters = mongoHelper.GetBlockSep(), () =>
             {
-                foreach (var block in _blockseps) 
+                foreach (var block in _parameters)
                 {
                     if (block != null) { lbBlockSep.Items.Add(block); }
                 }
@@ -112,7 +105,6 @@ namespace SnippetStore
             if (!string.IsNullOrEmpty(newKeyw) && !lbKeywords.Items.Contains(newKeyw))
             {
                 lbKeywords.Items.Add(newKeyw);
-                var mongoHelper = new MongoHelper();
                 mongoHelper.AddKeyword(newKeyw);
                 tbAddKeyw.Clear();
             }
@@ -122,7 +114,6 @@ namespace SnippetStore
         {
             if (lbKeywords.SelectedItem != null)
             {
-                MongoHelper mongoHelper = new MongoHelper();
                 string? selectedKeyw = lbKeywords.SelectedItem.ToString();
                 if (selectedKeyw != null)
                 {
@@ -149,7 +140,6 @@ namespace SnippetStore
         {
             if (lbResWord.SelectedItem != null)
             {
-                MongoHelper mongoHelper = new MongoHelper();
                 string? selectedWord = lbResWord.SelectedItem.ToString();
                 if (selectedWord != null)
                 {
@@ -165,7 +155,6 @@ namespace SnippetStore
             if (!string.IsNullOrEmpty(newBlockSep) && !lbBlockSep.Items.Contains(newBlockSep))
             {
                 lbBlockSep.Items.Add(newBlockSep);
-                var mongoHelper = new MongoHelper();
                 mongoHelper.AddBlockSep(newBlockSep);
                 tbBlockSep.Clear();
             }
@@ -175,7 +164,6 @@ namespace SnippetStore
         {
             if (lbBlockSep.SelectedItem != null)
             {
-                MongoHelper mongoHelper = new MongoHelper();
                 string? selectedBlockSep = lbBlockSep.SelectedItem.ToString();
                 if (selectedBlockSep != null)
                 {

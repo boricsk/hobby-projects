@@ -12,7 +12,7 @@ namespace SnippetStore
 {
     public partial class AddNewSnippetForm : Form
     {
-
+        MongoHelper mongoHelper = new MongoHelper();
         public AddNewSnippetForm()
         {
             InitializeComponent();
@@ -20,8 +20,7 @@ namespace SnippetStore
             UpdateKeywords();
         }
         private void UpdateLanguages()
-        {
-            MongoHelper mongoHelper = new MongoHelper();
+        {            
             var languages = mongoHelper.GetLanguages();
             cbLanguages.Items.Clear();
             foreach (var lang in languages)
@@ -31,8 +30,7 @@ namespace SnippetStore
         }
 
         private void UpdateKeywords()
-        {
-            MongoHelper mongoHelper = new MongoHelper();
+        {            
             var keywords = mongoHelper.GetKeywords();
             lbAvailKeyw.Items.Clear();
             foreach (var keyw in keywords)
@@ -61,8 +59,7 @@ namespace SnippetStore
         }
 
         private void btnAddDatabase_Click(object sender, EventArgs e)
-        {
-            MongoHelper mongoHelper = new MongoHelper();
+        {            
             SnippetDatabase snippet = new SnippetDatabase();
             if (tbSnippetName.Text != "")
             {

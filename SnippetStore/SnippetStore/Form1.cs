@@ -7,6 +7,7 @@ namespace SnippetStore
     {
         private ToolStripStatusLabel statusLabelDate;
         private string? snippetId;
+        MongoHelper mongoHelper = new MongoHelper();
         public MainForm()
         {
             InitializeComponent();
@@ -29,7 +30,6 @@ namespace SnippetStore
         public void UpdateTreeView()
         {
             treeView1.Nodes.Clear();
-            var mongoHelper = new MongoHelper();
             var SnipData = mongoHelper.GetSnipets().AsQueryable().ToList().GroupBy(l => l.SnipLanguage);
 
             foreach (var data in SnipData)
@@ -56,8 +56,6 @@ namespace SnippetStore
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            MongoHelper mongoHelper = new MongoHelper();
-
             rtbMainCode.Clear();
             snippetId = mongoHelper.GetMongoIdFromSnipetName(e.Node.Text);
             if (snippetId != null) { rtbMainCode.Rtf = mongoHelper.GetCodeSnipetById(snippetId); }
@@ -79,13 +77,12 @@ namespace SnippetStore
         {
             if (tbSearch.Text != "")
             {
-                treeView1.Nodes.Clear();
-                var mongoHelper = new MongoHelper();
+                treeView1.Nodes.Clear();                
                 var SnipData = mongoHelper.GetSnipets().AsQueryable()
                     .Where(x => x.SnipKeywords.Contains(tbSearch.Text) ||
-                                x.SnipName.Contains(tbSearch.Text) ||
-                                x.SnipShortDesc.Contains(tbSearch.Text) ||
-                                x.SnipCode.Contains(tbSearch.Text))
+                               (x.SnipName != null && x.SnipName.Contains(tbSearch.Text)) ||
+                               (x.SnipShortDesc != null && x.SnipShortDesc.Contains(tbSearch.Text)) ||
+                               (x.SnipCode != null && x.SnipCode.Contains(tbSearch.Text)))
                     .ToList().GroupBy(l => l.SnipLanguage);
 
                 foreach (var data in SnipData)
@@ -116,8 +113,7 @@ namespace SnippetStore
         }
 
         private void btnDel_Click(object sender, EventArgs e)
-        {
-            MongoHelper mongoHelper = new MongoHelper();
+        {            
             if (snippetId != null)
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this snippet?", "Delete snippet", MessageBoxButtons.YesNo);
