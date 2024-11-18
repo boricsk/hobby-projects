@@ -118,5 +118,35 @@ namespace SnippetStore
             cbLanguages.SelectedItem = null;
             tbCode.Clear();
         }
+
+        private void btnFont_Click(object sender, EventArgs e)
+        {
+            if (fontDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (tbCode.SelectedText != "")
+                {
+                    tbCode.SelectionFont = fontDialog.Font;
+                }
+                else
+                {
+                    tbCode.Font = fontDialog.Font;
+                }
+            }
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (tbCode.SelectedText != "")
+                {
+                    tbCode.SelectionColor = colorDialog.Color;
+                }
+                else
+                {
+                    tbCode.ForeColor = colorDialog.Color;
+                }
+            }
+        }
     }
 }

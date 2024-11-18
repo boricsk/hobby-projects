@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewSnippetForm));
             statusBar = new StatusStrip();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -44,8 +45,14 @@
             tbSnippetName = new TextBox();
             tabPage2 = new TabPage();
             groupBox4 = new GroupBox();
+            toolStrip1 = new ToolStrip();
+            btnFont = new ToolStripButton();
             tbCode = new RichTextBox();
             btnAddDatabase = new Button();
+            fontDialog = new FontDialog();
+            toolStripSeparator1 = new ToolStripSeparator();
+            btnColor = new ToolStripButton();
+            colorDialog = new ColorDialog();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -54,6 +61,7 @@
             gbSnippetName.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox4.SuspendLayout();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // statusBar
@@ -209,6 +217,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(toolStrip1);
             groupBox4.Controls.Add(tbCode);
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.FlatStyle = FlatStyle.Popup;
@@ -219,14 +228,33 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Code";
             // 
+            // toolStrip1
+            // 
+            toolStrip1.ImageScalingSize = new Size(36, 36);
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnFont, toolStripSeparator1, btnColor });
+            toolStrip1.Location = new Point(3, 19);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(725, 43);
+            toolStrip1.TabIndex = 1;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // btnFont
+            // 
+            btnFont.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFont.Image = (Image)resources.GetObject("btnFont.Image");
+            btnFont.ImageTransparentColor = Color.Magenta;
+            btnFont.Name = "btnFont";
+            btnFont.Size = new Size(40, 40);
+            btnFont.Text = "Font";
+            btnFont.Click += btnFont_Click;
+            // 
             // tbCode
             // 
             tbCode.AcceptsTab = true;
-            tbCode.Dock = DockStyle.Fill;
             tbCode.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            tbCode.Location = new Point(3, 19);
+            tbCode.Location = new Point(3, 65);
             tbCode.Name = "tbCode";
-            tbCode.Size = new Size(725, 433);
+            tbCode.Size = new Size(725, 387);
             tbCode.TabIndex = 0;
             tbCode.Text = "";
             tbCode.WordWrap = false;
@@ -241,6 +269,21 @@
             btnAddDatabase.Text = "Add to database";
             btnAddDatabase.UseVisualStyleBackColor = true;
             btnAddDatabase.Click += btnAddDatabase_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 43);
+            // 
+            // btnColor
+            // 
+            btnColor.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnColor.Image = (Image)resources.GetObject("btnColor.Image");
+            btnColor.ImageTransparentColor = Color.Magenta;
+            btnColor.Name = "btnColor";
+            btnColor.Size = new Size(40, 40);
+            btnColor.Text = "Font Color";
+            btnColor.Click += btnColor_Click;
             // 
             // AddNewSnippetForm
             // 
@@ -265,6 +308,9 @@
             gbSnippetName.PerformLayout();
             tabPage2.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -288,5 +334,11 @@
         private GroupBox groupBox3;
         private TextBox tbShortDesc;
         private ComboBox cbLanguages;
+        private ToolStrip toolStrip1;
+        private ToolStripButton btnFont;
+        private FontDialog fontDialog;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton btnColor;
+        private ColorDialog colorDialog;
     }
 }

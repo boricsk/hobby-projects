@@ -19,7 +19,7 @@ namespace SnippetStore
             _database = client.GetDatabase(dbName);
         }
 
-        public List<string> GetLanguages()
+        public List<string?> GetLanguages()
         {
             var collection = _database.GetCollection<Languages>("Languages");
             var languages = collection.Find(new BsonDocument()).ToList();
