@@ -17,37 +17,8 @@ namespace SnippetStore
         public SetupForm()
         {
             InitializeComponent();
+            UpdateList();    
         }
-
-        private void SetupForm_Activated(object sender, EventArgs e)
-        {
-            UpdateList();
-        }
-
-        private void btnAddLang_Click(object sender, EventArgs e)
-        {
-            string newLang = tbNewLang.Text;
-            if (!string.IsNullOrEmpty(newLang) && !lbLanguages.Items.Contains(newLang))
-            {
-                lbLanguages.Items.Add(newLang);
-                mongoHelper.AddLanguages(newLang);
-                tbNewLang.Clear();
-            }
-        }
-
-        private void btnRemoveLang_Click(object sender, EventArgs e)
-        {
-            if (lbLanguages.SelectedItem != null)
-            {
-                string? selectedLang = lbLanguages.SelectedItem.ToString();
-                if (selectedLang != null)
-                {
-                    mongoHelper.DeleteLanguage(selectedLang);
-                    UpdateList();
-                }
-            }
-        }
-
         private void UpdateList()
         {
             ClearListBoxes();
@@ -96,6 +67,30 @@ namespace SnippetStore
             if (updateList.Count != 0)
             {
                 action();
+            }
+        }
+
+        private void btnAddLang_Click(object sender, EventArgs e)
+        {
+            string newLang = tbNewLang.Text;
+            if (!string.IsNullOrEmpty(newLang) && !lbLanguages.Items.Contains(newLang))
+            {
+                lbLanguages.Items.Add(newLang);
+                mongoHelper.AddLanguages(newLang);
+                tbNewLang.Clear();
+            }
+        }
+
+        private void btnRemoveLang_Click(object sender, EventArgs e)
+        {
+            if (lbLanguages.SelectedItem != null)
+            {
+                string? selectedLang = lbLanguages.SelectedItem.ToString();
+                if (selectedLang != null)
+                {
+                    mongoHelper.DeleteLanguage(selectedLang);
+                    UpdateList();
+                }
             }
         }
 
@@ -170,6 +165,17 @@ namespace SnippetStore
                     mongoHelper.DeleteBlockSep(selectedBlockSep);
                     UpdateList();
                 }
+            }
+        }
+
+        private void btnSetupColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pResWordColor.BackColor = colorDialog1.Color;
+                
+                
+
             }
         }
     }

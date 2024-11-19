@@ -36,17 +36,14 @@
             toolStripSeparator1 = new ToolStripSeparator();
             btnSetup = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
-            Search = new ToolStripLabel();
-            toolStripSeparator3 = new ToolStripSeparator();
-            tbSearch = new ToolStripTextBox();
-            toolStripSeparator4 = new ToolStripSeparator();
             btnDel = new ToolStripButton();
+            btnEdit = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
+            tbSearch2 = new TextBox();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
             timer = new System.Windows.Forms.Timer(components);
-            btnEdit = new ToolStripButton();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -68,7 +65,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, Search, toolStripSeparator3, tbSearch, toolStripSeparator4, btnDel, btnEdit });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, btnEdit });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -106,30 +103,6 @@
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(6, 55);
             // 
-            // Search
-            // 
-            Search.Name = "Search";
-            Search.Size = new Size(105, 52);
-            Search.Text = "Search in database";
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 55);
-            // 
-            // tbSearch
-            // 
-            tbSearch.Name = "tbSearch";
-            tbSearch.RightToLeft = RightToLeft.Yes;
-            tbSearch.Size = new Size(400, 55);
-            tbSearch.TextBoxTextAlign = HorizontalAlignment.Right;
-            tbSearch.TextChanged += OnTypeSearch;
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 55);
-            // 
             // btnDel
             // 
             btnDel.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -141,6 +114,16 @@
             btnDel.Text = "Drop data";
             btnDel.Click += btnDel_Click;
             // 
+            // btnEdit
+            // 
+            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnEdit.Enabled = false;
+            btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
+            btnEdit.ImageTransparentColor = Color.Magenta;
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(52, 52);
+            btnEdit.Text = "toolStripButton1";
+            // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
@@ -150,6 +133,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(treeView1);
+            splitContainer1.Panel1.Controls.Add(tbSearch2);
             // 
             // splitContainer1.Panel2
             // 
@@ -161,11 +145,20 @@
             // treeView1
             // 
             treeView1.Dock = DockStyle.Fill;
-            treeView1.Location = new Point(0, 0);
+            treeView1.Location = new Point(0, 23);
             treeView1.Name = "treeView1";
-            treeView1.Size = new Size(253, 668);
-            treeView1.TabIndex = 0;
+            treeView1.Size = new Size(253, 645);
+            treeView1.TabIndex = 2;
             treeView1.NodeMouseClick += treeView1_NodeMouseClick;
+            // 
+            // tbSearch2
+            // 
+            tbSearch2.Dock = DockStyle.Top;
+            tbSearch2.Location = new Point(0, 0);
+            tbSearch2.Name = "tbSearch2";
+            tbSearch2.Size = new Size(253, 23);
+            tbSearch2.TabIndex = 0;
+            tbSearch2.TextChanged += OnTypeSearch;
             // 
             // splitContainer2
             // 
@@ -201,16 +194,6 @@
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
             // 
-            // btnEdit
-            // 
-            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnEdit.Enabled = false;
-            btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
-            btnEdit.ImageTransparentColor = Color.Magenta;
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(52, 52);
-            btnEdit.Text = "toolStripButton1";
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -225,6 +208,7 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
@@ -240,19 +224,18 @@
         private StatusStrip statusStrip1;
         private ToolStrip toolStrip1;
         private SplitContainer splitContainer1;
-        private TreeView treeView1;
         private ToolStripButton btnAddNewSnippet;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnSetup;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripTextBox tbSearch;
-        private ToolStripLabel Search;
-        private ToolStripSeparator toolStripSeparator3;
         private SplitContainer splitContainer2;
         private RichTextBox rtbMainCode;
         private System.Windows.Forms.Timer timer;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton btnDel;
         private ToolStripButton btnEdit;
+        private TreeView treeView1;
+        private TextBox tbSearch2;
     }
 }

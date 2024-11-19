@@ -1,5 +1,7 @@
 using MongoDB.Driver;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace SnippetStore
 {
@@ -8,6 +10,9 @@ namespace SnippetStore
         private ToolStripStatusLabel statusLabelDate;
         private string? snippetId;
         MongoHelper mongoHelper = new MongoHelper();
+        private List<string?>? wordsToHighlight = new List<string>();
+        private List<string?>? separatorToHighlight = new List<string>();
+
         public MainForm()
         {
             InitializeComponent();
@@ -69,20 +74,20 @@ namespace SnippetStore
                 btnDel.Enabled = true;
                 btnEdit.Enabled = true;
             }
-
+            WordHighlight();
             //Debug.WriteLine(mongoHelper.GedMongoIdFromSnipetName(e.Node.Text));            
         }
 
         private void OnTypeSearch(object sender, EventArgs e)
         {
-            if (tbSearch.Text != "")
+            if (tbSearch2.Text != "")
             {
-                treeView1.Nodes.Clear();                
+                treeView1.Nodes.Clear();
                 var SnipData = mongoHelper.GetSnipets().AsQueryable()
-                    .Where(x => x.SnipKeywords.Contains(tbSearch.Text) ||
-                               (x.SnipName != null && x.SnipName.Contains(tbSearch.Text)) ||
-                               (x.SnipShortDesc != null && x.SnipShortDesc.Contains(tbSearch.Text)) ||
-                               (x.SnipCode != null && x.SnipCode.Contains(tbSearch.Text)))
+                    .Where(x => x.SnipKeywords.Contains(tbSearch2.Text) ||
+                               (x.SnipName != null && x.SnipName.Contains(tbSearch2.Text)) ||
+                               (x.SnipShortDesc != null && x.SnipShortDesc.Contains(tbSearch2.Text)) ||
+                               (x.SnipCode != null && x.SnipCode.Contains(tbSearch2.Text)))
                     .ToList().GroupBy(l => l.SnipLanguage);
 
                 foreach (var data in SnipData)
@@ -113,7 +118,7 @@ namespace SnippetStore
         }
 
         private void btnDel_Click(object sender, EventArgs e)
-        {            
+        {
             if (snippetId != null)
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this snippet?", "Delete snippet", MessageBoxButtons.YesNo);
@@ -125,6 +130,44 @@ namespace SnippetStore
                     btnDel.Enabled = false;
                 }
             }
+
+        }
+
+        private void WordHighlight()
+        {
+            wordsToHighlight = mongoHelper.GetReswords();
+            separatorToHighlight = mongoHelper.GetBlockSep();
+            foreach (var word in wordsToHighlight)
+            {
+                // Regex a teljes szavak kereséséhez
+                string pattern = $@"\b{Regex.Escape(word)}\b";
+                MatchCollection matches = Regex.Matches(rtbMainCode.Text, pattern, RegexOptions.IgnoreCase);
+
+                foreach (Match match in matches)
+                {
+                    rtbMainCode.Select(match.Index, match.Length);
+                    rtbMainCode.SelectionColor = Color.Crimson;
+                }
+            }
+            // Kijelölés eltávolítása
+            rtbMainCode.Select(0, 0);
+
+
+
+            foreach (var word in separatorToHighlight)
+            {
+                int startIndex = 0;
+                while ((startIndex = rtbMainCode.Text.IndexOf(word, startIndex, StringComparison.OrdinalIgnoreCase)) != -1)
+                {
+                    rtbMainCode.Select(startIndex, word.Length);
+                    rtbMainCode.SelectionColor = Color.LightSeaGreen;
+                    startIndex += word.Length; // Továbblépés a következõ elõfordulásra
+                }
+            }
+
+            // Kijelölés eltávolítása
+            rtbMainCode.Select(0, 0);
+
 
         }
     }

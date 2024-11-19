@@ -30,6 +30,8 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            groupBox5 = new GroupBox();
+            tbConString = new TextBox();
             groupBox2 = new GroupBox();
             btnRemoveLang = new Button();
             btnAddLang = new Button();
@@ -47,12 +49,16 @@
             lbBlockSep = new ListBox();
             tbBlockSep = new TextBox();
             groupBox3 = new GroupBox();
+            btnSetupColor = new Button();
+            pResWordColor = new Panel();
             btnRemoveReservedWord = new Button();
             btnAddReservedWord = new Button();
             lbResWord = new ListBox();
             tbReservedWords = new TextBox();
+            colorDialog1 = new ColorDialog();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox5.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -72,6 +78,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(groupBox5);
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 24);
@@ -81,6 +88,25 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Parameters";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(tbConString);
+            groupBox5.FlatStyle = FlatStyle.Popup;
+            groupBox5.Location = new Point(554, 6);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(306, 74);
+            groupBox5.TabIndex = 8;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Connection string";
+            // 
+            // tbConString
+            // 
+            tbConString.Location = new Point(6, 22);
+            tbConString.Name = "tbConString";
+            tbConString.Size = new Size(294, 23);
+            tbConString.TabIndex = 0;
+            tbConString.Text = "mongodb://localhost:27017";
             // 
             // groupBox2
             // 
@@ -252,6 +278,8 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnSetupColor);
+            groupBox3.Controls.Add(pResWordColor);
             groupBox3.Controls.Add(btnRemoveReservedWord);
             groupBox3.Controls.Add(btnAddReservedWord);
             groupBox3.Controls.Add(lbResWord);
@@ -263,6 +291,24 @@
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Add reserved word";
+            // 
+            // btnSetupColor
+            // 
+            btnSetupColor.FlatStyle = FlatStyle.Flat;
+            btnSetupColor.Location = new Point(158, 109);
+            btnSetupColor.Name = "btnSetupColor";
+            btnSetupColor.Size = new Size(100, 23);
+            btnSetupColor.TabIndex = 7;
+            btnSetupColor.Text = "Color";
+            btnSetupColor.UseVisualStyleBackColor = true;
+            btnSetupColor.Click += btnSetupColor_Click;
+            // 
+            // pResWordColor
+            // 
+            pResWordColor.Location = new Point(158, 138);
+            pResWordColor.Name = "pResWordColor";
+            pResWordColor.Size = new Size(100, 26);
+            pResWordColor.TabIndex = 6;
             // 
             // btnRemoveReservedWord
             // 
@@ -310,9 +356,10 @@
             Controls.Add(tabControl1);
             Name = "SetupForm";
             Text = "Setup";
-            Activated += SetupForm_Activated;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -350,5 +397,10 @@
         private Button btnAddBlockSep;
         private ListBox lbBlockSep;
         private TextBox tbBlockSep;
+        private Button btnSetupColor;
+        private Panel pResWordColor;
+        private ColorDialog colorDialog1;
+        private GroupBox groupBox5;
+        private TextBox tbConString;
     }
 }

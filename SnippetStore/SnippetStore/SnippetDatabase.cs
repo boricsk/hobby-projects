@@ -35,7 +35,7 @@ namespace SnippetStore
         public string? Id { get; set; }
         [BsonElement("Reserved word")]
         public string? ResWord { get; set; }
-        public Color? ResWordColor { get; set; }
+       
 
     }
 
@@ -45,11 +45,23 @@ namespace SnippetStore
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         [BsonElement("Block separator")]
-        public string? BlockSep { get; set; }
-        public Color? BlockSepColor { get; set; }
+        public string? BlockSep { get; set; }      
 
     }
 
+    public class SetupData
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        [BsonElement("Block separator color")]        
+        public Color? BlockSepColor { get; set; }
+        [BsonElement("Reserved word color")]
+        public Color? ResWordColor { get; set; }
+        [BsonElement("Connection string")]
+        public string? ConnectionString { get; set; }
+
+    }
     public class SnippetDatabase
     {
         [BsonId]
