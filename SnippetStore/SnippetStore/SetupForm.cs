@@ -17,7 +17,7 @@ namespace SnippetStore
         public SetupForm()
         {
             InitializeComponent();
-            UpdateList();    
+            UpdateList();
         }
         private void UpdateList()
         {
@@ -173,10 +173,17 @@ namespace SnippetStore
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pResWordColor.BackColor = colorDialog1.Color;
-                
-                
+
+
 
             }
+        }
+
+
+
+        private void btnSyntaxConfigSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

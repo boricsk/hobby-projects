@@ -135,10 +135,11 @@ namespace SnippetStore
             snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id));
         }
 
-        public void AddSetup(SetupData setupData)
+        public void SaveSetup(SetupData setupData)
         {
             var setup = _database.GetCollection<SetupData>("Setup");
-            setup.InsertOne(setupData);         
+            var firstSetupData = setup.Find(new BsonDocument()).FirstOrDefault();
+            //firstSetupData.InsertOne(setupData);      
         }
 
         public SetupData GetSetup()

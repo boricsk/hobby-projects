@@ -30,8 +30,6 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            groupBox5 = new GroupBox();
-            tbConString = new TextBox();
             groupBox2 = new GroupBox();
             btnRemoveLang = new Button();
             btnAddLang = new Button();
@@ -43,6 +41,7 @@
             lbKeywords = new ListBox();
             tbAddKeyw = new TextBox();
             tabPage2 = new TabPage();
+            btnSyntaxConfigSave = new Button();
             groupBox4 = new GroupBox();
             btnRemoveBlockSep = new Button();
             btnAddBlockSep = new Button();
@@ -56,14 +55,16 @@
             lbResWord = new ListBox();
             tbReservedWords = new TextBox();
             colorDialog1 = new ColorDialog();
+            groupBox5 = new GroupBox();
+            tbConString = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            groupBox5.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -78,7 +79,6 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(groupBox5);
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 24);
@@ -88,25 +88,6 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Parameters";
             tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            groupBox5.Controls.Add(tbConString);
-            groupBox5.FlatStyle = FlatStyle.Popup;
-            groupBox5.Location = new Point(554, 6);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(306, 74);
-            groupBox5.TabIndex = 8;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "Connection string";
-            // 
-            // tbConString
-            // 
-            tbConString.Location = new Point(6, 22);
-            tbConString.Name = "tbConString";
-            tbConString.Size = new Size(294, 23);
-            tbConString.TabIndex = 0;
-            tbConString.Text = "mongodb://localhost:27017";
             // 
             // groupBox2
             // 
@@ -214,6 +195,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(groupBox5);
+            tabPage2.Controls.Add(btnSyntaxConfigSave);
             tabPage2.Controls.Add(groupBox4);
             tabPage2.Controls.Add(groupBox3);
             tabPage2.Location = new Point(4, 24);
@@ -223,6 +206,17 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Syntax";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSyntaxConfigSave
+            // 
+            btnSyntaxConfigSave.FlatStyle = FlatStyle.Flat;
+            btnSyntaxConfigSave.Location = new Point(750, 353);
+            btnSyntaxConfigSave.Name = "btnSyntaxConfigSave";
+            btnSyntaxConfigSave.Size = new Size(110, 31);
+            btnSyntaxConfigSave.TabIndex = 10;
+            btnSyntaxConfigSave.Text = "Save config";
+            btnSyntaxConfigSave.UseVisualStyleBackColor = true;
+            btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
             // 
             // groupBox4
             // 
@@ -348,18 +342,35 @@
             tbReservedWords.Size = new Size(252, 23);
             tbReservedWords.TabIndex = 0;
             // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(tbConString);
+            groupBox5.FlatStyle = FlatStyle.Popup;
+            groupBox5.Location = new Point(554, 6);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(306, 64);
+            groupBox5.TabIndex = 11;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Connection string";
+            // 
+            // tbConString
+            // 
+            tbConString.Location = new Point(6, 22);
+            tbConString.Name = "tbConString";
+            tbConString.Size = new Size(294, 23);
+            tbConString.TabIndex = 0;
+            tbConString.Text = "mongodb://localhost:27017";
+            // 
             // SetupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(890, 556);
+            ClientSize = new Size(897, 448);
             Controls.Add(tabControl1);
             Name = "SetupForm";
             Text = "Setup";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            groupBox5.ResumeLayout(false);
-            groupBox5.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -369,6 +380,8 @@
             groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -400,6 +413,7 @@
         private Button btnSetupColor;
         private Panel pResWordColor;
         private ColorDialog colorDialog1;
+        private Button btnSyntaxConfigSave;
         private GroupBox groupBox5;
         private TextBox tbConString;
     }

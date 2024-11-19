@@ -160,7 +160,7 @@ namespace SnippetStore
                 while ((startIndex = rtbMainCode.Text.IndexOf(word, startIndex, StringComparison.OrdinalIgnoreCase)) != -1)
                 {
                     rtbMainCode.Select(startIndex, word.Length);
-                    rtbMainCode.SelectionColor = Color.LightSeaGreen;
+                    rtbMainCode.SelectionColor = Color.Blue;
                     startIndex += word.Length; // Továbblépés a következõ elõfordulásra
                 }
             }
