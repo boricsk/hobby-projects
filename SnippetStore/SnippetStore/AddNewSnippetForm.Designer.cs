@@ -37,6 +37,7 @@
             groupBox3 = new GroupBox();
             tbShortDesc = new TextBox();
             groupBox2 = new GroupBox();
+            tbSearchKeyw = new TextBox();
             lbAvailKeyw = new ListBox();
             btnRemoveKeyw = new Button();
             btnAddKeyw = new Button();
@@ -53,7 +54,6 @@
             btnAddDatabase = new Button();
             fontDialog = new FontDialog();
             colorDialog = new ColorDialog();
-            tbSearchKeyw = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -151,6 +151,14 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Keywords";
             // 
+            // tbSearchKeyw
+            // 
+            tbSearchKeyw.Location = new Point(6, 22);
+            tbSearchKeyw.Name = "tbSearchKeyw";
+            tbSearchKeyw.Size = new Size(135, 23);
+            tbSearchKeyw.TabIndex = 6;
+            tbSearchKeyw.TextChanged += tbSearchKeyw_TextChanged;
+            // 
             // lbAvailKeyw
             // 
             lbAvailKeyw.FormattingEnabled = true;
@@ -207,6 +215,7 @@
             tbSnippetName.Name = "tbSnippetName";
             tbSnippetName.Size = new Size(328, 23);
             tbSnippetName.TabIndex = 0;
+            tbSnippetName.TextChanged += tbSnippetName_TextChanged;
             // 
             // tabPage2
             // 
@@ -288,14 +297,6 @@
             btnAddDatabase.Text = "Add to database";
             btnAddDatabase.UseVisualStyleBackColor = true;
             btnAddDatabase.Click += btnAddDatabase_Click;
-            // 
-            // tbSearchKeyw
-            // 
-            tbSearchKeyw.Location = new Point(6, 22);
-            tbSearchKeyw.Name = "tbSearchKeyw";
-            tbSearchKeyw.Size = new Size(135, 23);
-            tbSearchKeyw.TabIndex = 6;
-            tbSearchKeyw.TextChanged += tbSearchKeyw_TextChanged;
             // 
             // AddNewSnippetForm
             // 

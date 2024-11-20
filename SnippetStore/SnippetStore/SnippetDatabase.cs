@@ -49,19 +49,6 @@ namespace SnippetStore
 
     }
 
-    public class SetupData
-    {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
-        [BsonElement("Block separator color")]        
-        public Color? BlockSepColor { get; set; }
-        [BsonElement("Reserved word color")]
-        public Color? ResWordColor { get; set; }
-        [BsonElement("Connection string")]
-        public string? ConnectionString { get; set; }
-
-    }
     public class SnippetDatabase
     {
         [BsonId]

@@ -20,17 +20,17 @@ namespace SnippetStore
             UpdateKeywords();
         }
         private void UpdateLanguages()
-        {            
+        {
             var languages = mongoHelper.GetLanguages();
             cbLanguages.Items.Clear();
             foreach (var lang in languages)
             {
-                if (lang != null) { cbLanguages.Items.Add(lang); }               
+                if (lang != null) { cbLanguages.Items.Add(lang); }
             }
         }
 
         private void UpdateKeywords()
-        {            
+        {
             var keywords = mongoHelper.GetKeywords();
             lbAvailKeyw.Items.Clear();
             foreach (var keyw in keywords)
@@ -59,7 +59,7 @@ namespace SnippetStore
         }
 
         private void btnAddDatabase_Click(object sender, EventArgs e)
-        {            
+        {
             SnippetDatabase snippet = new SnippetDatabase();
             if (tbSnippetName.Text != "")
             {
@@ -122,9 +122,9 @@ namespace SnippetStore
         public void ClearFields()
         {
             tbSnippetName.Clear();
-            lbKeywords.Items.Clear();
+            //lbKeywords.Items.Clear();
             tbShortDesc.Clear();
-            cbLanguages.SelectedItem = null;
+            //cbLanguages.SelectedItem = null;
             tbCode.Clear();
         }
 
@@ -167,10 +167,16 @@ namespace SnippetStore
 
                 lbAvailKeyw.Items.Clear();
                 lbAvailKeyw.Items.AddRange(filteredItems);
-            } else
+            }
+            else
             {
                 UpdateKeywords();
             }
+        }
+
+        private void tbSnippetName_TextChanged(object sender, EventArgs e)
+        {
+            tbShortDesc.Text = tbSnippetName.Text;
         }
     }
 }
