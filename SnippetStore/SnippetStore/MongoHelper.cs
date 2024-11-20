@@ -17,7 +17,7 @@ namespace SnippetStore
         public MongoHelper()
         {          
             //_MongoConString = "mongodb://localhost:27017";
-            _MongoConString = "mongodb+srv://snippetstore:hLMpRxnk1hzcwHxa@snippetstorecluster.ezjte.mongodb.net/?retryWrites=true&w=majority&appName=SnippetStoreCluster";
+            _MongoConString = "";
             var client = new MongoClient(_MongoConString);
             _database = client.GetDatabase(dbName);
         }
