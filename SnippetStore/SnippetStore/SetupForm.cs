@@ -18,6 +18,7 @@ namespace SnippetStore
         {
             InitializeComponent();
             UpdateList();
+            GetConfiguration();
         }
         private void UpdateList()
         {
@@ -54,6 +55,12 @@ namespace SnippetStore
                     if (block != null) { lbBlockSep.Items.Add(block); }
                 }
             });
+        }
+        private void GetConfiguration()
+        {
+            tbConString.Text = RegistryOps.ReadConString();
+            pResWordColor.BackColor = RegistryOps.ReadResWordColor();
+            pSepColor.BackColor = RegistryOps.ReadBlockSepColor();
         }
         private void ClearListBoxes()
         {
@@ -173,17 +180,21 @@ namespace SnippetStore
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pResWordColor.BackColor = colorDialog1.Color;
-
-
-
+            }
+        }
+        private void btnSetupSeparatorColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pSepColor.BackColor = colorDialog1.Color;
             }
         }
 
-
-
         private void btnSyntaxConfigSave_Click(object sender, EventArgs e)
         {
-
+            RegistryOps.WriteConString(tbConString.Text);
+            RegistryOps.WriteResWordColor(pResWordColor.BackColor);
+            RegistryOps.WriteBlockSepColor(pSepColor.BackColor);           
         }
     }
 }

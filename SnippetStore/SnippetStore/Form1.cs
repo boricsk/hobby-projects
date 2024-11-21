@@ -12,6 +12,8 @@ namespace SnippetStore
         MongoHelper mongoHelper = new MongoHelper();
         private List<string?>? wordsToHighlight = new List<string>();
         private List<string?>? separatorToHighlight = new List<string>();
+        private Color ResWordColor = new Color();
+        private Color SepColor = new Color();
 
         public MainForm()
         {
@@ -19,6 +21,8 @@ namespace SnippetStore
             UpdateTreeView();
             statusLabelDate = new ToolStripStatusLabel { Text = DateTime.Now.ToString() };
             statusStrip1.Items.Add(statusLabelDate);
+            ResWordColor = RegistryOps.ReadResWordColor();
+            SepColor = RegistryOps.ReadBlockSepColor();
         }
         private void btnAddNewClick(object sender, EventArgs e)
         {
@@ -29,9 +33,9 @@ namespace SnippetStore
         private void btnSetup_Click(object sender, EventArgs e)
         {
             SetupForm setupForm = new SetupForm();
-            setupForm.Show();
+            setupForm.ShowDialog();
         }
-
+        //mongodb+srv://snippetstore:hLMpRxnk1hzcwHxa@snippetstorecluster.ezjte.mongodb.net/?retryWrites=true&w=majority&appName=SnippetStoreCluster
         public void UpdateTreeView()
         {
             treeView1.Nodes.Clear();
@@ -137,6 +141,9 @@ namespace SnippetStore
         {
             wordsToHighlight = mongoHelper.GetReswords();
             separatorToHighlight = mongoHelper.GetBlockSep();
+            ResWordColor = RegistryOps.ReadResWordColor();
+            SepColor = RegistryOps.ReadBlockSepColor();
+
             foreach (var word in wordsToHighlight)
             {
                 // Regex a teljes szavak kereséséhez
@@ -146,7 +153,7 @@ namespace SnippetStore
                 foreach (Match match in matches)
                 {
                     rtbMainCode.Select(match.Index, match.Length);
-                    rtbMainCode.SelectionColor = Color.Crimson;
+                    rtbMainCode.SelectionColor = ResWordColor;
                 }
             }
             // Kijelölés eltávolítása
@@ -160,7 +167,7 @@ namespace SnippetStore
                 while ((startIndex = rtbMainCode.Text.IndexOf(word, startIndex, StringComparison.OrdinalIgnoreCase)) != -1)
                 {
                     rtbMainCode.Select(startIndex, word.Length);
-                    rtbMainCode.SelectionColor = Color.Blue;
+                    rtbMainCode.SelectionColor = SepColor;
                     startIndex += word.Length; // Továbblépés a következõ elõfordulásra
                 }
             }

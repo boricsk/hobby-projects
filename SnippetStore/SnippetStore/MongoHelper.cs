@@ -11,13 +11,19 @@ namespace SnippetStore
     public class MongoHelper
     {
         private IMongoDatabase _database;
-        private string _MongoConString;
+        private string _MongoConString = string.Empty;
         private string dbName = "SnippetStore";
-        
+                
         public MongoHelper()
         {          
-            //_MongoConString = "mongodb://localhost:27017";
-            _MongoConString = "";
+            if (RegistryOps.ReadConString() == "")
+            {
+                RegistryOps.WriteConString("mongodb://localhost:27017");                
+            } else
+            {
+                _MongoConString = RegistryOps.ReadConString();
+            }
+
             var client = new MongoClient(_MongoConString);
             _database = client.GetDatabase(dbName);
         }
@@ -134,20 +140,6 @@ namespace SnippetStore
         {
             var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
             snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id));
-        }
-
-        public void SaveSetup(SetupData setupData)
-        {
-            var setup = _database.GetCollection<SetupData>("Setup");
-            var firstSetupData = setup.Find(new BsonDocument()).FirstOrDefault();
-            //firstSetupData.InsertOne(setupData);      
-        }
-
-        public SetupData GetSetup()
-        {
-            var setup = _database.GetCollection<SetupData>("Setup");
-            var result = setup.Find(new BsonDocument()).FirstOrDefault();
-            return result;
         }
     }
 }
