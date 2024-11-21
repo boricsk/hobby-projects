@@ -10,8 +10,8 @@ namespace SnippetStore
         private ToolStripStatusLabel statusLabelDate;
         private string? snippetId;
         MongoHelper mongoHelper = new MongoHelper();
-        private List<string?>? wordsToHighlight = new List<string>();
-        private List<string?>? separatorToHighlight = new List<string>();
+        private List<string?>? wordsToHighlight = new List<string?>();
+        private List<string?>? separatorToHighlight = new List<string?>();
         private Color ResWordColor = new Color();
         private Color SepColor = new Color();
 

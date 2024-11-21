@@ -228,11 +228,11 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnSetup;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripTextBox tbSearch;
+        //private ToolStripTextBox tbSearch;
         private SplitContainer splitContainer2;
         private RichTextBox rtbMainCode;
         private System.Windows.Forms.Timer timer;
-        private ToolStripSeparator toolStripSeparator4;
+        //private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton btnDel;
         private ToolStripButton btnEdit;
         private TreeView treeView1;
