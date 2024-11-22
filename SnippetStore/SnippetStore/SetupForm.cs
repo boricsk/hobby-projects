@@ -14,11 +14,12 @@ namespace SnippetStore
     {
         private List<string?>? _parameters;
         MongoHelper mongoHelper = new MongoHelper();
+        
         public SetupForm()
         {
             InitializeComponent();
             UpdateList();
-            GetConfiguration();
+            GetConfiguration();           
         }
         private void UpdateList()
         {
@@ -194,7 +195,8 @@ namespace SnippetStore
         {
             RegistryOps.WriteConString(tbConString.Text);
             RegistryOps.WriteResWordColor(pResWordColor.BackColor);
-            RegistryOps.WriteBlockSepColor(pSepColor.BackColor);           
+            RegistryOps.WriteBlockSepColor(pSepColor.BackColor);
+            this.Close();
         }
     }
 }

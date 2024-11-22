@@ -109,3 +109,33 @@ namespace EledilsLight
         }
     }
 }
+/*
+public bool stateOfLamp
+{
+    get { return _stateOfLamp; }
+    set
+    {
+        if (_stateOfLamp != value)
+        {
+            _stateOfLamp = value;
+            OnLampStateChange(_stateOfLamp);
+        }
+    }
+}
+
+private bool _stateOfLamp { get; set; }
+
+public event EventHandler<bool> LampStateChanged;
+
+protected virtual void OnLampStateChange(bool newValue)
+{
+    if (LampStateChanged != null)
+    {
+        LampStateChanged?.Invoke(this, newValue);
+    }
+}
+
+Feliratkozás az eseményre a kondtruktorban:
+LampStateChanged += (sender, newValue) => Count++; 
+
+ */

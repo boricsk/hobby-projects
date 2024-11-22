@@ -43,7 +43,6 @@
             tabPage2 = new TabPage();
             groupBox5 = new GroupBox();
             tbConString = new TextBox();
-            btnSyntaxConfigSave = new Button();
             groupBox4 = new GroupBox();
             pSepColor = new Panel();
             btnSetupSeparatorColor = new Button();
@@ -59,6 +58,7 @@
             lbResWord = new ListBox();
             tbReservedWords = new TextBox();
             colorDialog1 = new ColorDialog();
+            btnSyntaxConfigSave = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -198,7 +198,6 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(groupBox5);
-            tabPage2.Controls.Add(btnSyntaxConfigSave);
             tabPage2.Controls.Add(groupBox4);
             tabPage2.Controls.Add(groupBox3);
             tabPage2.Location = new Point(4, 24);
@@ -227,17 +226,6 @@
             tbConString.Size = new Size(294, 23);
             tbConString.TabIndex = 0;
             tbConString.Text = "mongodb://localhost:27017";
-            // 
-            // btnSyntaxConfigSave
-            // 
-            btnSyntaxConfigSave.FlatStyle = FlatStyle.Flat;
-            btnSyntaxConfigSave.Location = new Point(750, 353);
-            btnSyntaxConfigSave.Name = "btnSyntaxConfigSave";
-            btnSyntaxConfigSave.Size = new Size(110, 31);
-            btnSyntaxConfigSave.TabIndex = 10;
-            btnSyntaxConfigSave.Text = "Save config";
-            btnSyntaxConfigSave.UseVisualStyleBackColor = true;
-            btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
             // 
             // groupBox4
             // 
@@ -383,11 +371,23 @@
             tbReservedWords.Size = new Size(252, 23);
             tbReservedWords.TabIndex = 0;
             // 
+            // btnSyntaxConfigSave
+            // 
+            btnSyntaxConfigSave.FlatStyle = FlatStyle.Flat;
+            btnSyntaxConfigSave.Location = new Point(776, 445);
+            btnSyntaxConfigSave.Name = "btnSyntaxConfigSave";
+            btnSyntaxConfigSave.Size = new Size(110, 31);
+            btnSyntaxConfigSave.TabIndex = 11;
+            btnSyntaxConfigSave.Text = "Save config";
+            btnSyntaxConfigSave.UseVisualStyleBackColor = true;
+            btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
+            // 
             // SetupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(897, 448);
+            ClientSize = new Size(897, 485);
+            Controls.Add(btnSyntaxConfigSave);
             Controls.Add(tabControl1);
             Name = "SetupForm";
             Text = "Setup";
@@ -435,10 +435,10 @@
         private Button btnSetupColor;
         private Panel pResWordColor;
         private ColorDialog colorDialog1;
-        private Button btnSyntaxConfigSave;
         private GroupBox groupBox5;
         private TextBox tbConString;
         private Panel pSepColor;
         private Button btnSetupSeparatorColor;
+        private Button btnSyntaxConfigSave;
     }
 }
