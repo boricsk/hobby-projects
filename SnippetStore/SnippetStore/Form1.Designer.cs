@@ -43,13 +43,13 @@
             toolStripSeparator4 = new ToolStripSeparator();
             btnExpandAll = new ToolStripButton();
             btnCloseAll = new ToolStripButton();
+            toolStripSeparator5 = new ToolStripSeparator();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             tbSearch2 = new TextBox();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
             timer = new System.Windows.Forms.Timer(components);
-            toolStripSeparator5 = new ToolStripSeparator();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -172,6 +172,11 @@
             btnCloseAll.Text = "Collapse all";
             btnCloseAll.Click += btnCloseAll_Click;
             // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 55);
+            // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
@@ -242,11 +247,6 @@
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 55);
             // 
             // MainForm
             // 
