@@ -8,138 +8,154 @@ using MongoDB.Driver;
 
 namespace SnippetStore
 {
-    public class MongoHelper
+    sealed public class MongoHelper
     {
-        private IMongoDatabase _database;
+        private IMongoDatabase? _database;
         private string _MongoConString = string.Empty;
         private string dbName = "SnippetStore";
-                
+
+        private IMongoCollection<SnippetDatabase> coll_snippets;
+        private IMongoCollection<Languages> coll_languages;
+        private IMongoCollection<Keywords> coll_keywords;
+        private IMongoCollection<ResWords> coll_reswords;
+        private IMongoCollection<BlockSeparators> coll_blockseps;
+
         public MongoHelper()
-        {          
+        {
             if (RegistryOps.ReadConString() == "")
             {
-                RegistryOps.WriteConString("mongodb://localhost:27017");                
-            } else
+                RegistryOps.WriteConString("mongodb://localhost:27017");
+            }
+            else
             {
                 _MongoConString = RegistryOps.ReadConString();
             }
 
-            var client = new MongoClient(_MongoConString);
-            _database = client.GetDatabase(dbName);
+            try
+            {
+                var client = new MongoClient(_MongoConString);
+                _database = client.GetDatabase(dbName);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Connection Error: {e.Message}");
+
+            }
+
+            coll_snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
+            coll_languages = _database.GetCollection<Languages>("Languages");
+            coll_keywords = _database.GetCollection<Keywords>("Keywords");
+            coll_reswords = _database.GetCollection<ResWords>("Reserved words");
+            coll_blockseps = _database.GetCollection<BlockSeparators>("Block separators");
         }
 
         public List<string?> GetLanguages()
         {
-            var collection = _database.GetCollection<Languages>("Languages");
-            var languages = collection.Find(new BsonDocument()).ToList();
+            var languages = coll_languages.Find(new BsonDocument()).ToList();
             return languages.Select(x => x.Language).ToList();
         }
 
         public void AddLanguages(string lang)
         {
-            var languages = _database.GetCollection<Languages>("Languages");
             var language = new Languages { Language = lang };
-            languages.InsertOne(language);
+            coll_languages.InsertOne(language);
         }
         public void DeleteLanguage(string langName)
         {
-            var languages = _database.GetCollection<Languages>("Languages");
             var filter = Builders<Languages>.Filter.Eq(x => x.Language, langName);
-            languages.DeleteOne(filter);
+            coll_languages.DeleteOne(filter);
         }
 
         public void AddKeyword(string keyw)
         {
-            var keywords = _database.GetCollection<Keywords>("Keywords");
             var keyword = new Keywords { Keyword = keyw };
-            keywords.InsertOne(keyword);
+            coll_keywords.InsertOne(keyword);
         }
 
         public void DeleteKeyw(string keyw)
         {
-            var keywords = _database.GetCollection<Keywords>("Keywords");
             var filter = Builders<Keywords>.Filter.Eq(x => x.Keyword, keyw);
-            keywords.DeleteOne(filter);
+            coll_keywords.DeleteOne(filter);
         }
         public List<string?> GetKeywords()
         {
-            var collection = _database.GetCollection<Keywords>("Keywords");
-            var keywords = collection.Find(new BsonDocument()).ToList();
+            var keywords = coll_keywords.Find(new BsonDocument()).ToList();
             return keywords.Select(x => x.Keyword).ToList();
         }
-        
+
         public void AddReservedWord(string resw)
         {
-            var reswords = _database.GetCollection<ResWords>("Reserved words");
             var resword = new ResWords { ResWord = resw };
-            reswords.InsertOne(resword);
+            coll_reswords.InsertOne(resword);
         }
 
         public void DeleteResw(string resw)
         {
-            var reswords = _database.GetCollection<ResWords>("Reserved words");
             var filter = Builders<ResWords>.Filter.Eq(x => x.ResWord, resw);
-            reswords.DeleteOne(filter);
+            coll_reswords.DeleteOne(filter);
         }
         public List<string?> GetReswords()
         {
-            var collection = _database.GetCollection<ResWords>("Reserved words");
-            var reswords = collection.Find(new BsonDocument()).ToList();
+            var reswords = coll_reswords.Find(new BsonDocument()).ToList();
             return reswords.Select(x => x.ResWord).ToList();
         }
 
         public void AddBlockSep(string blocks)
-        {
-            var blockseps = _database.GetCollection<BlockSeparators>("Block separators");
+        {            
             var blocksep = new BlockSeparators { BlockSep = blocks };
-            blockseps.InsertOne(blocksep);
+            coll_blockseps.InsertOne(blocksep);
         }
 
         public void DeleteBlockSep(string blocks)
         {
-            var blockseps = _database.GetCollection<BlockSeparators>("Block separators");
             var filter = Builders<BlockSeparators>.Filter.Eq(x => x.BlockSep, blocks);
-            blockseps.DeleteOne(filter);
+            coll_blockseps.DeleteOne(filter);
         }
         public List<string?> GetBlockSep()
         {
-            var collection = _database.GetCollection<BlockSeparators>("Block separators");
-            var blockseps = collection.Find(new BsonDocument()).ToList();
+            var blockseps = coll_blockseps.Find(new BsonDocument()).ToList();
             return blockseps.Select(x => x.BlockSep).ToList();
         }
 
         public string? GetMongoIdFromSnipetName(string snipName)
         {
-            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
             var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.SnipName, snipName);
-            var result = snippets.Find(filter).FirstOrDefault();
+            var result = coll_snippets.Find(filter).FirstOrDefault();
             return result?.Id;
         }
 
         public void AddSnippet(SnippetDatabase snippet)
         {
-            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
-            snippets.InsertOne(snippet);
+            coll_snippets.InsertOne(snippet);
         }
 
         public IMongoCollection<SnippetDatabase> GetSnipets()
         {
-            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
-            return snippets;
+            return coll_snippets;
         }
 
         public string? GetCodeSnipetById(string id)
         {
-            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
             var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id);
-            var result = snippets.Find(filter).FirstOrDefault();
+            var result = coll_snippets.Find(filter).FirstOrDefault();
             return result?.SnipCode;
         }
 
         public void DropDataById(string id)
         {
-            var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
-            snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id));
+            coll_snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id));
+        }
+
+        public void IncreaseView(string id)
+        {
+            //var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
+            coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id), Builders<SnippetDatabase>.Update.Inc(x => x.NoOfView, 1));
+
+        }
+
+        public void SaveModify(string id, string newData)
+        { 
+            coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id), Builders<SnippetDatabase>.Update.Set(x => x.SnipCode, newData));
         }
     }
 }

@@ -14,6 +14,7 @@ namespace SnippetStore
         private List<string?>? separatorToHighlight = new List<string?>();
         private Color ResWordColor = new Color();
         private Color SepColor = new Color();
+        private bool isSnippetModified = false;
 
         public MainForm()
         {
@@ -35,7 +36,7 @@ namespace SnippetStore
             SetupForm setupForm = new SetupForm();
             setupForm.ShowDialog();
         }
-        //mongodb+srv://snippetstore:hLMpRxnk1hzcwHxa@snippetstorecluster.ezjte.mongodb.net/?retryWrites=true&w=majority&appName=SnippetStoreCluster
+
         public void UpdateTreeView()
         {
             treeView1.Nodes.Clear();
@@ -67,18 +68,26 @@ namespace SnippetStore
         {
             rtbMainCode.Clear();
             snippetId = mongoHelper.GetMongoIdFromSnipetName(e.Node.Text);
-            if (snippetId != null) { rtbMainCode.Rtf = mongoHelper.GetCodeSnipetById(snippetId); }
+
+            if (snippetId != null)
+            {
+                rtbMainCode.Rtf = mongoHelper.GetCodeSnipetById(snippetId);
+                mongoHelper.IncreaseView(snippetId);
+            }
+
             if (rtbMainCode.Text == "")
             {
                 btnDel.Enabled = false;
-                btnEdit.Enabled = false;
+                //btnEdit.Enabled = false;
             }
             else
             {
                 btnDel.Enabled = true;
-                btnEdit.Enabled = true;
+                //btnEdit.Enabled = true;
             }
+
             WordHighlight();
+
             //Debug.WriteLine(mongoHelper.GedMongoIdFromSnipetName(e.Node.Text));            
         }
 
@@ -134,7 +143,6 @@ namespace SnippetStore
                     btnDel.Enabled = false;
                 }
             }
-
         }
 
         private void WordHighlight()
@@ -159,8 +167,6 @@ namespace SnippetStore
             // Kijelölés eltávolítása
             rtbMainCode.Select(0, 0);
 
-
-
             foreach (var word in separatorToHighlight)
             {
                 int startIndex = 0;
@@ -174,8 +180,48 @@ namespace SnippetStore
 
             // Kijelölés eltávolítása
             rtbMainCode.Select(0, 0);
+        }
 
+        private void btnCancelModify_Click(object sender, EventArgs e)
+        {
+            btnCancelModify.Enabled = false;
+            btnSaveModify.Enabled = false;
+            rtbMainCode.ReadOnly = true;
+            treeView1.Enabled = true;
+            rtbMainCode.Clear();
+            UpdateTreeView();
+        }
 
+        private void btnSaveModify_Click(object sender, EventArgs e)
+        {
+            if (snippetId != null && rtbMainCode.Rtf != null)
+            {
+                btnCancelModify.Enabled = false;
+                btnSaveModify.Enabled = false;
+                mongoHelper.SaveModify(snippetId, rtbMainCode.Rtf);
+                treeView1.Enabled = true;
+            }
+        }
+
+        private void rtbMainCode_DoubleClick(object sender, EventArgs e)
+        {
+            if (rtbMainCode.Text != "")
+            {
+                btnSaveModify.Enabled = true;
+                btnCancelModify.Enabled = true;
+                rtbMainCode.ReadOnly = false;
+                treeView1.Enabled = false;
+            }
+        }
+
+        private void btnExpandAll_Click(object sender, EventArgs e)
+        {
+            treeView1.ExpandAll();
+        }
+
+        private void btnCloseAll_Click(object sender, EventArgs e)
+        {
+            treeView1.CollapseAll();
         }
     }
 }

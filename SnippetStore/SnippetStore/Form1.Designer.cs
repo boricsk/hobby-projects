@@ -37,13 +37,19 @@
             btnSetup = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             btnDel = new ToolStripButton();
-            btnEdit = new ToolStripButton();
+            toolStripSeparator3 = new ToolStripSeparator();
+            btnSaveModify = new ToolStripButton();
+            btnCancelModify = new ToolStripButton();
+            toolStripSeparator4 = new ToolStripSeparator();
+            btnExpandAll = new ToolStripButton();
+            btnCloseAll = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             tbSearch2 = new TextBox();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
             timer = new System.Windows.Forms.Timer(components);
+            toolStripSeparator5 = new ToolStripSeparator();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -65,7 +71,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, btnEdit });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -111,18 +117,60 @@
             btnDel.ImageTransparentColor = Color.Magenta;
             btnDel.Name = "btnDel";
             btnDel.Size = new Size(52, 52);
-            btnDel.Text = "Drop data";
+            btnDel.Text = "Drop snippet";
             btnDel.Click += btnDel_Click;
             // 
-            // btnEdit
+            // toolStripSeparator3
             // 
-            btnEdit.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnEdit.Enabled = false;
-            btnEdit.Image = (Image)resources.GetObject("btnEdit.Image");
-            btnEdit.ImageTransparentColor = Color.Magenta;
-            btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(52, 52);
-            btnEdit.Text = "toolStripButton1";
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(6, 55);
+            // 
+            // btnSaveModify
+            // 
+            btnSaveModify.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSaveModify.Enabled = false;
+            btnSaveModify.Image = (Image)resources.GetObject("btnSaveModify.Image");
+            btnSaveModify.ImageTransparentColor = Color.Magenta;
+            btnSaveModify.Name = "btnSaveModify";
+            btnSaveModify.Size = new Size(52, 52);
+            btnSaveModify.Text = "Save changes";
+            btnSaveModify.Click += btnSaveModify_Click;
+            // 
+            // btnCancelModify
+            // 
+            btnCancelModify.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnCancelModify.Enabled = false;
+            btnCancelModify.Image = (Image)resources.GetObject("btnCancelModify.Image");
+            btnCancelModify.ImageTransparentColor = Color.Magenta;
+            btnCancelModify.Name = "btnCancelModify";
+            btnCancelModify.Size = new Size(52, 52);
+            btnCancelModify.Text = "Cancel changes";
+            btnCancelModify.Click += btnCancelModify_Click;
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 55);
+            // 
+            // btnExpandAll
+            // 
+            btnExpandAll.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnExpandAll.Image = (Image)resources.GetObject("btnExpandAll.Image");
+            btnExpandAll.ImageTransparentColor = Color.Magenta;
+            btnExpandAll.Name = "btnExpandAll";
+            btnExpandAll.Size = new Size(52, 52);
+            btnExpandAll.Text = "Expand all";
+            btnExpandAll.Click += btnExpandAll_Click;
+            // 
+            // btnCloseAll
+            // 
+            btnCloseAll.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnCloseAll.Image = (Image)resources.GetObject("btnCloseAll.Image");
+            btnCloseAll.ImageTransparentColor = Color.Magenta;
+            btnCloseAll.Name = "btnCloseAll";
+            btnCloseAll.Size = new Size(52, 52);
+            btnCloseAll.Text = "Collapse all";
+            btnCloseAll.Click += btnCloseAll_Click;
             // 
             // splitContainer1
             // 
@@ -187,12 +235,18 @@
             rtbMainCode.TabIndex = 1;
             rtbMainCode.Text = "";
             rtbMainCode.WordWrap = false;
+            rtbMainCode.DoubleClick += rtbMainCode_DoubleClick;
             // 
             // timer
             // 
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 55);
             // 
             // MainForm
             // 
@@ -234,8 +288,14 @@
         private System.Windows.Forms.Timer timer;
         //private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton btnDel;
-        private ToolStripButton btnEdit;
         private TreeView treeView1;
         private TextBox tbSearch2;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripButton btnSaveModify;
+        private ToolStripButton btnCancelModify;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton btnExpandAll;
+        private ToolStripButton btnCloseAll;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }
