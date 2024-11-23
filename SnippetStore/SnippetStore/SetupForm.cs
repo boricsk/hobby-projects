@@ -13,6 +13,7 @@ namespace SnippetStore
     public partial class SetupForm : Form
     {
         private List<string?>? _parameters;
+        private bool[] _searchOptions = new bool[4];
         MongoHelper mongoHelper = new MongoHelper();
         
         public SetupForm()
@@ -62,6 +63,11 @@ namespace SnippetStore
             tbConString.Text = RegistryOps.ReadConString();
             pResWordColor.BackColor = RegistryOps.ReadResWordColor();
             pSepColor.BackColor = RegistryOps.ReadBlockSepColor();
+            _searchOptions = RegistryOps.ReadSearchOptions();
+            cbCodeSnip.Checked = _searchOptions[0];
+            cbDesc.Checked = _searchOptions[1];
+            cbKeyw.Checked = _searchOptions[2];
+            cbSnipName.Checked = _searchOptions[3];
         }
         private void ClearListBoxes()
         {
@@ -196,6 +202,11 @@ namespace SnippetStore
             RegistryOps.WriteConString(tbConString.Text);
             RegistryOps.WriteResWordColor(pResWordColor.BackColor);
             RegistryOps.WriteBlockSepColor(pSepColor.BackColor);
+            _searchOptions[0] = cbCodeSnip.Checked;
+            _searchOptions[1] = cbDesc.Checked;
+            _searchOptions[2] = cbKeyw.Checked;
+            _searchOptions[3] = cbSnipName.Checked;
+            RegistryOps.WriteSearchOptions(_searchOptions);
             this.Close();
         }
     }

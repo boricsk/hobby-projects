@@ -49,9 +49,9 @@ namespace SnippetStore
                 treeView1.Nodes.Add(node);
 
                 var snipName = data.GroupBy(n => n.SnipName);
-
+                
                 foreach (var name in snipName)
-                {
+                {                    
                     TreeNode snipNode = new TreeNode(name.Key);
                     snipNode.Tag = name;
                     node.Nodes.Add(snipNode);
@@ -90,17 +90,18 @@ namespace SnippetStore
 
             //Debug.WriteLine(mongoHelper.GedMongoIdFromSnipetName(e.Node.Text));            
         }
-
         private void OnTypeSearch(object sender, EventArgs e)
         {
+            bool[] op = new bool[3];
+            op = RegistryOps.ReadSearchOptions();
             if (tbSearch2.Text != "")
             {
                 treeView1.Nodes.Clear();
                 var SnipData = mongoHelper.GetSnipets().AsQueryable()
-                    .Where(x => x.SnipKeywords.Contains(tbSearch2.Text) ||
-                               (x.SnipName != null && x.SnipName.Contains(tbSearch2.Text)) ||
-                               (x.SnipShortDesc != null && x.SnipShortDesc.Contains(tbSearch2.Text)) ||
-                               (x.SnipCode != null && x.SnipCode.Contains(tbSearch2.Text)))
+                    .Where(x => (op[2] && x.SnipKeywords.Contains(tbSearch2.Text)) ||
+                                (op[3] && x.SnipName != null && x.SnipName.Contains(tbSearch2.Text)) ||
+                                (op[1] && x.SnipShortDesc != null && x.SnipShortDesc.Contains(tbSearch2.Text)) ||
+                                (op[0] && x.SnipCode != null && x.SnipCode.Contains(tbSearch2.Text)))
                     .ToList().GroupBy(l => l.SnipLanguage);
 
                 foreach (var data in SnipData)
@@ -188,6 +189,7 @@ namespace SnippetStore
             btnSaveModify.Enabled = false;
             rtbMainCode.ReadOnly = true;
             treeView1.Enabled = true;
+            toolStrip2.Enabled = false;
             rtbMainCode.Clear();
             UpdateTreeView();
         }
@@ -200,6 +202,8 @@ namespace SnippetStore
                 btnSaveModify.Enabled = false;
                 mongoHelper.SaveModify(snippetId, rtbMainCode.Rtf);
                 treeView1.Enabled = true;
+                toolStrip2.Enabled = false;
+
             }
         }
 
@@ -211,6 +215,7 @@ namespace SnippetStore
                 btnCancelModify.Enabled = true;
                 rtbMainCode.ReadOnly = false;
                 treeView1.Enabled = false;
+                toolStrip2.Enabled = true;
             }
         }
 
@@ -222,6 +227,22 @@ namespace SnippetStore
         private void btnCloseAll_Click(object sender, EventArgs e)
         {
             treeView1.CollapseAll();
+        }
+
+        private void btnMainFont_Click(object sender, EventArgs e)
+        {
+            if (mainCodeFontDialog.ShowDialog() == DialogResult.OK)
+            {
+                rtbMainCode.SelectionFont = mainCodeFontDialog.Font;
+            }
+        }
+
+        private void btnMainColor_Click(object sender, EventArgs e)
+        {
+            if (mainCodeColorDialog.ShowDialog() == DialogResult.OK)
+            { 
+                rtbMainCode.SelectionColor = mainCodeColorDialog.Color;
+            }
         }
     }
 }

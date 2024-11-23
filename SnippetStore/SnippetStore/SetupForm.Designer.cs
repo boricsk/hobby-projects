@@ -59,6 +59,12 @@
             tbReservedWords = new TextBox();
             colorDialog1 = new ColorDialog();
             btnSyntaxConfigSave = new Button();
+            fontDialog1 = new FontDialog();
+            groupBox6 = new GroupBox();
+            cbKeyw = new CheckBox();
+            cbDesc = new CheckBox();
+            cbCodeSnip = new CheckBox();
+            cbSnipName = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -67,6 +73,7 @@
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
+            groupBox6.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -76,19 +83,20 @@
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(874, 427);
+            tabControl1.Size = new Size(838, 427);
             tabControl1.TabIndex = 6;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(groupBox6);
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(866, 399);
+            tabPage1.Size = new Size(830, 399);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "Parameters";
+            tabPage1.Text = "Search parameters";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox2
@@ -203,7 +211,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(866, 399);
+            tabPage2.Size = new Size(830, 399);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Syntax";
             tabPage2.UseVisualStyleBackColor = true;
@@ -214,7 +222,7 @@
             groupBox5.FlatStyle = FlatStyle.Popup;
             groupBox5.Location = new Point(554, 6);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(306, 64);
+            groupBox5.Size = new Size(270, 64);
             groupBox5.TabIndex = 11;
             groupBox5.TabStop = false;
             groupBox5.Text = "Connection string";
@@ -223,7 +231,7 @@
             // 
             tbConString.Location = new Point(6, 22);
             tbConString.Name = "tbConString";
-            tbConString.Size = new Size(294, 23);
+            tbConString.Size = new Size(255, 23);
             tbConString.TabIndex = 0;
             tbConString.Text = "mongodb://localhost:27017";
             // 
@@ -374,7 +382,7 @@
             // btnSyntaxConfigSave
             // 
             btnSyntaxConfigSave.FlatStyle = FlatStyle.Flat;
-            btnSyntaxConfigSave.Location = new Point(776, 445);
+            btnSyntaxConfigSave.Location = new Point(740, 445);
             btnSyntaxConfigSave.Name = "btnSyntaxConfigSave";
             btnSyntaxConfigSave.Size = new Size(110, 31);
             btnSyntaxConfigSave.TabIndex = 11;
@@ -382,11 +390,73 @@
             btnSyntaxConfigSave.UseVisualStyleBackColor = true;
             btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
             // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(cbSnipName);
+            groupBox6.Controls.Add(cbCodeSnip);
+            groupBox6.Controls.Add(cbDesc);
+            groupBox6.Controls.Add(cbKeyw);
+            groupBox6.FlatStyle = FlatStyle.Popup;
+            groupBox6.Location = new Point(554, 6);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(268, 132);
+            groupBox6.TabIndex = 8;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Search in ...";
+            // 
+            // cbKeyw
+            // 
+            cbKeyw.AutoSize = true;
+            cbKeyw.Checked = true;
+            cbKeyw.CheckState = CheckState.Checked;
+            cbKeyw.Location = new Point(7, 25);
+            cbKeyw.Name = "cbKeyw";
+            cbKeyw.Size = new Size(77, 19);
+            cbKeyw.TabIndex = 0;
+            cbKeyw.Text = "Keywords";
+            cbKeyw.UseVisualStyleBackColor = true;
+            // 
+            // cbDesc
+            // 
+            cbDesc.AutoSize = true;
+            cbDesc.Checked = true;
+            cbDesc.CheckState = CheckState.Checked;
+            cbDesc.Location = new Point(7, 50);
+            cbDesc.Name = "cbDesc";
+            cbDesc.Size = new Size(121, 19);
+            cbDesc.TabIndex = 1;
+            cbDesc.Text = "Short descriptions";
+            cbDesc.UseVisualStyleBackColor = true;
+            // 
+            // cbCodeSnip
+            // 
+            cbCodeSnip.AutoSize = true;
+            cbCodeSnip.Checked = true;
+            cbCodeSnip.CheckState = CheckState.Checked;
+            cbCodeSnip.Location = new Point(6, 75);
+            cbCodeSnip.Name = "cbCodeSnip";
+            cbCodeSnip.Size = new Size(101, 19);
+            cbCodeSnip.TabIndex = 2;
+            cbCodeSnip.Text = "Code snippets";
+            cbCodeSnip.UseVisualStyleBackColor = true;
+            // 
+            // cbSnipName
+            // 
+            cbSnipName.AutoSize = true;
+            cbSnipName.Checked = true;
+            cbSnipName.CheckState = CheckState.Checked;
+            cbSnipName.Location = new Point(7, 100);
+            cbSnipName.Name = "cbSnipName";
+            cbSnipName.Size = new Size(99, 19);
+            cbSnipName.TabIndex = 3;
+            cbSnipName.Text = "Snippet name";
+            cbSnipName.UseVisualStyleBackColor = true;
+            // 
             // SetupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(897, 485);
+            ClientSize = new Size(855, 485);
             Controls.Add(btnSyntaxConfigSave);
             Controls.Add(tabControl1);
             Name = "SetupForm";
@@ -404,6 +474,8 @@
             groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -440,5 +512,11 @@
         private Panel pSepColor;
         private Button btnSetupSeparatorColor;
         private Button btnSyntaxConfigSave;
+        private GroupBox groupBox6;
+        private CheckBox cbKeyw;
+        private FontDialog fontDialog1;
+        private CheckBox cbCodeSnip;
+        private CheckBox cbDesc;
+        private CheckBox cbSnipName;
     }
 }

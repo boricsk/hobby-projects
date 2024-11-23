@@ -49,7 +49,12 @@
             tbSearch2 = new TextBox();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
+            toolStrip2 = new ToolStrip();
+            btnMainFont = new ToolStripButton();
             timer = new System.Windows.Forms.Timer(components);
+            mainCodeFontDialog = new FontDialog();
+            btnMainColor = new ToolStripButton();
+            mainCodeColorDialog = new ColorDialog();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -58,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.SuspendLayout();
+            toolStrip2.SuspendLayout();
             SuspendLayout();
             // 
             // statusStrip1
@@ -223,6 +229,7 @@
             // splitContainer2.Panel1
             // 
             splitContainer2.Panel1.Controls.Add(rtbMainCode);
+            splitContainer2.Panel1.Controls.Add(toolStrip2);
             splitContainer2.Size = new Size(1083, 668);
             splitContainer2.SplitterDistance = 335;
             splitContainer2.TabIndex = 0;
@@ -233,20 +240,50 @@
             rtbMainCode.BackColor = SystemColors.Window;
             rtbMainCode.Dock = DockStyle.Fill;
             rtbMainCode.Font = new Font("Cascadia Code", 10F);
-            rtbMainCode.Location = new Point(0, 0);
+            rtbMainCode.Location = new Point(0, 25);
             rtbMainCode.Name = "rtbMainCode";
             rtbMainCode.ReadOnly = true;
-            rtbMainCode.Size = new Size(1083, 335);
-            rtbMainCode.TabIndex = 1;
+            rtbMainCode.Size = new Size(1083, 310);
+            rtbMainCode.TabIndex = 2;
             rtbMainCode.Text = "";
             rtbMainCode.WordWrap = false;
             rtbMainCode.DoubleClick += rtbMainCode_DoubleClick;
+            // 
+            // toolStrip2
+            // 
+            toolStrip2.Enabled = false;
+            toolStrip2.Items.AddRange(new ToolStripItem[] { btnMainFont, btnMainColor });
+            toolStrip2.Location = new Point(0, 0);
+            toolStrip2.Name = "toolStrip2";
+            toolStrip2.Size = new Size(1083, 25);
+            toolStrip2.TabIndex = 0;
+            toolStrip2.Text = "toolStrip2";
+            // 
+            // btnMainFont
+            // 
+            btnMainFont.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnMainFont.Image = (Image)resources.GetObject("btnMainFont.Image");
+            btnMainFont.ImageTransparentColor = Color.Magenta;
+            btnMainFont.Name = "btnMainFont";
+            btnMainFont.Size = new Size(23, 22);
+            btnMainFont.Text = "Font";
+            btnMainFont.Click += btnMainFont_Click;
             // 
             // timer
             // 
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
+            // 
+            // btnMainColor
+            // 
+            btnMainColor.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnMainColor.Image = (Image)resources.GetObject("btnMainColor.Image");
+            btnMainColor.ImageTransparentColor = Color.Magenta;
+            btnMainColor.Name = "btnMainColor";
+            btnMainColor.Size = new Size(23, 22);
+            btnMainColor.Text = "Font color";
+            btnMainColor.Click += btnMainColor_Click;
             // 
             // MainForm
             // 
@@ -267,8 +304,11 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
+            toolStrip2.ResumeLayout(false);
+            toolStrip2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -284,7 +324,6 @@
         private ToolStripSeparator toolStripSeparator2;
         //private ToolStripTextBox tbSearch;
         private SplitContainer splitContainer2;
-        private RichTextBox rtbMainCode;
         private System.Windows.Forms.Timer timer;
         //private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton btnDel;
@@ -297,5 +336,11 @@
         private ToolStripButton btnExpandAll;
         private ToolStripButton btnCloseAll;
         private ToolStripSeparator toolStripSeparator5;
+        private RichTextBox rtbMainCode;
+        private ToolStrip toolStrip2;
+        private ToolStripButton btnMainFont;
+        private FontDialog mainCodeFontDialog;
+        private ToolStripButton btnMainColor;
+        private ColorDialog mainCodeColorDialog;
     }
 }

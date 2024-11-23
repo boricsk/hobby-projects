@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SnippetStore
 {
@@ -176,7 +178,27 @@ namespace SnippetStore
 
         private void tbSnippetName_TextChanged(object sender, EventArgs e)
         {
+            //tbSnippetName.Text = "AL General";
+            var SnipData = mongoHelper.GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == cbLanguages.Text).GroupBy(l => l.SnipName);
+            foreach (var data in SnipData)
+            {
+                if (data.Key != null)
+                {
+                    if (tbSnippetName.Text == data.Key)
+                    {
+                        tbSnippetName.BackColor = Color.Red; 
+                        btnAddDatabase.Enabled = false;
+                        break;
+                    }
+                    else
+                    {
+                        tbSnippetName.BackColor = Color.White;
+                        btnAddDatabase.Enabled = true;
+                    }
+                }
+            }
             tbShortDesc.Text = tbSnippetName.Text;
+
         }
     }
 }

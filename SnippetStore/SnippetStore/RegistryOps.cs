@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,6 +85,43 @@ namespace SnippetStore
                 }
             }
             return color;
+        }
+
+        public static void  WriteSearchOptions(bool[] options)
+        {
+            using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                //_searchOptions[0] = cbCodeSnip.Checked;
+                //_searchOptions[1] = cbDesc.Checked;
+                //_searchOptions[2] = cbKeyw.Checked;
+                //_searchOptions[3] = cbSnipName.Checked;
+
+                key?.SetValue("In Code Snippets", options[0]);
+                key?.SetValue("In Descriptions", options[1]);
+                key?.SetValue("In Keywords", options[2]);
+                key?.SetValue("In Snippet name", options[3]);
+            }
+        }
+
+        public static bool[] ReadSearchOptions()
+        { 
+            bool[] options = new bool[4];
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                if (key != null)
+                {
+                    object? inCodeSnip = key.GetValue("In Code Snippets");
+                    object? inDesc = key.GetValue("In Descriptions");
+                    object? inKeyword = key.GetValue("In Keywords");
+                    object? inSnipName = key.GetValue("In Snippet name");
+
+                    if (inCodeSnip != null) { options[0] = Convert.ToBoolean(inCodeSnip); } else { options[0] = true; }
+                    if (inDesc != null) { options[1] = Convert.ToBoolean(inDesc); } else { options[1] = true; }
+                    if (inKeyword != null) { options[2] = Convert.ToBoolean(inKeyword); } else { options[2] = true; }
+                    if (inSnipName != null) { options[3] = Convert.ToBoolean(inSnipName); } else { options[3] = true; }
+                }
+            }
+            return options;
         }
     }
 }
