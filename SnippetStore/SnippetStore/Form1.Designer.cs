@@ -30,6 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             statusStrip1 = new StatusStrip();
             toolStrip1 = new ToolStrip();
             btnAddNewSnippet = new ToolStripButton();
@@ -44,6 +50,7 @@
             btnExpandAll = new ToolStripButton();
             btnCloseAll = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
+            btnCopySnippet = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             tbSearch2 = new TextBox();
@@ -51,10 +58,20 @@
             rtbMainCode = new RichTextBox();
             toolStrip2 = new ToolStrip();
             btnMainFont = new ToolStripButton();
+            btnMainColor = new ToolStripButton();
+            splitContainer3 = new SplitContainer();
+            groupBox1 = new GroupBox();
+            tbMainCodeDesc = new TextBox();
+            splitContainer4 = new SplitContainer();
+            groupBox2 = new GroupBox();
+            chartSnippetNum = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            groupBox3 = new GroupBox();
+            chartNumOfWiew = new System.Windows.Forms.DataVisualization.Charting.Chart();
             timer = new System.Windows.Forms.Timer(components);
             mainCodeFontDialog = new FontDialog();
-            btnMainColor = new ToolStripButton();
             mainCodeColorDialog = new ColorDialog();
+            toolStripSeparator6 = new ToolStripSeparator();
+            btnSync = new ToolStripButton();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -62,8 +79,22 @@
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
             splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
             toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).BeginInit();
+            splitContainer4.Panel1.SuspendLayout();
+            splitContainer4.Panel2.SuspendLayout();
+            splitContainer4.SuspendLayout();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartSnippetNum).BeginInit();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartNumOfWiew).BeginInit();
             SuspendLayout();
             // 
             // statusStrip1
@@ -77,7 +108,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5, btnCopySnippet, toolStripSeparator6, btnSync });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -183,6 +214,17 @@
             toolStripSeparator5.Name = "toolStripSeparator5";
             toolStripSeparator5.Size = new Size(6, 55);
             // 
+            // btnCopySnippet
+            // 
+            btnCopySnippet.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnCopySnippet.Enabled = false;
+            btnCopySnippet.Image = (Image)resources.GetObject("btnCopySnippet.Image");
+            btnCopySnippet.ImageTransparentColor = Color.Magenta;
+            btnCopySnippet.Name = "btnCopySnippet";
+            btnCopySnippet.Size = new Size(52, 52);
+            btnCopySnippet.Text = "Copy snippet";
+            btnCopySnippet.Click += btnCopySnippet_Click;
+            // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
@@ -230,6 +272,10 @@
             // 
             splitContainer2.Panel1.Controls.Add(rtbMainCode);
             splitContainer2.Panel1.Controls.Add(toolStrip2);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(splitContainer3);
             splitContainer2.Size = new Size(1083, 668);
             splitContainer2.SplitterDistance = 335;
             splitContainer2.TabIndex = 0;
@@ -269,12 +315,6 @@
             btnMainFont.Text = "Font";
             btnMainFont.Click += btnMainFont_Click;
             // 
-            // timer
-            // 
-            timer.Enabled = true;
-            timer.Interval = 1000;
-            timer.Tick += timer_Tick;
-            // 
             // btnMainColor
             // 
             btnMainColor.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -284,6 +324,138 @@
             btnMainColor.Size = new Size(23, 22);
             btnMainColor.Text = "Font color";
             btnMainColor.Click += btnMainColor_Click;
+            // 
+            // splitContainer3
+            // 
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.Controls.Add(groupBox1);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.Controls.Add(splitContainer4);
+            splitContainer3.Size = new Size(1083, 329);
+            splitContainer3.SplitterDistance = 274;
+            splitContainer3.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(tbMainCodeDesc);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(274, 329);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Description";
+            // 
+            // tbMainCodeDesc
+            // 
+            tbMainCodeDesc.Dock = DockStyle.Fill;
+            tbMainCodeDesc.Enabled = false;
+            tbMainCodeDesc.Location = new Point(3, 19);
+            tbMainCodeDesc.Multiline = true;
+            tbMainCodeDesc.Name = "tbMainCodeDesc";
+            tbMainCodeDesc.Size = new Size(268, 307);
+            tbMainCodeDesc.TabIndex = 0;
+            // 
+            // splitContainer4
+            // 
+            splitContainer4.Dock = DockStyle.Fill;
+            splitContainer4.Location = new Point(0, 0);
+            splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            splitContainer4.Panel1.Controls.Add(groupBox2);
+            // 
+            // splitContainer4.Panel2
+            // 
+            splitContainer4.Panel2.Controls.Add(groupBox3);
+            splitContainer4.Size = new Size(805, 329);
+            splitContainer4.SplitterDistance = 352;
+            splitContainer4.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(chartSnippetNum);
+            groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Location = new Point(0, 0);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(352, 329);
+            groupBox2.TabIndex = 0;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Chart - Snippets by language";
+            // 
+            // chartSnippetNum
+            // 
+            chartArea1.Name = "ChartArea1";
+            chartSnippetNum.ChartAreas.Add(chartArea1);
+            chartSnippetNum.Dock = DockStyle.Fill;
+            legend1.Name = "Legend1";
+            chartSnippetNum.Legends.Add(legend1);
+            chartSnippetNum.Location = new Point(3, 19);
+            chartSnippetNum.Name = "chartSnippetNum";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartSnippetNum.Series.Add(series1);
+            chartSnippetNum.Size = new Size(346, 307);
+            chartSnippetNum.TabIndex = 0;
+            chartSnippetNum.Text = "chart1";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(chartNumOfWiew);
+            groupBox3.Dock = DockStyle.Fill;
+            groupBox3.Location = new Point(0, 0);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(449, 329);
+            groupBox3.TabIndex = 0;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Chart - Top 5 views";
+            // 
+            // chartNumOfWiew
+            // 
+            chartArea2.Name = "ChartArea1";
+            chartNumOfWiew.ChartAreas.Add(chartArea2);
+            chartNumOfWiew.Dock = DockStyle.Fill;
+            legend2.Name = "Legend1";
+            chartNumOfWiew.Legends.Add(legend2);
+            chartNumOfWiew.Location = new Point(3, 19);
+            chartNumOfWiew.Name = "chartNumOfWiew";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartNumOfWiew.Series.Add(series2);
+            chartNumOfWiew.Size = new Size(443, 307);
+            chartNumOfWiew.TabIndex = 0;
+            chartNumOfWiew.Text = "chart1";
+            // 
+            // timer
+            // 
+            timer.Enabled = true;
+            timer.Interval = 1000;
+            timer.Tick += timer_Tick;
+            // 
+            // toolStripSeparator6
+            // 
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            toolStripSeparator6.Size = new Size(6, 55);
+            // 
+            // btnSync
+            // 
+            btnSync.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSync.Image = (Image)resources.GetObject("btnSync.Image");
+            btnSync.ImageTransparentColor = Color.Magenta;
+            btnSync.Name = "btnSync";
+            btnSync.Size = new Size(52, 52);
+            btnSync.Text = "toolStripButton1";
+            btnSync.Click += btnSync_Click;
             // 
             // MainForm
             // 
@@ -305,10 +477,25 @@
             splitContainer1.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
             splitContainer2.Panel1.PerformLayout();
+            splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
             toolStrip2.ResumeLayout(false);
             toolStrip2.PerformLayout();
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            splitContainer4.Panel1.ResumeLayout(false);
+            splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).EndInit();
+            splitContainer4.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartSnippetNum).EndInit();
+            groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartNumOfWiew).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -342,5 +529,16 @@
         private FontDialog mainCodeFontDialog;
         private ToolStripButton btnMainColor;
         private ColorDialog mainCodeColorDialog;
+        private SplitContainer splitContainer3;
+        private GroupBox groupBox1;
+        private SplitContainer splitContainer4;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private TextBox tbMainCodeDesc;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSnippetNum;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartNumOfWiew;
+        private ToolStripButton btnCopySnippet;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripButton btnSync;
     }
 }

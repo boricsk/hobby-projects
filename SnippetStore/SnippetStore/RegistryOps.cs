@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Microsoft.Win32;
 
 namespace SnippetStore
@@ -33,6 +34,53 @@ namespace SnippetStore
             {
                 key?.SetValue("MongoConString", conString);
             }
+        }
+
+        public static string ReadConStringLocal()
+        {
+            string conString = "";
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                if (key != null)
+                {
+                    var value = key.GetValue("MongoConStringLocal");
+                    if (value != null)
+                    {
+                        conString = value.ToString() ?? "";
+                    }
+                }
+            }
+            return conString;
+        }
+
+        public static void WriteConStringLocal(string conString)
+        {
+            using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                key?.SetValue("MongoConStringLocal", conString);
+            }
+        }
+
+        public static void WriteDatabaseOption(bool isLocal)
+        {
+            using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                key?.SetValue("isUseLocalDb", isLocal);
+            }
+        }
+
+        public static bool ReadDatabaseOption()
+        {
+            bool ret = false;
+            using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                object? isLocalDb = key.GetValue("isUseLocalDb");
+                if (key != null)
+                {
+                    if (isLocalDb != null) { ret = Convert.ToBoolean(isLocalDb); }
+                }
+            }
+            return ret;
         }
 
         public static void WriteResWordColor(Color resWordColor)

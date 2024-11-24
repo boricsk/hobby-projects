@@ -186,7 +186,7 @@ namespace SnippetStore
                 {
                     if (tbSnippetName.Text == data.Key)
                     {
-                        tbSnippetName.BackColor = Color.Red; 
+                        tbSnippetName.BackColor = Color.Red;
                         btnAddDatabase.Enabled = false;
                         break;
                     }
@@ -199,6 +199,42 @@ namespace SnippetStore
             }
             tbShortDesc.Text = tbSnippetName.Text;
 
+        }
+
+        private void cbLanguages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if (cbLanguages.SelectedIndex == -1)
+            //{
+            //    tbSnippetName.Enabled = false;
+            //}
+            //else
+            //{
+            //    tbSnippetName.Enabled = true;
+            //}
+        }
+
+        private void cbLanguages_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbLanguages.SelectedIndex == -1)
+            {
+                tbSnippetName.Enabled = false;
+            }
+            else
+            {
+                tbSnippetName.Enabled = true;
+            }
+        }
+
+        private void cbLanguages_Leave(object sender, EventArgs e)
+        {
+            if (cbLanguages.SelectedIndex == -1)
+            {
+                tbSnippetName.Enabled = false;
+            }
+            else
+            {
+                tbSnippetName.Enabled = true;
+            }
         }
     }
 }

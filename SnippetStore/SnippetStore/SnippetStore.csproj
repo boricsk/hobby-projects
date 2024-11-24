@@ -6,12 +6,21 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>Borics Krisztián</Authors>
+    <Company>DevNullSec</Company>
+    <Product>Snippet Store</Product>
+    <ApplicationIcon>3986701-online-shop-store-store-icon_112278.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="3986701-online-shop-store-store-icon_112278.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="3.0.0" />
     <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
 
   <ItemGroup>

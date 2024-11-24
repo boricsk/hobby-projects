@@ -1,13 +1,17 @@
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SnippetStore
 {
     public partial class MainForm : Form
     {
         private ToolStripStatusLabel statusLabelDate;
+        private ToolStripStatusLabel statusLabelConnected;
+        private ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
         private string? snippetId;
         MongoHelper mongoHelper = new MongoHelper();
         private List<string?>? wordsToHighlight = new List<string?>();
@@ -20,11 +24,28 @@ namespace SnippetStore
         {
             InitializeComponent();
             UpdateTreeView();
-            statusLabelDate = new ToolStripStatusLabel { Text = DateTime.Now.ToString() };
-            statusStrip1.Items.Add(statusLabelDate);
+            UpdateCharts();
+            PrepStatusBar();
+            PrepOptions();
+            Text += $" - {mongoHelper.ConnectedTo}";
+        }
+
+        private void PrepOptions()
+        {
             ResWordColor = RegistryOps.ReadResWordColor();
             SepColor = RegistryOps.ReadBlockSepColor();
+            btnSync.Enabled = !RegistryOps.ReadDatabaseOption();
         }
+
+        private void PrepStatusBar()
+        {
+            statusLabelDate = new ToolStripStatusLabel { Text = DateTime.Now.ToString() };
+            statusLabelConnected = new ToolStripStatusLabel { Text = $"Connected to {mongoHelper.ConnectedTo} database." };
+            statusStrip1.Items.Add(statusLabelDate);
+            statusStrip1.Items.Add(toolStripSeparator);
+            statusStrip1.Items.Add(statusLabelConnected);
+        }
+
         private void btnAddNewClick(object sender, EventArgs e)
         {
             AddNewSnippetForm addNewSnippetForm = new AddNewSnippetForm();
@@ -49,9 +70,9 @@ namespace SnippetStore
                 treeView1.Nodes.Add(node);
 
                 var snipName = data.GroupBy(n => n.SnipName);
-                
+
                 foreach (var name in snipName)
-                {                    
+                {
                     TreeNode snipNode = new TreeNode(name.Key);
                     snipNode.Tag = name;
                     node.Nodes.Add(snipNode);
@@ -62,6 +83,7 @@ namespace SnippetStore
         private void MainForm_Activated(object sender, EventArgs e)
         {
             UpdateTreeView();
+            UpdateCharts();            
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -72,24 +94,28 @@ namespace SnippetStore
             if (snippetId != null)
             {
                 rtbMainCode.Rtf = mongoHelper.GetCodeSnipetById(snippetId);
+                tbMainCodeDesc.Text = mongoHelper.GetCodeDescById(snippetId);
                 mongoHelper.IncreaseView(snippetId);
             }
 
             if (rtbMainCode.Text == "")
             {
                 btnDel.Enabled = false;
+                btnCopySnippet.Enabled = false;
                 //btnEdit.Enabled = false;
             }
             else
             {
                 btnDel.Enabled = true;
+                btnCopySnippet.Enabled = true;
                 //btnEdit.Enabled = true;
             }
 
             WordHighlight();
-
+            UpdateCharts();
             //Debug.WriteLine(mongoHelper.GedMongoIdFromSnipetName(e.Node.Text));            
         }
+
         private void OnTypeSearch(object sender, EventArgs e)
         {
             bool[] op = new bool[3];
@@ -240,9 +266,46 @@ namespace SnippetStore
         private void btnMainColor_Click(object sender, EventArgs e)
         {
             if (mainCodeColorDialog.ShowDialog() == DialogResult.OK)
-            { 
+            {
                 rtbMainCode.SelectionColor = mainCodeColorDialog.Color;
             }
+        }
+
+        private void UpdateCharts()
+        {
+            chartSnippetNum.Series.Clear();
+            chartNumOfWiew.Series.Clear();
+
+            var seriesSnipNum = new Series("Snippet number by lang.");
+            var seriesViewNum = new Series("Top 5 view");
+
+            seriesSnipNum.ChartType = SeriesChartType.Doughnut;
+            seriesViewNum.ChartType = SeriesChartType.Doughnut;
+
+            List<string?> snipNum = mongoHelper.GetLanguages();
+
+            foreach (var snip in snipNum)
+            {
+                seriesSnipNum.Points.AddXY(snip, mongoHelper.GetSnipNumByLanguage(snip));
+            }
+            chartSnippetNum.Series.Add(seriesSnipNum);
+
+
+            foreach (var v in mongoHelper.GetTop5Wiew())
+            {
+                seriesViewNum.Points.AddXY(v.Key, v.Value);
+            }
+            chartNumOfWiew.Series.Add(seriesViewNum);
+        }
+
+        private void btnCopySnippet_Click(object sender, EventArgs e)
+        {
+            rtbMainCode.Copy();
+        }
+
+        private void btnSync_Click(object sender, EventArgs e)
+        {
+            _ = mongoHelper.SyncLocalDatabase();
         }
     }
 }

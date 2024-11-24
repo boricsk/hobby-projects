@@ -12,7 +12,10 @@ namespace SnippetStore
     {
         private IMongoDatabase? _database;
         private string _MongoConString = string.Empty;
+        private string _MongoConStringLocal = string.Empty;
         private string dbName = "SnippetStore";
+
+        public string ConnectedTo { get; private set; }
 
         private IMongoCollection<SnippetDatabase> coll_snippets;
         private IMongoCollection<Languages> coll_languages;
@@ -22,6 +25,11 @@ namespace SnippetStore
 
         public MongoHelper()
         {
+            ConnectToDatabase();
+        }
+
+        public void ConnectToDatabase()
+        {
             if (RegistryOps.ReadConString() == "")
             {
                 RegistryOps.WriteConString("mongodb://localhost:27017");
@@ -29,17 +37,28 @@ namespace SnippetStore
             else
             {
                 _MongoConString = RegistryOps.ReadConString();
+                _MongoConStringLocal = RegistryOps.ReadConStringLocal();
             }
 
             try
             {
-                var client = new MongoClient(_MongoConString);
-                _database = client.GetDatabase(dbName);
+                if (RegistryOps.ReadDatabaseOption())
+                {
+                    var client = new MongoClient(_MongoConStringLocal);
+                    _database = client.GetDatabase(dbName);
+                    ConnectedTo = "Local";
+                }
+                else
+                {
+                    var client = new MongoClient(_MongoConString);
+                    _database = client.GetDatabase(dbName);
+                    ConnectedTo = "Cloud";
+                }
+
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Connection Error: {e.Message}");
-
             }
 
             coll_snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
@@ -141,6 +160,13 @@ namespace SnippetStore
             return result?.SnipCode;
         }
 
+        public string? GetCodeDescById(string id)
+        {
+            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id);
+            var result = coll_snippets.Find(filter).FirstOrDefault();
+            return result?.SnipShortDesc;
+        }
+
         public void DropDataById(string id)
         {
             coll_snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id));
@@ -148,14 +174,83 @@ namespace SnippetStore
 
         public void IncreaseView(string id)
         {
-            //var snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
             coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id), Builders<SnippetDatabase>.Update.Inc(x => x.NoOfView, 1));
-
         }
 
         public void SaveModify(string id, string newData)
         { 
             coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id), Builders<SnippetDatabase>.Update.Set(x => x.SnipCode, newData));
+        }
+
+        public long GetSnipNumByLanguage(string language)
+        { 
+            var filter = Builders<SnippetDatabase>.Filter.Eq(l => l.SnipLanguage, language);
+            return coll_snippets.Find(filter).CountDocuments();
+        }
+
+        public Dictionary<string, int> GetTop5Wiew()
+        {
+            Dictionary<string, int> result = new Dictionary<string,int>();
+
+            var topFive = coll_snippets.Find(Builders<SnippetDatabase>.Filter.Empty)
+                .Sort(Builders<SnippetDatabase>.Sort.Descending(w => w.NoOfView))
+                .Limit(5)
+                .ToList();
+
+            foreach (var t in topFive)
+            {
+                result.Add(t.SnipName, t.NoOfView);
+            }
+
+            return result;
+            
+        }
+
+        public async Task SyncLocalDatabase()
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want synchronize cloud database to local one?", "Sync database", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                var atlas = new MongoClient(RegistryOps.ReadConString());
+                var local = new MongoClient(RegistryOps.ReadConStringLocal());
+                var atlasDb = atlas.GetDatabase("SnippetStore");
+                var localDb = local.GetDatabase("SnippetStore");
+
+                var atlas_coll_snippets = atlasDb.GetCollection<SnippetDatabase>("SnippetStore");
+                var atlas_coll_snippets_data = await atlas_coll_snippets.Find(Builders<SnippetDatabase>.Filter.Empty).ToListAsync();
+
+                var atlas_coll_languages = atlasDb.GetCollection<Languages>("Languages");
+                var atlas_coll_languages_data = await atlas_coll_languages.Find(Builders<Languages>.Filter.Empty).ToListAsync();
+
+                var atlas_coll_keywords = atlasDb.GetCollection<Keywords>("Keywords");
+                var atlas_coll_keywords_data = await atlas_coll_keywords.Find(Builders<Keywords>.Filter.Empty).ToListAsync();
+
+                var atlas_coll_reswords = atlasDb.GetCollection<ResWords>("Reserved words");
+                var atlas_coll_reswords_data = await atlas_coll_reswords.Find(Builders<ResWords>.Filter.Empty).ToListAsync();
+
+                var atlas_coll_blockseps = atlasDb.GetCollection<BlockSeparators>("Block separators");
+                var atlas_coll_blockseps_data = await atlas_coll_blockseps.Find(Builders<BlockSeparators>.Filter.Empty).ToListAsync();
+
+                var local_coll_snippets = localDb.GetCollection<SnippetDatabase>("SnippetStore");
+                local_coll_snippets.DeleteMany(Builders<SnippetDatabase>.Filter.Empty);
+                await local_coll_snippets.InsertManyAsync(atlas_coll_snippets_data);
+
+                var local_coll_languages = localDb.GetCollection<Languages>("Languages");
+                local_coll_languages.DeleteMany(Builders<Languages>.Filter.Empty);
+                await local_coll_languages.InsertManyAsync(atlas_coll_languages_data);
+
+                var local_coll_keywords = localDb.GetCollection<Keywords>("Keywords");
+                local_coll_keywords.DeleteMany(Builders<Keywords>.Filter.Empty);
+                await local_coll_keywords.InsertManyAsync(atlas_coll_keywords_data);
+
+                var local_coll_reswords = localDb.GetCollection<ResWords>("Reserved words");
+                local_coll_reswords.DeleteMany(Builders<ResWords>.Filter.Empty);
+                await local_coll_reswords.InsertManyAsync(atlas_coll_reswords_data);
+
+                var local_coll_blockseps = localDb.GetCollection<BlockSeparators>("Block separators");
+                local_coll_blockseps.DeleteMany(Builders<BlockSeparators>.Filter.Empty);
+                await local_coll_blockseps.InsertManyAsync(atlas_coll_blockseps_data);
+            }
         }
     }
 }

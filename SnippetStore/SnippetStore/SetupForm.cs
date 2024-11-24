@@ -61,13 +61,16 @@ namespace SnippetStore
         private void GetConfiguration()
         {
             tbConString.Text = RegistryOps.ReadConString();
+            tbConStringLocal.Text = RegistryOps.ReadConStringLocal();
             pResWordColor.BackColor = RegistryOps.ReadResWordColor();
             pSepColor.BackColor = RegistryOps.ReadBlockSepColor();
             _searchOptions = RegistryOps.ReadSearchOptions();
+            cbUseLocalDb.Checked = RegistryOps.ReadDatabaseOption();
             cbCodeSnip.Checked = _searchOptions[0];
             cbDesc.Checked = _searchOptions[1];
             cbKeyw.Checked = _searchOptions[2];
             cbSnipName.Checked = _searchOptions[3];
+            
         }
         private void ClearListBoxes()
         {
@@ -200,8 +203,10 @@ namespace SnippetStore
         private void btnSyntaxConfigSave_Click(object sender, EventArgs e)
         {
             RegistryOps.WriteConString(tbConString.Text);
+            RegistryOps.WriteConStringLocal(tbConStringLocal.Text);
             RegistryOps.WriteResWordColor(pResWordColor.BackColor);
             RegistryOps.WriteBlockSepColor(pSepColor.BackColor);
+            RegistryOps.WriteDatabaseOption(cbUseLocalDb.Checked);
             _searchOptions[0] = cbCodeSnip.Checked;
             _searchOptions[1] = cbDesc.Checked;
             _searchOptions[2] = cbKeyw.Checked;

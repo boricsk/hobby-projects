@@ -30,6 +30,11 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            groupBox6 = new GroupBox();
+            cbSnipName = new CheckBox();
+            cbCodeSnip = new CheckBox();
+            cbDesc = new CheckBox();
+            cbKeyw = new CheckBox();
             groupBox2 = new GroupBox();
             btnRemoveLang = new Button();
             btnAddLang = new Button();
@@ -41,6 +46,9 @@
             lbKeywords = new ListBox();
             tbAddKeyw = new TextBox();
             tabPage2 = new TabPage();
+            cbUseLocalDb = new CheckBox();
+            groupBox7 = new GroupBox();
+            tbConStringLocal = new TextBox();
             groupBox5 = new GroupBox();
             tbConString = new TextBox();
             groupBox4 = new GroupBox();
@@ -60,20 +68,16 @@
             colorDialog1 = new ColorDialog();
             btnSyntaxConfigSave = new Button();
             fontDialog1 = new FontDialog();
-            groupBox6 = new GroupBox();
-            cbKeyw = new CheckBox();
-            cbDesc = new CheckBox();
-            cbCodeSnip = new CheckBox();
-            cbSnipName = new CheckBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox6.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
+            groupBox7.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
-            groupBox6.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -98,6 +102,68 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Search parameters";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(cbSnipName);
+            groupBox6.Controls.Add(cbCodeSnip);
+            groupBox6.Controls.Add(cbDesc);
+            groupBox6.Controls.Add(cbKeyw);
+            groupBox6.FlatStyle = FlatStyle.Popup;
+            groupBox6.Location = new Point(554, 6);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(268, 132);
+            groupBox6.TabIndex = 8;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Search in ...";
+            // 
+            // cbSnipName
+            // 
+            cbSnipName.AutoSize = true;
+            cbSnipName.Checked = true;
+            cbSnipName.CheckState = CheckState.Checked;
+            cbSnipName.Location = new Point(7, 100);
+            cbSnipName.Name = "cbSnipName";
+            cbSnipName.Size = new Size(99, 19);
+            cbSnipName.TabIndex = 3;
+            cbSnipName.Text = "Snippet name";
+            cbSnipName.UseVisualStyleBackColor = true;
+            // 
+            // cbCodeSnip
+            // 
+            cbCodeSnip.AutoSize = true;
+            cbCodeSnip.Checked = true;
+            cbCodeSnip.CheckState = CheckState.Checked;
+            cbCodeSnip.Location = new Point(6, 75);
+            cbCodeSnip.Name = "cbCodeSnip";
+            cbCodeSnip.Size = new Size(101, 19);
+            cbCodeSnip.TabIndex = 2;
+            cbCodeSnip.Text = "Code snippets";
+            cbCodeSnip.UseVisualStyleBackColor = true;
+            // 
+            // cbDesc
+            // 
+            cbDesc.AutoSize = true;
+            cbDesc.Checked = true;
+            cbDesc.CheckState = CheckState.Checked;
+            cbDesc.Location = new Point(7, 50);
+            cbDesc.Name = "cbDesc";
+            cbDesc.Size = new Size(121, 19);
+            cbDesc.TabIndex = 1;
+            cbDesc.Text = "Short descriptions";
+            cbDesc.UseVisualStyleBackColor = true;
+            // 
+            // cbKeyw
+            // 
+            cbKeyw.AutoSize = true;
+            cbKeyw.Checked = true;
+            cbKeyw.CheckState = CheckState.Checked;
+            cbKeyw.Location = new Point(7, 25);
+            cbKeyw.Name = "cbKeyw";
+            cbKeyw.Size = new Size(77, 19);
+            cbKeyw.TabIndex = 0;
+            cbKeyw.Text = "Keywords";
+            cbKeyw.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -205,6 +271,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(cbUseLocalDb);
+            tabPage2.Controls.Add(groupBox7);
             tabPage2.Controls.Add(groupBox5);
             tabPage2.Controls.Add(groupBox4);
             tabPage2.Controls.Add(groupBox3);
@@ -216,6 +284,35 @@
             tabPage2.Text = "Syntax";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // cbUseLocalDb
+            // 
+            cbUseLocalDb.AutoSize = true;
+            cbUseLocalDb.Location = new Point(554, 151);
+            cbUseLocalDb.Name = "cbUseLocalDb";
+            cbUseLocalDb.Size = new Size(220, 19);
+            cbUseLocalDb.TabIndex = 13;
+            cbUseLocalDb.Text = "Use local database (Restart required!)";
+            cbUseLocalDb.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(tbConStringLocal);
+            groupBox7.FlatStyle = FlatStyle.Popup;
+            groupBox7.Location = new Point(554, 76);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(270, 64);
+            groupBox7.TabIndex = 12;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Connection string  (Local)";
+            // 
+            // tbConStringLocal
+            // 
+            tbConStringLocal.Location = new Point(6, 22);
+            tbConStringLocal.Name = "tbConStringLocal";
+            tbConStringLocal.Size = new Size(255, 23);
+            tbConStringLocal.TabIndex = 0;
+            tbConStringLocal.Text = "mongodb://localhost:27017";
+            // 
             // groupBox5
             // 
             groupBox5.Controls.Add(tbConString);
@@ -225,7 +322,7 @@
             groupBox5.Size = new Size(270, 64);
             groupBox5.TabIndex = 11;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Connection string";
+            groupBox5.Text = "Connection string  (Cloud)";
             // 
             // tbConString
             // 
@@ -390,68 +487,6 @@
             btnSyntaxConfigSave.UseVisualStyleBackColor = true;
             btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
             // 
-            // groupBox6
-            // 
-            groupBox6.Controls.Add(cbSnipName);
-            groupBox6.Controls.Add(cbCodeSnip);
-            groupBox6.Controls.Add(cbDesc);
-            groupBox6.Controls.Add(cbKeyw);
-            groupBox6.FlatStyle = FlatStyle.Popup;
-            groupBox6.Location = new Point(554, 6);
-            groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(268, 132);
-            groupBox6.TabIndex = 8;
-            groupBox6.TabStop = false;
-            groupBox6.Text = "Search in ...";
-            // 
-            // cbKeyw
-            // 
-            cbKeyw.AutoSize = true;
-            cbKeyw.Checked = true;
-            cbKeyw.CheckState = CheckState.Checked;
-            cbKeyw.Location = new Point(7, 25);
-            cbKeyw.Name = "cbKeyw";
-            cbKeyw.Size = new Size(77, 19);
-            cbKeyw.TabIndex = 0;
-            cbKeyw.Text = "Keywords";
-            cbKeyw.UseVisualStyleBackColor = true;
-            // 
-            // cbDesc
-            // 
-            cbDesc.AutoSize = true;
-            cbDesc.Checked = true;
-            cbDesc.CheckState = CheckState.Checked;
-            cbDesc.Location = new Point(7, 50);
-            cbDesc.Name = "cbDesc";
-            cbDesc.Size = new Size(121, 19);
-            cbDesc.TabIndex = 1;
-            cbDesc.Text = "Short descriptions";
-            cbDesc.UseVisualStyleBackColor = true;
-            // 
-            // cbCodeSnip
-            // 
-            cbCodeSnip.AutoSize = true;
-            cbCodeSnip.Checked = true;
-            cbCodeSnip.CheckState = CheckState.Checked;
-            cbCodeSnip.Location = new Point(6, 75);
-            cbCodeSnip.Name = "cbCodeSnip";
-            cbCodeSnip.Size = new Size(101, 19);
-            cbCodeSnip.TabIndex = 2;
-            cbCodeSnip.Text = "Code snippets";
-            cbCodeSnip.UseVisualStyleBackColor = true;
-            // 
-            // cbSnipName
-            // 
-            cbSnipName.AutoSize = true;
-            cbSnipName.Checked = true;
-            cbSnipName.CheckState = CheckState.Checked;
-            cbSnipName.Location = new Point(7, 100);
-            cbSnipName.Name = "cbSnipName";
-            cbSnipName.Size = new Size(99, 19);
-            cbSnipName.TabIndex = 3;
-            cbSnipName.Text = "Snippet name";
-            cbSnipName.UseVisualStyleBackColor = true;
-            // 
             // SetupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -463,19 +498,22 @@
             Text = "Setup";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -518,5 +556,8 @@
         private CheckBox cbCodeSnip;
         private CheckBox cbDesc;
         private CheckBox cbSnipName;
+        private GroupBox groupBox7;
+        private TextBox tbConStringLocal;
+        private CheckBox cbUseLocalDb;
     }
 }

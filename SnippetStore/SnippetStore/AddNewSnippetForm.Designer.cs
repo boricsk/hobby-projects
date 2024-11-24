@@ -33,27 +33,27 @@
             fontDialog = new FontDialog();
             colorDialog = new ColorDialog();
             tabPage1 = new TabPage();
+            gbCode = new GroupBox();
+            tbCode = new RichTextBox();
+            gbLanguage = new GroupBox();
+            cbLanguages = new ComboBox();
+            gbDesc = new GroupBox();
+            tbShortDesc = new TextBox();
+            gbKeyword = new GroupBox();
+            tbSearchKeyw = new TextBox();
+            lbAvailKeyw = new ListBox();
+            btnRemoveKeyw = new Button();
+            btnAddKeyw = new Button();
+            lbKeywords = new ListBox();
             gbSnippetName = new GroupBox();
             tbSnippetName = new TextBox();
-            groupBox2 = new GroupBox();
-            lbKeywords = new ListBox();
-            btnAddKeyw = new Button();
-            btnRemoveKeyw = new Button();
-            lbAvailKeyw = new ListBox();
-            tbSearchKeyw = new TextBox();
-            groupBox3 = new GroupBox();
-            tbShortDesc = new TextBox();
-            groupBox1 = new GroupBox();
-            cbLanguages = new ComboBox();
-            groupBox4 = new GroupBox();
-            tbCode = new RichTextBox();
             tabControl1 = new TabControl();
             tabPage1.SuspendLayout();
+            gbCode.SuspendLayout();
+            gbLanguage.SuspendLayout();
+            gbDesc.SuspendLayout();
+            gbKeyword.SuspendLayout();
             gbSnippetName.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox1.SuspendLayout();
-            groupBox4.SuspendLayout();
             tabControl1.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,10 +78,10 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(groupBox4);
-            tabPage1.Controls.Add(groupBox1);
-            tabPage1.Controls.Add(groupBox3);
-            tabPage1.Controls.Add(groupBox2);
+            tabPage1.Controls.Add(gbCode);
+            tabPage1.Controls.Add(gbLanguage);
+            tabPage1.Controls.Add(gbDesc);
+            tabPage1.Controls.Add(gbKeyword);
             tabPage1.Controls.Add(gbSnippetName);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
@@ -91,136 +91,16 @@
             tabPage1.Text = "Add code";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // gbSnippetName
+            // gbCode
             // 
-            gbSnippetName.Controls.Add(tbSnippetName);
-            gbSnippetName.Location = new Point(6, 6);
-            gbSnippetName.Name = "gbSnippetName";
-            gbSnippetName.Size = new Size(340, 65);
-            gbSnippetName.TabIndex = 1;
-            gbSnippetName.TabStop = false;
-            gbSnippetName.Text = "Snippet name";
-            // 
-            // tbSnippetName
-            // 
-            tbSnippetName.Location = new Point(6, 22);
-            tbSnippetName.Name = "tbSnippetName";
-            tbSnippetName.Size = new Size(328, 23);
-            tbSnippetName.TabIndex = 0;
-            tbSnippetName.TextChanged += tbSnippetName_TextChanged;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(tbSearchKeyw);
-            groupBox2.Controls.Add(lbAvailKeyw);
-            groupBox2.Controls.Add(btnRemoveKeyw);
-            groupBox2.Controls.Add(btnAddKeyw);
-            groupBox2.Controls.Add(lbKeywords);
-            groupBox2.FlatStyle = FlatStyle.Popup;
-            groupBox2.Location = new Point(6, 77);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(340, 378);
-            groupBox2.TabIndex = 3;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Keywords";
-            // 
-            // lbKeywords
-            // 
-            lbKeywords.FormattingEnabled = true;
-            lbKeywords.ItemHeight = 15;
-            lbKeywords.Location = new Point(199, 18);
-            lbKeywords.Name = "lbKeywords";
-            lbKeywords.Size = new Size(135, 349);
-            lbKeywords.TabIndex = 1;
-            // 
-            // btnAddKeyw
-            // 
-            btnAddKeyw.FlatStyle = FlatStyle.Flat;
-            btnAddKeyw.Location = new Point(147, 19);
-            btnAddKeyw.Name = "btnAddKeyw";
-            btnAddKeyw.Size = new Size(46, 23);
-            btnAddKeyw.TabIndex = 2;
-            btnAddKeyw.Text = ">>";
-            btnAddKeyw.UseVisualStyleBackColor = true;
-            btnAddKeyw.Click += btnAddKeyw_Click;
-            // 
-            // btnRemoveKeyw
-            // 
-            btnRemoveKeyw.FlatStyle = FlatStyle.Flat;
-            btnRemoveKeyw.Location = new Point(147, 48);
-            btnRemoveKeyw.Name = "btnRemoveKeyw";
-            btnRemoveKeyw.Size = new Size(46, 23);
-            btnRemoveKeyw.TabIndex = 3;
-            btnRemoveKeyw.Text = "-";
-            btnRemoveKeyw.UseVisualStyleBackColor = true;
-            btnRemoveKeyw.Click += btnRemoveKeyw_Click;
-            // 
-            // lbAvailKeyw
-            // 
-            lbAvailKeyw.FormattingEnabled = true;
-            lbAvailKeyw.ItemHeight = 15;
-            lbAvailKeyw.Location = new Point(6, 48);
-            lbAvailKeyw.Name = "lbAvailKeyw";
-            lbAvailKeyw.Size = new Size(135, 319);
-            lbAvailKeyw.TabIndex = 5;
-            // 
-            // tbSearchKeyw
-            // 
-            tbSearchKeyw.Location = new Point(6, 22);
-            tbSearchKeyw.Name = "tbSearchKeyw";
-            tbSearchKeyw.Size = new Size(135, 23);
-            tbSearchKeyw.TabIndex = 6;
-            tbSearchKeyw.TextChanged += tbSearchKeyw_TextChanged;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(tbShortDesc);
-            groupBox3.FlatStyle = FlatStyle.Flat;
-            groupBox3.Location = new Point(355, 77);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(369, 378);
-            groupBox3.TabIndex = 7;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Short description";
-            // 
-            // tbShortDesc
-            // 
-            tbShortDesc.Dock = DockStyle.Fill;
-            tbShortDesc.Location = new Point(3, 19);
-            tbShortDesc.Multiline = true;
-            tbShortDesc.Name = "tbShortDesc";
-            tbShortDesc.Size = new Size(363, 356);
-            tbShortDesc.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            groupBox1.AutoSize = true;
-            groupBox1.Controls.Add(cbLanguages);
-            groupBox1.Location = new Point(352, 7);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(375, 66);
-            groupBox1.TabIndex = 8;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Programming language";
-            // 
-            // cbLanguages
-            // 
-            cbLanguages.FormattingEnabled = true;
-            cbLanguages.Location = new Point(6, 21);
-            cbLanguages.Name = "cbLanguages";
-            cbLanguages.Size = new Size(363, 23);
-            cbLanguages.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(tbCode);
-            groupBox4.FlatStyle = FlatStyle.Popup;
-            groupBox4.Location = new Point(733, 7);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(716, 445);
-            groupBox4.TabIndex = 9;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Code";
+            gbCode.Controls.Add(tbCode);
+            gbCode.FlatStyle = FlatStyle.Popup;
+            gbCode.Location = new Point(733, 7);
+            gbCode.Name = "gbCode";
+            gbCode.Size = new Size(716, 445);
+            gbCode.TabIndex = 9;
+            gbCode.TabStop = false;
+            gbCode.Text = "Code";
             // 
             // tbCode
             // 
@@ -233,6 +113,131 @@
             tbCode.TabIndex = 0;
             tbCode.Text = "";
             tbCode.WordWrap = false;
+            // 
+            // gbLanguage
+            // 
+            gbLanguage.AutoSize = true;
+            gbLanguage.Controls.Add(cbLanguages);
+            gbLanguage.Location = new Point(12, 7);
+            gbLanguage.Name = "gbLanguage";
+            gbLanguage.Size = new Size(334, 66);
+            gbLanguage.TabIndex = 8;
+            gbLanguage.TabStop = false;
+            gbLanguage.Text = "Programming language";
+            // 
+            // cbLanguages
+            // 
+            cbLanguages.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLanguages.FlatStyle = FlatStyle.Flat;
+            cbLanguages.FormattingEnabled = true;
+            cbLanguages.Location = new Point(6, 21);
+            cbLanguages.Name = "cbLanguages";
+            cbLanguages.Size = new Size(322, 23);
+            cbLanguages.TabIndex = 0;
+            cbLanguages.SelectedValueChanged += cbLanguages_SelectedValueChanged;
+            cbLanguages.Leave += cbLanguages_Leave;
+            // 
+            // gbDesc
+            // 
+            gbDesc.Controls.Add(tbShortDesc);
+            gbDesc.FlatStyle = FlatStyle.Flat;
+            gbDesc.Location = new Point(355, 77);
+            gbDesc.Name = "gbDesc";
+            gbDesc.Size = new Size(369, 378);
+            gbDesc.TabIndex = 7;
+            gbDesc.TabStop = false;
+            gbDesc.Text = "Short description";
+            // 
+            // tbShortDesc
+            // 
+            tbShortDesc.Dock = DockStyle.Fill;
+            tbShortDesc.Location = new Point(3, 19);
+            tbShortDesc.Multiline = true;
+            tbShortDesc.Name = "tbShortDesc";
+            tbShortDesc.Size = new Size(363, 356);
+            tbShortDesc.TabIndex = 0;
+            // 
+            // gbKeyword
+            // 
+            gbKeyword.Controls.Add(tbSearchKeyw);
+            gbKeyword.Controls.Add(lbAvailKeyw);
+            gbKeyword.Controls.Add(btnRemoveKeyw);
+            gbKeyword.Controls.Add(btnAddKeyw);
+            gbKeyword.Controls.Add(lbKeywords);
+            gbKeyword.FlatStyle = FlatStyle.Popup;
+            gbKeyword.Location = new Point(6, 77);
+            gbKeyword.Name = "gbKeyword";
+            gbKeyword.Size = new Size(340, 378);
+            gbKeyword.TabIndex = 3;
+            gbKeyword.TabStop = false;
+            gbKeyword.Text = "Keywords";
+            // 
+            // tbSearchKeyw
+            // 
+            tbSearchKeyw.Location = new Point(6, 22);
+            tbSearchKeyw.Name = "tbSearchKeyw";
+            tbSearchKeyw.Size = new Size(135, 23);
+            tbSearchKeyw.TabIndex = 6;
+            tbSearchKeyw.TextChanged += tbSearchKeyw_TextChanged;
+            // 
+            // lbAvailKeyw
+            // 
+            lbAvailKeyw.FormattingEnabled = true;
+            lbAvailKeyw.ItemHeight = 15;
+            lbAvailKeyw.Location = new Point(6, 48);
+            lbAvailKeyw.Name = "lbAvailKeyw";
+            lbAvailKeyw.Size = new Size(135, 319);
+            lbAvailKeyw.TabIndex = 5;
+            // 
+            // btnRemoveKeyw
+            // 
+            btnRemoveKeyw.FlatStyle = FlatStyle.Flat;
+            btnRemoveKeyw.Location = new Point(147, 48);
+            btnRemoveKeyw.Name = "btnRemoveKeyw";
+            btnRemoveKeyw.Size = new Size(46, 23);
+            btnRemoveKeyw.TabIndex = 3;
+            btnRemoveKeyw.Text = "-";
+            btnRemoveKeyw.UseVisualStyleBackColor = true;
+            btnRemoveKeyw.Click += btnRemoveKeyw_Click;
+            // 
+            // btnAddKeyw
+            // 
+            btnAddKeyw.FlatStyle = FlatStyle.Flat;
+            btnAddKeyw.Location = new Point(147, 19);
+            btnAddKeyw.Name = "btnAddKeyw";
+            btnAddKeyw.Size = new Size(46, 23);
+            btnAddKeyw.TabIndex = 2;
+            btnAddKeyw.Text = ">>";
+            btnAddKeyw.UseVisualStyleBackColor = true;
+            btnAddKeyw.Click += btnAddKeyw_Click;
+            // 
+            // lbKeywords
+            // 
+            lbKeywords.FormattingEnabled = true;
+            lbKeywords.ItemHeight = 15;
+            lbKeywords.Location = new Point(199, 18);
+            lbKeywords.Name = "lbKeywords";
+            lbKeywords.Size = new Size(135, 349);
+            lbKeywords.TabIndex = 1;
+            // 
+            // gbSnippetName
+            // 
+            gbSnippetName.Controls.Add(tbSnippetName);
+            gbSnippetName.Location = new Point(355, 6);
+            gbSnippetName.Name = "gbSnippetName";
+            gbSnippetName.Size = new Size(369, 67);
+            gbSnippetName.TabIndex = 1;
+            gbSnippetName.TabStop = false;
+            gbSnippetName.Text = "Snippet name";
+            // 
+            // tbSnippetName
+            // 
+            tbSnippetName.Enabled = false;
+            tbSnippetName.Location = new Point(6, 25);
+            tbSnippetName.Name = "tbSnippetName";
+            tbSnippetName.Size = new Size(354, 23);
+            tbSnippetName.TabIndex = 0;
+            tbSnippetName.TextChanged += tbSnippetName_TextChanged;
             // 
             // tabControl1
             // 
@@ -256,14 +261,14 @@
             Text = "Add New Snippet";
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            gbCode.ResumeLayout(false);
+            gbLanguage.ResumeLayout(false);
+            gbDesc.ResumeLayout(false);
+            gbDesc.PerformLayout();
+            gbKeyword.ResumeLayout(false);
+            gbKeyword.PerformLayout();
             gbSnippetName.ResumeLayout(false);
             gbSnippetName.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox4.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -275,13 +280,13 @@
         private FontDialog fontDialog;
         private ColorDialog colorDialog;
         private TabPage tabPage1;
-        private GroupBox groupBox4;
+        private GroupBox gbCode;
         private RichTextBox tbCode;
-        private GroupBox groupBox1;
+        private GroupBox gbLanguage;
         private ComboBox cbLanguages;
-        private GroupBox groupBox3;
+        private GroupBox gbDesc;
         private TextBox tbShortDesc;
-        private GroupBox groupBox2;
+        private GroupBox gbKeyword;
         private TextBox tbSearchKeyw;
         private ListBox lbAvailKeyw;
         private Button btnRemoveKeyw;
