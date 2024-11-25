@@ -13,6 +13,7 @@ namespace SnippetStore
         private ToolStripStatusLabel statusLabelConnected;
         private ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
         private string? snippetId;
+        private string? oldName;
         MongoHelper mongoHelper = new MongoHelper();
         private List<string?>? wordsToHighlight = new List<string?>();
         private List<string?>? separatorToHighlight = new List<string?>();
@@ -83,7 +84,7 @@ namespace SnippetStore
         private void MainForm_Activated(object sender, EventArgs e)
         {
             UpdateTreeView();
-            UpdateCharts();            
+            UpdateCharts();
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -306,6 +307,25 @@ namespace SnippetStore
         private void btnSync_Click(object sender, EventArgs e)
         {
             _ = mongoHelper.SyncLocalDatabase();
+        }
+
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            oldName = e.Node.Text;
+            if (e.Node != null && e.Node.IsEditing == false)
+            {
+                e.Node.BeginEdit();
+                snippetId = mongoHelper.GetMongoIdFromSnipetName(e.Node.Text);
+            }
+        }
+
+        private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            if (e.Node != null && e.Label != null && e.Label != "" && e.Node.Parent != null && e.Node.Parent.Parent == null)
+            {
+                mongoHelper.RenameNodeName(e.Label, snippetId);
+                UpdateTreeView();
+            }            
         }
     }
 }

@@ -61,11 +61,18 @@ namespace SnippetStore
                 MessageBox.Show($"Connection Error: {e.Message}");
             }
 
-            coll_snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
-            coll_languages = _database.GetCollection<Languages>("Languages");
-            coll_keywords = _database.GetCollection<Keywords>("Keywords");
-            coll_reswords = _database.GetCollection<ResWords>("Reserved words");
-            coll_blockseps = _database.GetCollection<BlockSeparators>("Block separators");
+            try
+            {
+                coll_snippets = _database.GetCollection<SnippetDatabase>("SnippetStore");
+                coll_languages = _database.GetCollection<Languages>("Languages");
+                coll_keywords = _database.GetCollection<Keywords>("Keywords");
+                coll_reswords = _database.GetCollection<ResWords>("Reserved words");
+                coll_blockseps = _database.GetCollection<BlockSeparators>("Block separators");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Connection Error: {e.Message}");
+            }
         }
 
         public List<string?> GetLanguages()
@@ -153,33 +160,40 @@ namespace SnippetStore
             return coll_snippets;
         }
 
-        public string? GetCodeSnipetById(string id)
+        public string? GetCodeSnipetById(string Id)
         {
-            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id);
+            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id);
             var result = coll_snippets.Find(filter).FirstOrDefault();
             return result?.SnipCode;
         }
 
-        public string? GetCodeDescById(string id)
+        public string? GetSnippetLanguageById(string Id)
         {
-            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id);
+            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id);
+            var result = coll_snippets.Find(filter).FirstOrDefault();
+            return result?.SnipLanguage;
+        }
+
+        public string? GetCodeDescById(string Id)
+        {
+            var filter = Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id);
             var result = coll_snippets.Find(filter).FirstOrDefault();
             return result?.SnipShortDesc;
         }
 
-        public void DropDataById(string id)
+        public void DropDataById(string Id)
         {
-            coll_snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id));
+            coll_snippets.DeleteOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id));
         }
 
-        public void IncreaseView(string id)
+        public void IncreaseView(string Id)
         {
-            coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id), Builders<SnippetDatabase>.Update.Inc(x => x.NoOfView, 1));
+            coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id), Builders<SnippetDatabase>.Update.Inc(x => x.NoOfView, 1));
         }
 
-        public void SaveModify(string id, string newData)
+        public void SaveModify(string Id, string newData)
         { 
-            coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, id), Builders<SnippetDatabase>.Update.Set(x => x.SnipCode, newData));
+            coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id), Builders<SnippetDatabase>.Update.Set(x => x.SnipCode, newData));
         }
 
         public long GetSnipNumByLanguage(string language)
@@ -250,6 +264,21 @@ namespace SnippetStore
                 var local_coll_blockseps = localDb.GetCollection<BlockSeparators>("Block separators");
                 local_coll_blockseps.DeleteMany(Builders<BlockSeparators>.Filter.Empty);
                 await local_coll_blockseps.InsertManyAsync(atlas_coll_blockseps_data);
+            }
+        }
+
+        public bool isNameExist(string Id, string Name)
+        {
+            string? Lang = GetSnippetLanguageById(Id);            
+            var SnipNum = GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == Lang && l.SnipName == Name ).GroupBy(l => l.SnipName).Count();
+            return SnipNum == 0;
+        }
+
+        public void RenameNodeName(string newName, string Id)
+        {
+            if (isNameExist(Id, newName))
+            {
+                coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id), Builders<SnippetDatabase>.Update.Set(x => x.SnipName, newName));
             }
         }
     }

@@ -51,6 +51,8 @@
             btnCloseAll = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
             btnCopySnippet = new ToolStripButton();
+            toolStripSeparator6 = new ToolStripSeparator();
+            btnSync = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             tbSearch2 = new TextBox();
@@ -70,8 +72,6 @@
             timer = new System.Windows.Forms.Timer(components);
             mainCodeFontDialog = new FontDialog();
             mainCodeColorDialog = new ColorDialog();
-            toolStripSeparator6 = new ToolStripSeparator();
-            btnSync = new ToolStripButton();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -224,6 +224,21 @@
             btnCopySnippet.Size = new Size(52, 52);
             btnCopySnippet.Text = "Copy snippet";
             btnCopySnippet.Click += btnCopySnippet_Click;
+            // 
+            // toolStripSeparator6
+            // 
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            toolStripSeparator6.Size = new Size(6, 55);
+            // 
+            // btnSync
+            // 
+            btnSync.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSync.Image = (Image)resources.GetObject("btnSync.Image");
+            btnSync.ImageTransparentColor = Color.Magenta;
+            btnSync.Name = "btnSync";
+            btnSync.Size = new Size(52, 52);
+            btnSync.Text = "toolStripButton1";
+            btnSync.Click += btnSync_Click;
             // 
             // splitContainer1
             // 
@@ -441,21 +456,6 @@
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
-            // 
-            // toolStripSeparator6
-            // 
-            toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(6, 55);
-            // 
-            // btnSync
-            // 
-            btnSync.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnSync.Image = (Image)resources.GetObject("btnSync.Image");
-            btnSync.ImageTransparentColor = Color.Magenta;
-            btnSync.Name = "btnSync";
-            btnSync.Size = new Size(52, 52);
-            btnSync.Text = "toolStripButton1";
-            btnSync.Click += btnSync_Click;
             // 
             // MainForm
             // 
