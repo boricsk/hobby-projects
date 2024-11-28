@@ -83,7 +83,7 @@ namespace SnippetStore
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-            UpdateTreeView();
+            //UpdateTreeView();
             UpdateCharts();
         }
 
@@ -290,13 +290,16 @@ namespace SnippetStore
                 seriesSnipNum.Points.AddXY(snip, mongoHelper.GetSnipNumByLanguage(snip));
             }
             chartSnippetNum.Series.Add(seriesSnipNum);
+            chartSnippetNum.Series[0].IsValueShownAsLabel = true;
 
 
             foreach (var v in mongoHelper.GetTop5Wiew())
             {
                 seriesViewNum.Points.AddXY(v.Key, v.Value);
             }
+
             chartNumOfWiew.Series.Add(seriesViewNum);
+            chartNumOfWiew.Series[0].IsValueShownAsLabel = true;
         }
 
         private void btnCopySnippet_Click(object sender, EventArgs e)
@@ -309,23 +312,19 @@ namespace SnippetStore
             _ = mongoHelper.SyncLocalDatabase();
         }
 
-        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            oldName = e.Node.Text;
-            if (e.Node != null && e.Node.IsEditing == false)
-            {
-                e.Node.BeginEdit();
-                snippetId = mongoHelper.GetMongoIdFromSnipetName(e.Node.Text);
-            }
-        }
-
         private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             if (e.Node != null && e.Label != null && e.Label != "" && e.Node.Parent != null && e.Node.Parent.Parent == null)
             {
                 mongoHelper.RenameNodeName(e.Label, snippetId);
                 UpdateTreeView();
-            }            
+            }
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            tbSearch2.Clear();
+            UpdateTreeView();
         }
     }
 }
