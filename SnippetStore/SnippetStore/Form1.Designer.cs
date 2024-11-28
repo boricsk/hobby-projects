@@ -53,8 +53,11 @@
             btnCopySnippet = new ToolStripButton();
             toolStripSeparator6 = new ToolStripSeparator();
             btnSync = new ToolStripButton();
+            toolStripSeparator7 = new ToolStripSeparator();
+            btnClearSearch = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
+            button1 = new Button();
             tbSearch2 = new TextBox();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
@@ -108,7 +111,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5, btnCopySnippet, toolStripSeparator6, btnSync });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5, btnCopySnippet, toolStripSeparator6, btnSync, toolStripSeparator7, btnClearSearch });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -237,8 +240,23 @@
             btnSync.ImageTransparentColor = Color.Magenta;
             btnSync.Name = "btnSync";
             btnSync.Size = new Size(52, 52);
-            btnSync.Text = "toolStripButton1";
+            btnSync.Text = "Sync from cloud";
             btnSync.Click += btnSync_Click;
+            // 
+            // toolStripSeparator7
+            // 
+            toolStripSeparator7.Name = "toolStripSeparator7";
+            toolStripSeparator7.Size = new Size(6, 55);
+            // 
+            // btnClearSearch
+            // 
+            btnClearSearch.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnClearSearch.Image = (Image)resources.GetObject("btnClearSearch.Image");
+            btnClearSearch.ImageTransparentColor = Color.Magenta;
+            btnClearSearch.Name = "btnClearSearch";
+            btnClearSearch.Size = new Size(52, 52);
+            btnClearSearch.Text = "Clear search";
+            btnClearSearch.Click += btnClearSearch_Click;
             // 
             // splitContainer1
             // 
@@ -249,6 +267,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(treeView1);
+            splitContainer1.Panel1.Controls.Add(button1);
             splitContainer1.Panel1.Controls.Add(tbSearch2);
             // 
             // splitContainer1.Panel2
@@ -264,8 +283,17 @@
             treeView1.Location = new Point(0, 23);
             treeView1.Name = "treeView1";
             treeView1.Size = new Size(253, 645);
-            treeView1.TabIndex = 2;
+            treeView1.TabIndex = 5;
             treeView1.NodeMouseClick += treeView1_NodeMouseClick;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(154, 149);
+            button1.Name = "button1";
+            button1.Size = new Size(8, 8);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // tbSearch2
             // 
@@ -514,7 +542,6 @@
         private System.Windows.Forms.Timer timer;
         //private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton btnDel;
-        private TreeView treeView1;
         private TextBox tbSearch2;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton btnSaveModify;
@@ -540,5 +567,9 @@
         private ToolStripButton btnCopySnippet;
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripButton btnSync;
+        private Button button1;
+        private TreeView treeView1;
+        private ToolStripSeparator toolStripSeparator7;
+        private ToolStripButton btnClearSearch;
     }
 }
