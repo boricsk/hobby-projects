@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             statusStrip1 = new StatusStrip();
             toolStrip1 = new ToolStrip();
             btnAddNewSnippet = new ToolStripButton();
@@ -54,7 +54,6 @@
             toolStripSeparator6 = new ToolStripSeparator();
             btnSync = new ToolStripButton();
             toolStripSeparator7 = new ToolStripSeparator();
-            btnClearSearch = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             button1 = new Button();
@@ -75,6 +74,7 @@
             timer = new System.Windows.Forms.Timer(components);
             mainCodeFontDialog = new FontDialog();
             mainCodeColorDialog = new ColorDialog();
+            btnSchClear = new ToolStripButton();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -111,7 +111,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5, btnCopySnippet, toolStripSeparator6, btnSync, toolStripSeparator7, btnClearSearch });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5, btnCopySnippet, toolStripSeparator6, btnSync, toolStripSeparator7, btnSchClear });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -247,16 +247,6 @@
             // 
             toolStripSeparator7.Name = "toolStripSeparator7";
             toolStripSeparator7.Size = new Size(6, 55);
-            // 
-            // btnClearSearch
-            // 
-            btnClearSearch.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnClearSearch.Image = (Image)resources.GetObject("btnClearSearch.Image");
-            btnClearSearch.ImageTransparentColor = Color.Magenta;
-            btnClearSearch.Name = "btnClearSearch";
-            btnClearSearch.Size = new Size(52, 52);
-            btnClearSearch.Text = "Clear search";
-            btnClearSearch.Click += btnClearSearch_Click;
             // 
             // splitContainer1
             // 
@@ -436,17 +426,17 @@
             // 
             // chartSnippetNum
             // 
-            chartArea1.Name = "ChartArea1";
-            chartSnippetNum.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            chartSnippetNum.ChartAreas.Add(chartArea3);
             chartSnippetNum.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            chartSnippetNum.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            chartSnippetNum.Legends.Add(legend3);
             chartSnippetNum.Location = new Point(3, 19);
             chartSnippetNum.Name = "chartSnippetNum";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartSnippetNum.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartSnippetNum.Series.Add(series3);
             chartSnippetNum.Size = new Size(346, 307);
             chartSnippetNum.TabIndex = 0;
             chartSnippetNum.Text = "chart1";
@@ -464,17 +454,17 @@
             // 
             // chartNumOfWiew
             // 
-            chartArea2.Name = "ChartArea1";
-            chartNumOfWiew.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            chartNumOfWiew.ChartAreas.Add(chartArea4);
             chartNumOfWiew.Dock = DockStyle.Fill;
-            legend2.Name = "Legend1";
-            chartNumOfWiew.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            chartNumOfWiew.Legends.Add(legend4);
             chartNumOfWiew.Location = new Point(3, 19);
             chartNumOfWiew.Name = "chartNumOfWiew";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartNumOfWiew.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chartNumOfWiew.Series.Add(series4);
             chartNumOfWiew.Size = new Size(443, 307);
             chartNumOfWiew.TabIndex = 0;
             chartNumOfWiew.Text = "chart1";
@@ -484,6 +474,16 @@
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
+            // 
+            // btnSchClear
+            // 
+            btnSchClear.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSchClear.Image = (Image)resources.GetObject("btnSchClear.Image");
+            btnSchClear.ImageTransparentColor = Color.Magenta;
+            btnSchClear.Name = "btnSchClear";
+            btnSchClear.Size = new Size(52, 52);
+            btnSchClear.Text = "Clear search";
+            btnSchClear.Click += btnClearSearch_Click;
             // 
             // MainForm
             // 
@@ -571,5 +571,6 @@
         private TreeView treeView1;
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripButton btnClearSearch;
+        private ToolStripButton btnSchClear;
     }
 }
