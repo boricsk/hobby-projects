@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewSnippetForm));
             statusBar = new StatusStrip();
             btnAddDatabase = new Button();
             fontDialog = new FontDialog();
@@ -48,6 +50,7 @@
             gbSnippetName = new GroupBox();
             tbSnippetName = new TextBox();
             tabControl1 = new TabControl();
+            notifyIcon = new NotifyIcon(components);
             tabPage1.SuspendLayout();
             gbCode.SuspendLayout();
             gbLanguage.SuspendLayout();
@@ -248,6 +251,13 @@
             tabControl1.Size = new Size(1463, 489);
             tabControl1.TabIndex = 6;
             // 
+            // notifyIcon
+            // 
+            notifyIcon.BalloonTipIcon = ToolTipIcon.Error;
+            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
+            notifyIcon.Text = "notifyIcon1";
+            notifyIcon.Visible = true;
+            // 
             // AddNewSnippetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -295,5 +305,6 @@
         private GroupBox gbSnippetName;
         private TextBox tbSnippetName;
         private TabControl tabControl1;
+        private NotifyIcon notifyIcon;
     }
 }

@@ -59,7 +59,12 @@ namespace SnippetStore
                 lbKeywords.Update();
             }
         }
-
+        private void ShowNotify(int duration, string title, string message)
+        {
+            notifyIcon.BalloonTipTitle = title;
+            notifyIcon.BalloonTipText = message;
+            notifyIcon.ShowBalloonTip(duration);
+        }
         private void btnAddDatabase_Click(object sender, EventArgs e)
         {
             SnippetDatabase snippet = new SnippetDatabase();
@@ -69,7 +74,7 @@ namespace SnippetStore
             }
             else
             {
-                MessageBox.Show("Snippet name is required");
+                ShowNotify(3000, "Data error.", "Snippet name is required!");
                 return;
             }
 
@@ -82,7 +87,7 @@ namespace SnippetStore
             }
             else
             {
-                MessageBox.Show("Keywords are required");
+                ShowNotify(3000, "Data error.", "Keywords are required!");
                 return;
             }
 
@@ -92,7 +97,7 @@ namespace SnippetStore
             }
             else
             {
-                MessageBox.Show("Short description is required");
+                ShowNotify(3000, "Data error.", "Short description is required!");                
                 return;
             }
 
@@ -102,7 +107,7 @@ namespace SnippetStore
             }
             else
             {
-                MessageBox.Show("Programming language is required");
+                ShowNotify(3000, "Data error.", "Programming language is required!");                
                 return;
             }
 
@@ -112,7 +117,7 @@ namespace SnippetStore
             }
             else
             {
-                MessageBox.Show("Code snippet is required");
+                ShowNotify(3000, "Data error.", "Code snippet is required!");                
                 return;
             }
 

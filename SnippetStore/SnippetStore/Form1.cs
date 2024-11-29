@@ -44,9 +44,11 @@ namespace SnippetStore
         {
             statusLabelDate = new ToolStripStatusLabel { Text = DateTime.Now.ToString() };
             statusLabelConnected = new ToolStripStatusLabel { Text = $"Connected to {mongoHelper.ConnectedTo} database." };
+            
             statusStrip1.Items.Add(statusLabelDate);
             statusStrip1.Items.Add(toolStripSeparator);
             statusStrip1.Items.Add(statusLabelConnected);
+            
         }
 
         private void btnAddNewClick(object sender, EventArgs e)
@@ -313,7 +315,9 @@ namespace SnippetStore
         private void btnSync_Click(object sender, EventArgs e)
         {
             _ = mongoHelper.SyncLocalDatabase();
-            MessageBox.Show("Sync completed!");
+            notifyIcon.BalloonTipTitle = $"Database sync!";
+            notifyIcon.BalloonTipText = $"Database sync has been completed!";
+            notifyIcon.ShowBalloonTip(3000);            
         }
 
         //private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)

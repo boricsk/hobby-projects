@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             statusStrip1 = new StatusStrip();
             toolStrip1 = new ToolStrip();
             btnAddNewSnippet = new ToolStripButton();
@@ -83,6 +83,7 @@
             timer = new System.Windows.Forms.Timer(components);
             mainCodeFontDialog = new FontDialog();
             mainCodeColorDialog = new ColorDialog();
+            notifyIcon = new NotifyIcon(components);
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -528,17 +529,17 @@
             // 
             // chartSnippetNum
             // 
-            chartArea1.Name = "ChartArea1";
-            chartSnippetNum.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            chartSnippetNum.ChartAreas.Add(chartArea3);
             chartSnippetNum.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            chartSnippetNum.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            chartSnippetNum.Legends.Add(legend3);
             chartSnippetNum.Location = new Point(3, 19);
             chartSnippetNum.Name = "chartSnippetNum";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartSnippetNum.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartSnippetNum.Series.Add(series3);
             chartSnippetNum.Size = new Size(346, 307);
             chartSnippetNum.TabIndex = 0;
             chartSnippetNum.Text = "chart1";
@@ -556,17 +557,17 @@
             // 
             // chartNumOfWiew
             // 
-            chartArea2.Name = "ChartArea1";
-            chartNumOfWiew.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            chartNumOfWiew.ChartAreas.Add(chartArea4);
             chartNumOfWiew.Dock = DockStyle.Fill;
-            legend2.Name = "Legend1";
-            chartNumOfWiew.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            chartNumOfWiew.Legends.Add(legend4);
             chartNumOfWiew.Location = new Point(3, 19);
             chartNumOfWiew.Name = "chartNumOfWiew";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartNumOfWiew.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chartNumOfWiew.Series.Add(series4);
             chartNumOfWiew.Size = new Size(443, 307);
             chartNumOfWiew.TabIndex = 0;
             chartNumOfWiew.Text = "chart1";
@@ -576,6 +577,13 @@
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
+            // 
+            // notifyIcon
+            // 
+            notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
+            notifyIcon.Text = "notifyIcon1";
+            notifyIcon.Visible = true;
             // 
             // MainForm
             // 
@@ -674,5 +682,6 @@
         private Label lblStorageSize;
         private Label lblIndexSize;
         private Label lblTotalSize;
+        private NotifyIcon notifyIcon;
     }
 }

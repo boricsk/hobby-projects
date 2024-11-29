@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
@@ -24,15 +25,16 @@ namespace SnippetStore
         private IMongoCollection<Keywords> coll_keywords;
         private IMongoCollection<ResWords> coll_reswords;
         private IMongoCollection<BlockSeparators> coll_blockseps;
-
+        
         public MongoHelper()
         {
             ConnectToDatabase();
-
         }
 
         public void ConnectToDatabase()
         {
+
+
             if (RegistryOps.ReadConString() == "")
             {
                 RegistryOps.WriteConString("mongodb://localhost:27017");
@@ -305,7 +307,7 @@ namespace SnippetStore
 
                     Debug.WriteLine($"Tárolási méret (storageSize): {stats["storageSize"]} bájt");
                     DbStats.Add(stats["storageSize"]);
-                    
+
                     Debug.WriteLine($"Index mérete (indexSize): {stats["indexSize"]} bájt");
                     DbStats.Add(stats["indexSize"]);
 
