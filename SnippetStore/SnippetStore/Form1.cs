@@ -52,7 +52,8 @@ namespace SnippetStore
         private void btnAddNewClick(object sender, EventArgs e)
         {
             AddNewSnippetForm addNewSnippetForm = new AddNewSnippetForm();
-            addNewSnippetForm.Show();
+            addNewSnippetForm.ShowDialog();
+            UpdateTreeView();
         }
 
         private void btnSetup_Click(object sender, EventArgs e)
@@ -171,6 +172,7 @@ namespace SnippetStore
                     UpdateTreeView();
                     rtbMainCode.Clear();
                     btnDel.Enabled = false;
+                    UpdateTreeView();
                 }
             }
         }
