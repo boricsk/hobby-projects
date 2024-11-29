@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace SnippetStore
         private string dbName = "SnippetStore";
 
         public string ConnectedTo { get; private set; }
+        public List<BsonValue> DbStats { get; private set; } = new List<BsonValue>();
 
         private IMongoCollection<SnippetDatabase> coll_snippets;
         private IMongoCollection<Languages> coll_languages;
@@ -26,6 +28,7 @@ namespace SnippetStore
         public MongoHelper()
         {
             ConnectToDatabase();
+
         }
 
         public void ConnectToDatabase()
@@ -127,7 +130,7 @@ namespace SnippetStore
         }
 
         public void AddBlockSep(string blocks)
-        {            
+        {
             var blocksep = new BlockSeparators { BlockSep = blocks };
             coll_blockseps.InsertOne(blocksep);
         }
@@ -192,19 +195,19 @@ namespace SnippetStore
         }
 
         public void SaveModify(string Id, string newData)
-        { 
+        {
             coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id), Builders<SnippetDatabase>.Update.Set(x => x.SnipCode, newData));
         }
 
         public long GetSnipNumByLanguage(string language)
-        { 
+        {
             var filter = Builders<SnippetDatabase>.Filter.Eq(l => l.SnipLanguage, language);
             return coll_snippets.Find(filter).CountDocuments();
         }
 
         public Dictionary<string, int> GetTop5Wiew()
         {
-            Dictionary<string, int> result = new Dictionary<string,int>();
+            Dictionary<string, int> result = new Dictionary<string, int>();
 
             var topFive = coll_snippets.Find(Builders<SnippetDatabase>.Filter.Empty)
                 .Sort(Builders<SnippetDatabase>.Sort.Descending(w => w.NoOfView))
@@ -217,7 +220,7 @@ namespace SnippetStore
             }
 
             return result;
-            
+
         }
 
         public async Task SyncLocalDatabase()
@@ -269,8 +272,8 @@ namespace SnippetStore
 
         public bool isNameExist(string Id, string Name)
         {
-            string? Lang = GetSnippetLanguageById(Id);            
-            var SnipNum = GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == Lang && l.SnipName == Name ).GroupBy(l => l.SnipName).Count();
+            string? Lang = GetSnippetLanguageById(Id);
+            var SnipNum = GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == Lang && l.SnipName == Name).GroupBy(l => l.SnipName).Count();
             return SnipNum == 0;
         }
 
@@ -280,6 +283,39 @@ namespace SnippetStore
             {
                 coll_snippets.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id), Builders<SnippetDatabase>.Update.Set(x => x.SnipName, newName));
             }
+        }
+
+        public List<BsonValue> DatabaseStat()
+        {
+            if (_database != null)
+            {
+                var command = new BsonDocument { { "dbstats", 1 } };
+                var stats = _database.RunCommand<BsonDocument>(command);
+
+                if (stats != null)
+                {
+                    Debug.WriteLine($"Adatbázis neve: {stats["db"]}");
+                    DbStats.Add(stats["db"]);
+
+                    Debug.WriteLine($"Összes gyűjtemény száma: {stats["collections"]}");
+                    DbStats.Add(stats["collections"]);
+
+                    Debug.WriteLine($"Adatbázis mérete (dataSize): {stats["dataSize"]} bájt");
+                    DbStats.Add(stats["dataSize"]);
+
+                    Debug.WriteLine($"Tárolási méret (storageSize): {stats["storageSize"]} bájt");
+                    DbStats.Add(stats["storageSize"]);
+                    
+                    Debug.WriteLine($"Index mérete (indexSize): {stats["indexSize"]} bájt");
+                    DbStats.Add(stats["indexSize"]);
+
+                    // Az adatbázis teljes méretének kiszámítása (dataSize + indexSize)
+                    long totalSize = stats["dataSize"].ToInt64() + stats["indexSize"].ToInt64();
+                    Debug.WriteLine($"Teljes adatbázis méret (dataSize + indexSize): {totalSize} bájt");
+                    DbStats.Add(totalSize);
+                }
+            }
+            return DbStats;
         }
     }
 }

@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             statusStrip1 = new StatusStrip();
             toolStrip1 = new ToolStrip();
             btnAddNewSnippet = new ToolStripButton();
@@ -54,6 +54,7 @@
             toolStripSeparator6 = new ToolStripSeparator();
             btnSync = new ToolStripButton();
             toolStripSeparator7 = new ToolStripSeparator();
+            btnSchClear = new ToolStripButton();
             splitContainer1 = new SplitContainer();
             treeView1 = new TreeView();
             button1 = new Button();
@@ -65,6 +66,14 @@
             btnMainColor = new ToolStripButton();
             splitContainer3 = new SplitContainer();
             groupBox1 = new GroupBox();
+            infoPanel = new Panel();
+            lblTotalSize = new Label();
+            lblIndexSize = new Label();
+            lblStorageSize = new Label();
+            lblDatabaseSize = new Label();
+            lblNoColls = new Label();
+            lblDbName = new Label();
+            splitter1 = new Splitter();
             tbMainCodeDesc = new TextBox();
             splitContainer4 = new SplitContainer();
             groupBox2 = new GroupBox();
@@ -74,7 +83,6 @@
             timer = new System.Windows.Forms.Timer(components);
             mainCodeFontDialog = new FontDialog();
             mainCodeColorDialog = new ColorDialog();
-            btnSchClear = new ToolStripButton();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -90,6 +98,7 @@
             splitContainer3.Panel2.SuspendLayout();
             splitContainer3.SuspendLayout();
             groupBox1.SuspendLayout();
+            infoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer4).BeginInit();
             splitContainer4.Panel1.SuspendLayout();
             splitContainer4.Panel2.SuspendLayout();
@@ -248,6 +257,16 @@
             toolStripSeparator7.Name = "toolStripSeparator7";
             toolStripSeparator7.Size = new Size(6, 55);
             // 
+            // btnSchClear
+            // 
+            btnSchClear.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnSchClear.Image = (Image)resources.GetObject("btnSchClear.Image");
+            btnSchClear.ImageTransparentColor = Color.Magenta;
+            btnSchClear.Name = "btnSchClear";
+            btnSchClear.Size = new Size(52, 52);
+            btnSchClear.Text = "Clear search";
+            btnSchClear.Click += btnClearSearch_Click;
+            // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
@@ -317,6 +336,7 @@
             // 
             rtbMainCode.AcceptsTab = true;
             rtbMainCode.BackColor = SystemColors.Window;
+            rtbMainCode.BorderStyle = BorderStyle.FixedSingle;
             rtbMainCode.Dock = DockStyle.Fill;
             rtbMainCode.Font = new Font("Cascadia Code", 10F);
             rtbMainCode.Location = new Point(0, 25);
@@ -326,6 +346,7 @@
             rtbMainCode.TabIndex = 2;
             rtbMainCode.Text = "";
             rtbMainCode.WordWrap = false;
+            rtbMainCode.LinkClicked += rtbMainCode_LinkClicked;
             rtbMainCode.DoubleClick += rtbMainCode_DoubleClick;
             // 
             // toolStrip2
@@ -377,6 +398,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(infoPanel);
+            groupBox1.Controls.Add(splitter1);
             groupBox1.Controls.Add(tbMainCodeDesc);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(0, 0);
@@ -386,14 +409,93 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Description";
             // 
+            // infoPanel
+            // 
+            infoPanel.AutoScroll = true;
+            infoPanel.BorderStyle = BorderStyle.FixedSingle;
+            infoPanel.Controls.Add(lblTotalSize);
+            infoPanel.Controls.Add(lblIndexSize);
+            infoPanel.Controls.Add(lblStorageSize);
+            infoPanel.Controls.Add(lblDatabaseSize);
+            infoPanel.Controls.Add(lblNoColls);
+            infoPanel.Controls.Add(lblDbName);
+            infoPanel.Dock = DockStyle.Fill;
+            infoPanel.Location = new Point(3, 183);
+            infoPanel.Name = "infoPanel";
+            infoPanel.Size = new Size(268, 143);
+            infoPanel.TabIndex = 2;
+            // 
+            // lblTotalSize
+            // 
+            lblTotalSize.AutoSize = true;
+            lblTotalSize.Location = new Point(3, 77);
+            lblTotalSize.Name = "lblTotalSize";
+            lblTotalSize.Size = new Size(63, 15);
+            lblTotalSize.TabIndex = 5;
+            lblTotalSize.Text = "Total size : ";
+            // 
+            // lblIndexSize
+            // 
+            lblIndexSize.AutoSize = true;
+            lblIndexSize.Location = new Point(3, 62);
+            lblIndexSize.Name = "lblIndexSize";
+            lblIndexSize.Size = new Size(67, 15);
+            lblIndexSize.TabIndex = 4;
+            lblIndexSize.Text = "Index size : ";
+            // 
+            // lblStorageSize
+            // 
+            lblStorageSize.AutoSize = true;
+            lblStorageSize.Location = new Point(3, 47);
+            lblStorageSize.Name = "lblStorageSize";
+            lblStorageSize.Size = new Size(78, 15);
+            lblStorageSize.TabIndex = 3;
+            lblStorageSize.Text = "Storage size : ";
+            // 
+            // lblDatabaseSize
+            // 
+            lblDatabaseSize.AutoSize = true;
+            lblDatabaseSize.Location = new Point(3, 32);
+            lblDatabaseSize.Name = "lblDatabaseSize";
+            lblDatabaseSize.Size = new Size(86, 15);
+            lblDatabaseSize.TabIndex = 2;
+            lblDatabaseSize.Text = "Database size : ";
+            // 
+            // lblNoColls
+            // 
+            lblNoColls.AutoSize = true;
+            lblNoColls.Location = new Point(3, 17);
+            lblNoColls.Name = "lblNoColls";
+            lblNoColls.Size = new Size(134, 15);
+            lblNoColls.TabIndex = 1;
+            lblNoColls.Text = "Number of collections : ";
+            // 
+            // lblDbName
+            // 
+            lblDbName.AutoSize = true;
+            lblDbName.Location = new Point(3, 2);
+            lblDbName.Name = "lblDbName";
+            lblDbName.Size = new Size(97, 15);
+            lblDbName.TabIndex = 0;
+            lblDbName.Text = "Database name : ";
+            // 
+            // splitter1
+            // 
+            splitter1.Dock = DockStyle.Top;
+            splitter1.Location = new Point(3, 178);
+            splitter1.Name = "splitter1";
+            splitter1.Size = new Size(268, 5);
+            splitter1.TabIndex = 1;
+            splitter1.TabStop = false;
+            // 
             // tbMainCodeDesc
             // 
-            tbMainCodeDesc.Dock = DockStyle.Fill;
+            tbMainCodeDesc.Dock = DockStyle.Top;
             tbMainCodeDesc.Enabled = false;
             tbMainCodeDesc.Location = new Point(3, 19);
             tbMainCodeDesc.Multiline = true;
             tbMainCodeDesc.Name = "tbMainCodeDesc";
-            tbMainCodeDesc.Size = new Size(268, 307);
+            tbMainCodeDesc.Size = new Size(268, 159);
             tbMainCodeDesc.TabIndex = 0;
             // 
             // splitContainer4
@@ -426,17 +528,17 @@
             // 
             // chartSnippetNum
             // 
-            chartArea3.Name = "ChartArea1";
-            chartSnippetNum.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            chartSnippetNum.ChartAreas.Add(chartArea1);
             chartSnippetNum.Dock = DockStyle.Fill;
-            legend3.Name = "Legend1";
-            chartSnippetNum.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            chartSnippetNum.Legends.Add(legend1);
             chartSnippetNum.Location = new Point(3, 19);
             chartSnippetNum.Name = "chartSnippetNum";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chartSnippetNum.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartSnippetNum.Series.Add(series1);
             chartSnippetNum.Size = new Size(346, 307);
             chartSnippetNum.TabIndex = 0;
             chartSnippetNum.Text = "chart1";
@@ -454,17 +556,17 @@
             // 
             // chartNumOfWiew
             // 
-            chartArea4.Name = "ChartArea1";
-            chartNumOfWiew.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            chartNumOfWiew.ChartAreas.Add(chartArea2);
             chartNumOfWiew.Dock = DockStyle.Fill;
-            legend4.Name = "Legend1";
-            chartNumOfWiew.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            chartNumOfWiew.Legends.Add(legend2);
             chartNumOfWiew.Location = new Point(3, 19);
             chartNumOfWiew.Name = "chartNumOfWiew";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chartNumOfWiew.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartNumOfWiew.Series.Add(series2);
             chartNumOfWiew.Size = new Size(443, 307);
             chartNumOfWiew.TabIndex = 0;
             chartNumOfWiew.Text = "chart1";
@@ -474,16 +576,6 @@
             timer.Enabled = true;
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
-            // 
-            // btnSchClear
-            // 
-            btnSchClear.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnSchClear.Image = (Image)resources.GetObject("btnSchClear.Image");
-            btnSchClear.ImageTransparentColor = Color.Magenta;
-            btnSchClear.Name = "btnSchClear";
-            btnSchClear.Size = new Size(52, 52);
-            btnSchClear.Text = "Clear search";
-            btnSchClear.Click += btnClearSearch_Click;
             // 
             // MainForm
             // 
@@ -516,6 +608,8 @@
             splitContainer3.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            infoPanel.ResumeLayout(false);
+            infoPanel.PerformLayout();
             splitContainer4.Panel1.ResumeLayout(false);
             splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer4).EndInit();
@@ -572,5 +666,13 @@
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripButton btnClearSearch;
         private ToolStripButton btnSchClear;
+        private Splitter splitter1;
+        private Panel infoPanel;
+        private Label lblDbName;
+        private Label lblNoColls;
+        private Label lblDatabaseSize;
+        private Label lblStorageSize;
+        private Label lblIndexSize;
+        private Label lblTotalSize;
     }
 }

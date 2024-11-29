@@ -28,7 +28,9 @@ namespace SnippetStore
             UpdateCharts();
             PrepStatusBar();
             PrepOptions();
+            UpdateDbStats();
             Text += $" - {mongoHelper.ConnectedTo}";
+
         }
 
         private void PrepOptions()
@@ -113,7 +115,7 @@ namespace SnippetStore
             }
 
             WordHighlight();
-            UpdateCharts();
+            //UpdateCharts();
             //Debug.WriteLine(mongoHelper.GedMongoIdFromSnipetName(e.Node.Text));            
         }
 
@@ -230,7 +232,6 @@ namespace SnippetStore
                 mongoHelper.SaveModify(snippetId, rtbMainCode.Rtf);
                 treeView1.Enabled = true;
                 toolStrip2.Enabled = false;
-
             }
         }
 
@@ -310,21 +311,50 @@ namespace SnippetStore
         private void btnSync_Click(object sender, EventArgs e)
         {
             _ = mongoHelper.SyncLocalDatabase();
+            MessageBox.Show("Sync completed!");
         }
 
-        private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
-        {
-            if (e.Node != null && e.Label != null && e.Label != "" && e.Node.Parent != null && e.Node.Parent.Parent == null)
-            {
-                mongoHelper.RenameNodeName(e.Label, snippetId);
-                UpdateTreeView();
-            }
-        }
+        //private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        //{
+        //    if (e.Node != null && e.Label != null && e.Label != "" && e.Node.Parent != null && e.Node.Parent.Parent == null)
+        //    {
+        //        mongoHelper.RenameNodeName(e.Label, snippetId);
+        //        UpdateTreeView();
+        //    }
+        //}
 
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
             tbSearch2.Clear();
             UpdateTreeView();
+        }
+
+        private void UpdateDbStats()
+        {
+            var stats = mongoHelper.DatabaseStat();
+            lblDbName.Text += stats[0];
+            lblNoColls.Text += $"{stats[1].ToInt64():N0}";
+            lblDatabaseSize.Text += $"{stats[2].ToInt64():N0} Bytes";
+            lblStorageSize.Text += $"{stats[3].ToInt64():N0} Bytes";
+            lblIndexSize.Text += $"{stats[4].ToInt64():N0} Bytes";
+            lblTotalSize.Text += $"{stats[5].ToInt64():N0} Bytes";
+        }
+
+        private void rtbMainCode_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            try
+            {
+                // Megnyitjuk a linket az alapértelmezett böngészõben
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = e.LinkText,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening link: {ex.Message}");
+            }
         }
     }
 }
