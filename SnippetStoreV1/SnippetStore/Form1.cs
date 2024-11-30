@@ -1,5 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
+using SnippetStore.MongoClass;
+using SnippetStore.RegistryClass;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -13,24 +15,21 @@ namespace SnippetStore
         private ToolStripStatusLabel statusLabelConnected;
         private ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
         private string? snippetId;
-        private string? oldName;
-        MongoHelper mongoHelper = new MongoHelper();
+        MongoConnectionManagement connectionManagement = new MongoConnectionManagement(RegistryOps.ReadConString());
         private List<string?>? wordsToHighlight = new List<string?>();
         private List<string?>? separatorToHighlight = new List<string?>();
         private Color ResWordColor = new Color();
         private Color SepColor = new Color();
-        private bool isSnippetModified = false;
 
         public MainForm()
         {
             InitializeComponent();
             UpdateTreeView();
-            UpdateCharts();
+            _ = UpdateCharts();
             PrepStatusBar();
             PrepOptions();
             UpdateDbStats();
-            Text += $" - {mongoHelper.ConnectedTo}";
-
+            Text += $" - {connectionManagement.ConnectedTo}";
         }
 
         private void PrepOptions()
@@ -43,12 +42,11 @@ namespace SnippetStore
         private void PrepStatusBar()
         {
             statusLabelDate = new ToolStripStatusLabel { Text = DateTime.Now.ToString() };
-            statusLabelConnected = new ToolStripStatusLabel { Text = $"Connected to {mongoHelper.ConnectedTo} database." };
+            statusLabelConnected = new ToolStripStatusLabel { Text = $"Connected to {connectionManagement.ConnectedTo} database." };
             
             statusStrip1.Items.Add(statusLabelDate);
             statusStrip1.Items.Add(toolStripSeparator);
-            statusStrip1.Items.Add(statusLabelConnected);
-            
+            statusStrip1.Items.Add(statusLabelConnected);            
         }
 
         private void btnAddNewClick(object sender, EventArgs e)
@@ -66,8 +64,10 @@ namespace SnippetStore
 
         public void UpdateTreeView()
         {
+            var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
+            MongoSnipStore snipStore = new(snip_coll);
             treeView1.Nodes.Clear();
-            var SnipData = mongoHelper.GetSnipets().AsQueryable().ToList().GroupBy(l => l.SnipLanguage);
+            var SnipData = snipStore.GetSnipets().AsQueryable().ToList().GroupBy(l => l.SnipLanguage);
 
             foreach (var data in SnipData)
             {
@@ -89,19 +89,22 @@ namespace SnippetStore
         private void MainForm_Activated(object sender, EventArgs e)
         {
             //UpdateTreeView();
-            UpdateCharts();
+            _ = UpdateCharts();
         }
 
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        private async void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
+            MongoSnipStore snipStore = new(snip_coll);
+
             rtbMainCode.Clear();
-            snippetId = mongoHelper.GetMongoIdFromSnipetName(e.Node.Text);
+            snippetId = await snipStore.GetMongoIdFromSnipetNameAsync(e.Node.Text);
 
             if (snippetId != null)
             {
-                rtbMainCode.Rtf = mongoHelper.GetCodeSnipetById(snippetId);
-                tbMainCodeDesc.Text = mongoHelper.GetCodeDescById(snippetId);
-                mongoHelper.IncreaseView(snippetId);
+                rtbMainCode.Rtf = await snipStore.GetCodeSnipetByIdAsync(snippetId);
+                tbMainCodeDesc.Text = await snipStore.GetCodeDescByIdAsync(snippetId);
+                await snipStore.IncreaseViewAsync(snippetId);
             }
 
             if (rtbMainCode.Text == "")
@@ -117,19 +120,22 @@ namespace SnippetStore
                 //btnEdit.Enabled = true;
             }
 
-            WordHighlight();
+            _ = WordHighlight();
             //UpdateCharts();
             //Debug.WriteLine(mongoHelper.GedMongoIdFromSnipetName(e.Node.Text));            
         }
 
         private void OnTypeSearch(object sender, EventArgs e)
         {
+            var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
+            MongoSnipStore snipStore = new(snip_coll);
+
             bool[] op = new bool[3];
             op = RegistryOps.ReadSearchOptions();
             if (tbSearch2.Text != "")
             {
                 treeView1.Nodes.Clear();
-                var SnipData = mongoHelper.GetSnipets().AsQueryable()
+                var SnipData = snipStore.GetSnipets().AsQueryable()
                     .Where(x => (op[2] && x.SnipKeywords.Contains(tbSearch2.Text)) ||
                                 (op[3] && x.SnipName != null && x.SnipName.Contains(tbSearch2.Text)) ||
                                 (op[1] && x.SnipShortDesc != null && x.SnipShortDesc.Contains(tbSearch2.Text)) ||
@@ -163,15 +169,17 @@ namespace SnippetStore
             statusLabelDate.Text = DateTime.Now.ToString();
         }
 
-        private void btnDel_Click(object sender, EventArgs e)
+        private async void btnDel_Click(object sender, EventArgs e)
         {
             if (snippetId != null)
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this snippet?", "Delete snippet", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    mongoHelper.DropDataById(snippetId);
-                    UpdateTreeView();
+                    var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
+                    MongoSnipStore snipStore = new(snip_coll);
+
+                    await snipStore.DropDataByIdAsync(snippetId);
                     rtbMainCode.Clear();
                     btnDel.Enabled = false;
                     UpdateTreeView();
@@ -179,10 +187,17 @@ namespace SnippetStore
             }
         }
 
-        private void WordHighlight()
+        private async Task WordHighlight()
         {
-            wordsToHighlight = mongoHelper.GetReswords();
-            separatorToHighlight = mongoHelper.GetBlockSep();
+            var keyw_coll = connectionManagement.GetCollection<Keywords>("Keywords");
+            var resw_coll = connectionManagement.GetCollection<ResWords>("Reserved words");
+            var blck_coll = connectionManagement.GetCollection<BlockSeparators>("Block separators");
+            MongoKeyword mongoKeyword = new(keyw_coll);
+            MongoResWord mongoResword = new(resw_coll);
+            MongoBlockSep mongoBlockSep = new(blck_coll);
+            
+            wordsToHighlight = await mongoResword.GetReswordsAsync();
+            separatorToHighlight = await  mongoBlockSep.GetBlockSepAsync();
             ResWordColor = RegistryOps.ReadResWordColor();
             SepColor = RegistryOps.ReadBlockSepColor();
 
@@ -227,13 +242,16 @@ namespace SnippetStore
             UpdateTreeView();
         }
 
-        private void btnSaveModify_Click(object sender, EventArgs e)
+        private async void btnSaveModify_Click(object sender, EventArgs e)
         {
             if (snippetId != null && rtbMainCode.Rtf != null)
             {
+                var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
+                MongoSnipStore snipStore = new(snip_coll);
+
                 btnCancelModify.Enabled = false;
                 btnSaveModify.Enabled = false;
-                mongoHelper.SaveModify(snippetId, rtbMainCode.Rtf);
+                await snipStore.SaveModifyAsync(snippetId, rtbMainCode.Rtf);
                 treeView1.Enabled = true;
                 toolStrip2.Enabled = false;
             }
@@ -279,6 +297,11 @@ namespace SnippetStore
 
         private async Task UpdateCharts()
         {
+            var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
+            var lang_coll = connectionManagement.GetCollection<Languages>("Languages");
+            MongoSnipStore snipStore = new(snip_coll);
+            MongoLanguage mongoLanguage = new(lang_coll);
+
             chartSnippetNum.Series.Clear();
             chartNumOfWiew.Series.Clear();
 
@@ -288,17 +311,20 @@ namespace SnippetStore
             seriesSnipNum.ChartType = SeriesChartType.Doughnut;
             seriesViewNum.ChartType = SeriesChartType.Doughnut;
 
-            List<string?> snipNum = await mongoHelper.GetLanguages();
+            List<string?> snipNum = await mongoLanguage.GetLanguagesAsync();
 
             foreach (var snip in snipNum)
             {
-                seriesSnipNum.Points.AddXY(snip, mongoHelper.GetSnipNumByLanguage(snip));
+                if (snip != null)
+                {
+                    seriesSnipNum.Points.AddXY(snip, await snipStore.GetSnipNumByLanguageAsync(snip));
+                }
             }
             chartSnippetNum.Series.Add(seriesSnipNum);
             chartSnippetNum.Series[0].IsValueShownAsLabel = true;
 
 
-            foreach (var v in mongoHelper.GetTop5Wiew())
+            foreach (var v in snipStore.GetTop5Wiew())
             {
                 seriesViewNum.Points.AddXY(v.Key, v.Value);
             }
@@ -312,9 +338,11 @@ namespace SnippetStore
             rtbMainCode.Copy();
         }
 
-        private void btnSync_Click(object sender, EventArgs e)
+        private async void btnSync_Click(object sender, EventArgs e)
         {
-            _ = mongoHelper.SyncLocalDatabase();
+            MongoSyncManagement syncMgmnt = new MongoSyncManagement();
+            await syncMgmnt.SyncCloudToLocalDatabaseAsync();
+            //_ = mongoHelper.SyncLocalDatabase();
             notifyIcon.BalloonTipTitle = $"Database sync!";
             notifyIcon.BalloonTipText = $"Database sync has been completed!";
             notifyIcon.ShowBalloonTip(3000);            
@@ -332,12 +360,15 @@ namespace SnippetStore
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
             tbSearch2.Clear();
+            rtbMainCode.Clear();
             UpdateTreeView();
         }
 
         private void UpdateDbStats()
         {
-            var stats = mongoHelper.DatabaseStat();
+            MongoStatistic dbStat = new MongoStatistic(connectionManagement.GetDatabase());
+
+            var stats = dbStat.DatabaseStat();
             lblDbName.Text += stats[0];
             lblNoColls.Text += $"{stats[1].ToInt64():N0}";
             lblDatabaseSize.Text += $"{stats[2].ToInt64():N0} Bytes";

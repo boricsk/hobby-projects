@@ -1,4 +1,6 @@
 ﻿using MongoDB.Driver;
+using SnippetStore.MongoClass;
+using SnippetStore.RegistryClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,16 +16,20 @@ namespace SnippetStore
 {
     public partial class AddNewSnippetForm : Form
     {
-        MongoHelper mongoHelper = new MongoHelper();
+        //MongoHelper mongoHelper = new MongoHelper();
+        MongoConnectionManagement connMgmnt = new(RegistryOps.ReadConString());
         public AddNewSnippetForm()
         {
             InitializeComponent();
-            UpdateLanguages();
-            UpdateKeywords();
+            _ = UpdateLanguages();
+            _ = UpdateKeywords();
         }
         private async Task UpdateLanguages()
         {
-            var languages = await mongoHelper.GetLanguages();
+            var lang_coll = connMgmnt.GetCollection<Languages>("Languages");
+            MongoLanguage mongoLanguage = new(lang_coll);
+            
+            var languages = await mongoLanguage.GetLanguagesAsync();
             cbLanguages.Items.Clear();
             foreach (var lang in languages)
             {
@@ -31,9 +37,12 @@ namespace SnippetStore
             }
         }
 
-        private void UpdateKeywords()
+        private async Task UpdateKeywords()
         {
-            var keywords = mongoHelper.GetKeywords();
+            var keyw_coll = connMgmnt.GetCollection<Keywords>("Keywords");
+            MongoKeyword mongoKeyword = new(keyw_coll);
+
+            var keywords = await mongoKeyword.GetKeywordsAsync();
             lbAvailKeyw.Items.Clear();
             foreach (var keyw in keywords)
             {
@@ -65,9 +74,12 @@ namespace SnippetStore
             notifyIcon.BalloonTipText = message;
             notifyIcon.ShowBalloonTip(duration);
         }
-        private void btnAddDatabase_Click(object sender, EventArgs e)
+        private async void btnAddDatabase_Click(object sender, EventArgs e)
         {
+            var snip_coll = connMgmnt.GetCollection<SnippetDatabase>("SnippetStore");
+            MongoSnipStore snipStore = new(snip_coll);
             SnippetDatabase snippet = new SnippetDatabase();
+
             if (tbSnippetName.Text != "")
             {
                 snippet.SnipName = tbSnippetName.Text;
@@ -122,7 +134,7 @@ namespace SnippetStore
             }
 
             snippet.SnipCreatedDate = DateTime.Now;
-            mongoHelper.AddSnippet(snippet);
+            await snipStore.AddSnippetAsync(snippet);
             ClearFields();
         }
 
@@ -177,14 +189,15 @@ namespace SnippetStore
             }
             else
             {
-                UpdateKeywords();
+                _ = UpdateKeywords();
             }
         }
 
         private void tbSnippetName_TextChanged(object sender, EventArgs e)
         {
-            //tbSnippetName.Text = "AL General";
-            var SnipData = mongoHelper.GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == cbLanguages.Text).GroupBy(l => l.SnipName);
+            var snip_coll = connMgmnt.GetCollection<SnippetDatabase>("SnippetStore");
+            MongoSnipStore snipStore = new(snip_coll);
+            var SnipData = snipStore.GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == cbLanguages.Text).GroupBy(l => l.SnipName);
             foreach (var data in SnipData)
             {
                 if (data.Key != null)

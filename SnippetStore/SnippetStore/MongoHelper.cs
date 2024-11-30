@@ -28,10 +28,10 @@ namespace SnippetStore
         
         public MongoHelper()
         {
-            ConnectToDatabase();
+            _ = ConnectToDatabase();
         }
 
-        public void ConnectToDatabase()
+        public async Task ConnectToDatabase()
         {
 
 
@@ -80,9 +80,9 @@ namespace SnippetStore
             }
         }
 
-        public List<string?> GetLanguages()
+        public async Task<List<string?>> GetLanguages()
         {
-            var languages = coll_languages.Find(new BsonDocument()).ToList();
+            var languages = await coll_languages.Find(new BsonDocument()).ToListAsync();
             return languages.Select(x => x.Language).ToList();
         }
 
