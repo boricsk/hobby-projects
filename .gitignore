@@ -11,6 +11,5 @@ obj/
 .vs/
 Debug/
 net8.0/
-SnippetStore/
 
 !setup.zip
