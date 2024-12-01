@@ -9,7 +9,7 @@ Ez az app erre próbál megoldást nyújtani. Segítségével egy helyi telepít
 adatbáziba menthetjük el a kódrészleteket, majd gyors kereséseket végezhetünk az adatbázisban.
 
 ### Telepítés előtti előkészületek
-Abban az esetben, ha az appot helyi telepítésű adatbázison szeretnénk használni szükség van a MongoDb telepítésére, ami szolgáltatáskén fog futni a rendszerünkön. A telepítő innen tölthető le, valamit itt olvashatóak instrukciók a telepítéssel kapcsolatban.[ MongoDb Community Server Download ](https://www.mongodb.com/try/download/community)
+Abban az esetben, ha az appot helyi telepítésű adatbázison szeretnénk használni (ez az alapértelmezés) szükség van a MongoDb telepítésére, ami szolgáltatásként fog futni a rendszeren. A telepítő innen tölthető le, valamit itt olvashatóak instrukciók a telepítéssel kapcsolatban.[ MongoDb Community Server Download ](https://www.mongodb.com/try/download/community)
 Felhős használat esetén a szolgáltató oldalára történő regisztrációval lehet használni az appot. Én a MongoDb Atlast javaslom, ez 512MB adatbázisméretig ingyenes. [ MongoDb Atlas ](https://www.mongodb.com/products/platform/atlas-database)
 
 ### Telepítés
@@ -17,22 +17,22 @@ A telepítés elvégezhető a telepítővel vagy a kód letöltés utánni ford�
 <br>Ellenőrző összegek (setup.zip)<br><hr>
 
 Algorithm : SHA256<br>
-Hash      : 4C2B94A74461D9B6BEBFA205708A91B2D0CFDBFAF06782AAD488A9F7911E6F18
+Hash      : 91BC18DD91D6B61573EA6847F9204048B6F0DE3C846C5F5A55EA84BDF46711C2
 
 Algorithm : SHA384<br>
-Hash      : BA9A707E00E8321C09CBE25533FE01A3FF2029B65BB209903095A06FD4A7B3D9A28617840E46F257692059431A946323
+Hash      : 0A9499E0309E1765983B864B1109BD910DCA1224F396B2CD05F68479E189CFE5BAEFDA8D7EAB2AED51B4DC03DB30BAED
 
 Algorithm : SHA512<br>
-Hash      : D0529E1951CCBB04D3A178CCF99410509AC0B0ACB272BCEF81075453F23143B4C0ED371D096778DF8DD107AA9C9BBD9446E9B13EBB007C0EC7BA014E69792370
+Hash      : 41D2EF11509864424541CE0B8F894405036316D81F0FFF8ABB3A8C8D7A495985649AF67F7970DFC1F304945FAAF78938B28B1B32B7622685D555F6152EEF685A
 
 Algorithm : MACTRIPLEDES<br>
-Hash      : 1927120312CE4570
+Hash      : 2988EFF92F12C3E9
 
 Algorithm : MD5<br>
-Hash      : 999CADFE9A4523870B69D8EBAE63CDF3
+Hash      : F8C30671162BD502F45EDA99C24F362A
 
 Algorithm : RIPEMD160<br>
-Hash      : 7F913B0C9A6C2821A041D787ADBF4E0C92C4B1DB
+Hash      : 25F5EF4A3885C474A0D8C605E9136E309A1A8E48
 
 <hr>
 
@@ -57,10 +57,10 @@ Bal oldalon az adatbázisban lévő kódrészletek vannak csoportosítva nyelven
 ### Beállítás
 <img src=./pic/scr-setup-1.jpg ><br><br>
 
-Mielőtt a használatot megkezdenénk fell kell vinni azokat a programozási nyelveket, amelyeket használni szeretnénk. Ezt az Add language részben lehet megtenni. LEhetőségünk van kulcsszavak rögzítésére is, amiket a kódrészlet felvitelénél lehet majd használni valamint hatékonyabbá tenni velük a keresést. A Search in .. részben azt lehet beállítani, hogy a gyorskeresés melyik adatbáziskollekciót vegye figyelembe.<br><br>
-Syntax fül<br>
+Mielőtt a használatot megkezdenénk fell kell vinni azokat a programozási nyelveket, amelyeket használni szeretnénk. Ezt az Add language részben lehet megtenni. Lehetőségünk van kulcsszavak rögzítésére is, amiket a kódrészlet felvitelénél lehet majd használni valamint hatékonyabbá tenni velük a keresést. <br><br>
+Syntax and connection fül<br>
 <img src=./pic/scr-setup-2.jpg ><br><br>
-Az appban van egy alap szintaktika kiemelő. Az Add reswrved word részben lehet megadni azokat a szavakat amit a color gombbal kiválasztott szíben szeretnénk látni a főablak szerkesztőjében. az Add block separator esetében a helyzet ugyanez. Jobb oldalon kell megadni az adatbázisok kapcsolódásához használatos constring-eket. Ha a Use local database be van pipálva akkor a helyi adatbázist fogja használni a program. Ha ezt változtatjuk újra kell indítani az appot. A save config gombot ne felejtsük el legyomni, ez fogja a beállításokat menteni.
+Az appban van egy alap szintaktika kiemelő. Az Add reswrved word részben lehet megadni azokat a szavakat amit a color gombbal kiválasztott szíben szeretnénk látni a főablak szerkesztőjében. az Add block separator esetében a helyzet ugyanez. Jobb oldalon kell megadni az adatbázisok kapcsolódásához használatos constring-eket. Ha a Use local database be van pipálva akkor a helyi adatbázist fogja használni a program. Ha ezt változtatjuk újra kell indítani az appot. A Search in .. részben azt lehet beállítani, hogy a gyorskeresés melyik adatbáziskollekciót vegye figyelembe. A save config gombot ne felejtsük el legyomni, ez fogja a beállításokat menteni, illetve teszteli a megadott connection stringeket. 
 
 
 ### Kódrészlet hozzáadása
