@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SnippetStore.MongoClass;
+using SnippetStore.RegistryClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,19 +16,31 @@ namespace SnippetStore
     {
         private List<string?>? _parameters;
         private bool[] _searchOptions = new bool[4];
-        MongoHelper mongoHelper = new MongoHelper();
+        //MongoHelper mongoHelper = new MongoHelper();
+        
+        MongoConnectionManagement connMgmnt = new(RegistryOps.ReadConString());
         
         public SetupForm()
         {
             InitializeComponent();
             _ = UpdateList();
             GetConfiguration();           
+           
         }
         private async Task UpdateList()
         {
+            var lang_coll = connMgmnt.GetCollection<Languages>("Languages");
+            var keyw_coll = connMgmnt.GetCollection<Keywords>("Keywords");
+            var resw_coll = connMgmnt.GetCollection<ResWords>("Reserved words");
+            var blck_coll = connMgmnt.GetCollection<BlockSeparators>("Block separators");
+            MongoLanguage mongoLanguage = new(lang_coll);
+            MongoKeyword mongoKeyword = new(keyw_coll);
+            MongoResWord mongoResword = new(resw_coll);
+            MongoBlockSep mongoBlockSep = new(blck_coll);
+
             ClearListBoxes();
 
-            UpdateLists(_parameters = await mongoHelper.GetLanguages(), () =>
+            UpdateLists(_parameters = await mongoLanguage.GetLanguagesAsync() , () =>
                 {
                     foreach (var lang in _parameters)
                     {
@@ -34,7 +48,7 @@ namespace SnippetStore
                     }
                 });
 
-            UpdateLists(_parameters = mongoHelper.GetKeywords(), () =>
+            UpdateLists(_parameters = await mongoKeyword.GetKeywordsAsync(), () =>
                 {
                     foreach (var keyword in _parameters)
                     {
@@ -42,7 +56,7 @@ namespace SnippetStore
                     }
                 });
 
-            UpdateLists(_parameters = mongoHelper.GetReswords(), () =>
+            UpdateLists(_parameters = await mongoResword.GetReswordsAsync(), () =>
                 {
                     foreach (var resword in _parameters)
                     {
@@ -50,7 +64,7 @@ namespace SnippetStore
                     }
                 });
 
-            UpdateLists(_parameters = mongoHelper.GetBlockSep(), () =>
+            UpdateLists(_parameters = await mongoBlockSep.GetBlockSepAsync(), () =>
             {
                 foreach (var block in _parameters)
                 {
@@ -87,100 +101,116 @@ namespace SnippetStore
             }
         }
 
-        private void btnAddLang_Click(object sender, EventArgs e)
+        private async void btnAddLang_Click(object sender, EventArgs e)
         {
+            var lang_coll = connMgmnt.GetCollection<Languages>("Languages");
+            MongoLanguage mongoLanguage = new(lang_coll);
+
             string newLang = tbNewLang.Text;
             if (!string.IsNullOrEmpty(newLang) && !lbLanguages.Items.Contains(newLang))
             {
                 lbLanguages.Items.Add(newLang);
-                mongoHelper.AddLanguages(newLang);
+                await mongoLanguage.AddLanguagesAsync(newLang);
                 tbNewLang.Clear();
             }
         }
 
-        private void btnRemoveLang_Click(object sender, EventArgs e)
+        private async void btnRemoveLang_Click(object sender, EventArgs e)
         {
             if (lbLanguages.SelectedItem != null)
             {
                 string? selectedLang = lbLanguages.SelectedItem.ToString();
                 if (selectedLang != null)
                 {
-                    mongoHelper.DeleteLanguage(selectedLang);
-                    UpdateList();
+                    var lang_coll = connMgmnt.GetCollection<Languages>("Languages");
+                    MongoLanguage mongoLanguage = new(lang_coll);
+                    await mongoLanguage.DeleteLanguageAsync(selectedLang);
+                    _ = UpdateList();
                 }
             }
         }
 
-        private void btnAddKeyw_Click(object sender, EventArgs e)
+        private async void btnAddKeyw_Click(object sender, EventArgs e)
         {
             string newKeyw = tbAddKeyw.Text;
             if (!string.IsNullOrEmpty(newKeyw) && !lbKeywords.Items.Contains(newKeyw))
             {
+                var keyw_coll = connMgmnt.GetCollection<Keywords>("Keywords");
+                MongoKeyword mongoKeyword = new(keyw_coll);
                 lbKeywords.Items.Add(newKeyw);
-                mongoHelper.AddKeyword(newKeyw);
+                await mongoKeyword.AddKeywordAsync(newKeyw);
                 tbAddKeyw.Clear();
             }
         }
 
-        private void btnRemoveKeyw_Click(object sender, EventArgs e)
+        private async void btnRemoveKeyw_Click(object sender, EventArgs e)
         {
             if (lbKeywords.SelectedItem != null)
             {
                 string? selectedKeyw = lbKeywords.SelectedItem.ToString();
                 if (selectedKeyw != null)
                 {
-                    mongoHelper.DeleteKeyw(selectedKeyw);
-                    UpdateList();
+                    var keyw_coll = connMgmnt.GetCollection<Keywords>("Keywords");
+                    MongoKeyword mongoKeyword = new(keyw_coll);
+                    await mongoKeyword.DeleteKeywAsync(selectedKeyw);
+                    _ = UpdateList();
                 }
             }
         }
 
-        private void btnAddReservedWord_Click(object sender, EventArgs e)
+        private async void btnAddReservedWord_Click(object sender, EventArgs e)
         {
             string newWord = tbReservedWords.Text;
             if (!string.IsNullOrEmpty(newWord) && !lbResWord.Items.Contains(newWord))
             {
                 lbResWord.Items.Add(newWord);
-                var mongoHelper = new MongoHelper();
-                mongoHelper.AddReservedWord(newWord);
+                var resw_coll = connMgmnt.GetCollection<ResWords>("Reserved words");
+                MongoResWord mongoResWord = new(resw_coll);                
+                await mongoResWord.AddReservedWordAsync(newWord);
                 tbReservedWords.Clear();
             }
 
         }
 
-        private void btnRemoveReservedWord_Click(object sender, EventArgs e)
+        private async void btnRemoveReservedWord_Click(object sender, EventArgs e)
         {
             if (lbResWord.SelectedItem != null)
             {
                 string? selectedWord = lbResWord.SelectedItem.ToString();
                 if (selectedWord != null)
                 {
-                    mongoHelper.DeleteResw(selectedWord);
-                    UpdateList();
+                    var resw_coll = connMgmnt.GetCollection<ResWords>("Reserved words");
+                    MongoResWord mongoResWord = new(resw_coll);
+                    await mongoResWord.DeleteReswAsync(selectedWord);
+                    _ = UpdateList();
                 }
             }
         }
 
-        private void btnAddBlockSep_Click(object sender, EventArgs e)
+        private async void btnAddBlockSep_Click(object sender, EventArgs e)
         {
             string newBlockSep = tbBlockSep.Text;
             if (!string.IsNullOrEmpty(newBlockSep) && !lbBlockSep.Items.Contains(newBlockSep))
             {
+                var blck_coll = connMgmnt.GetCollection<BlockSeparators>("Block separators");
+                MongoBlockSep blck = new(blck_coll);
                 lbBlockSep.Items.Add(newBlockSep);
-                mongoHelper.AddBlockSep(newBlockSep);
+                await blck.AddBlockSepAync(newBlockSep);
                 tbBlockSep.Clear();
             }
         }
 
-        private void btnRemoveBlockSep_Click(object sender, EventArgs e)
+        private async void btnRemoveBlockSep_Click(object sender, EventArgs e)
         {
             if (lbBlockSep.SelectedItem != null)
             {
                 string? selectedBlockSep = lbBlockSep.SelectedItem.ToString();
                 if (selectedBlockSep != null)
                 {
-                    mongoHelper.DeleteBlockSep(selectedBlockSep);
-                    UpdateList();
+                    var blck_coll = connMgmnt.GetCollection<BlockSeparators>("Block separators");
+                    MongoBlockSep blck = new(blck_coll);
+                    await blck.DeleteBlockSepAsync(selectedBlockSep);
+                    _ = UpdateList();
                 }
             }
         }

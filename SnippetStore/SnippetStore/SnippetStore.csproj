@@ -10,6 +10,8 @@
     <Company>DevNullSec</Company>
     <Product>Snippet Store</Product>
     <ApplicationIcon>3986701-online-shop-store-store-icon_112278.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
