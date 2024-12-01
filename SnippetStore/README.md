@@ -12,7 +12,7 @@ Felhős használat esetén a szolgáltató oldalára történő regisztrációva
 
 ### Telepítés
 A telepítés elvégezhető a telepítővel vagy a kód letöltés utánni fordításával is. Mindkét esetben .NET szükséges a futtatáshoz, amit a Microsoft oldaláról lehet letölteni. [ .NET Download ](https://dotnet.microsoft.com/en-us/download) A telepítés után az asztalon lévő parancsikonnal indítható a program. <br> A telepítő innen tölthető le : [ Snippet Store Setup Download ](./SnippetStoreSetup/setup.zip)<br>
-<br>Ellenőrző összegek<br><hr>
+<br>Ellenőrző összegek (setup.zip)<br><hr>
 
 Algorithm : SHA256<br>
 Hash      : 4C2B94A74461D9B6BEBFA205708A91B2D0CFDBFAF06782AAD488A9F7911E6F18
@@ -70,16 +70,39 @@ Az appban van egy alap szintaktika kiemelő. Az Add reswrved word részben lehet
 5. Ha szeretnénk hosszabb megjegyzést írni itt lehet megtenni
 6. Másoljuk be a kódot, majd az Add to database gombbal menteni lehet.
 
-Két azonos nevő kódrészlet nem megengedett. Ha van már ilyen akkor azt piros háttérrel jelzi.<br>
+Két azonos nevő kódrészlet nem megengedett. Ha van már ilyen akkor azt piros háttérrel jelzi. Vedd figyelembe, hogy képek beszúrása jelen verzióban nem lehetséges.<br>
 <img src=./pic/scr-exist-snip.jpg ><br><br>
 
 
 ### Keresés
 <img src=./pic/scr-find.jpg ><br><br>
 
-A fanézet feletti szövegmezőbe lehet beírni a keresendő kifejezést. Figyelni kell arra, hogy kis és nagybetű érzékeny a keresés.
+A fanézet feletti szövegmezőbe lehet beírni a keresendő kifejezést. Figyelni kell arra, hogy kis és nagybetű érzékeny a keresés. A Clear search megnyomásával lehet törölni a keresést, ilyenkor a nézet visszaáll az alapállapotába, azaz mindent lehet látni megint.
 
 ### Törlés
 <img src=./pic/scr-del-snip.jpg ><br><br>
 
 Amikor egy kódrészt kiválasztunk akkor a törlés gomb aktív lesz és a megnyomásával lehet törölni a kiválasztott kódrészletet.
+
+### Snippet módosítás
+<img src=./pic/scr-mod-snip.jpg ><br><br>
+
+Ha szerkeszteni szeretnénk egy kódrészletet akkor duplán kattints a kódszerkesztő ablakán, ilyenkor a feni két gomb is aktiválódik. Ha elvégezted a módosítást a Save changes gombal lehet menteni a változást. Ha nem akarod elmanteni a változásokat használd a Cancel changes gombot.
+
+### Egyebek
+<img src=./pic/scr-oth-btn.jpg ><br><br>
+
+A funkciók rendre a következőek:
+
+1.  A fanézet teljes kibontása.
+2.  A fanézet összecsukása.
+3.  A kódrészlet vágólapra másolása.
+4.  A felhőben lévő adatok helyi adatbázisba másolása. (Hely MngoDb service kell hogy fusson!)
+5.  Keresés törlése.
+
+### ManiKunyi
+
+Ha tetszett a program és szeretnéd a jövőbeni munkám támogatni azt itt teheted meg:
+
+1.  [ Patreon ](https://www.patreon.com/c/user?u=67730415)
+2.  RevTag : @chris314
