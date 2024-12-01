@@ -1,8 +1,6 @@
 ## Borics Krisztián
 ### Snippet Store
 
-[![Flag](https://img.icons8.com/?size=100&id=xapj7ZzAUZKI&format=png&color=000000)](README-en.md)
-
 Biztosan voltatok már olyan helyzetben egy nagyobb project esetén, hogy olyan problémát kellett megoldani
 amit már megoldottatok. Ilyenkor megy a keresgetés, hogy a több ezernyi kódsorban valyon hol van az amit keresünk.
 Ez az app erre próbál megoldást nyújtani. Segítségével egy helyi telepítésű vagy cloud-os (Atlas) MongoDb
