@@ -13,7 +13,7 @@ Abban az esetben, ha az appot helyi telepítésű adatbázison szeretnénk haszn
 Felhős használat esetén a szolgáltató oldalára történő regisztrációval lehet használni az appot. Én a MongoDb Atlast javaslom, ez 512MB adatbázisméretig ingyenes. [ MongoDb Atlas ](https://www.mongodb.com/products/platform/atlas-database)
 
 ### Telepítés
-A telepítés elvégezhető a telepítővel vagy a kód letöltés utánni fordításával is. Mindkét esetben .NET szükséges a futtatáshoz, amit a Microsoft oldaláról lehet letölteni. [ .NET Download ](https://dotnet.microsoft.com/en-us/download) A telepítés után az asztalon lévő parancsikonnal indítható a program. <br> A telepítő innen tölthető le : [ Snippet Store Setup Download ](./SnippetStoreSetup/setup.zip)<br>
+A telepítés elvégezhető a telepítővel vagy a kód letöltés utánni fordításával is. Mindkét esetben .NET szükséges a futtatáshoz, amit a Microsoft oldaláról lehet letölteni. [ .NET Download ](https://dotnet.microsoft.com/en-us/download) A telepítés után az asztalon lévő parancsikonnal indítható a program. <br> A telepítő innen tölthető le : [ Snippet Store Setup Download ](https://devnullsec.hu/bin/setup.zip)<br>
 <br>Ellenőrző összegek (setup.zip)<br><hr>
 
 Algorithm : SHA256<br>

