@@ -123,7 +123,7 @@ namespace SnippetStore
                 btnCopySnippet.Enabled = true;
                 //btnEdit.Enabled = true;
             }
-
+            _ = UpdateCharts();
             _ = WordHighlight();
         }
 
