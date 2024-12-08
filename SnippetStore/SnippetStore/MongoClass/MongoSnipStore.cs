@@ -107,6 +107,12 @@ namespace SnippetStore.MongoClass
         //    }
         //}
 
+        public async Task ResetView()
+        { 
+            var updateDefinition = Builders<SnippetDatabase>.Update.Set(x => x.NoOfView,0);
+            await _snipCollection.UpdateManyAsync(FilterDefinition<SnippetDatabase>.Empty, updateDefinition);
+        }
+
 
     }
 }

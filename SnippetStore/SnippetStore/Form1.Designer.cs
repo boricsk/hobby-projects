@@ -80,6 +80,10 @@
             chartSnippetNum = new System.Windows.Forms.DataVisualization.Charting.Chart();
             groupBox3 = new GroupBox();
             chartNumOfWiew = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            contextMenuViewChart = new ContextMenuStrip(components);
+            cmUpdateCharts = new ToolStripMenuItem();
+            toolStripSeparator8 = new ToolStripSeparator();
+            cmResetView = new ToolStripMenuItem();
             timer = new System.Windows.Forms.Timer(components);
             mainCodeFontDialog = new FontDialog();
             mainCodeColorDialog = new ColorDialog();
@@ -108,6 +112,7 @@
             ((System.ComponentModel.ISupportInitialize)chartSnippetNum).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartNumOfWiew).BeginInit();
+            contextMenuViewChart.SuspendLayout();
             SuspendLayout();
             // 
             // statusStrip1
@@ -531,6 +536,7 @@
             // 
             chartArea1.Name = "ChartArea1";
             chartSnippetNum.ChartAreas.Add(chartArea1);
+            chartSnippetNum.ContextMenuStrip = contextMenuViewChart;
             chartSnippetNum.Dock = DockStyle.Fill;
             legend1.Name = "Legend1";
             chartSnippetNum.Legends.Add(legend1);
@@ -559,6 +565,7 @@
             // 
             chartArea2.Name = "ChartArea1";
             chartNumOfWiew.ChartAreas.Add(chartArea2);
+            chartNumOfWiew.ContextMenuStrip = contextMenuViewChart;
             chartNumOfWiew.Dock = DockStyle.Fill;
             legend2.Name = "Legend1";
             chartNumOfWiew.Legends.Add(legend2);
@@ -571,6 +578,31 @@
             chartNumOfWiew.Size = new Size(443, 307);
             chartNumOfWiew.TabIndex = 0;
             chartNumOfWiew.Text = "chart1";
+            // 
+            // contextMenuViewChart
+            // 
+            contextMenuViewChart.Items.AddRange(new ToolStripItem[] { cmUpdateCharts, toolStripSeparator8, cmResetView });
+            contextMenuViewChart.Name = "contextMenuViewChart";
+            contextMenuViewChart.Size = new Size(189, 54);
+            // 
+            // cmUpdateCharts
+            // 
+            cmUpdateCharts.Name = "cmUpdateCharts";
+            cmUpdateCharts.Size = new Size(188, 22);
+            cmUpdateCharts.Text = "Update charts";
+            cmUpdateCharts.Click += cmUpdateCharts_Click;
+            // 
+            // toolStripSeparator8
+            // 
+            toolStripSeparator8.Name = "toolStripSeparator8";
+            toolStripSeparator8.Size = new Size(185, 6);
+            // 
+            // cmResetView
+            // 
+            cmResetView.Name = "cmResetView";
+            cmResetView.Size = new Size(188, 22);
+            cmResetView.Text = "Reset number of view";
+            cmResetView.Click += cmResetView_Click;
             // 
             // timer
             // 
@@ -625,6 +657,7 @@
             ((System.ComponentModel.ISupportInitialize)chartSnippetNum).EndInit();
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chartNumOfWiew).EndInit();
+            contextMenuViewChart.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -682,5 +715,9 @@
         private Label lblIndexSize;
         private Label lblTotalSize;
         private NotifyIcon notifyIcon;
+        private ContextMenuStrip contextMenuViewChart;
+        private ToolStripMenuItem cmUpdateCharts;
+        private ToolStripSeparator toolStripSeparator8;
+        private ToolStripMenuItem cmResetView;
     }
 }

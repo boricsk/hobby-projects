@@ -14,27 +14,6 @@ Felhős használat esetén a szolgáltató oldalára történő regisztrációva
 
 ### Telepítés
 A telepítés elvégezhető a telepítővel vagy a kód letöltés utánni fordításával is. Mindkét esetben .NET szükséges a futtatáshoz, amit a Microsoft oldaláról lehet letölteni. [ .NET Download ](https://dotnet.microsoft.com/en-us/download) A telepítés után az asztalon lévő parancsikonnal indítható a program. <br> A telepítő innen tölthető le : [ Snippet Store Setup Download ](https://devnullsec.hu/bin/setup.zip)<br>
-<br>Ellenőrző összegek (setup.zip)<br><hr>
-
-Algorithm : SHA256<br>
-Hash      : 91BC18DD91D6B61573EA6847F9204048B6F0DE3C846C5F5A55EA84BDF46711C2
-
-Algorithm : SHA384<br>
-Hash      : 0A9499E0309E1765983B864B1109BD910DCA1224F396B2CD05F68479E189CFE5BAEFDA8D7EAB2AED51B4DC03DB30BAED
-
-Algorithm : SHA512<br>
-Hash      : 41D2EF11509864424541CE0B8F894405036316D81F0FFF8ABB3A8C8D7A495985649AF67F7970DFC1F304945FAAF78938B28B1B32B7622685D555F6152EEF685A
-
-Algorithm : MACTRIPLEDES<br>
-Hash      : 2988EFF92F12C3E9
-
-Algorithm : MD5<br>
-Hash      : F8C30671162BD502F45EDA99C24F362A
-
-Algorithm : RIPEMD160<br>
-Hash      : 25F5EF4A3885C474A0D8C605E9136E309A1A8E48
-
-<hr>
 
 ### Főoldal
 

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnippetStore", "SnippetStore\SnippetStore.csproj", "{C8936BA4-01D6-4844-B31D-DD7362313C98}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SnippetStoreSetup", "SnippetStoreSetup\SnippetStoreSetup.vdproj", "{9383897B-9398-4611-9E89-0EFDDBB5D41D}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SnippetStoreSetup", "SnippetStoreSetup\SnippetStoreSetup.vdproj", "{571AC1FF-7A90-4A08-91BE-58B8148683A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{C8936BA4-01D6-4844-B31D-DD7362313C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8936BA4-01D6-4844-B31D-DD7362313C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8936BA4-01D6-4844-B31D-DD7362313C98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9383897B-9398-4611-9E89-0EFDDBB5D41D}.Debug|Any CPU.ActiveCfg = Debug
-		{9383897B-9398-4611-9E89-0EFDDBB5D41D}.Release|Any CPU.ActiveCfg = Release
+		{571AC1FF-7A90-4A08-91BE-58B8148683A6}.Debug|Any CPU.ActiveCfg = Debug
+		{571AC1FF-7A90-4A08-91BE-58B8148683A6}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

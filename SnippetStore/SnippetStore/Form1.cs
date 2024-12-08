@@ -372,7 +372,7 @@ namespace SnippetStore
         private void rtbMainCode_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             try
-            {                
+            {
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = e.LinkText,
@@ -383,6 +383,18 @@ namespace SnippetStore
             {
                 MessageBox.Show($"Error opening link: {ex.Message}");
             }
+        }
+
+        private void cmUpdateCharts_Click(object sender, EventArgs e)
+        {
+            _ = UpdateCharts();
+        }
+
+        private void cmResetView_Click(object sender, EventArgs e)
+        {
+            var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
+            MongoSnipStore snipStore = new(snip_coll);
+            _ = snipStore.ResetView();
         }
     }
 }
