@@ -71,7 +71,7 @@ namespace SnippetStore.RegistryClass
 
         public static bool ReadDatabaseOption()
         {
-            bool ret = false;
+            bool ret = true;
             using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
             {
                 object? isLocalDb = key.GetValue("isUseLocalDb");

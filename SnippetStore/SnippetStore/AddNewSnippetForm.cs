@@ -197,7 +197,8 @@ namespace SnippetStore
         {
             var snip_coll = connMgmnt.GetCollection<SnippetDatabase>("SnippetStore");
             MongoSnipStore snipStore = new(snip_coll);
-            var SnipData = snipStore.GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == cbLanguages.Text).GroupBy(l => l.SnipName);
+            var SnipData = snipStore.GetSnipets().AsQueryable().ToList().GroupBy(l => l.SnipName);
+            //var SnipData = snipStore.GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == cbLanguages.Text).GroupBy(l => l.SnipName);
             foreach (var data in SnipData)
             {
                 if (data.Key != null)

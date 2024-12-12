@@ -125,6 +125,7 @@ namespace SnippetStore
             }
             _ = UpdateCharts();
             _ = WordHighlight();
+            Debug.WriteLine(e.Node.Text);
         }
 
         private void OnTypeSearch(object sender, EventArgs e)
