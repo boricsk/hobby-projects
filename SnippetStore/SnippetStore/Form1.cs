@@ -364,10 +364,10 @@ namespace SnippetStore
             var stats = dbStat.DatabaseStat();
             lblDbName.Text += stats[0];
             lblNoColls.Text += $"{stats[1].ToInt64():N0}";
-            lblDatabaseSize.Text += $"{stats[2].ToInt64():N0} Bytes";
-            lblStorageSize.Text += $"{stats[3].ToInt64():N0} Bytes";
-            lblIndexSize.Text += $"{stats[4].ToInt64():N0} Bytes";
-            lblTotalSize.Text += $"{stats[5].ToInt64():N0} Bytes";
+            lblDatabaseSize.Text += $"{stats[2].ToInt64() / 1024:N0} KBytes";
+            lblStorageSize.Text += $"{stats[3].ToInt64() / 1024:N0} KBytes";
+            lblIndexSize.Text += $"{stats[4].ToInt64() / 1024:N0} KBytes";
+            lblTotalSize.Text += $"{stats[5].ToInt64() / 1024:N0} KBytes";
         }
 
         private void rtbMainCode_LinkClicked(object sender, LinkClickedEventArgs e)

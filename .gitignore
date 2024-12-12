@@ -6,10 +6,9 @@
 *.vsidx
 *.cache
 *.bin
+*.zip
 bin/
 obj/
 .vs/
 Debug/
 net8.0/
-
-!setup.zip
