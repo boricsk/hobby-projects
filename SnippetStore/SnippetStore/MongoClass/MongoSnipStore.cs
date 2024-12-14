@@ -74,6 +74,12 @@ namespace SnippetStore.MongoClass
             return await _snipCollection.Find(filter).CountDocumentsAsync();
         }
 
+        public long GetSnipNumByLanguage(string language)
+        {
+            var filter = Builders<SnippetDatabase>.Filter.Eq(l => l.SnipLanguage, language);
+            return _snipCollection.Find(filter).CountDocuments();
+        }
+
         public Dictionary<string, int> GetTop5Wiew()
         {
             Dictionary<string, int> result = new Dictionary<string, int>();

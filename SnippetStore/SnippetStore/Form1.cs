@@ -2,11 +2,13 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using SnippetStore.MongoClass;
 using SnippetStore.RegistryClass;
+using SnippetStore.HighlightClass;
 using System.Diagnostics;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using SnippetStore.ChartClass;
 
 namespace SnippetStore
 {
@@ -17,16 +19,17 @@ namespace SnippetStore
         private ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
         private string? snippetId;
         private MongoConnectionManagement connectionManagement = new MongoConnectionManagement(RegistryOps.ReadConString());
-        private List<string?>? wordsToHighlight = new List<string?>();
-        private List<string?>? separatorToHighlight = new List<string?>();
-        private Color ResWordColor = new Color();
-        private Color SepColor = new Color();
+
+        private HighlightWord hw = new HighlightWord();
+        private HighlightSearch hs = new HighlightSearch();
+        private UpdateChart uc = new UpdateChart();
 
         public MainForm()
         {
             InitializeComponent();
             UpdateTreeView();
-            _ = UpdateCharts();
+            chartNumOfWiew = uc.UpdateTopViewChart(chartNumOfWiew);
+            chartSnippetNum = uc.UpdateSnipNumChart(chartSnippetNum);
             PrepStatusBar();
             PrepOptions();
             UpdateDbStats();
@@ -35,8 +38,6 @@ namespace SnippetStore
 
         private void PrepOptions()
         {
-            ResWordColor = RegistryOps.ReadResWordColor();
-            SepColor = RegistryOps.ReadBlockSepColor();
             btnSync.Enabled = !RegistryOps.ReadDatabaseOption();
         }
 
@@ -123,8 +124,11 @@ namespace SnippetStore
                 btnCopySnippet.Enabled = true;
                 //btnEdit.Enabled = true;
             }
-            _ = UpdateCharts();
-            _ = WordHighlight();
+            chartNumOfWiew = uc.UpdateTopViewChart(chartNumOfWiew);
+            chartSnippetNum = uc.UpdateSnipNumChart(chartSnippetNum);
+            rtbMainCode = await hw.WordHighlight(rtbMainCode);           
+            rtbMainCode = hs.HighlightSearchResult(tbSearch2.Text, rtbMainCode);
+
             Debug.WriteLine(e.Node.Text);
         }
 
@@ -193,46 +197,6 @@ namespace SnippetStore
             }
         }
 
-        private async Task WordHighlight()
-        {
-            var keyw_coll = connectionManagement.GetCollection<Keywords>("Keywords");
-            var resw_coll = connectionManagement.GetCollection<ResWords>("Reserved words");
-            var blck_coll = connectionManagement.GetCollection<BlockSeparators>("Block separators");
-            MongoKeyword mongoKeyword = new(keyw_coll);
-            MongoResWord mongoResword = new(resw_coll);
-            MongoBlockSep mongoBlockSep = new(blck_coll);
-
-            wordsToHighlight = await mongoResword.GetReswordsAsync();
-            separatorToHighlight = await mongoBlockSep.GetBlockSepAsync();
-            ResWordColor = RegistryOps.ReadResWordColor();
-            SepColor = RegistryOps.ReadBlockSepColor();
-
-            foreach (var word in wordsToHighlight)
-            {
-                string pattern = $@"\b{Regex.Escape(word)}\b";
-                MatchCollection matches = Regex.Matches(rtbMainCode.Text, pattern, RegexOptions.IgnoreCase);
-
-                foreach (Match match in matches)
-                {
-                    rtbMainCode.Select(match.Index, match.Length);
-                    rtbMainCode.SelectionColor = ResWordColor;
-                }
-            }
-            rtbMainCode.Select(0, 0);
-
-            foreach (var word in separatorToHighlight)
-            {
-                int startIndex = 0;
-                while ((startIndex = rtbMainCode.Text.IndexOf(word, startIndex, StringComparison.OrdinalIgnoreCase)) != -1)
-                {
-                    rtbMainCode.Select(startIndex, word.Length);
-                    rtbMainCode.SelectionColor = SepColor;
-                    startIndex += word.Length; // Továbblépés a következõ elõfordulásra
-                }
-            }
-            rtbMainCode.Select(0, 0);
-        }
-
         private void btnCancelModify_Click(object sender, EventArgs e)
         {
             btnCancelModify.Enabled = false;
@@ -263,6 +227,7 @@ namespace SnippetStore
         {
             if (rtbMainCode.Text != "")
             {
+                mainCodeFontDialog.Font = rtbMainCode.Font;
                 btnSaveModify.Enabled = true;
                 btnCancelModify.Enabled = true;
                 rtbMainCode.ReadOnly = false;
@@ -295,44 +260,6 @@ namespace SnippetStore
             {
                 rtbMainCode.SelectionColor = mainCodeColorDialog.Color;
             }
-        }
-
-        private async Task UpdateCharts()
-        {
-            var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
-            var lang_coll = connectionManagement.GetCollection<Languages>("Languages");
-            MongoSnipStore snipStore = new(snip_coll);
-            MongoLanguage mongoLanguage = new(lang_coll);
-
-            chartSnippetNum.Series.Clear();
-            chartNumOfWiew.Series.Clear();
-
-            var seriesSnipNum = new Series("Snippet number by lang.");
-            var seriesViewNum = new Series("Top 5 view");
-
-            seriesSnipNum.ChartType = SeriesChartType.Doughnut;
-            seriesViewNum.ChartType = SeriesChartType.Doughnut;
-
-            List<string?> snipNum = await mongoLanguage.GetLanguagesAsync();
-
-            foreach (var snip in snipNum)
-            {
-                if (snip != null)
-                {
-                    seriesSnipNum.Points.AddXY(snip, await snipStore.GetSnipNumByLanguageAsync(snip));
-                }
-            }
-            chartSnippetNum.Series.Add(seriesSnipNum);
-            chartSnippetNum.Series[0].IsValueShownAsLabel = true;
-
-
-            foreach (var v in snipStore.GetTop5Wiew())
-            {
-                seriesViewNum.Points.AddXY(v.Key, v.Value);
-            }
-
-            chartNumOfWiew.Series.Add(seriesViewNum);
-            chartNumOfWiew.Series[0].IsValueShownAsLabel = true;
         }
 
         private void btnCopySnippet_Click(object sender, EventArgs e)
@@ -388,7 +315,9 @@ namespace SnippetStore
 
         private void cmUpdateCharts_Click(object sender, EventArgs e)
         {
-            _ = UpdateCharts();
+            chartNumOfWiew = uc.UpdateTopViewChart(chartNumOfWiew);
+            chartSnippetNum = uc.UpdateSnipNumChart(chartSnippetNum);
+            //_ = UpdateCharts();
         }
 
         private void cmResetView_Click(object sender, EventArgs e)

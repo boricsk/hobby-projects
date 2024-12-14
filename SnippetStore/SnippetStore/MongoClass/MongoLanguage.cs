@@ -22,6 +22,12 @@ namespace SnippetStore.MongoClass
             return languages.Select(x => x.Language).ToList();
         }
 
+        public List<string?> GetLanguages()
+        {
+            var languages = _languageCollection.Find(new BsonDocument()).ToList();
+            return languages.Select(x => x.Language).ToList();
+        }
+
         public async Task AddLanguagesAsync(string lang)
         {
             var language = new Languages { Language = lang };
