@@ -126,7 +126,7 @@ namespace SnippetStore
             }
             chartNumOfWiew = uc.UpdateTopViewChart(chartNumOfWiew);
             chartSnippetNum = uc.UpdateSnipNumChart(chartSnippetNum);
-            rtbMainCode = await hw.WordHighlight(rtbMainCode);           
+            rtbMainCode = await hw.WordHighlight(rtbMainCode);
             rtbMainCode = hs.HighlightSearchResult(tbSearch2.Text, rtbMainCode);
 
             Debug.WriteLine(e.Node.Text);
@@ -226,8 +226,7 @@ namespace SnippetStore
         private void rtbMainCode_DoubleClick(object sender, EventArgs e)
         {
             if (rtbMainCode.Text != "")
-            {
-                mainCodeFontDialog.Font = rtbMainCode.Font;
+            {                
                 btnSaveModify.Enabled = true;
                 btnCancelModify.Enabled = true;
                 rtbMainCode.ReadOnly = false;
@@ -248,6 +247,15 @@ namespace SnippetStore
 
         private void btnMainFont_Click(object sender, EventArgs e)
         {
+            if (rtbMainCode.SelectionFont != null)
+            {
+                mainCodeFontDialog.Font = rtbMainCode.SelectionFont;
+            }
+            else
+            {
+                mainCodeFontDialog.Font = rtbMainCode.Font;
+            }
+            
             if (mainCodeFontDialog.ShowDialog() == DialogResult.OK)
             {
                 rtbMainCode.SelectionFont = mainCodeFontDialog.Font;
@@ -325,6 +333,11 @@ namespace SnippetStore
             var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
             MongoSnipStore snipStore = new(snip_coll);
             _ = snipStore.ResetView();
+        }
+
+        private void rtbMainCode_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
