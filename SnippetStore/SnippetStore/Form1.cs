@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using SnippetStore.ChartClass;
+using SnippetStore.SearchClass;
 
 namespace SnippetStore
 {
@@ -19,6 +20,7 @@ namespace SnippetStore
         private ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
         private string? snippetId;
         private MongoConnectionManagement connectionManagement = new MongoConnectionManagement(RegistryOps.ReadConString());
+        private SearchManagement sm = new SearchManagement();
 
         private HighlightWord hw = new HighlightWord();
         private HighlightSearch hs = new HighlightSearch();
@@ -90,7 +92,7 @@ namespace SnippetStore
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show($"Connection error! Check your MongoDb connection / service! ");
                 Environment.Exit(1);
@@ -134,21 +136,11 @@ namespace SnippetStore
 
         private void OnTypeSearch(object sender, EventArgs e)
         {
-            var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
-            MongoSnipStore snipStore = new(snip_coll);
-
-            bool[] op = new bool[3];
-            op = RegistryOps.ReadSearchOptions();
             if (tbSearch2.Text != "")
             {
                 treeView1.Nodes.Clear();
-                var SnipData = snipStore.GetSnipets().AsQueryable()
-                    .Where(x => (op[2] && x.SnipKeywords.Contains(tbSearch2.Text)) ||
-                                (op[3] && x.SnipName != null && x.SnipName.Contains(tbSearch2.Text)) ||
-                                (op[1] && x.SnipShortDesc != null && x.SnipShortDesc.Contains(tbSearch2.Text)) ||
-                                (op[0] && x.SnipCode != null && x.SnipCode.Contains(tbSearch2.Text)))
-                    .ToList().GroupBy(l => l.SnipLanguage);
-
+                
+                var SnipData = sm.MainScreenSearch(tbSearch2.Text);
                 foreach (var data in SnipData)
                 {
                     TreeNode node = new TreeNode(data.Key);
@@ -226,7 +218,7 @@ namespace SnippetStore
         private void rtbMainCode_DoubleClick(object sender, EventArgs e)
         {
             if (rtbMainCode.Text != "")
-            {                
+            {
                 btnSaveModify.Enabled = true;
                 btnCancelModify.Enabled = true;
                 rtbMainCode.ReadOnly = false;
@@ -255,7 +247,7 @@ namespace SnippetStore
             {
                 mainCodeFontDialog.Font = rtbMainCode.Font;
             }
-            
+
             if (mainCodeFontDialog.ShowDialog() == DialogResult.OK)
             {
                 rtbMainCode.SelectionFont = mainCodeFontDialog.Font;
@@ -277,12 +269,14 @@ namespace SnippetStore
 
         private async void btnSync_Click(object sender, EventArgs e)
         {
+            //toolStripProgressBar1.Visible = true;
             MongoSyncManagement syncMgmnt = new MongoSyncManagement();
             await syncMgmnt.SyncCloudToLocalDatabaseAsync();
             //_ = mongoHelper.SyncLocalDatabase();
             notifyIcon.BalloonTipTitle = $"Database sync!";
             notifyIcon.BalloonTipText = $"Database sync has been completed!";
             notifyIcon.ShowBalloonTip(3000);
+            //toolStripProgressBar1.Visible=false;
         }
 
         private void btnClearSearch_Click(object sender, EventArgs e)
@@ -333,11 +327,6 @@ namespace SnippetStore
             var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
             MongoSnipStore snipStore = new(snip_coll);
             _ = snipStore.ResetView();
-        }
-
-        private void rtbMainCode_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

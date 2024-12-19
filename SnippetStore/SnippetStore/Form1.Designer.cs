@@ -37,6 +37,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             statusStrip1 = new StatusStrip();
+            toolStripProgressBar1 = new ToolStripProgressBar();
             toolStrip1 = new ToolStrip();
             btnAddNewSnippet = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -88,6 +89,7 @@
             mainCodeFontDialog = new FontDialog();
             mainCodeColorDialog = new ColorDialog();
             notifyIcon = new NotifyIcon(components);
+            statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerMain).BeginInit();
             splitContainerMain.Panel1.SuspendLayout();
@@ -121,11 +123,20 @@
             // 
             // statusStrip1
             // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripProgressBar1 });
             statusStrip1.Location = new Point(0, 723);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(1340, 22);
             statusStrip1.TabIndex = 0;
             statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            toolStripProgressBar1.Name = "toolStripProgressBar1";
+            toolStripProgressBar1.Size = new Size(100, 16);
+            toolStripProgressBar1.Step = 20;
+            toolStripProgressBar1.Style = ProgressBarStyle.Marquee;
+            toolStripProgressBar1.Visible = false;
             // 
             // toolStrip1
             // 
@@ -355,9 +366,7 @@
             rtbMainCode.Size = new Size(1083, 310);
             rtbMainCode.TabIndex = 2;
             rtbMainCode.Text = "";
-            rtbMainCode.WordWrap = false;
             rtbMainCode.LinkClicked += rtbMainCode_LinkClicked;
-            rtbMainCode.TextChanged += rtbMainCode_TextChanged;
             rtbMainCode.DoubleClick += rtbMainCode_DoubleClick;
             // 
             // toolStrip2
@@ -640,6 +649,8 @@
             Controls.Add(statusStrip1);
             Name = "MainForm";
             Text = "Snippet Store";
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             splitContainerMain.Panel1.ResumeLayout(false);
@@ -736,5 +747,6 @@
         private Label lblDatabaseSize;
         private Label lblNoColls;
         private Label lblDbName;
+        private ToolStripProgressBar toolStripProgressBar1;
     }
 }

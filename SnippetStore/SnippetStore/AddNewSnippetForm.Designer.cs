@@ -115,7 +115,6 @@
             tbCode.Size = new Size(710, 423);
             tbCode.TabIndex = 0;
             tbCode.Text = "";
-            tbCode.WordWrap = false;
             // 
             // gbLanguage
             // 

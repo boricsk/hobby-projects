@@ -105,14 +105,6 @@ namespace SnippetStore.MongoClass
             return SnipNum == 0;
         }
 
-        //public async Task RenameNodeName(string newName, string Id)
-        //{
-        //    if (await isNameExistAsync(Id, newName))
-        //    {
-        //        _snipCollection.UpdateOne(Builders<SnippetDatabase>.Filter.Eq(x => x.Id, Id), Builders<SnippetDatabase>.Update.Set(x => x.SnipName, newName));
-        //    }
-        //}
-
         public async Task ResetView()
         { 
             var updateDefinition = Builders<SnippetDatabase>.Update.Set(x => x.NoOfView,0);

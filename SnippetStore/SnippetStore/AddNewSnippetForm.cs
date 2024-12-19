@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using SnippetStore.MongoClass;
 using SnippetStore.RegistryClass;
+using SnippetStore.SearchClass;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace SnippetStore
     {
         //MongoHelper mongoHelper = new MongoHelper();
         MongoConnectionManagement connMgmnt = new(RegistryOps.ReadConString());
+        SearchManagement sm = new SearchManagement();
         public AddNewSnippetForm()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace SnippetStore
         {
             var lang_coll = connMgmnt.GetCollection<Languages>("Languages");
             MongoLanguage mongoLanguage = new(lang_coll);
-            
+
             var languages = await mongoLanguage.GetLanguagesAsync();
             cbLanguages.Items.Clear();
             foreach (var lang in languages)
@@ -109,7 +111,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Short description is required!");                
+                ShowNotify(3000, "Data error.", "Short description is required!");
                 return;
             }
 
@@ -119,7 +121,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Programming language is required!");                
+                ShowNotify(3000, "Data error.", "Programming language is required!");
                 return;
             }
 
@@ -129,7 +131,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Code snippet is required!");                
+                ShowNotify(3000, "Data error.", "Code snippet is required!");
                 return;
             }
 
@@ -195,41 +197,19 @@ namespace SnippetStore
 
         private void tbSnippetName_TextChanged(object sender, EventArgs e)
         {
-            var snip_coll = connMgmnt.GetCollection<SnippetDatabase>("SnippetStore");
-            MongoSnipStore snipStore = new(snip_coll);
-            var SnipData = snipStore.GetSnipets().AsQueryable().ToList().GroupBy(l => l.SnipName);
-            //var SnipData = snipStore.GetSnipets().AsQueryable().ToList().Where(l => l.SnipLanguage == cbLanguages.Text).GroupBy(l => l.SnipName);
-            foreach (var data in SnipData)
+            if (sm.isNameInDatabase(tbSnippetName.Text)) 
             {
-                if (data.Key != null)
-                {
-                    if (tbSnippetName.Text == data.Key)
-                    {
-                        tbSnippetName.BackColor = Color.Red;
-                        btnAddDatabase.Enabled = false;
-                        break;
-                    }
-                    else
-                    {
-                        tbSnippetName.BackColor = Color.White;
-                        btnAddDatabase.Enabled = true;
-                    }
-                }
+                tbSnippetName.BackColor = Color.Red;
+                btnAddDatabase.Enabled = false;
             }
+            else
+            {
+                tbSnippetName.BackColor = Color.White;
+                btnAddDatabase.Enabled = true;
+            }
+
             tbShortDesc.Text = tbSnippetName.Text;
 
-        }
-
-        private void cbLanguages_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (cbLanguages.SelectedIndex == -1)
-            //{
-            //    tbSnippetName.Enabled = false;
-            //}
-            //else
-            //{
-            //    tbSnippetName.Enabled = true;
-            //}
         }
 
         private void cbLanguages_SelectedValueChanged(object sender, EventArgs e)
