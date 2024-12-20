@@ -62,9 +62,6 @@
             tbSearch2 = new TextBox();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
-            toolStrip2 = new ToolStrip();
-            btnMainFont = new ToolStripButton();
-            btnMainColor = new ToolStripButton();
             splitContainerDescAndChart = new SplitContainer();
             groupBox1 = new GroupBox();
             splitContainerDesc = new SplitContainer();
@@ -86,8 +83,6 @@
             gbChartView = new GroupBox();
             chartNumOfWiew = new System.Windows.Forms.DataVisualization.Charting.Chart();
             timer = new System.Windows.Forms.Timer(components);
-            mainCodeFontDialog = new FontDialog();
-            mainCodeColorDialog = new ColorDialog();
             notifyIcon = new NotifyIcon(components);
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -99,7 +94,6 @@
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
-            toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerDescAndChart).BeginInit();
             splitContainerDescAndChart.Panel1.SuspendLayout();
             splitContainerDescAndChart.Panel2.SuspendLayout();
@@ -344,7 +338,6 @@
             // splitContainer2.Panel1
             // 
             splitContainer2.Panel1.Controls.Add(rtbMainCode);
-            splitContainer2.Panel1.Controls.Add(toolStrip2);
             // 
             // splitContainer2.Panel2
             // 
@@ -360,44 +353,14 @@
             rtbMainCode.BorderStyle = BorderStyle.FixedSingle;
             rtbMainCode.Dock = DockStyle.Fill;
             rtbMainCode.Font = new Font("Cascadia Code", 10F);
-            rtbMainCode.Location = new Point(0, 25);
+            rtbMainCode.Location = new Point(0, 0);
             rtbMainCode.Name = "rtbMainCode";
             rtbMainCode.ReadOnly = true;
-            rtbMainCode.Size = new Size(1083, 310);
+            rtbMainCode.Size = new Size(1083, 335);
             rtbMainCode.TabIndex = 2;
             rtbMainCode.Text = "";
             rtbMainCode.LinkClicked += rtbMainCode_LinkClicked;
             rtbMainCode.DoubleClick += rtbMainCode_DoubleClick;
-            // 
-            // toolStrip2
-            // 
-            toolStrip2.Enabled = false;
-            toolStrip2.Items.AddRange(new ToolStripItem[] { btnMainFont, btnMainColor });
-            toolStrip2.Location = new Point(0, 0);
-            toolStrip2.Name = "toolStrip2";
-            toolStrip2.Size = new Size(1083, 25);
-            toolStrip2.TabIndex = 0;
-            toolStrip2.Text = "toolStrip2";
-            // 
-            // btnMainFont
-            // 
-            btnMainFont.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnMainFont.Image = (Image)resources.GetObject("btnMainFont.Image");
-            btnMainFont.ImageTransparentColor = Color.Magenta;
-            btnMainFont.Name = "btnMainFont";
-            btnMainFont.Size = new Size(23, 22);
-            btnMainFont.Text = "Font";
-            btnMainFont.Click += btnMainFont_Click;
-            // 
-            // btnMainColor
-            // 
-            btnMainColor.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnMainColor.Image = (Image)resources.GetObject("btnMainColor.Image");
-            btnMainColor.ImageTransparentColor = Color.Magenta;
-            btnMainColor.Name = "btnMainColor";
-            btnMainColor.Size = new Size(23, 22);
-            btnMainColor.Text = "Font color";
-            btnMainColor.Click += btnMainColor_Click;
             // 
             // splitContainerDescAndChart
             // 
@@ -659,12 +622,9 @@
             ((System.ComponentModel.ISupportInitialize)splitContainerMain).EndInit();
             splitContainerMain.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
-            splitContainer2.Panel1.PerformLayout();
             splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
-            toolStrip2.ResumeLayout(false);
-            toolStrip2.PerformLayout();
             splitContainerDescAndChart.Panel1.ResumeLayout(false);
             splitContainerDescAndChart.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainerDescAndChart).EndInit();
@@ -713,11 +673,6 @@
         private ToolStripButton btnCloseAll;
         private ToolStripSeparator toolStripSeparator5;
         private RichTextBox rtbMainCode;
-        private ToolStrip toolStrip2;
-        private ToolStripButton btnMainFont;
-        private FontDialog mainCodeFontDialog;
-        private ToolStripButton btnMainColor;
-        private ColorDialog mainCodeColorDialog;
         private SplitContainer splitContainerDescAndChart;
         private GroupBox groupBox1;
         private SplitContainer splitContainerCharts;

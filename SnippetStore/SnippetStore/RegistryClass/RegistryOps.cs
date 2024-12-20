@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using static System.Resources.ResXFileRef;
 
 namespace SnippetStore.RegistryClass
 {
@@ -170,6 +171,33 @@ namespace SnippetStore.RegistryClass
                 }
             }
             return options;
+        }
+
+        public static void WriteFontType(Font font)
+        {
+            var conv = new FontConverter();
+            using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                key?.SetValue("CodeBoxFont", conv.ConvertToString(font));
+            }
+        }
+
+        public static Font ReadFontType()
+        {
+            Font font = null;
+            var conv = new FontConverter();
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                if (key != null)
+                {
+                    object? value = key.GetValue("CodeBoxFont");
+                    if (value != null)
+                    {
+                        font = (Font)conv.ConvertFromString(value.ToString());
+                    }
+                }
+            }
+            return font;
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using SnippetStore.ChartClass;
 using SnippetStore.SearchClass;
+using SnippetStore.ConvertClass;
 
 namespace SnippetStore
 {
@@ -41,6 +42,10 @@ namespace SnippetStore
         private void PrepOptions()
         {
             btnSync.Enabled = !RegistryOps.ReadDatabaseOption();
+            if (RegistryOps.ReadFontType() != null)
+            {
+                rtbMainCode.Font = RegistryOps.ReadFontType();
+            }
         }
 
         private void PrepStatusBar()
@@ -60,10 +65,12 @@ namespace SnippetStore
             UpdateTreeView();
         }
 
-        private void btnSetup_Click(object sender, EventArgs e)
+        private async void btnSetup_Click(object sender, EventArgs e)
         {
             SetupForm setupForm = new SetupForm();
             setupForm.ShowDialog();
+            PrepOptions();
+            rtbMainCode = await hw.WordHighlight(rtbMainCode);
         }
 
         public void UpdateTreeView()
@@ -109,7 +116,7 @@ namespace SnippetStore
 
             if (snippetId != null)
             {
-                rtbMainCode.Rtf = await snipStore.GetCodeSnipetByIdAsync(snippetId);
+                rtbMainCode.Text = await snipStore.GetCodeSnipetByIdAsync(snippetId);
                 tbMainCodeDesc.Text = await snipStore.GetCodeDescByIdAsync(snippetId);
                 await snipStore.IncreaseViewAsync(snippetId);
             }
@@ -139,7 +146,7 @@ namespace SnippetStore
             if (tbSearch2.Text != "")
             {
                 treeView1.Nodes.Clear();
-                
+
                 var SnipData = sm.MainScreenSearch(tbSearch2.Text);
                 foreach (var data in SnipData)
                 {
@@ -195,23 +202,21 @@ namespace SnippetStore
             btnSaveModify.Enabled = false;
             rtbMainCode.ReadOnly = true;
             treeView1.Enabled = true;
-            toolStrip2.Enabled = false;
             rtbMainCode.Clear();
             UpdateTreeView();
         }
 
         private async void btnSaveModify_Click(object sender, EventArgs e)
         {
-            if (snippetId != null && rtbMainCode.Rtf != null)
+            if (snippetId != null && rtbMainCode.Text != null)
             {
                 var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
                 MongoSnipStore snipStore = new(snip_coll);
 
                 btnCancelModify.Enabled = false;
                 btnSaveModify.Enabled = false;
-                await snipStore.SaveModifyAsync(snippetId, rtbMainCode.Rtf);
+                await snipStore.SaveModifyAsync(snippetId, rtbMainCode.Text);
                 treeView1.Enabled = true;
-                toolStrip2.Enabled = false;
             }
         }
 
@@ -223,7 +228,6 @@ namespace SnippetStore
                 btnCancelModify.Enabled = true;
                 rtbMainCode.ReadOnly = false;
                 treeView1.Enabled = false;
-                toolStrip2.Enabled = true;
             }
         }
 
@@ -235,31 +239,6 @@ namespace SnippetStore
         private void btnCloseAll_Click(object sender, EventArgs e)
         {
             treeView1.CollapseAll();
-        }
-
-        private void btnMainFont_Click(object sender, EventArgs e)
-        {
-            if (rtbMainCode.SelectionFont != null)
-            {
-                mainCodeFontDialog.Font = rtbMainCode.SelectionFont;
-            }
-            else
-            {
-                mainCodeFontDialog.Font = rtbMainCode.Font;
-            }
-
-            if (mainCodeFontDialog.ShowDialog() == DialogResult.OK)
-            {
-                rtbMainCode.SelectionFont = mainCodeFontDialog.Font;
-            }
-        }
-
-        private void btnMainColor_Click(object sender, EventArgs e)
-        {
-            if (mainCodeColorDialog.ShowDialog() == DialogResult.OK)
-            {
-                rtbMainCode.SelectionColor = mainCodeColorDialog.Color;
-            }
         }
 
         private void btnCopySnippet_Click(object sender, EventArgs e)

@@ -25,6 +25,14 @@ namespace SnippetStore
             InitializeComponent();
             _ = UpdateLanguages();
             _ = UpdateKeywords();
+            SetFont();
+        }
+        private void SetFont()
+        {
+            if (RegistryOps.ReadFontType() != null)
+            {
+                tbCode.Font = RegistryOps.ReadFontType();
+            }
         }
         private async Task UpdateLanguages()
         {
@@ -127,7 +135,7 @@ namespace SnippetStore
 
             if (tbCode.Text != "")
             {
-                snippet.SnipCode = tbCode.Rtf!;
+                snippet.SnipCode = tbCode.Text!;
             }
             else
             {

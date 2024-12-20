@@ -42,6 +42,9 @@ namespace SnippetStore.SearchClass
                                     (op[0] && x.SnipCode != null && x.SnipCode.Contains(searchValue)))
                         .ToList().GroupBy(l => l.SnipLanguage);
             return ret;
+            // ConvertRichTextToPlain(x.SnipCode).Contains(searchValue)
         }
+
+
     }
 }

@@ -16,16 +16,26 @@ namespace SnippetStore
     {
         private List<string?>? _parameters;
         private bool[] _searchOptions = new bool[4];
-        
+
         MongoConnectionManagement connMgmnt = new(RegistryOps.ReadConString());
-        
+
         public SetupForm()
         {
             InitializeComponent();
             _ = UpdateList();
-            GetConfiguration();           
-           
+            GetConfiguration();
+            SetFontPreview();
         }
+
+        private void SetFontPreview()
+        {
+            if (RegistryOps.ReadFontType() != null)
+            {
+                lblPreview.Font = RegistryOps.ReadFontType();
+                fontDialog1.Font = lblPreview.Font;
+            }
+        }
+
         private async Task UpdateList()
         {
             var lang_coll = connMgmnt.GetCollection<Languages>("Languages");
@@ -39,7 +49,7 @@ namespace SnippetStore
 
             ClearListBoxes();
 
-            UpdateLists(_parameters = await mongoLanguage.GetLanguagesAsync() , () =>
+            UpdateLists(_parameters = await mongoLanguage.GetLanguagesAsync(), () =>
                 {
                     foreach (var lang in _parameters)
                     {
@@ -83,7 +93,7 @@ namespace SnippetStore
             cbDesc.Checked = _searchOptions[1];
             cbKeyw.Checked = _searchOptions[2];
             cbSnipName.Checked = _searchOptions[3];
-            
+
         }
         private void ClearListBoxes()
         {
@@ -164,7 +174,7 @@ namespace SnippetStore
             {
                 lbResWord.Items.Add(newWord);
                 var resw_coll = connMgmnt.GetCollection<ResWords>("Reserved words");
-                MongoResWord mongoResWord = new(resw_coll);                
+                MongoResWord mongoResWord = new(resw_coll);
                 await mongoResWord.AddReservedWordAsync(newWord);
                 tbReservedWords.Clear();
             }
@@ -277,6 +287,17 @@ namespace SnippetStore
                 {
                     ShowNotify(3000, "Connection string error", "Connection test was failed, check the cloud connection string!");
                 }
+            }
+        }
+
+        private void btnChangeFont_Click(object sender, EventArgs e)
+        {
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                RegistryOps.WriteFontType(fontDialog1.Font);
+
+                lblPreview.Font = fontDialog1.Font;
+
             }
         }
     }

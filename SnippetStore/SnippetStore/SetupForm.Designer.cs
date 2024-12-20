@@ -43,6 +43,15 @@
             lbKeywords = new ListBox();
             tbAddKeyw = new TextBox();
             tabPage2 = new TabPage();
+            groupBoxFont = new GroupBox();
+            btnChangeFont = new Button();
+            lblPreview = new Label();
+            btnSyntaxConfigSave = new Button();
+            groupBox6 = new GroupBox();
+            cbSnipName = new CheckBox();
+            cbCodeSnip = new CheckBox();
+            cbDesc = new CheckBox();
+            cbKeyw = new CheckBox();
             cbUseLocalDb = new CheckBox();
             groupBox7 = new GroupBox();
             tbConStringLocal = new TextBox();
@@ -65,22 +74,17 @@
             colorDialog1 = new ColorDialog();
             fontDialog1 = new FontDialog();
             notifyIcon = new NotifyIcon(components);
-            groupBox6 = new GroupBox();
-            cbSnipName = new CheckBox();
-            cbCodeSnip = new CheckBox();
-            cbDesc = new CheckBox();
-            cbKeyw = new CheckBox();
-            btnSyntaxConfigSave = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
+            groupBoxFont.SuspendLayout();
+            groupBox6.SuspendLayout();
             groupBox7.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
-            groupBox6.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -90,7 +94,7 @@
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(838, 427);
+            tabControl1.Size = new Size(838, 495);
             tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -100,7 +104,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(830, 399);
+            tabPage1.Size = new Size(830, 467);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Language and keyword";
             tabPage1.UseVisualStyleBackColor = true;
@@ -211,6 +215,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(groupBoxFont);
             tabPage2.Controls.Add(btnSyntaxConfigSave);
             tabPage2.Controls.Add(groupBox6);
             tabPage2.Controls.Add(cbUseLocalDb);
@@ -221,210 +226,53 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(830, 399);
+            tabPage2.Size = new Size(830, 467);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Syntax and Connection";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // cbUseLocalDb
+            // groupBoxFont
             // 
-            cbUseLocalDb.AutoSize = true;
-            cbUseLocalDb.Checked = true;
-            cbUseLocalDb.CheckState = CheckState.Checked;
-            cbUseLocalDb.Location = new Point(554, 151);
-            cbUseLocalDb.Name = "cbUseLocalDb";
-            cbUseLocalDb.Size = new Size(220, 19);
-            cbUseLocalDb.TabIndex = 13;
-            cbUseLocalDb.Text = "Use local database (Restart required!)";
-            cbUseLocalDb.UseVisualStyleBackColor = true;
+            groupBoxFont.Controls.Add(btnChangeFont);
+            groupBoxFont.Controls.Add(lblPreview);
+            groupBoxFont.Location = new Point(554, 314);
+            groupBoxFont.Name = "groupBoxFont";
+            groupBoxFont.Size = new Size(268, 100);
+            groupBoxFont.TabIndex = 16;
+            groupBoxFont.TabStop = false;
+            groupBoxFont.Text = "Codebox font";
             // 
-            // groupBox7
+            // btnChangeFont
             // 
-            groupBox7.Controls.Add(tbConStringLocal);
-            groupBox7.FlatStyle = FlatStyle.Popup;
-            groupBox7.Location = new Point(554, 76);
-            groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(270, 64);
-            groupBox7.TabIndex = 12;
-            groupBox7.TabStop = false;
-            groupBox7.Text = "Connection string  (Local)";
+            btnChangeFont.FlatStyle = FlatStyle.Flat;
+            btnChangeFont.Location = new Point(71, 62);
+            btnChangeFont.Name = "btnChangeFont";
+            btnChangeFont.Size = new Size(111, 32);
+            btnChangeFont.TabIndex = 1;
+            btnChangeFont.Text = "Change font";
+            btnChangeFont.UseVisualStyleBackColor = true;
+            btnChangeFont.Click += btnChangeFont_Click;
             // 
-            // tbConStringLocal
+            // lblPreview
             // 
-            tbConStringLocal.Location = new Point(6, 22);
-            tbConStringLocal.Name = "tbConStringLocal";
-            tbConStringLocal.Size = new Size(255, 23);
-            tbConStringLocal.TabIndex = 0;
-            tbConStringLocal.Text = "mongodb://localhost:27017";
+            lblPreview.AutoSize = true;
+            lblPreview.Font = new Font("Cascadia Code", 10F);
+            lblPreview.Location = new Point(6, 19);
+            lblPreview.Name = "lblPreview";
+            lblPreview.Size = new Size(176, 18);
+            lblPreview.TabIndex = 0;
+            lblPreview.Text = "Selected font preview";
             // 
-            // groupBox5
+            // btnSyntaxConfigSave
             // 
-            groupBox5.Controls.Add(tbConString);
-            groupBox5.FlatStyle = FlatStyle.Popup;
-            groupBox5.Location = new Point(554, 6);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(270, 64);
-            groupBox5.TabIndex = 11;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "Connection string  (Cloud)";
-            // 
-            // tbConString
-            // 
-            tbConString.Location = new Point(6, 22);
-            tbConString.Name = "tbConString";
-            tbConString.Size = new Size(255, 23);
-            tbConString.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(pSepColor);
-            groupBox4.Controls.Add(btnSetupSeparatorColor);
-            groupBox4.Controls.Add(btnRemoveBlockSep);
-            groupBox4.Controls.Add(btnAddBlockSep);
-            groupBox4.Controls.Add(lbBlockSep);
-            groupBox4.Controls.Add(tbBlockSep);
-            groupBox4.FlatStyle = FlatStyle.Popup;
-            groupBox4.Location = new Point(280, 6);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(268, 378);
-            groupBox4.TabIndex = 9;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Add block separator";
-            // 
-            // pSepColor
-            // 
-            pSepColor.Location = new Point(158, 138);
-            pSepColor.Name = "pSepColor";
-            pSepColor.Size = new Size(100, 26);
-            pSepColor.TabIndex = 9;
-            // 
-            // btnSetupSeparatorColor
-            // 
-            btnSetupSeparatorColor.FlatStyle = FlatStyle.Flat;
-            btnSetupSeparatorColor.Location = new Point(158, 109);
-            btnSetupSeparatorColor.Name = "btnSetupSeparatorColor";
-            btnSetupSeparatorColor.Size = new Size(100, 23);
-            btnSetupSeparatorColor.TabIndex = 8;
-            btnSetupSeparatorColor.Text = "Color";
-            btnSetupSeparatorColor.UseVisualStyleBackColor = true;
-            btnSetupSeparatorColor.Click += btnSetupSeparatorColor_Click;
-            // 
-            // btnRemoveBlockSep
-            // 
-            btnRemoveBlockSep.FlatStyle = FlatStyle.Flat;
-            btnRemoveBlockSep.Location = new Point(158, 80);
-            btnRemoveBlockSep.Name = "btnRemoveBlockSep";
-            btnRemoveBlockSep.Size = new Size(100, 23);
-            btnRemoveBlockSep.TabIndex = 3;
-            btnRemoveBlockSep.Text = "Remove";
-            btnRemoveBlockSep.UseVisualStyleBackColor = true;
-            btnRemoveBlockSep.Click += btnRemoveBlockSep_Click;
-            // 
-            // btnAddBlockSep
-            // 
-            btnAddBlockSep.FlatStyle = FlatStyle.Flat;
-            btnAddBlockSep.Location = new Point(158, 51);
-            btnAddBlockSep.Name = "btnAddBlockSep";
-            btnAddBlockSep.Size = new Size(100, 23);
-            btnAddBlockSep.TabIndex = 2;
-            btnAddBlockSep.Text = "Add";
-            btnAddBlockSep.UseVisualStyleBackColor = true;
-            btnAddBlockSep.Click += btnAddBlockSep_Click;
-            // 
-            // lbBlockSep
-            // 
-            lbBlockSep.FormattingEnabled = true;
-            lbBlockSep.ItemHeight = 15;
-            lbBlockSep.Location = new Point(6, 51);
-            lbBlockSep.Name = "lbBlockSep";
-            lbBlockSep.Size = new Size(146, 319);
-            lbBlockSep.TabIndex = 1;
-            // 
-            // tbBlockSep
-            // 
-            tbBlockSep.Location = new Point(6, 22);
-            tbBlockSep.Name = "tbBlockSep";
-            tbBlockSep.Size = new Size(252, 23);
-            tbBlockSep.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(btnSetupColor);
-            groupBox3.Controls.Add(pResWordColor);
-            groupBox3.Controls.Add(btnRemoveReservedWord);
-            groupBox3.Controls.Add(btnAddReservedWord);
-            groupBox3.Controls.Add(lbResWord);
-            groupBox3.Controls.Add(tbReservedWords);
-            groupBox3.FlatStyle = FlatStyle.Popup;
-            groupBox3.Location = new Point(6, 6);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(268, 378);
-            groupBox3.TabIndex = 8;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Add reserved word";
-            // 
-            // btnSetupColor
-            // 
-            btnSetupColor.FlatStyle = FlatStyle.Flat;
-            btnSetupColor.Location = new Point(158, 109);
-            btnSetupColor.Name = "btnSetupColor";
-            btnSetupColor.Size = new Size(100, 23);
-            btnSetupColor.TabIndex = 7;
-            btnSetupColor.Text = "Color";
-            btnSetupColor.UseVisualStyleBackColor = true;
-            btnSetupColor.Click += btnSetupColor_Click;
-            // 
-            // pResWordColor
-            // 
-            pResWordColor.Location = new Point(158, 138);
-            pResWordColor.Name = "pResWordColor";
-            pResWordColor.Size = new Size(100, 26);
-            pResWordColor.TabIndex = 6;
-            // 
-            // btnRemoveReservedWord
-            // 
-            btnRemoveReservedWord.FlatStyle = FlatStyle.Flat;
-            btnRemoveReservedWord.Location = new Point(158, 80);
-            btnRemoveReservedWord.Name = "btnRemoveReservedWord";
-            btnRemoveReservedWord.Size = new Size(100, 23);
-            btnRemoveReservedWord.TabIndex = 3;
-            btnRemoveReservedWord.Text = "Remove";
-            btnRemoveReservedWord.UseVisualStyleBackColor = true;
-            btnRemoveReservedWord.Click += btnRemoveReservedWord_Click;
-            // 
-            // btnAddReservedWord
-            // 
-            btnAddReservedWord.FlatStyle = FlatStyle.Flat;
-            btnAddReservedWord.Location = new Point(158, 51);
-            btnAddReservedWord.Name = "btnAddReservedWord";
-            btnAddReservedWord.Size = new Size(100, 23);
-            btnAddReservedWord.TabIndex = 2;
-            btnAddReservedWord.Text = "Add";
-            btnAddReservedWord.UseVisualStyleBackColor = true;
-            btnAddReservedWord.Click += btnAddReservedWord_Click;
-            // 
-            // lbResWord
-            // 
-            lbResWord.FormattingEnabled = true;
-            lbResWord.ItemHeight = 15;
-            lbResWord.Location = new Point(6, 51);
-            lbResWord.Name = "lbResWord";
-            lbResWord.Size = new Size(146, 319);
-            lbResWord.TabIndex = 1;
-            // 
-            // tbReservedWords
-            // 
-            tbReservedWords.Location = new Point(6, 22);
-            tbReservedWords.Name = "tbReservedWords";
-            tbReservedWords.Size = new Size(252, 23);
-            tbReservedWords.TabIndex = 0;
-            // 
-            // notifyIcon
-            // 
-            notifyIcon.BalloonTipIcon = ToolTipIcon.Error;
-            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "notifyIcon1";
-            notifyIcon.Visible = true;
+            btnSyntaxConfigSave.FlatStyle = FlatStyle.Flat;
+            btnSyntaxConfigSave.Location = new Point(554, 420);
+            btnSyntaxConfigSave.Name = "btnSyntaxConfigSave";
+            btnSyntaxConfigSave.Size = new Size(268, 31);
+            btnSyntaxConfigSave.TabIndex = 15;
+            btnSyntaxConfigSave.Text = "Test connection and save config";
+            btnSyntaxConfigSave.UseVisualStyleBackColor = true;
+            btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
             // 
             // groupBox6
             // 
@@ -488,22 +336,211 @@
             cbKeyw.Text = "Keywords";
             cbKeyw.UseVisualStyleBackColor = true;
             // 
-            // btnSyntaxConfigSave
+            // cbUseLocalDb
             // 
-            btnSyntaxConfigSave.FlatStyle = FlatStyle.Flat;
-            btnSyntaxConfigSave.Location = new Point(590, 353);
-            btnSyntaxConfigSave.Name = "btnSyntaxConfigSave";
-            btnSyntaxConfigSave.Size = new Size(232, 31);
-            btnSyntaxConfigSave.TabIndex = 15;
-            btnSyntaxConfigSave.Text = "Test connection and save config";
-            btnSyntaxConfigSave.UseVisualStyleBackColor = true;
-            btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
+            cbUseLocalDb.AutoSize = true;
+            cbUseLocalDb.Checked = true;
+            cbUseLocalDb.CheckState = CheckState.Checked;
+            cbUseLocalDb.Location = new Point(554, 151);
+            cbUseLocalDb.Name = "cbUseLocalDb";
+            cbUseLocalDb.Size = new Size(220, 19);
+            cbUseLocalDb.TabIndex = 13;
+            cbUseLocalDb.Text = "Use local database (Restart required!)";
+            cbUseLocalDb.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(tbConStringLocal);
+            groupBox7.FlatStyle = FlatStyle.Popup;
+            groupBox7.Location = new Point(554, 76);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(270, 64);
+            groupBox7.TabIndex = 12;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Connection string  (Local)";
+            // 
+            // tbConStringLocal
+            // 
+            tbConStringLocal.Location = new Point(6, 22);
+            tbConStringLocal.Name = "tbConStringLocal";
+            tbConStringLocal.Size = new Size(255, 23);
+            tbConStringLocal.TabIndex = 0;
+            tbConStringLocal.Text = "mongodb://localhost:27017";
+            // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(tbConString);
+            groupBox5.FlatStyle = FlatStyle.Popup;
+            groupBox5.Location = new Point(554, 6);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(270, 64);
+            groupBox5.TabIndex = 11;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Connection string  (Cloud)";
+            // 
+            // tbConString
+            // 
+            tbConString.Location = new Point(6, 22);
+            tbConString.Name = "tbConString";
+            tbConString.Size = new Size(255, 23);
+            tbConString.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(pSepColor);
+            groupBox4.Controls.Add(btnSetupSeparatorColor);
+            groupBox4.Controls.Add(btnRemoveBlockSep);
+            groupBox4.Controls.Add(btnAddBlockSep);
+            groupBox4.Controls.Add(lbBlockSep);
+            groupBox4.Controls.Add(tbBlockSep);
+            groupBox4.FlatStyle = FlatStyle.Popup;
+            groupBox4.Location = new Point(280, 6);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(268, 445);
+            groupBox4.TabIndex = 9;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Add block separator";
+            // 
+            // pSepColor
+            // 
+            pSepColor.Location = new Point(158, 138);
+            pSepColor.Name = "pSepColor";
+            pSepColor.Size = new Size(100, 26);
+            pSepColor.TabIndex = 9;
+            // 
+            // btnSetupSeparatorColor
+            // 
+            btnSetupSeparatorColor.FlatStyle = FlatStyle.Flat;
+            btnSetupSeparatorColor.Location = new Point(158, 109);
+            btnSetupSeparatorColor.Name = "btnSetupSeparatorColor";
+            btnSetupSeparatorColor.Size = new Size(100, 23);
+            btnSetupSeparatorColor.TabIndex = 8;
+            btnSetupSeparatorColor.Text = "Color";
+            btnSetupSeparatorColor.UseVisualStyleBackColor = true;
+            btnSetupSeparatorColor.Click += btnSetupSeparatorColor_Click;
+            // 
+            // btnRemoveBlockSep
+            // 
+            btnRemoveBlockSep.FlatStyle = FlatStyle.Flat;
+            btnRemoveBlockSep.Location = new Point(158, 80);
+            btnRemoveBlockSep.Name = "btnRemoveBlockSep";
+            btnRemoveBlockSep.Size = new Size(100, 23);
+            btnRemoveBlockSep.TabIndex = 3;
+            btnRemoveBlockSep.Text = "Remove";
+            btnRemoveBlockSep.UseVisualStyleBackColor = true;
+            btnRemoveBlockSep.Click += btnRemoveBlockSep_Click;
+            // 
+            // btnAddBlockSep
+            // 
+            btnAddBlockSep.FlatStyle = FlatStyle.Flat;
+            btnAddBlockSep.Location = new Point(158, 51);
+            btnAddBlockSep.Name = "btnAddBlockSep";
+            btnAddBlockSep.Size = new Size(100, 23);
+            btnAddBlockSep.TabIndex = 2;
+            btnAddBlockSep.Text = "Add";
+            btnAddBlockSep.UseVisualStyleBackColor = true;
+            btnAddBlockSep.Click += btnAddBlockSep_Click;
+            // 
+            // lbBlockSep
+            // 
+            lbBlockSep.FormattingEnabled = true;
+            lbBlockSep.ItemHeight = 15;
+            lbBlockSep.Location = new Point(6, 51);
+            lbBlockSep.Name = "lbBlockSep";
+            lbBlockSep.Size = new Size(146, 379);
+            lbBlockSep.TabIndex = 1;
+            // 
+            // tbBlockSep
+            // 
+            tbBlockSep.Location = new Point(6, 22);
+            tbBlockSep.Name = "tbBlockSep";
+            tbBlockSep.Size = new Size(252, 23);
+            tbBlockSep.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(btnSetupColor);
+            groupBox3.Controls.Add(pResWordColor);
+            groupBox3.Controls.Add(btnRemoveReservedWord);
+            groupBox3.Controls.Add(btnAddReservedWord);
+            groupBox3.Controls.Add(lbResWord);
+            groupBox3.Controls.Add(tbReservedWords);
+            groupBox3.FlatStyle = FlatStyle.Popup;
+            groupBox3.Location = new Point(6, 6);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(268, 445);
+            groupBox3.TabIndex = 8;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Add reserved word";
+            // 
+            // btnSetupColor
+            // 
+            btnSetupColor.FlatStyle = FlatStyle.Flat;
+            btnSetupColor.Location = new Point(158, 109);
+            btnSetupColor.Name = "btnSetupColor";
+            btnSetupColor.Size = new Size(100, 23);
+            btnSetupColor.TabIndex = 7;
+            btnSetupColor.Text = "Color";
+            btnSetupColor.UseVisualStyleBackColor = true;
+            btnSetupColor.Click += btnSetupColor_Click;
+            // 
+            // pResWordColor
+            // 
+            pResWordColor.Location = new Point(158, 138);
+            pResWordColor.Name = "pResWordColor";
+            pResWordColor.Size = new Size(100, 26);
+            pResWordColor.TabIndex = 6;
+            // 
+            // btnRemoveReservedWord
+            // 
+            btnRemoveReservedWord.FlatStyle = FlatStyle.Flat;
+            btnRemoveReservedWord.Location = new Point(158, 80);
+            btnRemoveReservedWord.Name = "btnRemoveReservedWord";
+            btnRemoveReservedWord.Size = new Size(100, 23);
+            btnRemoveReservedWord.TabIndex = 3;
+            btnRemoveReservedWord.Text = "Remove";
+            btnRemoveReservedWord.UseVisualStyleBackColor = true;
+            btnRemoveReservedWord.Click += btnRemoveReservedWord_Click;
+            // 
+            // btnAddReservedWord
+            // 
+            btnAddReservedWord.FlatStyle = FlatStyle.Flat;
+            btnAddReservedWord.Location = new Point(158, 51);
+            btnAddReservedWord.Name = "btnAddReservedWord";
+            btnAddReservedWord.Size = new Size(100, 23);
+            btnAddReservedWord.TabIndex = 2;
+            btnAddReservedWord.Text = "Add";
+            btnAddReservedWord.UseVisualStyleBackColor = true;
+            btnAddReservedWord.Click += btnAddReservedWord_Click;
+            // 
+            // lbResWord
+            // 
+            lbResWord.FormattingEnabled = true;
+            lbResWord.ItemHeight = 15;
+            lbResWord.Location = new Point(6, 51);
+            lbResWord.Name = "lbResWord";
+            lbResWord.Size = new Size(146, 379);
+            lbResWord.TabIndex = 1;
+            // 
+            // tbReservedWords
+            // 
+            tbReservedWords.Location = new Point(6, 22);
+            tbReservedWords.Name = "tbReservedWords";
+            tbReservedWords.Size = new Size(252, 23);
+            tbReservedWords.TabIndex = 0;
+            // 
+            // notifyIcon
+            // 
+            notifyIcon.BalloonTipIcon = ToolTipIcon.Error;
+            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
+            notifyIcon.Text = "notifyIcon1";
+            notifyIcon.Visible = true;
             // 
             // SetupForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(862, 444);
+            ClientSize = new Size(862, 519);
             Controls.Add(tabControl1);
             Name = "SetupForm";
             Text = "Setup";
@@ -515,6 +552,10 @@
             groupBox1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            groupBoxFont.ResumeLayout(false);
+            groupBoxFont.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
             groupBox5.ResumeLayout(false);
@@ -523,8 +564,6 @@
             groupBox4.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            groupBox6.ResumeLayout(false);
-            groupBox6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -571,5 +610,8 @@
         private CheckBox cbCodeSnip;
         private CheckBox cbDesc;
         private CheckBox cbKeyw;
+        private GroupBox groupBoxFont;
+        private Label lblPreview;
+        private Button btnChangeFont;
     }
 }
