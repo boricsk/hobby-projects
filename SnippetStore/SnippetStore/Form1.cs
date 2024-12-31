@@ -11,6 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using SnippetStore.ChartClass;
 using SnippetStore.SearchClass;
 using SnippetStore.ConvertClass;
+using SnippetStore.NotifyClass;
 
 namespace SnippetStore
 {
@@ -26,7 +27,7 @@ namespace SnippetStore
         private HighlightWord hw = new HighlightWord();
         private HighlightSearch hs = new HighlightSearch();
         private UpdateChart uc = new UpdateChart();
-
+        private string separator = "";
         public MainForm()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace SnippetStore
             PrepOptions();
             UpdateDbStats();
             Text += $" - {connectionManagement.ConnectedTo}";
+            separator = RegistryOps.ReadSnipSep();
         }
 
         private void PrepOptions()
@@ -217,6 +219,7 @@ namespace SnippetStore
                 btnSaveModify.Enabled = false;
                 await snipStore.SaveModifyAsync(snippetId, rtbMainCode.Text);
                 treeView1.Enabled = true;
+                contextMenuCodeEdit.Enabled = false;
             }
         }
 
@@ -228,6 +231,7 @@ namespace SnippetStore
                 btnCancelModify.Enabled = true;
                 rtbMainCode.ReadOnly = false;
                 treeView1.Enabled = false;
+                contextMenuCodeEdit.Enabled = true;
             }
         }
 
@@ -252,9 +256,7 @@ namespace SnippetStore
             MongoSyncManagement syncMgmnt = new MongoSyncManagement();
             await syncMgmnt.SyncCloudToLocalDatabaseAsync();
             //_ = mongoHelper.SyncLocalDatabase();
-            notifyIcon.BalloonTipTitle = $"Database sync!";
-            notifyIcon.BalloonTipText = $"Database sync has been completed!";
-            notifyIcon.ShowBalloonTip(3000);
+            NotifyManagement.ShowNotifyMessage("Database sync!", "Database sync has been completed!", 3000, ToolTipIcon.Info);
             //toolStripProgressBar1.Visible=false;
         }
 
@@ -306,6 +308,37 @@ namespace SnippetStore
             var snip_coll = connectionManagement.GetCollection<SnippetDatabase>("SnippetStore");
             MongoSnipStore snipStore = new(snip_coll);
             _ = snipStore.ResetView();
+        }
+
+        private void addSeparatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Lekérdezzük a kurzor aktuális pozícióját
+            int cursorPosition = rtbMainCode.SelectionStart;
+
+            // Lekérdezzük, hogy a kurzor melyik sorban van
+            int currentLine = rtbMainCode.GetLineFromCharIndex(cursorPosition);
+
+            // Lekérjük az adott sor elsõ karakterének indexét
+            int firstCharIndexInLine = rtbMainCode.GetFirstCharIndexFromLine(currentLine);
+
+            // Ellenõrizzük, hogy a kurzor az elsõ oszlopban van-e
+            bool isCursorInFirstColumn = cursorPosition == firstCharIndexInLine;
+
+            if (isCursorInFirstColumn)
+            {
+                // Az aktuális kurzor sorának indexe
+                int currLine = rtbMainCode.GetLineFromCharIndex(rtbMainCode.SelectionStart);
+
+                // Az aktuális sor elsõ karakterének indexe
+                int lineStartPosition = rtbMainCode.GetFirstCharIndexFromLine(currLine);
+
+                // A szöveg beszúrása a sor elejére
+                rtbMainCode.Text = rtbMainCode.Text.Insert(lineStartPosition, separator);
+
+                // Az új kurzorpozíció beállítása a beszúrt szöveg után
+                rtbMainCode.SelectionStart = lineStartPosition + separator.Length;
+
+            }
         }
     }
 }

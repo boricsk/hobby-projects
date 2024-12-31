@@ -15,7 +15,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="3986701-online-shop-store-store-icon_112278.ico" />
+    <EmbeddedResource Include="3986701-online-shop-store-store-icon_112278.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

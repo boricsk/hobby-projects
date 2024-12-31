@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupForm));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            groupBox8 = new GroupBox();
+            pSnipSepColor = new Panel();
+            btnSnipSepColor = new Button();
+            btnAddSnipSep = new Button();
+            tbSnipSep = new TextBox();
             groupBox2 = new GroupBox();
             btnRemoveLang = new Button();
             btnAddLang = new Button();
@@ -73,9 +76,10 @@
             tbReservedWords = new TextBox();
             colorDialog1 = new ColorDialog();
             fontDialog1 = new FontDialog();
-            notifyIcon = new NotifyIcon(components);
+            lblSnipSepPrev = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox8.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -99,6 +103,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(groupBox8);
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 24);
@@ -109,6 +114,57 @@
             tabPage1.Text = "Language and keyword";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox8
+            // 
+            groupBox8.Controls.Add(lblSnipSepPrev);
+            groupBox8.Controls.Add(pSnipSepColor);
+            groupBox8.Controls.Add(btnSnipSepColor);
+            groupBox8.Controls.Add(btnAddSnipSep);
+            groupBox8.Controls.Add(tbSnipSep);
+            groupBox8.FlatStyle = FlatStyle.Popup;
+            groupBox8.Location = new Point(556, 6);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new Size(268, 455);
+            groupBox8.TabIndex = 10;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "Snipet separator";
+            // 
+            // pSnipSepColor
+            // 
+            pSnipSepColor.Location = new Point(182, 51);
+            pSnipSepColor.Name = "pSnipSepColor";
+            pSnipSepColor.Size = new Size(76, 23);
+            pSnipSepColor.TabIndex = 9;
+            // 
+            // btnSnipSepColor
+            // 
+            btnSnipSepColor.FlatStyle = FlatStyle.Flat;
+            btnSnipSepColor.Location = new Point(93, 51);
+            btnSnipSepColor.Name = "btnSnipSepColor";
+            btnSnipSepColor.Size = new Size(76, 23);
+            btnSnipSepColor.TabIndex = 8;
+            btnSnipSepColor.Text = "Color";
+            btnSnipSepColor.UseVisualStyleBackColor = true;
+            btnSnipSepColor.Click += btnSnipSepColor_Click;
+            // 
+            // btnAddSnipSep
+            // 
+            btnAddSnipSep.FlatStyle = FlatStyle.Flat;
+            btnAddSnipSep.Location = new Point(6, 51);
+            btnAddSnipSep.Name = "btnAddSnipSep";
+            btnAddSnipSep.Size = new Size(76, 23);
+            btnAddSnipSep.TabIndex = 2;
+            btnAddSnipSep.Text = "Set";
+            btnAddSnipSep.UseVisualStyleBackColor = true;
+            btnAddSnipSep.Click += btnAddSnipSep_Click;
+            // 
+            // tbSnipSep
+            // 
+            tbSnipSep.Location = new Point(6, 22);
+            tbSnipSep.Name = "tbSnipSep";
+            tbSnipSep.Size = new Size(252, 23);
+            tbSnipSep.TabIndex = 0;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(btnRemoveLang);
@@ -118,7 +174,7 @@
             groupBox2.FlatStyle = FlatStyle.Popup;
             groupBox2.Location = new Point(6, 6);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(268, 378);
+            groupBox2.Size = new Size(268, 455);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Add language";
@@ -151,7 +207,7 @@
             lbLanguages.ItemHeight = 15;
             lbLanguages.Location = new Point(6, 51);
             lbLanguages.Name = "lbLanguages";
-            lbLanguages.Size = new Size(146, 319);
+            lbLanguages.Size = new Size(146, 394);
             lbLanguages.TabIndex = 1;
             // 
             // tbNewLang
@@ -170,7 +226,7 @@
             groupBox1.FlatStyle = FlatStyle.Popup;
             groupBox1.Location = new Point(280, 6);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(268, 378);
+            groupBox1.Size = new Size(268, 455);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add keywords";
@@ -203,7 +259,7 @@
             lbKeywords.ItemHeight = 15;
             lbKeywords.Location = new Point(6, 51);
             lbKeywords.Name = "lbKeywords";
-            lbKeywords.Size = new Size(146, 319);
+            lbKeywords.Size = new Size(146, 394);
             lbKeywords.TabIndex = 1;
             // 
             // tbAddKeyw
@@ -529,12 +585,15 @@
             tbReservedWords.Size = new Size(252, 23);
             tbReservedWords.TabIndex = 0;
             // 
-            // notifyIcon
+            // lblSnipSepPrev
             // 
-            notifyIcon.BalloonTipIcon = ToolTipIcon.Error;
-            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "notifyIcon1";
-            notifyIcon.Visible = true;
+            lblSnipSepPrev.AutoSize = true;
+            lblSnipSepPrev.Font = new Font("Cascadia Code", 10F);
+            lblSnipSepPrev.Location = new Point(6, 85);
+            lblSnipSepPrev.Name = "lblSnipSepPrev";
+            lblSnipSepPrev.Size = new Size(176, 18);
+            lblSnipSepPrev.TabIndex = 10;
+            lblSnipSepPrev.Text = "Selected font preview";
             // 
             // SetupForm
             // 
@@ -546,6 +605,8 @@
             Text = "Setup";
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            groupBox8.ResumeLayout(false);
+            groupBox8.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -603,7 +664,6 @@
         private GroupBox groupBox7;
         private TextBox tbConStringLocal;
         private CheckBox cbUseLocalDb;
-        private NotifyIcon notifyIcon;
         private Button btnSyntaxConfigSave;
         private GroupBox groupBox6;
         private CheckBox cbSnipName;
@@ -613,5 +673,11 @@
         private GroupBox groupBoxFont;
         private Label lblPreview;
         private Button btnChangeFont;
+        private GroupBox groupBox8;
+        private Panel pSnipSepColor;
+        private Button btnSnipSepColor;
+        private Button btnAddSnipSep;
+        private TextBox tbSnipSep;
+        private Label lblSnipSepPrev;
     }
 }

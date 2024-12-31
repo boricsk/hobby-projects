@@ -199,5 +199,50 @@ namespace SnippetStore.RegistryClass
             }
             return font;
         }
+
+        public static void WriteSnipSep(string SnipSep)
+        {
+            using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                key?.SetValue("SnipSep", SnipSep);
+            }
+        }
+
+        public static string ReadSnipSep()
+        {
+            string ret = "";
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                if (key != null) 
+                {
+                    object? value = key.GetValue("SnipSep");
+                    if (value != null) { ret = value.ToString() ?? ""; }
+                }
+            }
+            return ret;
+        }
+
+        public static void WriteSnipSepColor(Color snipSepColor)
+        {
+            var color = snipSepColor.ToArgb();
+            using (RegistryKey? key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                key?.SetValue("SnipSepColor", color);
+            }
+        }
+
+        public static Color ReadSnipSepColor()
+        {
+            Color color = Color.Black;
+            using (RegistryKey? key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\SnippetStore"))
+            {
+                if (key != null) 
+                {
+                    object? value = key.GetValue("SnipSepColor");
+                    if (value != null) { color = Color.FromArgb((int)value); }
+                }
+            }
+            return color;
+        }
     }
 }

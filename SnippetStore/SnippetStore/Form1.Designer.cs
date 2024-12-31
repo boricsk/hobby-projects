@@ -62,6 +62,8 @@
             tbSearch2 = new TextBox();
             splitContainer2 = new SplitContainer();
             rtbMainCode = new RichTextBox();
+            contextMenuCodeEdit = new ContextMenuStrip(components);
+            addSeparatorToolStripMenuItem = new ToolStripMenuItem();
             splitContainerDescAndChart = new SplitContainer();
             groupBox1 = new GroupBox();
             splitContainerDesc = new SplitContainer();
@@ -83,7 +85,6 @@
             gbChartView = new GroupBox();
             chartNumOfWiew = new System.Windows.Forms.DataVisualization.Charting.Chart();
             timer = new System.Windows.Forms.Timer(components);
-            notifyIcon = new NotifyIcon(components);
             statusStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerMain).BeginInit();
@@ -94,6 +95,7 @@
             splitContainer2.Panel1.SuspendLayout();
             splitContainer2.Panel2.SuspendLayout();
             splitContainer2.SuspendLayout();
+            contextMenuCodeEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainerDescAndChart).BeginInit();
             splitContainerDescAndChart.Panel1.SuspendLayout();
             splitContainerDescAndChart.Panel2.SuspendLayout();
@@ -351,6 +353,7 @@
             rtbMainCode.AcceptsTab = true;
             rtbMainCode.BackColor = SystemColors.Window;
             rtbMainCode.BorderStyle = BorderStyle.FixedSingle;
+            rtbMainCode.ContextMenuStrip = contextMenuCodeEdit;
             rtbMainCode.Dock = DockStyle.Fill;
             rtbMainCode.Font = new Font("Cascadia Code", 10F);
             rtbMainCode.Location = new Point(0, 0);
@@ -361,6 +364,19 @@
             rtbMainCode.Text = "";
             rtbMainCode.LinkClicked += rtbMainCode_LinkClicked;
             rtbMainCode.DoubleClick += rtbMainCode_DoubleClick;
+            // 
+            // contextMenuCodeEdit
+            // 
+            contextMenuCodeEdit.Items.AddRange(new ToolStripItem[] { addSeparatorToolStripMenuItem });
+            contextMenuCodeEdit.Name = "contextMenuCodeEdit";
+            contextMenuCodeEdit.Size = new Size(149, 26);
+            // 
+            // addSeparatorToolStripMenuItem
+            // 
+            addSeparatorToolStripMenuItem.Name = "addSeparatorToolStripMenuItem";
+            addSeparatorToolStripMenuItem.Size = new Size(148, 22);
+            addSeparatorToolStripMenuItem.Text = "Add separator";
+            addSeparatorToolStripMenuItem.Click += addSeparatorToolStripMenuItem_Click;
             // 
             // splitContainerDescAndChart
             // 
@@ -595,13 +611,6 @@
             timer.Interval = 1000;
             timer.Tick += timer_Tick;
             // 
-            // notifyIcon
-            // 
-            notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
-            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "notifyIcon1";
-            notifyIcon.Visible = true;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -625,6 +634,7 @@
             splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
+            contextMenuCodeEdit.ResumeLayout(false);
             splitContainerDescAndChart.Panel1.ResumeLayout(false);
             splitContainerDescAndChart.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainerDescAndChart).EndInit();
@@ -688,7 +698,6 @@
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripButton btnClearSearch;
         private ToolStripButton btnSchClear;
-        private NotifyIcon notifyIcon;
         private ContextMenuStrip contextMenuViewChart;
         private ToolStripMenuItem cmUpdateCharts;
         private ToolStripSeparator toolStripSeparator8;
@@ -703,5 +712,7 @@
         private Label lblNoColls;
         private Label lblDbName;
         private ToolStripProgressBar toolStripProgressBar1;
+        private ContextMenuStrip contextMenuCodeEdit;
+        private ToolStripMenuItem addSeparatorToolStripMenuItem;
     }
 }

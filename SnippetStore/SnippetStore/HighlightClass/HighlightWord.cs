@@ -16,12 +16,9 @@ namespace SnippetStore.HighlightClass
         private List<string?>? separatorToHighlight = new List<string?>();
         private Color ResWordColor = new Color();
         private Color SepColor = new Color();
+        private Color SnipSepColor = new Color();
+        private string SnipSep = "";
 
-        public HighlightWord()
-        {
-            ResWordColor = RegistryOps.ReadResWordColor();
-            SepColor = RegistryOps.ReadBlockSepColor();
-        }
         public async Task<RichTextBox> WordHighlight(RichTextBox RichTextContent)
         {
             var keyw_coll = connectionManagement.GetCollection<Keywords>("Keywords");
@@ -35,6 +32,8 @@ namespace SnippetStore.HighlightClass
             separatorToHighlight = await mongoBlockSep.GetBlockSepAsync();
             ResWordColor = RegistryOps.ReadResWordColor();
             SepColor = RegistryOps.ReadBlockSepColor();
+            SnipSepColor = RegistryOps.ReadSnipSepColor();
+            SnipSep = RegistryOps.ReadSnipSep();
 
             foreach (var word in wordsToHighlight)
             {
@@ -60,6 +59,16 @@ namespace SnippetStore.HighlightClass
                 }
             }
             RichTextContent.Select(0, 0);
+            
+            string patternSnipSep = $@"{Regex.Escape(SnipSep)}";
+            MatchCollection matchesSnipSep = Regex.Matches(RichTextContent.Text, patternSnipSep, RegexOptions.None);
+            foreach (Match match in matchesSnipSep) 
+            {
+                RichTextContent.Select(match.Index, match.Length);
+                RichTextContent.SelectionColor = SnipSepColor;
+            }
+            RichTextContent.Select(0, 0);
+
             return RichTextContent;
         }
     }

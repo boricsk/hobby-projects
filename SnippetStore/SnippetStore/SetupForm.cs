@@ -1,4 +1,5 @@
 ﻿using SnippetStore.MongoClass;
+using SnippetStore.NotifyClass;
 using SnippetStore.RegistryClass;
 using System;
 using System.Collections.Generic;
@@ -93,6 +94,9 @@ namespace SnippetStore
             cbDesc.Checked = _searchOptions[1];
             cbKeyw.Checked = _searchOptions[2];
             cbSnipName.Checked = _searchOptions[3];
+            pSnipSepColor.BackColor = RegistryOps.ReadSnipSepColor();
+            lblSnipSepPrev.Text = RegistryOps.ReadSnipSep();
+            lblSnipSepPrev.ForeColor = RegistryOps.ReadSnipSepColor();
 
         }
         private void ClearListBoxes()
@@ -238,12 +242,7 @@ namespace SnippetStore
                 pSepColor.BackColor = colorDialog1.Color;
             }
         }
-        private void ShowNotify(int duration, string title, string message)
-        {
-            notifyIcon.BalloonTipTitle = title;
-            notifyIcon.BalloonTipText = message;
-            notifyIcon.ShowBalloonTip(duration);
-        }
+
         private void btnSyntaxConfigSave_Click(object sender, EventArgs e)
         {
             if (cbUseLocalDb.Checked)
@@ -264,7 +263,7 @@ namespace SnippetStore
                 }
                 else
                 {
-                    ShowNotify(3000, "Connection string error", "Connection test was failed, check the local connection string!");
+                    NotifyManagement.ShowNotifyMessage("Connection string error", "Connection test was failed, check the local connection string!", 3000, ToolTipIcon.Error);
                 }
             }
             else
@@ -285,7 +284,7 @@ namespace SnippetStore
                 }
                 else
                 {
-                    ShowNotify(3000, "Connection string error", "Connection test was failed, check the cloud connection string!");
+                    NotifyManagement.ShowNotifyMessage("Connection string error", "Connection test was failed, check the local connection string!", 3000, ToolTipIcon.Error);
                 }
             }
         }
@@ -298,6 +297,21 @@ namespace SnippetStore
 
                 lblPreview.Font = fontDialog1.Font;
 
+            }
+        }
+
+        private void btnAddSnipSep_Click(object sender, EventArgs e)
+        {
+            if (tbSnipSep.Text.Length > 0) { RegistryOps.WriteSnipSep(tbSnipSep.Text); lblSnipSepPrev.Text = tbSnipSep.Text; tbSnipSep.Clear(); }
+        }
+
+        private void btnSnipSepColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pSnipSepColor.BackColor = colorDialog1.Color;
+                RegistryOps.WriteSnipSepColor(colorDialog1.Color);
+                lblSnipSepPrev.ForeColor = colorDialog1.Color;
             }
         }
     }

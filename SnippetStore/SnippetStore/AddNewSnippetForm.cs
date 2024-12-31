@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using SnippetStore.MongoClass;
+using SnippetStore.NotifyClass;
 using SnippetStore.RegistryClass;
 using SnippetStore.SearchClass;
 using System;
@@ -20,12 +21,14 @@ namespace SnippetStore
         //MongoHelper mongoHelper = new MongoHelper();
         MongoConnectionManagement connMgmnt = new(RegistryOps.ReadConString());
         SearchManagement sm = new SearchManagement();
+        string separator = string.Empty;
         public AddNewSnippetForm()
         {
             InitializeComponent();
             _ = UpdateLanguages();
             _ = UpdateKeywords();
             SetFont();
+            separator = RegistryOps.ReadSnipSep();
         }
         private void SetFont()
         {
@@ -78,12 +81,7 @@ namespace SnippetStore
                 lbKeywords.Update();
             }
         }
-        private void ShowNotify(int duration, string title, string message)
-        {
-            notifyIcon.BalloonTipTitle = title;
-            notifyIcon.BalloonTipText = message;
-            notifyIcon.ShowBalloonTip(duration);
-        }
+
         private async void btnAddDatabase_Click(object sender, EventArgs e)
         {
             var snip_coll = connMgmnt.GetCollection<SnippetDatabase>("SnippetStore");
@@ -96,7 +94,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Snippet name is required!");
+                NotifyManagement.ShowNotifyMessage("Data error", "Snippet name is required!", 3000, ToolTipIcon.Error);
                 return;
             }
 
@@ -109,7 +107,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Keywords are required!");
+                NotifyManagement.ShowNotifyMessage("Data error", "Keywords are required!", 3000, ToolTipIcon.Error);
                 return;
             }
 
@@ -119,7 +117,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Short description is required!");
+
                 return;
             }
 
@@ -129,7 +127,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Programming language is required!");
+                NotifyManagement.ShowNotifyMessage("Data error", "Programming language is required!", 3000, ToolTipIcon.Error);
                 return;
             }
 
@@ -139,7 +137,7 @@ namespace SnippetStore
             }
             else
             {
-                ShowNotify(3000, "Data error.", "Code snippet is required!");
+                NotifyManagement.ShowNotifyMessage("Data error", "Code snippet is required!", 3000, ToolTipIcon.Error);
                 return;
             }
 
@@ -205,7 +203,7 @@ namespace SnippetStore
 
         private void tbSnippetName_TextChanged(object sender, EventArgs e)
         {
-            if (sm.isNameInDatabase(tbSnippetName.Text)) 
+            if (sm.isNameInDatabase(tbSnippetName.Text))
             {
                 tbSnippetName.BackColor = Color.Red;
                 btnAddDatabase.Enabled = false;
@@ -241,6 +239,37 @@ namespace SnippetStore
             else
             {
                 tbSnippetName.Enabled = true;
+            }
+        }
+
+        private void tsAddSeparator_Click(object sender, EventArgs e)
+        {
+            // Lekérdezzük a kurzor aktuális pozícióját
+            int cursorPosition = tbCode.SelectionStart;
+
+            // Lekérdezzük, hogy a kurzor melyik sorban van
+            int currentLine = tbCode.GetLineFromCharIndex(cursorPosition);
+
+            // Lekérjük az adott sor első karakterének indexét
+            int firstCharIndexInLine = tbCode.GetFirstCharIndexFromLine(currentLine);
+
+            // Ellenőrizzük, hogy a kurzor az első oszlopban van-e
+            bool isCursorInFirstColumn = cursorPosition == firstCharIndexInLine;
+
+            if (isCursorInFirstColumn)
+            {
+                // Az aktuális kurzor sorának indexe
+                int currLine = tbCode.GetLineFromCharIndex(tbCode.SelectionStart);
+
+                // Az aktuális sor első karakterének indexe
+                int lineStartPosition = tbCode.GetFirstCharIndexFromLine(currLine);
+
+                // A szöveg beszúrása a sor elejére
+                tbCode.Text = tbCode.Text.Insert(lineStartPosition, separator);
+
+                // Az új kurzorpozíció beállítása a beszúrt szöveg után
+                tbCode.SelectionStart = lineStartPosition + separator.Length;
+
             }
         }
     }

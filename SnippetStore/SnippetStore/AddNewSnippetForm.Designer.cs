@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewSnippetForm));
             statusBar = new StatusStrip();
             btnAddDatabase = new Button();
             fontDialog = new FontDialog();
@@ -37,6 +36,8 @@
             tabPage1 = new TabPage();
             gbCode = new GroupBox();
             tbCode = new RichTextBox();
+            codeboxMenu = new ContextMenuStrip(components);
+            tsAddSeparator = new ToolStripMenuItem();
             gbLanguage = new GroupBox();
             cbLanguages = new ComboBox();
             gbDesc = new GroupBox();
@@ -50,9 +51,9 @@
             gbSnippetName = new GroupBox();
             tbSnippetName = new TextBox();
             tabControl1 = new TabControl();
-            notifyIcon = new NotifyIcon(components);
             tabPage1.SuspendLayout();
             gbCode.SuspendLayout();
+            codeboxMenu.SuspendLayout();
             gbLanguage.SuspendLayout();
             gbDesc.SuspendLayout();
             gbKeyword.SuspendLayout();
@@ -108,6 +109,7 @@
             // tbCode
             // 
             tbCode.AcceptsTab = true;
+            tbCode.ContextMenuStrip = codeboxMenu;
             tbCode.Dock = DockStyle.Fill;
             tbCode.Font = new Font("Cascadia Code", 10F, FontStyle.Regular, GraphicsUnit.Point, 238);
             tbCode.Location = new Point(3, 19);
@@ -115,6 +117,19 @@
             tbCode.Size = new Size(710, 423);
             tbCode.TabIndex = 0;
             tbCode.Text = "";
+            // 
+            // codeboxMenu
+            // 
+            codeboxMenu.Items.AddRange(new ToolStripItem[] { tsAddSeparator });
+            codeboxMenu.Name = "codeboxMenu";
+            codeboxMenu.Size = new Size(181, 48);
+            // 
+            // tsAddSeparator
+            // 
+            tsAddSeparator.Name = "tsAddSeparator";
+            tsAddSeparator.Size = new Size(180, 22);
+            tsAddSeparator.Text = "Add separator";
+            tsAddSeparator.Click += tsAddSeparator_Click;
             // 
             // gbLanguage
             // 
@@ -250,13 +265,6 @@
             tabControl1.Size = new Size(1463, 489);
             tabControl1.TabIndex = 6;
             // 
-            // notifyIcon
-            // 
-            notifyIcon.BalloonTipIcon = ToolTipIcon.Error;
-            notifyIcon.Icon = (Icon)resources.GetObject("notifyIcon.Icon");
-            notifyIcon.Text = "notifyIcon1";
-            notifyIcon.Visible = true;
-            // 
             // AddNewSnippetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -271,6 +279,7 @@
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             gbCode.ResumeLayout(false);
+            codeboxMenu.ResumeLayout(false);
             gbLanguage.ResumeLayout(false);
             gbDesc.ResumeLayout(false);
             gbDesc.PerformLayout();
@@ -304,6 +313,7 @@
         private GroupBox gbSnippetName;
         private TextBox tbSnippetName;
         private TabControl tabControl1;
-        private NotifyIcon notifyIcon;
+        private ContextMenuStrip codeboxMenu;
+        private ToolStripMenuItem tsAddSeparator;
     }
 }
