@@ -31,6 +31,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             groupBox8 = new GroupBox();
+            lblSnipSepPrev = new Label();
             pSnipSepColor = new Panel();
             btnSnipSepColor = new Button();
             btnAddSnipSep = new Button();
@@ -76,7 +77,6 @@
             tbReservedWords = new TextBox();
             colorDialog1 = new ColorDialog();
             fontDialog1 = new FontDialog();
-            lblSnipSepPrev = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox8.SuspendLayout();
@@ -99,7 +99,7 @@
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(838, 495);
-            tabControl1.TabIndex = 6;
+            tabControl1.TabIndex = 12;
             // 
             // tabPage1
             // 
@@ -125,9 +125,19 @@
             groupBox8.Location = new Point(556, 6);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new Size(268, 455);
-            groupBox8.TabIndex = 10;
+            groupBox8.TabIndex = 0;
             groupBox8.TabStop = false;
             groupBox8.Text = "Snipet separator";
+            // 
+            // lblSnipSepPrev
+            // 
+            lblSnipSepPrev.AutoSize = true;
+            lblSnipSepPrev.Font = new Font("Cascadia Code", 10F);
+            lblSnipSepPrev.Location = new Point(6, 85);
+            lblSnipSepPrev.Name = "lblSnipSepPrev";
+            lblSnipSepPrev.Size = new Size(176, 18);
+            lblSnipSepPrev.TabIndex = 10;
+            lblSnipSepPrev.Text = "Selected font preview";
             // 
             // pSnipSepColor
             // 
@@ -142,7 +152,7 @@
             btnSnipSepColor.Location = new Point(93, 51);
             btnSnipSepColor.Name = "btnSnipSepColor";
             btnSnipSepColor.Size = new Size(76, 23);
-            btnSnipSepColor.TabIndex = 8;
+            btnSnipSepColor.TabIndex = 11;
             btnSnipSepColor.Text = "Color";
             btnSnipSepColor.UseVisualStyleBackColor = true;
             btnSnipSepColor.Click += btnSnipSepColor_Click;
@@ -153,7 +163,7 @@
             btnAddSnipSep.Location = new Point(6, 51);
             btnAddSnipSep.Name = "btnAddSnipSep";
             btnAddSnipSep.Size = new Size(76, 23);
-            btnAddSnipSep.TabIndex = 2;
+            btnAddSnipSep.TabIndex = 10;
             btnAddSnipSep.Text = "Set";
             btnAddSnipSep.UseVisualStyleBackColor = true;
             btnAddSnipSep.Click += btnAddSnipSep_Click;
@@ -163,7 +173,7 @@
             tbSnipSep.Location = new Point(6, 22);
             tbSnipSep.Name = "tbSnipSep";
             tbSnipSep.Size = new Size(252, 23);
-            tbSnipSep.TabIndex = 0;
+            tbSnipSep.TabIndex = 9;
             // 
             // groupBox2
             // 
@@ -175,7 +185,7 @@
             groupBox2.Location = new Point(6, 6);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(268, 455);
-            groupBox2.TabIndex = 7;
+            groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Add language";
             // 
@@ -185,7 +195,7 @@
             btnRemoveLang.Location = new Point(158, 80);
             btnRemoveLang.Name = "btnRemoveLang";
             btnRemoveLang.Size = new Size(100, 23);
-            btnRemoveLang.TabIndex = 3;
+            btnRemoveLang.TabIndex = 4;
             btnRemoveLang.Text = "Remove";
             btnRemoveLang.UseVisualStyleBackColor = true;
             btnRemoveLang.Click += btnRemoveLang_Click;
@@ -196,7 +206,7 @@
             btnAddLang.Location = new Point(158, 51);
             btnAddLang.Name = "btnAddLang";
             btnAddLang.Size = new Size(100, 23);
-            btnAddLang.TabIndex = 2;
+            btnAddLang.TabIndex = 3;
             btnAddLang.Text = "Add";
             btnAddLang.UseVisualStyleBackColor = true;
             btnAddLang.Click += btnAddLang_Click;
@@ -208,14 +218,14 @@
             lbLanguages.Location = new Point(6, 51);
             lbLanguages.Name = "lbLanguages";
             lbLanguages.Size = new Size(146, 394);
-            lbLanguages.TabIndex = 1;
+            lbLanguages.TabIndex = 2;
             // 
             // tbNewLang
             // 
             tbNewLang.Location = new Point(6, 22);
             tbNewLang.Name = "tbNewLang";
             tbNewLang.Size = new Size(252, 23);
-            tbNewLang.TabIndex = 0;
+            tbNewLang.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -227,7 +237,7 @@
             groupBox1.Location = new Point(280, 6);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(268, 455);
-            groupBox1.TabIndex = 6;
+            groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add keywords";
             // 
@@ -237,7 +247,7 @@
             btnRemoveKeyw.Location = new Point(158, 80);
             btnRemoveKeyw.Name = "btnRemoveKeyw";
             btnRemoveKeyw.Size = new Size(100, 23);
-            btnRemoveKeyw.TabIndex = 3;
+            btnRemoveKeyw.TabIndex = 8;
             btnRemoveKeyw.Text = "Remove";
             btnRemoveKeyw.UseVisualStyleBackColor = true;
             btnRemoveKeyw.Click += btnRemoveKeyw_Click;
@@ -248,7 +258,7 @@
             btnAddKeyw.Location = new Point(158, 51);
             btnAddKeyw.Name = "btnAddKeyw";
             btnAddKeyw.Size = new Size(100, 23);
-            btnAddKeyw.TabIndex = 2;
+            btnAddKeyw.TabIndex = 7;
             btnAddKeyw.Text = "Add";
             btnAddKeyw.UseVisualStyleBackColor = true;
             btnAddKeyw.Click += btnAddKeyw_Click;
@@ -260,14 +270,14 @@
             lbKeywords.Location = new Point(6, 51);
             lbKeywords.Name = "lbKeywords";
             lbKeywords.Size = new Size(146, 394);
-            lbKeywords.TabIndex = 1;
+            lbKeywords.TabIndex = 6;
             // 
             // tbAddKeyw
             // 
             tbAddKeyw.Location = new Point(6, 22);
             tbAddKeyw.Name = "tbAddKeyw";
             tbAddKeyw.Size = new Size(252, 23);
-            tbAddKeyw.TabIndex = 0;
+            tbAddKeyw.TabIndex = 5;
             // 
             // tabPage2
             // 
@@ -294,7 +304,7 @@
             groupBoxFont.Location = new Point(554, 314);
             groupBoxFont.Name = "groupBoxFont";
             groupBoxFont.Size = new Size(268, 100);
-            groupBoxFont.TabIndex = 16;
+            groupBoxFont.TabIndex = 6;
             groupBoxFont.TabStop = false;
             groupBoxFont.Text = "Codebox font";
             // 
@@ -325,7 +335,7 @@
             btnSyntaxConfigSave.Location = new Point(554, 420);
             btnSyntaxConfigSave.Name = "btnSyntaxConfigSave";
             btnSyntaxConfigSave.Size = new Size(268, 31);
-            btnSyntaxConfigSave.TabIndex = 15;
+            btnSyntaxConfigSave.TabIndex = 7;
             btnSyntaxConfigSave.Text = "Test connection and save config";
             btnSyntaxConfigSave.UseVisualStyleBackColor = true;
             btnSyntaxConfigSave.Click += btnSyntaxConfigSave_Click;
@@ -340,7 +350,7 @@
             groupBox6.Location = new Point(554, 176);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new Size(268, 132);
-            groupBox6.TabIndex = 14;
+            groupBox6.TabIndex = 5;
             groupBox6.TabStop = false;
             groupBox6.Text = "Search in ...";
             // 
@@ -352,7 +362,7 @@
             cbSnipName.Location = new Point(7, 100);
             cbSnipName.Name = "cbSnipName";
             cbSnipName.Size = new Size(99, 19);
-            cbSnipName.TabIndex = 3;
+            cbSnipName.TabIndex = 4;
             cbSnipName.Text = "Snippet name";
             cbSnipName.UseVisualStyleBackColor = true;
             // 
@@ -364,7 +374,7 @@
             cbCodeSnip.Location = new Point(6, 75);
             cbCodeSnip.Name = "cbCodeSnip";
             cbCodeSnip.Size = new Size(101, 19);
-            cbCodeSnip.TabIndex = 2;
+            cbCodeSnip.TabIndex = 3;
             cbCodeSnip.Text = "Code snippets";
             cbCodeSnip.UseVisualStyleBackColor = true;
             // 
@@ -376,7 +386,7 @@
             cbDesc.Location = new Point(7, 50);
             cbDesc.Name = "cbDesc";
             cbDesc.Size = new Size(121, 19);
-            cbDesc.TabIndex = 1;
+            cbDesc.TabIndex = 2;
             cbDesc.Text = "Short descriptions";
             cbDesc.UseVisualStyleBackColor = true;
             // 
@@ -388,7 +398,7 @@
             cbKeyw.Location = new Point(7, 25);
             cbKeyw.Name = "cbKeyw";
             cbKeyw.Size = new Size(77, 19);
-            cbKeyw.TabIndex = 0;
+            cbKeyw.TabIndex = 1;
             cbKeyw.Text = "Keywords";
             cbKeyw.UseVisualStyleBackColor = true;
             // 
@@ -400,7 +410,7 @@
             cbUseLocalDb.Location = new Point(554, 151);
             cbUseLocalDb.Name = "cbUseLocalDb";
             cbUseLocalDb.Size = new Size(220, 19);
-            cbUseLocalDb.TabIndex = 13;
+            cbUseLocalDb.TabIndex = 4;
             cbUseLocalDb.Text = "Use local database (Restart required!)";
             cbUseLocalDb.UseVisualStyleBackColor = true;
             // 
@@ -411,7 +421,7 @@
             groupBox7.Location = new Point(554, 76);
             groupBox7.Name = "groupBox7";
             groupBox7.Size = new Size(270, 64);
-            groupBox7.TabIndex = 12;
+            groupBox7.TabIndex = 3;
             groupBox7.TabStop = false;
             groupBox7.Text = "Connection string  (Local)";
             // 
@@ -430,7 +440,7 @@
             groupBox5.Location = new Point(554, 6);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(270, 64);
-            groupBox5.TabIndex = 11;
+            groupBox5.TabIndex = 2;
             groupBox5.TabStop = false;
             groupBox5.Text = "Connection string  (Cloud)";
             // 
@@ -453,7 +463,7 @@
             groupBox4.Location = new Point(280, 6);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(268, 445);
-            groupBox4.TabIndex = 9;
+            groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Add block separator";
             // 
@@ -462,7 +472,7 @@
             pSepColor.Location = new Point(158, 138);
             pSepColor.Name = "pSepColor";
             pSepColor.Size = new Size(100, 26);
-            pSepColor.TabIndex = 9;
+            pSepColor.TabIndex = 6;
             // 
             // btnSetupSeparatorColor
             // 
@@ -470,7 +480,7 @@
             btnSetupSeparatorColor.Location = new Point(158, 109);
             btnSetupSeparatorColor.Name = "btnSetupSeparatorColor";
             btnSetupSeparatorColor.Size = new Size(100, 23);
-            btnSetupSeparatorColor.TabIndex = 8;
+            btnSetupSeparatorColor.TabIndex = 5;
             btnSetupSeparatorColor.Text = "Color";
             btnSetupSeparatorColor.UseVisualStyleBackColor = true;
             btnSetupSeparatorColor.Click += btnSetupSeparatorColor_Click;
@@ -481,7 +491,7 @@
             btnRemoveBlockSep.Location = new Point(158, 80);
             btnRemoveBlockSep.Name = "btnRemoveBlockSep";
             btnRemoveBlockSep.Size = new Size(100, 23);
-            btnRemoveBlockSep.TabIndex = 3;
+            btnRemoveBlockSep.TabIndex = 4;
             btnRemoveBlockSep.Text = "Remove";
             btnRemoveBlockSep.UseVisualStyleBackColor = true;
             btnRemoveBlockSep.Click += btnRemoveBlockSep_Click;
@@ -492,7 +502,7 @@
             btnAddBlockSep.Location = new Point(158, 51);
             btnAddBlockSep.Name = "btnAddBlockSep";
             btnAddBlockSep.Size = new Size(100, 23);
-            btnAddBlockSep.TabIndex = 2;
+            btnAddBlockSep.TabIndex = 3;
             btnAddBlockSep.Text = "Add";
             btnAddBlockSep.UseVisualStyleBackColor = true;
             btnAddBlockSep.Click += btnAddBlockSep_Click;
@@ -504,14 +514,14 @@
             lbBlockSep.Location = new Point(6, 51);
             lbBlockSep.Name = "lbBlockSep";
             lbBlockSep.Size = new Size(146, 379);
-            lbBlockSep.TabIndex = 1;
+            lbBlockSep.TabIndex = 2;
             // 
             // tbBlockSep
             // 
             tbBlockSep.Location = new Point(6, 22);
             tbBlockSep.Name = "tbBlockSep";
             tbBlockSep.Size = new Size(252, 23);
-            tbBlockSep.TabIndex = 0;
+            tbBlockSep.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -525,7 +535,7 @@
             groupBox3.Location = new Point(6, 6);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(268, 445);
-            groupBox3.TabIndex = 8;
+            groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Add reserved word";
             // 
@@ -535,7 +545,7 @@
             btnSetupColor.Location = new Point(158, 109);
             btnSetupColor.Name = "btnSetupColor";
             btnSetupColor.Size = new Size(100, 23);
-            btnSetupColor.TabIndex = 7;
+            btnSetupColor.TabIndex = 5;
             btnSetupColor.Text = "Color";
             btnSetupColor.UseVisualStyleBackColor = true;
             btnSetupColor.Click += btnSetupColor_Click;
@@ -553,7 +563,7 @@
             btnRemoveReservedWord.Location = new Point(158, 80);
             btnRemoveReservedWord.Name = "btnRemoveReservedWord";
             btnRemoveReservedWord.Size = new Size(100, 23);
-            btnRemoveReservedWord.TabIndex = 3;
+            btnRemoveReservedWord.TabIndex = 4;
             btnRemoveReservedWord.Text = "Remove";
             btnRemoveReservedWord.UseVisualStyleBackColor = true;
             btnRemoveReservedWord.Click += btnRemoveReservedWord_Click;
@@ -564,7 +574,7 @@
             btnAddReservedWord.Location = new Point(158, 51);
             btnAddReservedWord.Name = "btnAddReservedWord";
             btnAddReservedWord.Size = new Size(100, 23);
-            btnAddReservedWord.TabIndex = 2;
+            btnAddReservedWord.TabIndex = 3;
             btnAddReservedWord.Text = "Add";
             btnAddReservedWord.UseVisualStyleBackColor = true;
             btnAddReservedWord.Click += btnAddReservedWord_Click;
@@ -576,24 +586,14 @@
             lbResWord.Location = new Point(6, 51);
             lbResWord.Name = "lbResWord";
             lbResWord.Size = new Size(146, 379);
-            lbResWord.TabIndex = 1;
+            lbResWord.TabIndex = 2;
             // 
             // tbReservedWords
             // 
             tbReservedWords.Location = new Point(6, 22);
             tbReservedWords.Name = "tbReservedWords";
             tbReservedWords.Size = new Size(252, 23);
-            tbReservedWords.TabIndex = 0;
-            // 
-            // lblSnipSepPrev
-            // 
-            lblSnipSepPrev.AutoSize = true;
-            lblSnipSepPrev.Font = new Font("Cascadia Code", 10F);
-            lblSnipSepPrev.Location = new Point(6, 85);
-            lblSnipSepPrev.Name = "lblSnipSepPrev";
-            lblSnipSepPrev.Size = new Size(176, 18);
-            lblSnipSepPrev.TabIndex = 10;
-            lblSnipSepPrev.Text = "Selected font preview";
+            tbReservedWords.TabIndex = 1;
             // 
             // SetupForm
             // 

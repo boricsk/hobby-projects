@@ -19,6 +19,8 @@ namespace SnippetStore
     {
         private ToolStripStatusLabel statusLabelDate;
         private ToolStripStatusLabel statusLabelConnected;
+        private ToolStripStatusLabel statusLabelSnipName;
+
         private ToolStripSeparator toolStripSeparator = new ToolStripSeparator();
         private string? snippetId;
         private MongoConnectionManagement connectionManagement = new MongoConnectionManagement(RegistryOps.ReadConString());
@@ -28,6 +30,7 @@ namespace SnippetStore
         private HighlightSearch hs = new HighlightSearch();
         private UpdateChart uc = new UpdateChart();
         private string separator = "";
+        private string pageLink = "https://devnullsec.hu/snippet-store.html";
         public MainForm()
         {
             InitializeComponent();
@@ -54,10 +57,12 @@ namespace SnippetStore
         {
             statusLabelDate = new ToolStripStatusLabel { Text = DateTime.Now.ToString() };
             statusLabelConnected = new ToolStripStatusLabel { Text = $"Connected to {connectionManagement.ConnectedTo} database." };
-
+            statusLabelSnipName = new ToolStripStatusLabel { Text = string.Empty };
             statusStrip1.Items.Add(statusLabelDate);
             statusStrip1.Items.Add(toolStripSeparator);
             statusStrip1.Items.Add(statusLabelConnected);
+            statusStrip1.Items.Add(toolStripSeparator2);
+            statusStrip1.Items.Add(statusLabelSnipName);
         }
 
         private void btnAddNewClick(object sender, EventArgs e)
@@ -141,6 +146,7 @@ namespace SnippetStore
             rtbMainCode = hs.HighlightSearchResult(tbSearch2.Text, rtbMainCode);
 
             Debug.WriteLine(e.Node.Text);
+            statusLabelSnipName.Text = e.Node.Text;
         }
 
         private void OnTypeSearch(object sender, EventArgs e)
@@ -194,6 +200,7 @@ namespace SnippetStore
                     rtbMainCode.Clear();
                     btnDel.Enabled = false;
                     UpdateTreeView();
+                    statusLabelSnipName.Text = string.Empty;
                 }
             }
         }
@@ -206,6 +213,7 @@ namespace SnippetStore
             treeView1.Enabled = true;
             rtbMainCode.Clear();
             UpdateTreeView();
+            statusLabelSnipName.Text = string.Empty;
         }
 
         private async void btnSaveModify_Click(object sender, EventArgs e)
@@ -265,6 +273,7 @@ namespace SnippetStore
             tbSearch2.Clear();
             rtbMainCode.Clear();
             UpdateTreeView();
+            statusLabelSnipName.Text = string.Empty;
         }
 
         private void UpdateDbStats()
@@ -339,6 +348,32 @@ namespace SnippetStore
                 rtbMainCode.SelectionStart = lineStartPosition + separator.Length;
 
             }
+        }
+
+        private async void rtbMainCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.Add || e.KeyCode == Keys.Oemplus)
+                {
+                    rtbMainCode.Font = new Font(rtbMainCode.Font.FontFamily, rtbMainCode.Font.Size + 1, rtbMainCode.Font.Style);
+                    rtbMainCode = await hw.WordHighlight(rtbMainCode);
+                }
+                else if (e.KeyCode == Keys.Subtract || e.KeyCode == Keys.OemMinus)
+                {
+                    rtbMainCode.Font = new Font(rtbMainCode.Font.FontFamily, rtbMainCode.Font.Size - 1, rtbMainCode.Font.Style);
+                    rtbMainCode = await hw.WordHighlight(rtbMainCode);
+                }
+            }
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = pageLink,
+                UseShellExecute = true
+            });
         }
     }
 }

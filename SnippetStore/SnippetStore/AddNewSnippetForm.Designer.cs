@@ -102,7 +102,7 @@
             gbCode.Location = new Point(733, 7);
             gbCode.Name = "gbCode";
             gbCode.Size = new Size(716, 445);
-            gbCode.TabIndex = 9;
+            gbCode.TabIndex = 5;
             gbCode.TabStop = false;
             gbCode.Text = "Code";
             // 
@@ -122,12 +122,12 @@
             // 
             codeboxMenu.Items.AddRange(new ToolStripItem[] { tsAddSeparator });
             codeboxMenu.Name = "codeboxMenu";
-            codeboxMenu.Size = new Size(181, 48);
+            codeboxMenu.Size = new Size(149, 26);
             // 
             // tsAddSeparator
             // 
             tsAddSeparator.Name = "tsAddSeparator";
-            tsAddSeparator.Size = new Size(180, 22);
+            tsAddSeparator.Size = new Size(148, 22);
             tsAddSeparator.Text = "Add separator";
             tsAddSeparator.Click += tsAddSeparator_Click;
             // 
@@ -138,7 +138,7 @@
             gbLanguage.Location = new Point(12, 7);
             gbLanguage.Name = "gbLanguage";
             gbLanguage.Size = new Size(334, 66);
-            gbLanguage.TabIndex = 8;
+            gbLanguage.TabIndex = 1;
             gbLanguage.TabStop = false;
             gbLanguage.Text = "Programming language";
             // 
@@ -161,7 +161,7 @@
             gbDesc.Location = new Point(355, 77);
             gbDesc.Name = "gbDesc";
             gbDesc.Size = new Size(369, 378);
-            gbDesc.TabIndex = 7;
+            gbDesc.TabIndex = 4;
             gbDesc.TabStop = false;
             gbDesc.Text = "Short description";
             // 
@@ -185,7 +185,7 @@
             gbKeyword.Location = new Point(6, 77);
             gbKeyword.Name = "gbKeyword";
             gbKeyword.Size = new Size(340, 378);
-            gbKeyword.TabIndex = 3;
+            gbKeyword.TabIndex = 2;
             gbKeyword.TabStop = false;
             gbKeyword.Text = "Keywords";
             // 
@@ -194,7 +194,7 @@
             tbSearchKeyw.Location = new Point(6, 22);
             tbSearchKeyw.Name = "tbSearchKeyw";
             tbSearchKeyw.Size = new Size(135, 23);
-            tbSearchKeyw.TabIndex = 6;
+            tbSearchKeyw.TabIndex = 1;
             tbSearchKeyw.TextChanged += tbSearchKeyw_TextChanged;
             // 
             // lbAvailKeyw
@@ -204,7 +204,7 @@
             lbAvailKeyw.Location = new Point(6, 48);
             lbAvailKeyw.Name = "lbAvailKeyw";
             lbAvailKeyw.Size = new Size(135, 319);
-            lbAvailKeyw.TabIndex = 5;
+            lbAvailKeyw.TabIndex = 2;
             // 
             // btnRemoveKeyw
             // 
@@ -212,7 +212,7 @@
             btnRemoveKeyw.Location = new Point(147, 48);
             btnRemoveKeyw.Name = "btnRemoveKeyw";
             btnRemoveKeyw.Size = new Size(46, 23);
-            btnRemoveKeyw.TabIndex = 3;
+            btnRemoveKeyw.TabIndex = 4;
             btnRemoveKeyw.Text = "-";
             btnRemoveKeyw.UseVisualStyleBackColor = true;
             btnRemoveKeyw.Click += btnRemoveKeyw_Click;
@@ -223,7 +223,7 @@
             btnAddKeyw.Location = new Point(147, 19);
             btnAddKeyw.Name = "btnAddKeyw";
             btnAddKeyw.Size = new Size(46, 23);
-            btnAddKeyw.TabIndex = 2;
+            btnAddKeyw.TabIndex = 3;
             btnAddKeyw.Text = ">>";
             btnAddKeyw.UseVisualStyleBackColor = true;
             btnAddKeyw.Click += btnAddKeyw_Click;
@@ -235,7 +235,7 @@
             lbKeywords.Location = new Point(199, 18);
             lbKeywords.Name = "lbKeywords";
             lbKeywords.Size = new Size(135, 349);
-            lbKeywords.TabIndex = 1;
+            lbKeywords.TabIndex = 5;
             // 
             // gbSnippetName
             // 
@@ -243,7 +243,7 @@
             gbSnippetName.Location = new Point(355, 6);
             gbSnippetName.Name = "gbSnippetName";
             gbSnippetName.Size = new Size(369, 67);
-            gbSnippetName.TabIndex = 1;
+            gbSnippetName.TabIndex = 3;
             gbSnippetName.TabStop = false;
             gbSnippetName.Text = "Snippet name";
             // 
@@ -263,7 +263,7 @@
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1463, 489);
-            tabControl1.TabIndex = 6;
+            tabControl1.TabIndex = 0;
             // 
             // AddNewSnippetForm
             // 

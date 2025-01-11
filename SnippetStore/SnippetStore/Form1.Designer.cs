@@ -56,6 +56,8 @@
             btnSync = new ToolStripButton();
             toolStripSeparator7 = new ToolStripSeparator();
             btnSchClear = new ToolStripButton();
+            toolStripSeparator9 = new ToolStripSeparator();
+            btnAbout = new ToolStripButton();
             splitContainerMain = new SplitContainer();
             treeView1 = new TreeView();
             button1 = new Button();
@@ -137,7 +139,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(48, 48);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5, btnCopySnippet, toolStripSeparator6, btnSync, toolStripSeparator7, btnSchClear });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAddNewSnippet, toolStripSeparator1, btnSetup, toolStripSeparator2, btnDel, toolStripSeparator3, btnSaveModify, btnCancelModify, toolStripSeparator4, btnExpandAll, btnCloseAll, toolStripSeparator5, btnCopySnippet, toolStripSeparator6, btnSync, toolStripSeparator7, btnSchClear, toolStripSeparator9, btnAbout });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.MinimumSize = new Size(48, 0);
             toolStrip1.Name = "toolStrip1";
@@ -284,6 +286,21 @@
             btnSchClear.Text = "Clear search";
             btnSchClear.Click += btnClearSearch_Click;
             // 
+            // toolStripSeparator9
+            // 
+            toolStripSeparator9.Name = "toolStripSeparator9";
+            toolStripSeparator9.Size = new Size(6, 55);
+            // 
+            // btnAbout
+            // 
+            btnAbout.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAbout.Image = (Image)resources.GetObject("btnAbout.Image");
+            btnAbout.ImageTransparentColor = Color.Magenta;
+            btnAbout.Name = "btnAbout";
+            btnAbout.Size = new Size(52, 52);
+            btnAbout.Text = "About";
+            btnAbout.Click += btnAbout_Click;
+            // 
             // splitContainerMain
             // 
             splitContainerMain.Dock = DockStyle.Fill;
@@ -364,6 +381,7 @@
             rtbMainCode.Text = "";
             rtbMainCode.LinkClicked += rtbMainCode_LinkClicked;
             rtbMainCode.DoubleClick += rtbMainCode_DoubleClick;
+            rtbMainCode.KeyDown += rtbMainCode_KeyDown;
             // 
             // contextMenuCodeEdit
             // 
@@ -714,5 +732,7 @@
         private ToolStripProgressBar toolStripProgressBar1;
         private ContextMenuStrip contextMenuCodeEdit;
         private ToolStripMenuItem addSeparatorToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator9;
+        private ToolStripButton btnAbout;
     }
 }
