@@ -8,8 +8,8 @@
 *.bin
 *.zip
 *.msi
-bin/
-obj/
+**/bin/
+**/obj/
 .vs/
 Debug/
 net8.0/

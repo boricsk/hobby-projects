@@ -45,6 +45,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "019_count smiley", "019_cou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "020_find unique number", "020_find unique number\020_find unique number.csproj", "{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "021_ReturnNegative", "021_ReturnNegative\021_ReturnNegative.csproj", "{ED0DF4A7-632F-457E-BC2B-D9B63FCC6938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "022_Digitizer", "022_Digitizer\022_Digitizer.csproj", "{79FE0060-15EF-46C6-8525-192ABB00E805}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +139,14 @@ Global
 		{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{644ECA93-57B2-4AB4-8EE5-689C4EC1498B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED0DF4A7-632F-457E-BC2B-D9B63FCC6938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED0DF4A7-632F-457E-BC2B-D9B63FCC6938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED0DF4A7-632F-457E-BC2B-D9B63FCC6938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED0DF4A7-632F-457E-BC2B-D9B63FCC6938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79FE0060-15EF-46C6-8525-192ABB00E805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79FE0060-15EF-46C6-8525-192ABB00E805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79FE0060-15EF-46C6-8525-192ABB00E805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79FE0060-15EF-46C6-8525-192ABB00E805}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
