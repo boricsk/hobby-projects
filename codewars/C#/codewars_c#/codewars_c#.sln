@@ -55,6 +55,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "024_SmmDigitPow", "SummDigi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "025_Remover", "025_Remover\025_Remover.csproj", "{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "026_ToJadenCase", "026_ToJadenCase\026_ToJadenCase.csproj", "{9BCF20ED-04B8-4EC9-A185-2D23A0F40C4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "027_CodewarsRanking", "027_CodewarsRanking\027_CodewarsRanking.csproj", "{E6624EDC-C157-4A96-83F9-66C7C8F96FEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +169,14 @@ Global
 		{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BCF20ED-04B8-4EC9-A185-2D23A0F40C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BCF20ED-04B8-4EC9-A185-2D23A0F40C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BCF20ED-04B8-4EC9-A185-2D23A0F40C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BCF20ED-04B8-4EC9-A185-2D23A0F40C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6624EDC-C157-4A96-83F9-66C7C8F96FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6624EDC-C157-4A96-83F9-66C7C8F96FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6624EDC-C157-4A96-83F9-66C7C8F96FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6624EDC-C157-4A96-83F9-66C7C8F96FEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
