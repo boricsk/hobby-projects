@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "023_GradeBook", "023_GradeB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "024_SmmDigitPow", "SummDigitPow\024_SmmDigitPow.csproj", "{A1BE6E18-3D2B-4C2D-9024-AAAA0C88F42E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "025_Remover", "025_Remover\025_Remover.csproj", "{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{A1BE6E18-3D2B-4C2D-9024-AAAA0C88F42E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1BE6E18-3D2B-4C2D-9024-AAAA0C88F42E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1BE6E18-3D2B-4C2D-9024-AAAA0C88F42E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1473BCE-C1CE-4B69-9569-D5B5C65A657E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
