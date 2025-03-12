@@ -13,3 +13,5 @@
 .vs/
 Debug/
 net8.0/
+
+.fake
